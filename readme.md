@@ -12,7 +12,7 @@ To setup cmssw release:
 	scram b
 
 To grab the project (inside CMSSW_10_6_8/src)
-either clone mine repository, or fork and clone your fork
+either clone my repository, or fork and clone your fork
 
 	git clone https://github.com/Jphsx/KUSoftMVA.git
 
