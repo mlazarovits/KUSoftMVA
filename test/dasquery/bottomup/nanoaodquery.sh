@@ -1,0 +1,1 @@
+dasgoclient -query="file dataset=/QCD_Pt_600to800_TuneCP5_13TeV_pythia8/RunIIWinter19PFCalibNanoAOD-2018Conditions_105X_upgrade2018_realistic_v4-v1/NANOAODSIM" > nanoaodfiles.list
