@@ -4,7 +4,6 @@
 #include "TTree.h"
 #include "TLeaf.h"
 
-using namespace std;
 
 
 void makeTrees(){
@@ -47,13 +46,13 @@ void makeTrees(){
 		// if(!dyjets->GetLeaf("Muon_isGlobal") || !dyjets->GetLeaf("Muon_isTracker")) continue;
 
 		nMuons = dyjets->GetLeaf("nMuon")->GetValue();
-		cout << "a" << endl;
+		std::cout << "a" << std::endl;
 		for(int mu = 0; mu < nMuons; mu++){
 			pt[mu] = dyjets->GetLeaf("Muon_pt")->GetValue(mu);
-			cout << pt[mu] << endl;
+			std::cout << pt[mu] << std::endl;
 		}
 		
-		cout << "b" << endl;
+		std::cout << "b" << std::endl;
 		// eta = dyjets->GetBranch("Muon_eta");
 		// sipd3d = dyjets->GetBranch("Muon_sip3d");
 		// dxy = dyjets->GetBranch("Muon_dxy");
@@ -65,7 +64,7 @@ void makeTrees(){
 		//isprompt flag
 		// if(dyjets->GetLeaf("GenPart_statusFlags")->GetValue() == 0){
 		sig->Fill();
-		cout << "c" << endl;
+		std::cout << "c" << std::endl;
 		// }
 		// dyjets->GetLeaf(""); //0 = isPrompt, 1 = isDecayedLeptonHadron; 2 = isTauDecayProduct
 		// dyjets->GetLeaf("");
