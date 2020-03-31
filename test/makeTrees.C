@@ -46,7 +46,7 @@ void makeTrees(){
 			cout << "null muon pt" << endl;
 			return;
 		}
-		else if(dyjets->GetBranch("nMuon") == NULL){
+		else if(dyjets->FindLeaf("nMuon") == NULL){
 			cout << "null nMuon" << endl;
 			return;
 		}
