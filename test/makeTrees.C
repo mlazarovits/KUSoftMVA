@@ -10,8 +10,13 @@ void makeTrees(){
 	TTree* dyjets = (TTree*)fDyjets->Get("Events");
 
 	TBranch* mupt = dyjets->GetBranch("Muon_pt");
+	if(dyjets->GetBranch("nMuon") == NULL){
+		cout << "why??" << endl;
+		cout << "null nMuon" << endl;
+		return;
+	}
 	TBranch* nmu = dyjets->GetBranch("nMuon");
-	
+
 	fDyjets->Close();
 
 
