@@ -8,7 +8,10 @@
 void makeTrees(){
 	TFile* fDyjets = TFile::Open("OutputFiles/DYJetsToLL2018_NANO.root");
 	TTree* dyjets = (TTree*)fDyjets->Get("Events");
+
 	TBranch* mupt = dyjets->GetBranch("Muon_pt");
+	TBranch* nmu = dyjets->GetBranch("nMuon");
+	
 	fDyjets->Close();
 
 
