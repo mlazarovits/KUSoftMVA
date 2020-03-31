@@ -37,7 +37,7 @@ void makeTrees(){
 		if(!dyjets->GetLeaf("Muon_isGlobal") || !dyjets->GetLeaf("Muon_isTracker")) continue;
 
 
-		pt = dyjets->GetBranch("Muon_pt");
+		pt = dyjets->GetBranch("Muon_pt")->GetLeaf()->GetValue();
 		// eta = dyjets->GetBranch("Muon_eta");
 		// sipd3d = dyjets->GetBranch("Muon_sip3d");
 		// dxy = dyjets->GetBranch("Muon_dxy");
