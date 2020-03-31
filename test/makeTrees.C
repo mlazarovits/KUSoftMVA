@@ -43,6 +43,12 @@ void makeTrees(){
 		//loose definition - is PFCandidate and isGlobal or tracker muon
 		// if(!dyjets->GetLeaf("Muon_isPFcand")) continue;
 		// if(!dyjets->GetLeaf("Muon_isGlobal") || !dyjets->GetLeaf("Muon_isTracker")) continue;
+		if(dyjets->GetLeaf("nMuon") == NULL){
+			cout << "null" << endl;
+			return;
+		}
+
+
 
 		nMuons = dyjets->GetLeaf("nMuon")->GetValue();
 		cout << "a" << endl;
