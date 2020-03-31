@@ -27,7 +27,7 @@ void makeTrees(){
 	// Float_t miniIsoall;
 	// Float_t nStations;
 
-	sig->Branch("Muon_pt1",pt);
+	sig->Branch("Muon_pt",pt);
 	// TBranch* b_eta = sig->Branch("Muon_eta",&eta);
 	// TBranch* b_sip3d = sig->Branch("Muon_sip3d",&sipd3d);
 	// TBranch* b_dxy = sig->Branch("Muon_dxy",&dxy);
@@ -35,16 +35,20 @@ void makeTrees(){
 	// TBranch* b_miniIsochg = sig->Branch("Muon_miniPFRelIso_chg",&miniIsochg);
 	// TBranch* b_miniIsoall = sig->Branch("Muon_miniPFRelIso_all",&miniIsoall);
 	// TBranch* b_nStations = sig->Branch("Muon_nStations",&nStations);
-
+	if(dyjets == NULL){
+		cout << "null tree" << endl;
+		return;
+	}
 
 	for(int i = 0; i < 10; i++){
 		dyjets->GetEntry(i);
-
-		//loose definition - is PFCandidate and isGlobal or tracker muon
-		// if(!dyjets->GetLeaf("Muon_isPFcand")) continue;
-		// if(!dyjets->GetLeaf("Muon_isGlobal") || !dyjets->GetLeaf("Muon_isTracker")) continue;
+		
 		if(dyjets->GetLeaf("nMuon") == NULL){
-			cout << "null" << endl;
+			cout << "null nMuon" << endl;
+			return;
+		}
+		else if(dyjets->GetLeaf("Muon_pt") == NULL){
+			cout << "null muon pt" << endl;
 			return;
 		}
 
