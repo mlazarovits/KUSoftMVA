@@ -33,11 +33,11 @@ void makeTrees(){
 		dyjets->GetEntry(i);
 
 		//loose definition - is PFCandidate and isGlobal or tracker muon
-		if(!dyjets->GetLeaf("Muon_isPFcand")) continue;
-		if(!dyjets->GetLeaf("Muon_isGlobal") || !dyjets->GetLeaf("Muon_isTracker")) continue;
+		// if(!dyjets->GetLeaf("Muon_isPFcand")) continue;
+		// if(!dyjets->GetLeaf("Muon_isGlobal") || !dyjets->GetLeaf("Muon_isTracker")) continue;
 
 
-		pt = dyjets->GetLeaf("Muon_pt")->GetValue();
+		pt = -999;//dyjets->GetLeaf("Muon_pt")->GetValue();
 		// eta = dyjets->GetBranch("Muon_eta");
 		// sipd3d = dyjets->GetBranch("Muon_sip3d");
 		// dxy = dyjets->GetBranch("Muon_dxy");
