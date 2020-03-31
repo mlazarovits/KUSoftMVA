@@ -8,6 +8,7 @@
 void makeTrees(){
 	TFile* fDyjets = TFile::Open("OutputFiles/DYJetsToLL2018_NANO.root");
 	TTree* dyjets = (TTree*)fDyjets->Get("Events");
+	TBranch* mupt = dyjets->GetBranch("Muon_pt");
 	fDyjets->Close();
 
 
@@ -28,6 +29,7 @@ void makeTrees(){
 	// Float_t nStations;
 
 	sig->Branch("Muon_pt1",pt);
+
 	// TBranch* b_eta = sig->Branch("Muon_eta",&eta);
 	// TBranch* b_sip3d = sig->Branch("Muon_sip3d",&sipd3d);
 	// TBranch* b_dxy = sig->Branch("Muon_dxy",&dxy);
