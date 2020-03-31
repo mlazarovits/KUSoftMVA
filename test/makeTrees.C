@@ -16,7 +16,7 @@ void makeTrees(){
 
 	// int nEvts = dyjets->GetEntries();
 
-	UInt_t nMuons;
+	Int_t nMuons;
 	Float_t pt[6];
 	// Float_t eta;
 	// Float_t sipd3d;
@@ -36,7 +36,7 @@ void makeTrees(){
 	// TBranch* b_nStations = sig->Branch("Muon_nStations",&nStations);
 
 
-	for(int i = 0; i < 100; i++){
+	for(int i = 0; i < 10; i++){
 		dyjets->GetEntry(i);
 
 		//loose definition - is PFCandidate and isGlobal or tracker muon
@@ -44,10 +44,13 @@ void makeTrees(){
 		// if(!dyjets->GetLeaf("Muon_isGlobal") || !dyjets->GetLeaf("Muon_isTracker")) continue;
 
 		nMuons = dyjets->GetLeaf("nMuon")->GetValue();
+		cout << "a" << endl;
 		for(int mu = 0; mu < nMuons; mu++){
 			pt[mu] = dyjets->GetLeaf("Muon_pt")->GetValue(mu);
+			cout << pt[mu] << endl;
 		}
 		
+		cout << "b" << endl;
 		// eta = dyjets->GetBranch("Muon_eta");
 		// sipd3d = dyjets->GetBranch("Muon_sip3d");
 		// dxy = dyjets->GetBranch("Muon_dxy");
@@ -58,7 +61,8 @@ void makeTrees(){
 
 		//isprompt flag
 		// if(dyjets->GetLeaf("GenPart_statusFlags")->GetValue() == 0){
-			sig->Fill();
+		sig->Fill();
+		cout << "c" << endl;
 		// }
 		// dyjets->GetLeaf(""); //0 = isPrompt, 1 = isDecayedLeptonHadron; 2 = isTauDecayProduct
 		// dyjets->GetLeaf("");
