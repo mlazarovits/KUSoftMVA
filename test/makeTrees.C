@@ -46,42 +46,43 @@ void makeTrees(){
 			cout << "null muon pt" << endl;
 			return;
 		}
-		else if(dyjets->GetLeaf("nMuon") == NULL){
+		else if(dyjets->GetBranch("nMuon") == NULL){
 			cout << "null nMuon" << endl;
 			return;
 		}
+		cout << "done" << endl;
 
 
 
 
-		nMuons = dyjets->GetLeaf("nMuon")->GetValue();
-		cout << "a" << endl;
-		for(int mu = 0; mu < nMuons; mu++){
-			pt[mu] = dyjets->GetLeaf("Muon_pt")->GetValue(mu);
-			cout << pt[mu] << endl;
-		}
+		// nMuons = dyjets->GetLeaf("nMuon")->GetValue();
+		// cout << "a" << endl;
+		// for(int mu = 0; mu < nMuons; mu++){
+		// 	pt[mu] = dyjets->GetLeaf("Muon_pt")->GetValue(mu);
+		// 	cout << pt[mu] << endl;
+		// }
 		
-		cout << "b" << endl;
-		// eta = dyjets->GetBranch("Muon_eta");
-		// sipd3d = dyjets->GetBranch("Muon_sip3d");
-		// dxy = dyjets->GetBranch("Muon_dxy");
-		// dz = dyjets->GetBranch("");
-		// miniIsochg;
-		// miniIsoall;
-		// nStations;
+		// cout << "b" << endl;
+		// // eta = dyjets->GetBranch("Muon_eta");
+		// // sipd3d = dyjets->GetBranch("Muon_sip3d");
+		// // dxy = dyjets->GetBranch("Muon_dxy");
+		// // dz = dyjets->GetBranch("");
+		// // miniIsochg;
+		// // miniIsoall;
+		// // nStations;
 
-		//isprompt flag
-		// if(dyjets->GetLeaf("GenPart_statusFlags")->GetValue() == 0){
-		sig->Fill();
-		cout << "c" << endl;
+		// //isprompt flag
+		// // if(dyjets->GetLeaf("GenPart_statusFlags")->GetValue() == 0){
+		// sig->Fill();
+		// cout << "c" << endl;
 		// }
 		// dyjets->GetLeaf(""); //0 = isPrompt, 1 = isDecayedLeptonHadron; 2 = isTauDecayProduct
 		// dyjets->GetLeaf("");
 
 		
 	}
-	file->Write();
-	file->Close();
+	// file->Write();
+	// file->Close();
 
 }
 
