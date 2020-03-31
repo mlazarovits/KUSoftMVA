@@ -4,8 +4,8 @@ void makeTrees(){
 	TFile *file = new TFile("TMVA_softLep.root");
 	TFile* fDyjets = TFile::Open("OutputFiles/DYJetsToLL2018_NANO.root");
 	TTree* dyjets = (TTree*)fDyjets->Get("Events");
-	TTree* sig = new TTree("Events");
-	TTree* bkg = new TTree("Events");
+	TTree* sig = new TTree("Events","Events");
+	// TTree* bkg = new TTree("Events");
 
 	int nEvts = dyjets->GetEntries();
 
@@ -37,7 +37,7 @@ void makeTrees(){
 		if(!dyjets->GetLeaf("Muon_isGlobal") || !dyjets->GetLeaf("Muon_isTracker")) continue;
 
 
-		pt = dyjets->GetBranch("Muon_pt")->GetLeaf()->GetValue();
+		pt = dyjets->GetLeaf("Muon_pt")->GetValue();
 		// eta = dyjets->GetBranch("Muon_eta");
 		// sipd3d = dyjets->GetBranch("Muon_sip3d");
 		// dxy = dyjets->GetBranch("Muon_dxy");
