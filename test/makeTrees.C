@@ -1,5 +1,7 @@
 //make signal (soft prompt muons - truth matched) and background (soft NP muons) trees
-
+#include "TFile.h"
+#include "TBranch.h"
+#include "TTree.h"
 void makeTrees(){
 	TFile* fDyjets = TFile::Open("OutputFiles/DYJetsToLL2018_NANO.root");
 	TTree* dyjets = (TTree*)fDyjets->Get("Events");
@@ -12,6 +14,7 @@ void makeTrees(){
 
 	// int nEvts = dyjets->GetEntries();
 
+	UInt_t nMuons;
 	Float_t pt[6];
 	// Float_t eta;
 	// Float_t sipd3d;
