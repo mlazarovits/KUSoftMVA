@@ -42,15 +42,15 @@ void makeTrees(){
 
 	for(int i = 0; i < 10; i++){
 		dyjets->GetEntry(i);
-		
-		if(dyjets->GetLeaf("nMuon") == NULL){
-			cout << "null nMuon" << endl;
-			return;
-		}
-		else if(dyjets->GetLeaf("Muon_pt") == NULL){
+		if(dyjets->GetLeaf("Muon_pt") == NULL){
 			cout << "null muon pt" << endl;
 			return;
 		}
+		else if(dyjets->GetLeaf("nMuon") == NULL){
+			cout << "null nMuon" << endl;
+			return;
+		}
+
 
 
 
