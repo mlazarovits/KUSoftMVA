@@ -12,7 +12,7 @@ void makeTrees(){
 
 	// int nEvts = dyjets->GetEntries();
 
-
+	Int_t nMuons;
 	Float_t pt;
 	// Float_t eta;
 	// Float_t sipd3d;
@@ -22,6 +22,7 @@ void makeTrees(){
 	// Float_t miniIsoall;
 	// Float_t nStations;
 
+	TBranch* b_nMuons = sig->Branch("nMuons",&nMuons);
 	TBranch* b_pt = sig->Branch("Muon_pt",&pt);
 	// TBranch* b_eta = sig->Branch("Muon_eta",&eta);
 	// TBranch* b_sip3d = sig->Branch("Muon_sip3d",&sipd3d);
@@ -39,8 +40,9 @@ void makeTrees(){
 		// if(!dyjets->GetLeaf("Muon_isPFcand")) continue;
 		// if(!dyjets->GetLeaf("Muon_isGlobal") || !dyjets->GetLeaf("Muon_isTracker")) continue;
 
-
+		nMuons = dyjets->GetLeaf("nMuon")->GetValue();
 		pt = dyjets->GetLeaf("Muon_pt")->GetValue();
+		cout << pt << endl;
 		// eta = dyjets->GetBranch("Muon_eta");
 		// sipd3d = dyjets->GetBranch("Muon_sip3d");
 		// dxy = dyjets->GetBranch("Muon_dxy");
