@@ -27,7 +27,7 @@ void makeTrees(){
 	// Float_t miniIsoall;
 	// Float_t nStations;
 
-	TBranch* b_pt = sig->Branch("Muon_pt",&pt);
+	sig->Branch("Muon_pt",&pt);
 	// TBranch* b_eta = sig->Branch("Muon_eta",&eta);
 	// TBranch* b_sip3d = sig->Branch("Muon_sip3d",&sipd3d);
 	// TBranch* b_dxy = sig->Branch("Muon_dxy",&dxy);
@@ -45,13 +45,13 @@ void makeTrees(){
 		// if(!dyjets->GetLeaf("Muon_isGlobal") || !dyjets->GetLeaf("Muon_isTracker")) continue;
 
 		nMuons = dyjets->GetLeaf("nMuon")->GetValue();
-		std::cout << "a" << std::endl;
+		cout << "a" << endl;
 		for(int mu = 0; mu < nMuons; mu++){
 			pt[mu] = dyjets->GetLeaf("Muon_pt")->GetValue(mu);
-			std::cout << pt[mu] << std::endl;
+			cout << pt[mu] << endl;
 		}
 		
-		std::cout << "b" << std::endl;
+		cout << "b" << endl;
 		// eta = dyjets->GetBranch("Muon_eta");
 		// sipd3d = dyjets->GetBranch("Muon_sip3d");
 		// dxy = dyjets->GetBranch("Muon_dxy");
@@ -63,7 +63,7 @@ void makeTrees(){
 		//isprompt flag
 		// if(dyjets->GetLeaf("GenPart_statusFlags")->GetValue() == 0){
 		sig->Fill();
-		std::cout << "c" << std::endl;
+		cout << "c" << endl;
 		// }
 		// dyjets->GetLeaf(""); //0 = isPrompt, 1 = isDecayedLeptonHadron; 2 = isTauDecayProduct
 		// dyjets->GetLeaf("");
