@@ -8,7 +8,7 @@ void makeTrees(){
 
 	TFile *file = new TFile("TMVA_softLep.root","RECREATE");
 	TTree* sig = new TTree("Events","Events");
-	// TTree* bkg = new TTree("Events");
+	// TTree* bkg = new TTree("Events","Events");
 
 	// int nEvts = dyjets->GetEntries();
 
@@ -40,7 +40,7 @@ void makeTrees(){
 		// if(!dyjets->GetLeaf("Muon_isGlobal") || !dyjets->GetLeaf("Muon_isTracker")) continue;
 
 
-		pt = -999;//dyjets->GetLeaf("Muon_pt")->GetValue();
+		pt = dyjets->GetLeaf("Muon_pt")->GetValue();
 		// eta = dyjets->GetBranch("Muon_eta");
 		// sipd3d = dyjets->GetBranch("Muon_sip3d");
 		// dxy = dyjets->GetBranch("Muon_dxy");
@@ -50,9 +50,9 @@ void makeTrees(){
 		// nStations;
 
 		//isprompt flag
-		if(dyjets->GetLeaf("GenPart_statusFlags") == 0){
+		// if(dyjets->GetLeaf("GenPart_statusFlags")->GetValue() == 0){
 			sig->Fill();
-		}
+		// }
 		// dyjets->GetLeaf(""); //0 = isPrompt, 1 = isDecayedLeptonHadron; 2 = isTauDecayProduct
 		// dyjets->GetLeaf("");
 
