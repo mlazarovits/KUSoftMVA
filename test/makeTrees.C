@@ -2,9 +2,11 @@
 
 void makeTrees(){
 	TFile* fDyjets = TFile::Open("OutputFiles/DYJetsToLL2018_NANO.root");
+	TTree* dyjets = (TTree*)fDyjets->Get("Events");
+	fDyjets->Close();
+
+
 	TFile *file = new TFile("TMVA_softLep.root","RECREATE");
-	
-	// TTree* dyjets = (TTree*)fDyjets->Get("Events");
 	TTree* sig = new TTree("Events","Events");
 	// TTree* bkg = new TTree("Events");
 
@@ -31,7 +33,7 @@ void makeTrees(){
 
 
 	for(int i = 0; i < 100; i++){
-		// dyjets->GetEntry(i);
+		dyjets->GetEntry(i);
 
 		//loose definition - is PFCandidate and isGlobal or tracker muon
 		// if(!dyjets->GetLeaf("Muon_isPFcand")) continue;
@@ -48,15 +50,16 @@ void makeTrees(){
 		// nStations;
 
 		//isprompt flag
-		// if(dyjets->GetLeaf("GenPart_statusFlags") == 0){
+		if(dyjets->GetLeaf("GenPart_statusFlags") == 0){
 			sig->Fill();
-		// }
+		}
 		// dyjets->GetLeaf(""); //0 = isPrompt, 1 = isDecayedLeptonHadron; 2 = isTauDecayProduct
 		// dyjets->GetLeaf("");
 
 		
 	}
 	file->Write();
+	file->Close();
 
 }
 
