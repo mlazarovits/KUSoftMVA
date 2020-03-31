@@ -53,8 +53,9 @@ void makeTrees(){
 		// dyjets->GetLeaf(""); //0 = isPrompt, 1 = isDecayedLeptonHadron; 2 = isTauDecayProduct
 		// dyjets->GetLeaf("");
 
-		file->Write();
+		
 	}
+	file->Write();
 
 }
 
