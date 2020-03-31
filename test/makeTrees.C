@@ -2,12 +2,12 @@
 
 void makeTrees(){
 	TFile *file = new TFile("TMVA_softLep.root","RECREATE");
-	TFile* fDyjets = TFile::Open("OutputFiles/DYJetsToLL2018_NANO.root");
-	TTree* dyjets = (TTree*)fDyjets->Get("Events");
+	// TFile* fDyjets = TFile::Open("OutputFiles/DYJetsToLL2018_NANO.root");
+	// TTree* dyjets = (TTree*)fDyjets->Get("Events");
 	TTree* sig = new TTree("Events","Events");
 	// TTree* bkg = new TTree("Events");
 
-	int nEvts = dyjets->GetEntries();
+	// int nEvts = dyjets->GetEntries();
 
 
 	Float_t pt;
@@ -30,7 +30,7 @@ void makeTrees(){
 
 
 	for(int i = 0; i < 100; i++){
-		dyjets->GetEntry(i);
+		// dyjets->GetEntry(i);
 
 		//loose definition - is PFCandidate and isGlobal or tracker muon
 		// if(!dyjets->GetLeaf("Muon_isPFcand")) continue;
