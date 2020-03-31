@@ -47,9 +47,9 @@ void makeTrees(){
 		// nStations;
 
 		//isprompt flag
-		if(dyjets->GetLeaf("GenPart_statusFlags") == 0){
+		// if(dyjets->GetLeaf("GenPart_statusFlags") == 0){
 			sig->Fill();
-		}
+		// }
 		// dyjets->GetLeaf(""); //0 = isPrompt, 1 = isDecayedLeptonHadron; 2 = isTauDecayProduct
 		// dyjets->GetLeaf("");
 
