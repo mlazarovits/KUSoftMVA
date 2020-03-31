@@ -29,7 +29,7 @@ void makeTrees(){
 	// TBranch* b_nStations = sig->Branch("Muon_nStations",&nStations);
 
 
-	for(int i = 0; i < nEvts; i++){
+	for(int i = 0; i < 100; i++){
 		dyjets->GetEntry(i);
 
 		//loose definition - is PFCandidate and isGlobal or tracker muon
