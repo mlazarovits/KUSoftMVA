@@ -35,9 +35,10 @@ void softLepSignal::Loop()
 
    Long64_t nbytes = 0, nb = 0;
    for (Long64_t jentry=0; jentry<nentries;jentry++) {
+      if(GenPart_statusFlags != 0) continue; //isPrompt flag
+   		
       Long64_t ientry = LoadTree(jentry);
       if (ientry < 0) break;
-      if(GenPart_statusFlags != 0) continue; //isPrompt flag
       nb = fChain->GetEntry(jentry);   nbytes += nb;
       // if (Cut(ientry) < 0) continue;
       
