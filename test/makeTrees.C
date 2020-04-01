@@ -25,7 +25,12 @@ using namespace std;
 template<class selectortype>
 void makeTrees(selectortype& selector, string ofilename){
 	auto ofile = new TFile(ofilename.c_str(),"RECREATE");
-	auto muonTree = selector.fChain->CloneTree();
+	auto muonTree = selector.fChain->CloneTree(0);
+	for(int i = 0;i<selector.fChain->GetEntries();i++){
+		selector.fChain->GetEntry(i);
+		if(selector.fChain->GetPart_statusFlag != 0) continue;
+		muonTree->Fill();
+	}
 	muonTree->Write();
 	ofile->Write();
 	ofile->Close();
@@ -54,7 +59,6 @@ int main(int argc, char* argv[]){
 	for(int i = 0; i < argc; i++){
 		if(strncmp(argv[i], "-ifile",6)==0){
 			sscanf(argv[i],"-ifile=%s", inputFileName);
-			cout << argv[i] << " " << inputFileName << endl;
 			doFile = true;
 		}
 
