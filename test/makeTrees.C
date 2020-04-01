@@ -44,22 +44,22 @@ int main(int argc, char* argv[]){
 
 	for(int i = 0; i < argc; i++){
 		if(strncmp(argv[i], "-ifile",6)==0){
-			sscanf(argv[i],"-ifile %s", inputFileName);
+			sscanf(argv[i],"-ifile=%s", inputFileName);
 			cout << argv[i] << " " << inputFileName << endl;
 			doFile = true;
 		}
 
 		if(strncmp(argv[i],"-ilist",6)==0){
-			sscanf(argv[i],"-ilist %s",inputListName);
+			sscanf(argv[i],"-ilist=%s",inputListName);
 			doList = true;
 		}
 
 		if(strncmp(argv[i],"-ofile",6)==0){
-			sscanf(argv[i],"-ofile %s",outputFileName);
+			sscanf(argv[i],"-ofile=%s",outputFileName);
 		}
 
 		if(strncmp(argv[i],"-selector",9)==0){
-			sscanf(argv[i],"-selector %s",selectorClassName);
+			sscanf(argv[i],"-selector=%s",selectorClassName);
 		}
 	}
 
