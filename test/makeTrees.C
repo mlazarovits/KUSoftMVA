@@ -59,7 +59,7 @@ int main(int argc, char* argv[]){
 
 	vector<string> filenames;
 
-	char buffer[500];
+	char Buffer[500];
 	char myRootFile[2000];
 
 	if(doList){
@@ -96,11 +96,11 @@ int main(int argc, char* argv[]){
 		softLepSignal s(chain);
 		makeTrees(s,_ofilename);
 	}
-	else if(_selectorClassName.compare("softLepBackground") == 0){
-		cout << "preparing background tree" << endl;
-		softLepBackground s(chain);
-		makeTrees(s,_ofilename);
-	}
+	// else if(_selectorClassName.compare("softLepBackground") == 0){
+	// 	cout << "preparing background tree" << endl;
+	// 	softLepBackground s(chain);
+	// 	makeTrees(s,_ofilename);
+	// }
 	else{
 		cout << "Error: invalid selector class specified" << endl;
 	}

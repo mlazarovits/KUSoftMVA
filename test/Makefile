@@ -8,7 +8,7 @@ makeTrees.x: makeTrees.o ./makeTrees.C ./softLepSignal.h
 	g++ -o makeTrees.x ./makeTrees.C makeTrees.o `root-config --cflags --libs`
 
 makeTrees.o: ./softLepSignal.h ./softLepSignal.C
-		g++ -c ./softLepSignal.C `root-config --cflags --libs`
+	g++ -c ./softLepSignal.C `root-config --cflags --libs`
 
 clean:
 	rm *.o
