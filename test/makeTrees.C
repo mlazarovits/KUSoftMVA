@@ -40,7 +40,15 @@ int main(int argc, char* argv[]){
 	bool doFile = false;
 	bool doList = false;
 
-	//error for not enough arguments
+	if ( argc < 4 ){
+	    cout << "Error at Input: please specify an input file name, a list of input ROOT files and/or a folder path"; 
+	    cout << " , an output filename, and a selector class name:" << endl; 
+	    cout << "  Example:      ./makeTrees.x -ifile=input.root -ofile=output.root -selector=TSelector_ClassName"  << endl;
+	    // cout << "  FOR CONDOR USE ONLY Example:      ./MakeReducedNtuple_NANO.x -ilist=input.list -ofile=output.root -selector=TSelector_ClassName"  << endl;
+	    // cout << "  Example:      ./MakeReducedNtuple_NANO.x -ifold=folder_path -ofile=output.root   -selector=TSelector_ClassName" << endl;
+	    // cout << " additional tags for object based reduced tree: -selector=TSelector_ClassName "<<endl; 
+	    return 1;
+	}
 
 	for(int i = 0; i < argc; i++){
 		if(strncmp(argv[i], "-ifile",6)==0){
@@ -76,7 +84,12 @@ int main(int argc, char* argv[]){
 			inputFile->getline(Buffer,500);
 			if(! strstr(Buffer,"#") && !(strspn(Buffer," ") == strlen(Buffer))){
 				sscanf(Buffer,"%s",myRootFile);
-				filenames.push_back(myRootFile);
+				if(!gSystem->AccessPathName(myRootFile)){
+					filenames.push_back(myRootFile);
+				}
+				else if(gSystem->AccessPathName(myRootFile)){
+					cout << "Error: file " << myRootFile << "doesn't exist" << endl;
+				}
 			}
 		}
 		inputFile->close();
@@ -84,7 +97,12 @@ int main(int argc, char* argv[]){
 	}
 
 	if(doFile){
-		filenames.push_back(inputFileName);
+		if(!gSystem->AccessPathName(inputFileName)){
+			filenames.push_back(inputFileName);
+		}
+		else if(gSystem->AccessPathName(inputFileName)){
+			cout << "Error: file " << inputFileName << "doesn't exist" << endl;
+		}
 	}
 
 	TChain* chain = (TChain*)new TChain("Events"); //name of tree
