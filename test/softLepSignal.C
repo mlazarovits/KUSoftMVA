@@ -4,6 +4,8 @@
 #include <TStyle.h>
 #include <TCanvas.h>
 
+using namespace std;
+
 void softLepSignal::Loop()
 {
 //   In a ROOT session, you can do:
