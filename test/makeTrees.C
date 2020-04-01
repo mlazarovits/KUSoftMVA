@@ -45,6 +45,7 @@ int main(int argc, char* argv[]){
 	for(int i = 0; i < argc; i++){
 		if(strncmp(argv[i], "-ifile",6)==0){
 			sscanf(argv[i],"-ifile %s", inputFileName);
+			cout << argv[i] << " " << inputFileName << endl;
 			doFile = true;
 		}
 
