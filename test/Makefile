@@ -1,3 +1,5 @@
+all: MakeReducedNtuple_NANO.x makeTrees.x
+
 MakeReducedNtuple_NANO.x: NanoTreeTemplate.o ./MakeReducedNtuple_NANO.C ./NanoTreeTemplate.h
 	g++ -o MakeReducedNtuple.x ./MakeReducedNtuple_NANO.C NanoTreeTemplate.o `root-config --cflags --libs`
 
