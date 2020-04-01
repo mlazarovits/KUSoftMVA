@@ -28,7 +28,7 @@ void makeTrees(selectortype& selector, string ofilename){
 	auto muonTree = selector.fChain->CloneTree(0);
 	for(int i = 0;i<selector.fChain->GetEntries();i++){
 		selector.fChain->GetEntry(i);
-		if(selector.GenPart_statusFlag != 0) continue;
+		if(selector.GenPart_statusFlags != 0) continue;
 		muonTree->Fill();
 	}
 	muonTree->Write();
