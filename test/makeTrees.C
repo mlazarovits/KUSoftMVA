@@ -2,7 +2,14 @@
 #define MAKETREES
 
 //make signal (soft prompt muons - truth matched) and background (soft NP muons) trees
-
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <ostream>
+#include <istream>
+#include <stdio.h>
+#include <dirent.h>
+#include <vector>
 
 #include "TFile.h"
 #include "TBranch.h"
@@ -10,7 +17,7 @@
 #include "TLeaf.h"
 
 #include "softLepSignal.h"
-#include <iostream>
+
 
 using namespace std;
 
