@@ -89,7 +89,7 @@ int main(int argc, char* argv[]){
 					filenames.push_back(myRootFile);
 				}
 				else if(gSystem->AccessPathName(myRootFile)){
-					cout << "Error: file " << myRootFile << "doesn't exist" << endl;
+					cout << "Error: file " << myRootFile << " doesn't exist" << endl;
 				}
 			}
 		}
@@ -102,13 +102,17 @@ int main(int argc, char* argv[]){
 			filenames.push_back(inputFileName);
 		}
 		else if(gSystem->AccessPathName(inputFileName)){
-			cout << "Error: file " << inputFileName << "doesn't exist" << endl;
+			cout << "Error: file " << inputFileName << " doesn't exist" << endl;
 		}
 	}
 
 	TChain* chain = (TChain*)new TChain("Events"); //name of tree
 
 	int nFile = filenames.size();
+	if(nFile < 1){
+		cout << "no valid files specified" << endl;
+		return 2;
+	}
 	for(int i = 0; i < nFile; i++){
 		chain->Add(filenames[i].c_str());
 		cout << "Adding file " << filenames[i] << endl;
