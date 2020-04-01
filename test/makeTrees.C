@@ -1,102 +1,120 @@
+#ifndef MAKETREES
+#define MAKETREES
+
 //make signal (soft prompt muons - truth matched) and background (soft NP muons) trees
+
+
 #include "TFile.h"
 #include "TBranch.h"
 #include "TTree.h"
 #include "TLeaf.h"
+
+#include "softLepSignal.h"
 #include <iostream>
 
-void makeTrees(){
-	TFile* fDyjets = TFile::Open("OutputFiles/DYJetsToLL2018_NANO.root");
-	TTree* dyjets = (TTree*)fDyjets->Get("Events");
+using namespace std;
 
-	TBranch* mupt = dyjets->GetBranch("Muon_pt");
-	if(dyjets->GetBranch("nMuon") == NULL){
-		cout << "why??" << endl;
-		cout << "null nMuon" << endl;
-		return;
-	}
-	TBranch* nmu = dyjets->GetBranch("nMuon");
+template<class selectortype>
+void makeTrees(selectortype& selector, string ofilename){
+	auto ofile = new TFile(ofilename.c_str(),"RECREATE");
+	auto muonTree = selector.fChain->CloneTree();
+	muonTree->Write();
+	ofile->Write();
+	ofile->Close();
 
-	fDyjets->Close();
+}
 
+int main(int argc, char* argv[]){
+	char inputFileName[400];
+	char outputFileName[400];
+	char selectorClassName[400];
+	char inputListName[400];
 
-	TFile *file = new TFile("TMVA_softLep.root","RECREATE");
-	TTree* sig = new TTree("Events","Events");
-	// TTree* bkg = new TTree("Events","Events");
+	bool doFile = false;
+	bool doList = false;
 
-	// int nEvts = dyjets->GetEntries();
+	//error for not enough arguments
 
-	Int_t nMuons;
-	Float_t pt[6];
-	// Float_t eta;
-	// Float_t sipd3d;
-	// Float_t dxy;
-	// Float_t dz;
-	// Float_t miniIsochg;
-	// Float_t miniIsoall;
-	// Float_t nStations;
-
-	sig->Branch("Muon_pt1",pt);
-
-	// TBranch* b_eta = sig->Branch("Muon_eta",&eta);
-	// TBranch* b_sip3d = sig->Branch("Muon_sip3d",&sipd3d);
-	// TBranch* b_dxy = sig->Branch("Muon_dxy",&dxy);
-	// TBranch* b_dz = sig->Branch("Muon_dz",&dz);
-	// TBranch* b_miniIsochg = sig->Branch("Muon_miniPFRelIso_chg",&miniIsochg);
-	// TBranch* b_miniIsoall = sig->Branch("Muon_miniPFRelIso_all",&miniIsoall);
-	// TBranch* b_nStations = sig->Branch("Muon_nStations",&nStations);
-	if(dyjets == NULL){
-		cout << "null tree" << endl;
-		return;
-	}
-
-	for(int i = 0; i < 10; i++){
-		dyjets->GetEntry(i);
-		if(mupt->GetLeaf("Muon_pt") == NULL){
-			cout << "null muon pt" << endl;
-			return;
+	for(int i = 0; i < argc; i++){
+		if(strncmp(argv[i], "-ifile",6)==0){
+			sscanf(argv[i],"-ifile %s", inputFileName);
+			doFile = true;
 		}
-		else if(dyjets->FindLeaf("nMuon") == NULL){
-			cout << dyjets->GetNbranches() << endl;
-			cout << "null nMuon" << endl;
-			return;
+
+		if(strncmp(argv[i],"-ilist",6)==0){
+			sscanf(argv[i],"-ilist %s",inputListName);
+			doList = true;
 		}
-		cout << "done" << endl;
 
+		if(strncmp(argv[i],"-ofile",6)==0){
+			sscanf(argv[i],"-ofile %s",outputFileName);
+		}
 
-
-
-		// nMuons = dyjets->GetLeaf("nMuon")->GetValue();
-		// cout << "a" << endl;
-		// for(int mu = 0; mu < nMuons; mu++){
-		// 	pt[mu] = dyjets->GetLeaf("Muon_pt")->GetValue(mu);
-		// 	cout << pt[mu] << endl;
-		// }
-		
-		// cout << "b" << endl;
-		// // eta = dyjets->GetBranch("Muon_eta");
-		// // sipd3d = dyjets->GetBranch("Muon_sip3d");
-		// // dxy = dyjets->GetBranch("Muon_dxy");
-		// // dz = dyjets->GetBranch("");
-		// // miniIsochg;
-		// // miniIsoall;
-		// // nStations;
-
-		// //isprompt flag
-		// // if(dyjets->GetLeaf("GenPart_statusFlags")->GetValue() == 0){
-		// sig->Fill();
-		// cout << "c" << endl;
-		// }
-		// dyjets->GetLeaf(""); //0 = isPrompt, 1 = isDecayedLeptonHadron; 2 = isTauDecayProduct
-		// dyjets->GetLeaf("");
-
-		
+		if(strncmp(argv[i],"-selector",9)==0){
+			sscanf(argv[i],"-selector %s",selectorClassName);
+		}
 	}
-	// file->Write();
-	// file->Close();
+
+	gROOT->ProcessLine("#include <vector>");
+
+	vector<string> filenames;
+
+	char buffer[500];
+	char myRootFile[2000];
+
+	if(doList){
+		ifstream *inputFile = new ifstream(inputListName);
+		while( !(inputFile->eof()) ){
+			inputFile->getline(Buffer,500);
+			if(! strstr(Buffer,"#") && !(strspn(Buffer," ") == strlen(Buffer))){
+				sscanf(Buffer,"%s",myRootFile);
+				filenames.push_back(myRootFile);
+			}
+		}
+		inputFile->close();
+		delete inputFile;
+	}
+
+	if(doFile){
+		filenames.push_back(inputFileName);
+	}
+
+	TChain* chain = (TChain*)new TChain("Events"); //name of tree
+
+	int nFile = filenames.size();
+	for(int i = 0; i < nFile; i++){
+		chain->Add(filenames[i].c_str());
+		cout << "Adding file " << filenames[i] << endl;
+	}
+
+	//convert char arrays to strings
+	string _selectorClassName(selectorClassName);
+	string _ofilename(outputFileName);
+
+	if(_selectorClassName.compare("softLepSignal") == 0){
+		cout << "preparing signal tree" << endl;
+		softLepSignal s(chain);
+		makeTrees(s,_ofilename);
+	}
+	else if(_selectorClassName.compare("softLepBackground") == 0){
+		cout << "preparing background tree" << endl;
+		softLepBackground s(chain);
+		makeTrees(s,_ofilename);
+	}
+	else{
+		cout << "Error: invalid selector class specified" << endl;
+	}
+
+	return 0;
 
 }
 
 
 
+	
 
+
+
+
+
+#endif
