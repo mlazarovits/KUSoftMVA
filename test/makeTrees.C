@@ -15,6 +15,7 @@
 #include "TBranch.h"
 #include "TTree.h"
 #include "TLeaf.h"
+#include <TSystem.h>
 
 #include "softLepSignal.h"
 
@@ -84,7 +85,7 @@ int main(int argc, char* argv[]){
 			inputFile->getline(Buffer,500);
 			if(! strstr(Buffer,"#") && !(strspn(Buffer," ") == strlen(Buffer))){
 				sscanf(Buffer,"%s",myRootFile);
-				if(!gSystem->AccessPathName(myRootFile)){
+				if(!(gSystem->AccessPathName(myRootFile))){
 					filenames.push_back(myRootFile);
 				}
 				else if(gSystem->AccessPathName(myRootFile)){
@@ -97,7 +98,7 @@ int main(int argc, char* argv[]){
 	}
 
 	if(doFile){
-		if(!gSystem->AccessPathName(inputFileName)){
+		if(!(gSystem->AccessPathName(inputFileName))){
 			filenames.push_back(inputFileName);
 		}
 		else if(gSystem->AccessPathName(inputFileName)){
