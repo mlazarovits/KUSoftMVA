@@ -1,0 +1,530 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7350) (preloaded format=pdflatex 2020.3.25)  1 APR 2020 20:42
+entering extended mode
+**./softmva.tex
+(softmva.tex
+LaTeX2e <2020-02-02> patch level 5
+L3 programming layer <2020-03-06>
+(/home/justin/.miktex/texmfs/install/tex/latex/base/article.cls
+Document Class: article 2019/12/20 v1.4l Standard LaTeX document class
+(/home/justin/.miktex/texmfs/install/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@section=\count168
+\c@subsection=\count169
+\c@subsubsection=\count170
+\c@paragraph=\count171
+\c@subparagraph=\count172
+\c@figure=\count173
+\c@table=\count174
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/base/inputenc.sty
+Package: inputenc 2018/08/11 v1.3c Input encoding file
+\inpenc@prehook=\toks15
+\inpenc@posthook=\toks16
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(/home/justin/.miktex/texmfs/install/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/home/justin/.miktex/texmfs/install/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen135
+))
+(/home/justin/.miktex/texmfs/install/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen136
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count175
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count176
+\leftroot@=\count177
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count178
+\DOTSCASE@=\count179
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box45
+\strutbox@=\box46
+\big@size=\dimen137
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count180
+\c@MaxMatrixCols=\count181
+\dotsspace@=\muskip16
+\c@parentequation=\count182
+\dspbrk@lvl=\count183
+\tag@help=\toks18
+\row@=\count184
+\column@=\count185
+\maxfields@=\count186
+\andhelp@=\toks19
+\eqnshift@=\dimen138
+\alignsep@=\dimen139
+\tagshift@=\dimen140
+\tagwidth@=\dimen141
+\totwidth@=\dimen142
+\lineht@=\dimen143
+\@envbody=\toks20
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
+
+(/home/justin/.miktex/texmfs/install/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+(/home/justin/.miktex/texmfs/install/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/home/justin/.miktex/texmfs/install/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks22
+)
+(/home/justin/.miktex/texmfs/install/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+(/home/justin/.miktex/texmfs/install/tex/generic/kvdefinekeys/kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (/home/justin/.miktex/texmfs/install/tex/generic/pdfescape/pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/hycolor/hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/letltxmacro/letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/auxhook/auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen144
+\Hy@linkcounter=\count187
+\Hy@pagecounter=\count188
+
+(/home/justin/.miktex/texmfs/install/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2020/01/14 v7.00d Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+(/home/justin/.miktex/texmfs/install/tex/generic/intcalc/intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+(/home/justin/.miktex/texmfs/install/tex/generic/etexcmds/etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count189
+Package hyperref Info: Hyper figures OFF on input line 4547.
+Package hyperref Info: Link nesting OFF on input line 4552.
+Package hyperref Info: Hyper index ON on input line 4555.
+Package hyperref Info: Plain pages OFF on input line 4562.
+Package hyperref Info: Backreferencing OFF on input line 4567.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4800.
+\c@Hy@tempcnt=\count190
+
+(/home/justin/.miktex/texmfs/install/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5159.
+\XeTeXLinkMargin=\dimen145
+
+(/home/justin/.miktex/texmfs/install/tex/generic/bitset/bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+(/home/justin/.miktex/texmfs/install/tex/generic/bigintcalc/bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count191
+\Field@Width=\dimen146
+\Fld@charsize=\dimen147
+Package hyperref Info: Hyper figures OFF on input line 6430.
+Package hyperref Info: Link nesting OFF on input line 6435.
+Package hyperref Info: Hyper index ON on input line 6438.
+Package hyperref Info: backreferencing OFF on input line 6445.
+Package hyperref Info: Link coloring OFF on input line 6450.
+Package hyperref Info: Link coloring with OCG OFF on input line 6455.
+Package hyperref Info: PDF/A mode OFF on input line 6460.
+LaTeX Info: Redefining \ref on input line 6500.
+LaTeX Info: Redefining \pageref on input line 6504.
+
+(/home/justin/.miktex/texmfs/install/tex/generic/atbegshi/atbegshi.sty
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
+)
+\Hy@abspage=\count192
+\c@Item=\count193
+\c@Hfootnote=\count194
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/home/justin/.miktex/texmfs/install/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2020/01/14 v7.00d Hyperref driver for pdfTeX
+
+(/home/justin/.miktex/texmfs/install/tex/latex/atveryend/atveryend.sty
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+)
+\Fld@listcount=\count195
+\c@bookmark@seq@number=\count196
+
+(/home/justin/.miktex/texmfs/install/tex/latex/rerunfilecheck/rerunfilecheck.st
+y
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+(/home/justin/.miktex/texmfs/install/tex/generic/uniquecounter/uniquecounter.st
+y
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip52
+) (/home/justin/.miktex/texmfs/install/tex/latex/changepage/chngpage.sty
+Package: chngpage 2009/10/20 v1.2b change page layout
+\c@cp@cnt=\count197
+\c@cp@tempcnt=\count198
+)
+(/home/justin/.miktex/texmfs/install/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count199
+\l__pdf_internal_box=\box47
+) (softmva.aux)
+\openout1 = `softmva.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+\AtBeginShipoutBox=\box48
+Package hyperref Info: Link coloring OFF on input line 9.
+
+(/home/justin/.miktex/texmfs/install/tex/latex/hyperref/nameref.sty
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+
+(/home/justin/.miktex/texmfs/install/tex/latex/refcount/refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+(/home/justin/.miktex/texmfs/install/tex/generic/gettitlestring/gettitlestring.
+sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count266
+)
+LaTeX Info: Redefining \ref on input line 9.
+LaTeX Info: Redefining \pageref on input line 9.
+LaTeX Info: Redefining \nameref on input line 9.
+ (softmva.out) (softmva.out)
+\@outlinefile=\write3
+\openout3 = `softmva.out'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
+
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 16.
+
+(/home/justin/.miktex/texmfs/install/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 16.
+
+
+(/home/justin/.miktex/texmfs/install/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Overfull \hbox (12.71942pt too wide) in paragraph at lines 15--17
+\OT1/cmr/m/n/10 -- []$\OT1/cmtt/m/n/10 https : / / twiki . cern . ch / twiki / 
+bin / viewauth / CMS / SWGuideMuonIdRun2$[] 
+ []
+
+
+Overfull \hbox (49.4691pt too wide) in paragraph at lines 17--19
+\OT1/cmr/m/n/10 -- []$\OT1/cmtt/m/n/10 https : / / indico . cern . ch / event /
+ 316122 / contributions / 730882 / attachments /
+ []
+
+
+Overfull \hbox (2.21951pt too wide) in paragraph at lines 19--21
+\OT1/cmr/m/n/10 -- []$\OT1/cmtt/m/n/10 http : / / cms . cern . ch / iCMS / jsp 
+/ db _ notes / noteInfo . jsp ? cmsnoteid =
+ []
+
+
+Overfull \hbox (24.21933pt too wide) in paragraph at lines 27--29
+\OT1/cmr/m/n/10 -- []$\OT1/cmtt/m/n/10 http : / / cms . cern . ch / iCMS / anal
+ysisadmin / cadilines ? line = HIG-[]15-[]008 &
+ []
+
+
+Overfull \hbox (2.21951pt too wide) in paragraph at lines 38--40
+\OT1/cmr/m/n/10 -- []$\OT1/cmtt/m/n/10 http : / / cms . cern . ch / iCMS / jsp 
+/ db _ notes / noteInfo . jsp ? cmsnoteid =
+ []
+
+
+Overfull \hbox (38.9692pt too wide) in paragraph at lines 40--42
+\OT1/cmr/m/n/10 -- []$\OT1/cmtt/m/n/10 https : / / twiki . cern . ch / twiki / 
+bin / view / CMSPublic / WorkBookMuonAnalysis$[] 
+ []
+
+[1
+
+{/home/justin/.miktex/texmfs/data/pdftex/config/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 47--52
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--52
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 47--52
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 59--61
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--68
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--78
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 72--78
+
+ []
+
+
+Overfull \hbox (1.72284pt too wide) in paragraph at lines 72--78
+\OT1/cmr/m/n/10 This project has two main tasks, both which involve combing thr
+ough parameters
+ []
+
+[2]
+Overfull \hbox (10.35255pt too wide) in paragraph at lines 85--88
+\OT1/cmr/m/n/10 The goal of this project is to determine signal from background
+. Event information,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+[][]$\OT1/cmtt/m/n/10 /DYJetsToLL _ M-[]50 _ TuneCP5 _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+\OT1/cmtt/m/n/10 13TeV-[]madgraphMLM-[]pythia8 /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 97--97
+\OT1/cmtt/m/n/10 RunIIAutumn18MiniAOD-[]102X _ upgrade2018 _
+ []
+
+
+Underfull \hbox (badness 2080) in paragraph at lines 97--98
+[]\OT1/cmr/m/n/10 Source of prompt muons and non-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+[][]$\OT1/cmtt/m/n/10 /DYJetsToLL _ M-[]50 _ TuneCP5 _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+\OT1/cmtt/m/n/10 13TeV-[]madgraphMLM-[]pythia8 / CMSSW _ 10 _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--99
+\OT1/cmtt/m/n/10 2 _ 9-[]102X _ upgrade2018 _ realistic _ v15 _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+[][]$\OT1/cmtt/m/n/10 /TTJets _ DiLept _ TuneCP5 _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+\OT1/cmtt/m/n/10 13TeV-[]madgraphMLM-[]pythia8 /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 103--103
+\OT1/cmtt/m/n/10 RunIIAutumn18MiniAOD-[]102X _ upgrade2018 _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
+[][]$\OT1/cmtt/m/n/10 /TTJets _ DiLept _ TuneCP5 _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
+\OT1/cmtt/m/n/10 13TeV-[]madgraphMLM-[]pythia8 /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
+\OT1/cmtt/m/n/10 RunIIAutumn18NanoAODv6-[]Nano25Oct2019 _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 105--105
+\OT1/cmtt/m/n/10 102X _ upgrade2018 _ realistic _ v20-[]v1 /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+[][]$\OT1/cmtt/m/n/10 /QCD _ Pt _ 600to800 _ TuneCP5 _ 13TeV _ pythia8 /
+ []
+
+
+Overfull \hbox (19.24593pt too wide) in paragraph at lines 109--109
+\OT1/cmtt/m/n/10 RunIIWinter19PFCalibMiniAOD-[]2018Conditions _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
+\OT1/cmtt/m/n/10 105X _ upgrade2018 _ realistic _ v4-[]v1 /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--111
+[][]$\OT1/cmtt/m/n/10 /QCD _ Pt _ 600to800 _ TuneCP5 _ 13TeV _ pythia8 /
+ []
+
+
+Overfull \hbox (19.24593pt too wide) in paragraph at lines 111--111
+\OT1/cmtt/m/n/10 RunIIWinter19PFCalibNanoAOD-[]2018Conditions _
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--111
+\OT1/cmtt/m/n/10 105X _ upgrade2018 _ realistic _ v4-[]v1 /
+ []
+
+
+Overfull \hbox (3.44704pt too wide) in paragraph at lines 93--114
+ [] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 119.
+[3] [4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 119.
+ (softmva.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 119.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 119.
+Package rerunfilecheck Info: File `softmva.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 119.
+ ) 
+Here is how much of TeX's memory you used:
+ 5568 strings out of 482860
+ 83547 string characters out of 2952943
+ 344753 words of memory out of 3000000
+ 21119 multiletter control sequences out of 15000+200000
+ 534540 words of font info for 34 fonts, out of 3000000 for 9000
+ 0 hyphenation exceptions out of 8191
+ 34i,11n,29p,1024b,512s stack positions out of 5000i,500n,10000p,200000b,50000s
+ </home/justin/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm100
+0.pk></home/justin/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10
+.pfb></home/justin/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi7.
+pfb></home/justin/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.p
+fb></home/justin/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr7.pfb
+></home/justin/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></home/justin/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+</home/justin/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+
+Output written on softmva.pdf (4 pages, 111168 bytes).
+PDF statistics:
+ 99 PDF objects out of 1000 (max. 8388607)
+ 6 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

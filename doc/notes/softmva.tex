@@ -1,0 +1,119 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{chngpage}
+
+\begin{document}
+KU Soft MVA\\
+
+Useful resources:\\
+
+\begin{itemize}
+\item Muon POG RunII ID definitions \\ 
+-- \url{https://twiki.cern.ch/twiki/bin/viewauth/CMS/SWGuideMuonIdRun2}
+\item Slides for cut-based Soft-ID efficiencies \\
+-- \url{https://indico.cern.ch/event/316122/contributions/730882/attachments/607097/835440/muonEfficiencies2012_Jpsi_14April2014.pdf}
+\item AN for muon tagging produced from neutral B-meson\\
+-- \url{http://cms.cern.ch/iCMS/jsp/db_notes/noteInfo.jsp?cmsnoteid=CMS%20AN-2014/065}
+\item Mesurement of $B_s^0 \rightarrow \mu \mu$ \\
+-- \url{https://arxiv.org/abs/1910.12127 }
+\item Twiki for LeptonMVA and lowptMVA \\ 
+-- \url{https://twiki.cern.ch/twiki/bin/viewauth/CMS/LeptonMVA}
+\item Talk (2 sets of slides) detailing LeptonMVA performance\\
+-- \url{https://indico.cern.ch/event/526363/}
+\item CMS CADI (PAS only) for ttH paper that uses LeptonMVA \\
+-- \url{http://cms.cern.ch/iCMS/analysisadmin/cadilines?line=HIG-15-008&tp=an&id=1484&ancode=HIG-15-008}
+\item SUSY groups Lepton SF and WPs \\
+-- \url{https://twiki.cern.ch/twiki/bin/view/CMS/SUSLeptonSF}
+\item ATLAS SoftMuonTagger for identification of b-jets\\
+-- \url{http://cds.cern.ch/record/2054489}
+\item SUS-18-006 di-tau susy search (uses BDT, we did an institutional review)\\
+\url{https://cds.cern.ch/record/2669190?ln=en}
+
+\item SUS-19-002 search for single soft tau in compressed ISR scenario\\
+\url{https://cds.cern.ch/record/2684821/files/SUS-19-002-pas.pdf}
+\item AN describing all types of muons that can be reconstructed (tracker-global-standalone)\\
+-- \url{http://cms.cern.ch/iCMS/jsp/db_notes/noteInfo.jsp?cmsnoteid=CMS%20AN-2008/097}
+\item Twiki briefly describing types of muons reconstructed\\
+-- \url{https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBookMuonAnalysis}
+
+\end{itemize}
+
+\newpage
+
+Project Scope:\\
+\quad \quad \\
+Long term -- Inclusion of electrons\\
+\quad \quad \\
+Short term/ class term(pt. 1 \& 2):\\
+\begin{itemize}
+\item Part I -- Classification of true muon objects versus fake muon objects
+\item Part II -- Classification of muon production modes
+\item Part III -- ID of potential signal muons (TSlepSlep) versus other processes (Wjets) 
+\end{itemize}
+ 
+ 
+\quad \quad \\
+Short summary of each part:\\
+
+\quad \quad \\
+I ---  This sub network should be a basic MLP with softMax last layer that produces output probabilities for true/fake classes. The output classes should be something like $[ \text{prompt}\, \, \mu^\pm, \pi^\pm , e^\pm, \pi\rightarrow \mu, \text{other}]$. The classifier ultimately should use parameters consisting of track/ecal information that is contained in MiniAOD. The perfomance benchmark to beat is the efficiencies and fake rates from the soft cut-based ID with or without looseID.\\
+\quad \quad \\
+II --- This sub network could also be a basic MLP with softMax last layer and 4 output classes $[\text{prompt} \,\, \mu, \text{b-jet}, \tau, \text{other} ]$. The output of network I could be useful input to network II. The performance benchmark here is the LeptonMVA.\\
+\quad \quad \\
+III --- The ultimate goal of this project could be very useful to compressed SUSY search. The output of I and II , as well as process/event information like presence of other muons/types and angluar distributions, are used as input to a third network that determines if observed muons are suitable to classified as signal/background. This network has the potential to have a quasi-agnostic approach, where the output classes considered are only background (this could be the W-jets classifier project)\\
+ 
+ \quad \quad \\
+Note: Each part could be a stand-alone project all sufficient to satisfy scope of a class project. Each part can also independently benefit the compressed SUSY search.
+
+\quad \quad \\
+\quad \quad \\
+Long descriptions/ideas of each subproject:\\
+\quad \quad \\
+I.\\
+This project has two main tasks, both which involve combing through parameters in miniAOD and possibly AOD. The first is verifying/demoting objects labeled as muons. The second would be locating particles (in the PF collection) which are true muons, and promoting them to being labeled as muons. A large appeal of this part of the project would be able to bring the pT threshold lower than the current 3 GeV limit from nanoAOD. A long term draw back is that, with the creation of a new muon collection, new custom nano would eventully need to be created (we can't just work off of current nano because the model features come from mini).  There are also two types of muons that can be addressed, those with at least 1-2 outer track hits (tracker muons) and those without outer track hits ( calo muons). Calo muons are probably more difficult to work with (although there is no existing competitive benchmark?? -- soft cut based ID only addresses tracker muons) and are outside the scope of a class project. 
+
+
+\quad \quad \\
+II.\\
+The main goal of this part of the project is to determine the origin of a low pt muon. The idea is to be able to distinguish 3 main modes of production 1. $t\bar{t} \rightarrow bW\,, bW \, \, \, \, W\rightarrow qq, l\nu$ identify low pt muons that originate from b-jets, this could potentially be used to enforce b-tagging. 2. $Z\rightarrow \tau\tau, \,\,\, \, \tau\rightarrow\mu\nu_\mu\nu_\tau$ identify muonic taus, this could serve potentially serve as a method to reject taus in the compressed SUSY search. 3. $Z\rightarrow \mu\mu$ this is the prompt category and most important for compressed SUSY signal. This part of the project could easily be the standalone class project. It could also be done directly from nano, which is low hanging fruit in terms of SUSY search benefits. Also, the current MC dataset (DYJetsToLL M-50) may not go offshell enough to produce the desired pT ranges.
+
+
+\quad \quad \\
+III.  \\
+The goal of this project is to determine signal from background. Event information, including potential features from I and II, are loaded into a classifier which outputs the probability that an event belongs to a certain process. An MLP Softmax approach could be used here again. An example of the output classes could be $[Wjets, DY, WW, WZ, ZZ, ...]$ then a simple cut could be placed on each class probability e.g. $P_i < 0.3$ in order for an event to enter the signal region. The benefit of this approach is that it is independent of signal models, if it works, and would boost the signal region.
+
+\begin{table}[h!]
+\begin{adjustwidth}{-1.3in}{-1.3in}
+\begin{center}
+\caption{Description of current dataset samples:}
+\begin{tabular}{|c|c|p{0.6\textwidth}|p{0.5\textwidth}|}
+\hline 
+• & Process & Dataset & Description \\ 
+\hline 
+MiniAODSIM & $Z\rightarrow \ell^+ \ell^-$ & \url{/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM} & Source of prompt muons and non-prompt muons via tau decay \\ 
+
+NanoAODSIM &  & \url{/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/CMSSW_10_2_9-102X_upgrade2018_realistic_v15_RelVal_nanoaod102X2018-v1/NANOAODSIM} &    \\ 
+\hline 
+ &  &  &  \\ 
+\hline 
+MiniAODSIM & $t\bar{t}$ & \url{/TTJets_DiLept_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18MiniAOD-102X_upgrade2018_realistic_v15-v1/MINIAODSIM}  & Source prompt muons and muons via b decays \\ 
+
+NanoAODSIM &  & \url{/TTJets_DiLept_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIAutumn18NanoAODv6-Nano25Oct2019_102X_upgrade2018_realistic_v20-v1/NANOAODSIM} &  \\ 
+\hline 
+ &  &  &  \\ 
+\hline 
+MiniAODSIM & QCD & \url{/QCD_Pt_600to800_TuneCP5_13TeV_pythia8/RunIIWinter19PFCalibMiniAOD-2018Conditions_105X_upgrade2018_realistic_v4-v1/MINIAODSIM} & Source of fakes from pions, pion decay, or other jet objects  \\ 
+
+NanoAODSIM &  & \url{/QCD_Pt_600to800_TuneCP5_13TeV_pythia8/RunIIWinter19PFCalibNanoAOD-2018Conditions_105X_upgrade2018_realistic_v4-v1/NANOAODSIM} &  \\ 
+\hline 
+\end{tabular} 
+\end{center}
+\end{adjustwidth}
+\end{table}
+
+
+\end{document}
