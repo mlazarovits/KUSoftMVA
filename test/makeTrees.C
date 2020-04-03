@@ -89,10 +89,10 @@ void makeTrees(selectortype& selector, string ofilename){
 
 			}
 		}
-		if(nPmus > 1){
+		// if(nPmus > 1){
 			cout << "muontree filled" << endl;
 			muonTree->Fill();
-		}
+		// }
 		// else if(npis > 1) pionTree->Fill();
 	}
 	muonTree->Write();
