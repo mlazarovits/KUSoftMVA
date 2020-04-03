@@ -33,7 +33,7 @@ void makeTrees(selectortype& selector, string ofilename){
 		selector.fChain->GetEntry(i);
 
 		int nGenPart = selector.nGenPart;
-		int nMu = *selector.nMuon;
+		int nMu = selector.nMuon;
 
 		
 
@@ -54,21 +54,21 @@ void makeTrees(selectortype& selector, string ofilename){
 			int nothers = 0;
 
 			for(int gp = 0; gp < nGenPart; gp++){
-				float mu_eta = *selector.Muon_eta[mu];
-				float gp_eta = *selector.GenPart_eta[gp];
-				float mu_phi = *selector.Muon_phi[mu];
-				float gp_phi = *selector.GenPart_phi[gp];
+				float mu_eta = selector.Muon_eta[mu];
+				float gp_eta = selector.GenPart_eta[gp];
+				float mu_phi = selector.Muon_phi[mu];
+				float gp_phi = selector.GenPart_phi[gp];
 
 				if(deltaR(mu_eta,gp_eta,mu_phi,gp_eta) <= deltaR_muGenPart){
-					int pdgId = abs(*selector.GenPart_pdgId[gp]);
-					int motherIdx = abs(*selector.GenPart_genPartIdxMother[gp]);
+					int pdgId = abs(selector.GenPart_pdgId[gp]);
+					int motherIdx = abs(selector.GenPart_genPartIdxMother[gp]);
 
 					isMu = pdgId == 13;
 					isPion = pdgId == 211;
 					ise = pdgId == 11;
 
-					isPrompt = *selector.GenPart_pdgId[motherIdx] == 23 || *selector.GenPart_pdgId[motherIdx] == 24; //coming from Z or W
-					isNotPrompt = *selector.GenPart_pdgId[motherIdx] == 211; //coming from pions
+					isPrompt = selector.GenPart_pdgId[motherIdx] == 23 || *selector.GenPart_pdgId[motherIdx] == 24; //coming from Z or W
+					isNotPrompt = selector.GenPart_pdgId[motherIdx] == 211; //coming from pions
 
 					if(isMu && isPrompt) nPmus++;
 					if(isMu && isNotPrompt) nNPmus++;
