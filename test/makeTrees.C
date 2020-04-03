@@ -59,7 +59,11 @@ void makeTrees(selectortype& selector, string ofilename){
 				float mu_phi = selector.Muon_phi[mu];
 				float gp_phi = selector.GenPart_phi[gp];
 
-				if(deltaR(mu_eta,gp_eta,mu_phi,gp_eta) <= deltaR_muGenPart){
+
+				float dp = std::abs(mu_phi - gp_phi);
+				deltaR  = std::sqrt((mu_eta - gp_eta)*(mu_eta - gp_eta) + dp*dp);
+
+				if(deltaR <= deltaR_muGenPart){
 					int pdgId = abs(selector.GenPart_pdgId[gp]);
 					int motherIdx = abs(selector.GenPart_genPartIdxMother[gp]);
 
@@ -67,7 +71,7 @@ void makeTrees(selectortype& selector, string ofilename){
 					isPion = pdgId == 211;
 					ise = pdgId == 11;
 
-					isPrompt = selector.GenPart_pdgId[motherIdx] == 23 || *selector.GenPart_pdgId[motherIdx] == 24; //coming from Z or W
+					isPrompt = selector.GenPart_pdgId[motherIdx] == 23 || selector.GenPart_pdgId[motherIdx] == 24; //coming from Z or W
 					isNotPrompt = selector.GenPart_pdgId[motherIdx] == 211; //coming from pions
 
 					if(isMu && isPrompt) nPmus++;
@@ -90,10 +94,6 @@ void makeTrees(selectortype& selector, string ofilename){
 
 }
 
-float deltaR(float t1_eta,float t2_eta,float t1_phi,float t2_phi){
-	float dp = std::abs(t1_phi - t2_phi);
-	return (t1_eta - t2_eta)*(t1_eta - t2_eta) + dp*dp;
-}
 
 int main(int argc, char* argv[]){
 	char inputFileName[400];
