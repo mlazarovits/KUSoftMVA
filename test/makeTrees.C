@@ -38,6 +38,11 @@ void makeTrees(selectortype& selector, string ofilename){
 		
 
 		if(nMu < 1) continue; //need at least 1 reco mu
+		int nPmus;
+		int nNPmus;
+		int npis;
+		int nes;
+		int nothers;
 
 
 		for(int mu = 0; mu < nMu; mu++){
@@ -47,11 +52,11 @@ void makeTrees(selectortype& selector, string ofilename){
 			bool isPrompt = false;
 			bool isNotPrompt = false;
 
-			static int nPmus = 0;
-			int nNPmus = 0;
-			int npis = 0;
-			int nes = 0;
-			int nothers = 0;
+			nPmus = 0;
+			nNPmus = 0;
+			npis = 0;
+			nes = 0;
+			nothers = 0;
 
 			for(int gp = 0; gp < nGenPart; gp++){
 				float mu_eta = selector.Muon_eta[mu];
