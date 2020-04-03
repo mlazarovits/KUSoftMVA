@@ -28,7 +28,7 @@ void makeTrees(selectortype& selector, string ofilename){
 	auto muonTree = selector.fChain->CloneTree(0);
 	auto pionTree = selector.fChain->CloneTree(0);
 
-	float deltaR_muGenPart = 0.05
+	float deltaR_muGenPart = 0.05;
 	for(int i = 0;i<selector.fChain->GetEntries();i++){
 		selector.fChain->GetEntry(i);
 
@@ -89,7 +89,7 @@ void makeTrees(selectortype& selector, string ofilename){
 
 }
 
-float deltaR(t1_eta,t2_eta,t1_phi,t2_phi){
+float deltaR(float t1_eta,float t2_eta,float t1_phi,float t2_phi){
 	dp = std::abs(t1_phi - t2_phi);
 	return (t1_eta - t2_eta)**2 + dp**2;
 }
