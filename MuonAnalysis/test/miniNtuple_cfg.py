@@ -29,7 +29,8 @@ process.source.fileNames = [
 ]
 
 #process.load("PhysicsTools.NanoAOD.nano_cff")
-proccess.load("KUSoftMVA.muons_cff")
+from KUSoftMVA.MuonAnalysis.muons_cff import *
+process.load("KUSoftMVA.MuonAnalysis.muons_cff")
 process.load(process.muonSequence)
 
 #process.Path = cms.Path(process.nanoSequenceMC)
