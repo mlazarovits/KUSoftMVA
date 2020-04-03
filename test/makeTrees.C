@@ -26,7 +26,7 @@ template<class selectortype>
 void makeTrees(selectortype& selector, string ofilename){
 	auto ofile = new TFile(ofilename.c_str(),"RECREATE");
 	auto muonTree = selector.fChain->CloneTree(0);
-	auto pionTree = selector.fChain->CloneTree(0);
+	// auto pionTree = selector.fChain->CloneTree(0);
 
 	float deltaR_muGenPart = 0.05;
 	for(int i = 0;i<selector.fChain->GetEntries();i++){
@@ -89,8 +89,11 @@ void makeTrees(selectortype& selector, string ofilename){
 
 			}
 		}
-		if(nPmus > 1) muonTree->Fill();
-		else if(npis > 1) pionTree->Fill();
+		if(nPmus > 1){
+			cout << "muontree filled" << endl;
+			muonTree->Fill();
+		}
+		// else if(npis > 1) pionTree->Fill();
 	}
 	muonTree->Write();
 	// pionTree->Write();
