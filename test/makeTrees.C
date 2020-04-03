@@ -26,15 +26,72 @@ template<class selectortype>
 void makeTrees(selectortype& selector, string ofilename){
 	auto ofile = new TFile(ofilename.c_str(),"RECREATE");
 	auto muonTree = selector.fChain->CloneTree(0);
+	auto pionTree = selector.fChain->CloneTree(0);
+
+	float deltaR_muGenPart = 0.05
 	for(int i = 0;i<selector.fChain->GetEntries();i++){
 		selector.fChain->GetEntry(i);
-		if(i < 10) cout << *selector.nMuon << endl;
-		muonTree->Fill();
+
+		int nGenPart = *selector.nGenPart;
+		int nMu = *selector.nMuon;
+
+		
+
+		if(nMu < 1) continue; //need at least 1 reco mu
+
+
+		for(int mu = 0; mu < nMu; mu++){
+			bool isMu = false;
+			bool isPion = false;
+			bool ise = false;
+			bool isPrompt = false;
+			bool isNotPrompt = false;
+
+			int nPmus = 0;
+			int nNPmus = 0;
+			int npis = 0;
+			int nes = 0;
+			int nothers = 0;
+			for(int gp = 0; gp < nGenPart; gp++){
+				float mu_eta = *selector.Muon_eta[mu];
+				float gp_eta = *selector.GenPart_eta[gp];
+				float mu_phi = *selector.Muon_phi[mu];
+				float gp_phi = *selector.GenPart_phi[gp];
+
+				if(deltaR(mu_eta,gp_eta,mu_phi,gp_eta) <= deltaR_muGenPart){
+					int pdgId = abs(*selector.GenPart_pdgId[gp]);
+					int motherIdx = abs(*selector.Genpart_genPartIdxMother[gp]);
+
+					isMu = pdgId == 13;
+					isPion = pdgId == 211;
+					ise = pdgId == 11;
+
+					isPrompt = *selector.GenPart_pdgId[motherIdx] == 23 || *selector.GenPart_pdgId[motherIdx] == 24; //coming from Z or W
+					isNotPrompt = *selector.GenPart_pdgId[motherIdx] == 211; //coming from pions
+
+					if(isMu && isPrompt) nPmus++;
+					if(isMu && isNotPrompt) nNPmus++;
+					if(ise) nes++;
+					if(isPion) npis++; 
+					else nothers++;
+
+				}
+
+			}
+		}
+		if(nPmus > 1) muonTree->Fill();
+		else if(npies > 1) pionTree->Fill();
 	}
 	muonTree->Write();
+	pionTree->Write();
 	ofile->Write();
 	ofile->Close();
 
+}
+
+float deltaR(t1_eta,t2_eta,t1_phi,t2_phi){
+	dp = std::abs(t1_phi - t2_phi);
+	return (t1_eta - t2_eta)**2 + dp**2;
 }
 
 int main(int argc, char* argv[]){
