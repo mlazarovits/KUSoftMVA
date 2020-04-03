@@ -32,7 +32,7 @@ void makeTrees(selectortype& selector, string ofilename){
 	for(int i = 0;i<selector.fChain->GetEntries();i++){
 		selector.fChain->GetEntry(i);
 
-		int nGenPart = *selector.nGenPart;
+		int nGenPart = selector.nGenPart;
 		int nMu = *selector.nMuon;
 
 		
