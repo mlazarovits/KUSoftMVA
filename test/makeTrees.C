@@ -52,6 +52,7 @@ void makeTrees(selectortype& selector, string ofilename){
 			int npis = 0;
 			int nes = 0;
 			int nothers = 0;
+
 			for(int gp = 0; gp < nGenPart; gp++){
 				float mu_eta = *selector.Muon_eta[mu];
 				float gp_eta = *selector.GenPart_eta[gp];
@@ -60,7 +61,7 @@ void makeTrees(selectortype& selector, string ofilename){
 
 				if(deltaR(mu_eta,gp_eta,mu_phi,gp_eta) <= deltaR_muGenPart){
 					int pdgId = abs(*selector.GenPart_pdgId[gp]);
-					int motherIdx = abs(*selector.Genpart_genPartIdxMother[gp]);
+					int motherIdx = abs(*selector.GenPart_genPartIdxMother[gp]);
 
 					isMu = pdgId == 13;
 					isPion = pdgId == 211;
@@ -80,7 +81,7 @@ void makeTrees(selectortype& selector, string ofilename){
 			}
 		}
 		if(nPmus > 1) muonTree->Fill();
-		else if(npies > 1) pionTree->Fill();
+		else if(npis > 1) pionTree->Fill();
 	}
 	muonTree->Write();
 	pionTree->Write();
@@ -90,8 +91,8 @@ void makeTrees(selectortype& selector, string ofilename){
 }
 
 float deltaR(float t1_eta,float t2_eta,float t1_phi,float t2_phi){
-	dp = std::abs(t1_phi - t2_phi);
-	return (t1_eta - t2_eta)**2 + dp**2;
+	float dp = std::abs(t1_phi - t2_phi);
+	return (t1_eta - t2_eta)*(t1_eta - t2_eta) + dp*dp;
 }
 
 int main(int argc, char* argv[]){
