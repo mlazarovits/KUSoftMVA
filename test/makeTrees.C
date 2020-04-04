@@ -90,9 +90,9 @@ void makeTrees(selectortype& selector, string ofilename){
 					isPrompt = selector.GenPart_pdgId[motherIdx] == 23 || selector.GenPart_pdgId[motherIdx] == 24; //coming from Z or W
 					isNotPrompt = selector.GenPart_pdgId[motherIdx] == 211; //coming from pions
 
-					if(isMu) cout << "isMu" << endl;
-					if(isPrompt) cout << "isPrompt" << endl;
-					// if(isMu && isPrompt) nPmus++;
+					// if(isMu) cout << "isMu" << endl;
+					// if(isPrompt) cout << "isPrompt" << endl;
+					if(isMu && isPrompt) cout << "isMu && isPrompt" << endl;//nPmus++;
 					// if(isMu && isNotPrompt) nNPmus++;
 					// if(ise) nes++;
 					// if(isPion) npis++; 
