@@ -431,7 +431,7 @@ void softLepSignal::Init(TTree *tree)
    fChain->SetBranchAddress("GenPart_mass", GenPart_mass, &b_GenPart_mass);
    fChain->SetBranchAddress("GenPart_phi", GenPart_phi, &b_GenPart_phi);
    fChain->SetBranchAddress("GenPart_pt", GenPart_pt, &b_GenPart_pt);
-   // fChain->SetBranchAddress("GenPart_genPartIdxMother", GenPart_genPartIdxMother, &b_GenPart_genPartIdxMother);
+   fChain->SetBranchAddress("GenPart_genPartIdxMother", GenPart_genPartIdxMother, &b_GenPart_genPartIdxMother);
    fChain->SetBranchAddress("GenPart_pdgId", GenPart_pdgId, &b_GenPart_pdgId);
    // fChain->SetBranchAddress("GenPart_status", GenPart_status, &b_GenPart_status);
    fChain->SetBranchAddress("GenPart_statusFlags", GenPart_statusFlags, &b_GenPart_statusFlags);
