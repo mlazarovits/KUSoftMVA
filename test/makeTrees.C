@@ -35,7 +35,7 @@ void makeTrees(selectortype& selector, string ofilename){
 		int nGenPart = selector.nGenPart;
 		int nMu = selector.nMuon;
 
-		
+		if(i < 10) cout << "nGenPart " << nGenPart << endl;
 
 		// if(nMu < 1) continue; //need at least 1 reco mu
 		int nPmus;
@@ -103,10 +103,10 @@ void makeTrees(selectortype& selector, string ofilename){
 
 			}
 		}
-		if(i < 10){
-			cout << i << endl;
-			cout << nPmus << endl;
-		}
+		// if(i < 10){
+		// 	cout << i << endl;
+		// 	cout << nPmus << endl;
+		// }
 		if(nPmus > 1){
 
 			cout << "muontree filled w/ prompt mu" << endl;
