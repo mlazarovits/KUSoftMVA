@@ -103,9 +103,10 @@ void makeTrees(selectortype& selector, string ofilename){
 			}
 		}
 		//FIGURE OUT WHY THE TREES ARENT FILLING????
+		cout << "nPmus " << nPmus << endl;
 
 
-		if(nPmus > 1) cout << "nPmus " << nPmus << endl;//PmuonTree->Fill();
+		// if(nPmus > 1) cout << "nPmus " << nPmus << endl;//PmuonTree->Fill();
 		else if(nNPmus > 1) NPmuonTree->Fill();
 		else if(nes > 1) eTree->Fill();
 		else if(npis > 1) pionTree->Fill();
