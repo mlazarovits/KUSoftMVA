@@ -46,6 +46,7 @@ void makeTrees(selectortype& selector, string ofilename){
 
 
 		for(int mu = 0; mu < nMu; mu++){
+			cout << "mu idx " << endl; 
 			bool isMu = false;
 			bool isPion = false;
 			bool ise = false;
@@ -71,6 +72,9 @@ void makeTrees(selectortype& selector, string ofilename){
 				if(deltaR <= deltaR_muGenPart){
 					int pdgId = abs(selector.GenPart_pdgId[gp]);
 					int motherIdx = abs(selector.GenPart_genPartIdxMother[gp]);
+
+					cout << "genPart idx " << gp << endl;
+					cout << "pdgId " << pdgId << endl;
 
 					isMu = pdgId == 13;
 					isPion = pdgId == 211;
