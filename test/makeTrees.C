@@ -25,8 +25,11 @@ using namespace std;
 template<class selectortype>
 void makeTrees(selectortype& selector, string ofilename){
 	auto ofile = new TFile(ofilename.c_str(),"RECREATE");
-	auto muonTree = selector.fChain->CloneTree(0);
-	// auto pionTree = selector.fChain->CloneTree(0);
+	auto PmuonTree = selector.fChain->CloneTree(0);
+	auto NPmuonTree = selector.fChain->CloneTree(0);
+	auto pionTree = selector.fChain->CloneTree(0);
+	auto eTree = selector.fChain->CloneTree(0);
+	auto othersTree = selector.fChain->CloneTree(0);
 
 	float deltaR_muGenPart = 0.05;
 
@@ -87,9 +90,7 @@ void makeTrees(selectortype& selector, string ofilename){
 					isPrompt = selector.GenPart_pdgId[motherIdx] == 23 || selector.GenPart_pdgId[motherIdx] == 24; //coming from Z or W
 					isNotPrompt = selector.GenPart_pdgId[motherIdx] == 211; //coming from pions
 
-					if(isMu) nPmus++;
-					
-					if(isPrompt) nPmus++;
+					if(isMu && isPrompt) nPmus++;
 					//TEST WHICH PART OF NPMUS IS NOT GETTING TREE FILLED - ISMU OR ISPROMPT
 					if(isMu && isNotPrompt) nNPmus++;
 					if(ise) nes++;
@@ -100,19 +101,27 @@ void makeTrees(selectortype& selector, string ofilename){
 
 			}
 		}
-		// if(i < 10){
-		// 	cout << i << endl;
-		// 	cout << nPmus << endl;
-		// }
-		if(nPmus > 1){
-
-			cout << "muontree filled w/ prompt mu" << endl;
-		}
-		muonTree->Fill();
-		// else if(npis > 1) pionTree->Fill();
+		
+		if(nPmus > 1) PmuonTree->Fill();
+		else if(nNPmus > 1) NPmuonTree->Fill();
+		else if(nes > 1) eTree->Fill();
+		else if(npis > 1) pionTree->Fill();
+		else if (nothers++) othersTree->Fill();
 	}
-	muonTree->Write();
-	// pionTree->Write();
+
+	PmuonTree->SetName("PromptMuons");
+	NPmuonTree->SetName("NonPromptMuons");
+	eTree->SetName("Electrons");
+	pionTree->SetName("Pions");
+	othersTree->SetName("Others");
+
+	PmuonTree->Write();
+	NPmuonTree->Write();
+	eTree->Write();
+	pionTree->Write();
+	othersTree->Write();
+
+
 	ofile->Write();
 	ofile->Close();
 
