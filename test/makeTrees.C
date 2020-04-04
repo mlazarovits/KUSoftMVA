@@ -59,6 +59,7 @@ void makeTrees(selectortype& selector, string ofilename){
 			nothers = 0;
 
 			for(int gp = 0; gp < nGenPart; gp++){
+				cout << "genPart idx " << gp << endl;
 				float mu_eta = selector.Muon_eta[mu];
 				float gp_eta = selector.GenPart_eta[gp];
 				float mu_phi = selector.Muon_phi[mu];
@@ -67,12 +68,14 @@ void makeTrees(selectortype& selector, string ofilename){
 
 				float dp = std::abs(mu_phi - gp_phi);
 				float deltaR  = std::sqrt((mu_eta - gp_eta)*(mu_eta - gp_eta) + dp*dp);
+				
 				cout << "deltaR " << deltaR << endl;
+				
 				if(deltaR <= deltaR_muGenPart){
 					int pdgId = abs(selector.GenPart_pdgId[gp]);
 					int motherIdx = abs(selector.GenPart_genPartIdxMother[gp]);
 
-					cout << "genPart idx " << gp << endl;
+					
 					cout << "pdgId " << pdgId << endl;
 
 					isMu = pdgId == 13;
