@@ -36,8 +36,6 @@ void makeTrees(selectortype& selector, string ofilename){
 		int nGenPart = selector.nGenPart;
 		int nMu = selector.nMuon;
 
-		if(i < 10) cout << "nGenPart " << selector.nGenPart << endl;
-		if(i < 10) cout << "nMu " << nMu << endl;
 
 		// if(nMu < 1) continue; //need at least 1 reco mu
 		int nPmus;
@@ -63,7 +61,7 @@ void makeTrees(selectortype& selector, string ofilename){
 			
 
 			for(int gp = 0; gp < nGenPart; gp++){
-				cout << "genPart idx " << gp << endl;
+				// cout << "genPart idx " << gp << endl;
 				float mu_eta = selector.Muon_eta[mu];
 				float gp_eta = selector.GenPart_eta[gp];
 				float mu_phi = selector.Muon_phi[mu];
@@ -73,14 +71,14 @@ void makeTrees(selectortype& selector, string ofilename){
 				float dp = std::abs(mu_phi - gp_phi);
 				float deltaR  = std::sqrt((mu_eta - gp_eta)*(mu_eta - gp_eta) + dp*dp);
 				
-				cout << "deltaR " << deltaR << endl;
+				// cout << "deltaR " << deltaR << endl;
 				
 				if(deltaR <= deltaR_muGenPart){
 					int pdgId = abs(selector.GenPart_pdgId[gp]);
 					int motherIdx = abs(selector.GenPart_genPartIdxMother[gp]);
 
 					
-					cout << "pdgId " << pdgId << endl;
+					// cout << "pdgId " << pdgId << endl;
 
 					isMu = pdgId == 13;
 					isPion = pdgId == 211;
@@ -89,15 +87,13 @@ void makeTrees(selectortype& selector, string ofilename){
 					isPrompt = selector.GenPart_pdgId[motherIdx] == 23 || selector.GenPart_pdgId[motherIdx] == 24; //coming from Z or W
 					isNotPrompt = selector.GenPart_pdgId[motherIdx] == 211; //coming from pions
 
-					if(isMu){
-						cout << "isMu" << endl;
-						nPmus++;
-					}
-					if(isPrompt) cout << "isPrompt" << endl; //nPmus++;
+					if(isMu) nPmus++;
+					
+					if(isPrompt) nPmus++;
 					//TEST WHICH PART OF NPMUS IS NOT GETTING TREE FILLED - ISMU OR ISPROMPT
-					if(isMu && isNotPrompt) cout << "isMu && isNotPropmt" << endl;//nNPmus++;
-					if(ise) cout << "isE" << endl;//nes++;
-					if(isPion) cout << "isPion" << endl;//npis++; 
+					if(isMu && isNotPrompt) nNPmus++;
+					if(ise) nes++;
+					if(isPion) npis++; 
 					else nothers++;
 
 				}
