@@ -107,10 +107,10 @@ void makeTrees(selectortype& selector, string ofilename){
 
 
 		// if(nPmus > 1) cout << "nPmus " << nPmus << endl;//PmuonTree->Fill();
-		else if(nNPmus > 1) NPmuonTree->Fill();
-		else if(nes > 1) eTree->Fill();
-		else if(npis > 1) pionTree->Fill();
-		else if (nothers++) othersTree->Fill();
+		// else if(nNPmus > 1) NPmuonTree->Fill();
+		// else if(nes > 1) eTree->Fill();
+		// else if(npis > 1) pionTree->Fill();
+		// else if (nothers++) othersTree->Fill();
 	}
 
 	PmuonTree->SetName("PromptMuons");
