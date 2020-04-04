@@ -29,6 +29,7 @@ void makeTrees(selectortype& selector, string ofilename){
 	// auto pionTree = selector.fChain->CloneTree(0);
 
 	float deltaR_muGenPart = 0.05;
+
 	for(int i = 0;i<selector.fChain->GetEntries();i++){
 		selector.fChain->GetEntry(i);
 
@@ -36,6 +37,7 @@ void makeTrees(selectortype& selector, string ofilename){
 		int nMu = selector.nMuon;
 
 		if(i < 10) cout << "nGenPart " << selector.nGenPart << endl;
+		if(i < 10) cout << "nMu " << nMu << endl;
 
 		// if(nMu < 1) continue; //need at least 1 reco mu
 		int nPmus;
