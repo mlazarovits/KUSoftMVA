@@ -79,11 +79,15 @@ void makeTrees(selectortype& selector, string ofilename){
 					isPrompt = selector.GenPart_pdgId[motherIdx] == 23 || selector.GenPart_pdgId[motherIdx] == 24; //coming from Z or W
 					isNotPrompt = selector.GenPart_pdgId[motherIdx] == 211; //coming from pions
 
-					if(isMu) nPmus+=1;
+					if(isMu){
+						cout << "isMu" << endl;
+						nPmus++;
+					}
+					if(isPrompt) cout << "isPrompt" << endl;
 					//TEST WHICH PART OF NPMUS IS NOT GETTING TREE FILLED - ISMU OR ISPROMPT
-					if(isMu && isNotPrompt) nNPmus++;
-					if(ise) nes++;
-					if(isPion) npis++; 
+					if(isMu && isNotPrompt) cout << "isMu && isNotPropmt" << endl;//nNPmus++;
+					if(ise) cout << "isE" << endl;//nes++;
+					if(isPion) cout << "isPion" << endl;//npis++; 
 					else nothers++;
 
 				}
