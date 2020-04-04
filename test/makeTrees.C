@@ -91,7 +91,6 @@ void makeTrees(selectortype& selector, string ofilename){
 					isNotPrompt = selector.GenPart_pdgId[motherIdx] == 211; //coming from pions
 
 					if(isMu && isPrompt) nPmus++;
-					//TEST WHICH PART OF NPMUS IS NOT GETTING TREE FILLED - ISMU OR ISPROMPT
 					if(isMu && isNotPrompt) nNPmus++;
 					if(ise) nes++;
 					if(isPion) npis++; 
@@ -101,8 +100,10 @@ void makeTrees(selectortype& selector, string ofilename){
 
 			}
 		}
-		
-		if(nPmus > 1) PmuonTree->Fill();
+		//FIGURE OUT WHY THE TREES ARENT FILLING????
+
+
+		if(nPmus > 1) cout << "nPmus " << nPmus << endl;//PmuonTree->Fill();
 		else if(nNPmus > 1) NPmuonTree->Fill();
 		else if(nes > 1) eTree->Fill();
 		else if(npis > 1) pionTree->Fill();
