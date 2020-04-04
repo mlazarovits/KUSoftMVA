@@ -37,7 +37,7 @@ void makeTrees(selectortype& selector, string ofilename){
 
 		
 
-		if(nMu < 1) continue; //need at least 1 reco mu
+		// if(nMu < 1) continue; //need at least 1 reco mu
 		int nPmus;
 		int nNPmus;
 		int npis;
@@ -92,7 +92,7 @@ void makeTrees(selectortype& selector, string ofilename){
 						cout << "isMu" << endl;
 						nPmus++;
 					}
-					if(isPrompt) cout << "isPrompt" << endl;
+					if(isPrompt) cout << "isPrompt" << endl; //nPmus++;
 					//TEST WHICH PART OF NPMUS IS NOT GETTING TREE FILLED - ISMU OR ISPROMPT
 					if(isMu && isNotPrompt) cout << "isMu && isNotPropmt" << endl;//nNPmus++;
 					if(ise) cout << "isE" << endl;//nes++;
