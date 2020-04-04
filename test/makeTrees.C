@@ -35,7 +35,7 @@ void makeTrees(selectortype& selector, string ofilename){
 		int nGenPart = selector.nGenPart;
 		int nMu = selector.nMuon;
 
-		if(i < 10) cout << "nGenPart " << nGenPart << endl;
+		if(i < 10) cout << "nGenPart " << selector.nGenPart << endl;
 
 		// if(nMu < 1) continue; //need at least 1 reco mu
 		int nPmus;
@@ -57,9 +57,8 @@ void makeTrees(selectortype& selector, string ofilename){
 			npis = 0;
 			nes = 0;
 			nothers = 0;
-			if(i < 10){
-				cout << "mu idx " << mu << endl;
-			}
+			// if(i < 10) cout << "mu idx " << mu << endl;
+			
 
 			for(int gp = 0; gp < nGenPart; gp++){
 				cout << "genPart idx " << gp << endl;
