@@ -57,6 +57,9 @@ void makeTrees(selectortype& selector, string ofilename){
 			npis = 0;
 			nes = 0;
 			nothers = 0;
+			if(i < 10){
+				cout << "mu idx " << mu << endl;
+			}
 
 			for(int gp = 0; gp < nGenPart; gp++){
 				cout << "genPart idx " << gp << endl;
@@ -100,7 +103,10 @@ void makeTrees(selectortype& selector, string ofilename){
 
 			}
 		}
-		if(i < 10) cout << nPmus << endl;
+		if(i < 10){
+			cout << i << endl;
+			cout << nPmus << endl;
+		}
 		if(nPmus > 1){
 
 			cout << "muontree filled w/ prompt mu" << endl;
