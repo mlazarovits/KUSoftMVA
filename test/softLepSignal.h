@@ -426,12 +426,12 @@ void softLepSignal::Init(TTree *tree)
    // fChain->SetBranchAddress("Electron_mvaFall17V2noIso_WP90", Electron_mvaFall17V2noIso_WP90, &b_Electron_mvaFall17V2noIso_WP90);
    // fChain->SetBranchAddress("Electron_mvaFall17V2noIso_WPL", Electron_mvaFall17V2noIso_WPL, &b_Electron_mvaFall17V2noIso_WPL);
    // fChain->SetBranchAddress("Flag_ecalBadCalibFilterV2", &Flag_ecalBadCalibFilterV2, &b_Flag_ecalBadCalibFilterV2);
-   // fChain->SetBranchAddress("nGenPart", &nGenPart, &b_nGenPart);
+   fChain->SetBranchAddress("nGenPart", &nGenPart, &b_nGenPart);
    fChain->SetBranchAddress("GenPart_eta", GenPart_eta, &b_GenPart_eta);
    fChain->SetBranchAddress("GenPart_mass", GenPart_mass, &b_GenPart_mass);
    fChain->SetBranchAddress("GenPart_phi", GenPart_phi, &b_GenPart_phi);
    fChain->SetBranchAddress("GenPart_pt", GenPart_pt, &b_GenPart_pt);
-   fChain->SetBranchAddress("GenPart_genPartIdxMother", GenPart_genPartIdxMother, &b_GenPart_genPartIdxMother);
+   // fChain->SetBranchAddress("GenPart_genPartIdxMother", GenPart_genPartIdxMother, &b_GenPart_genPartIdxMother);
    fChain->SetBranchAddress("GenPart_pdgId", GenPart_pdgId, &b_GenPart_pdgId);
    // fChain->SetBranchAddress("GenPart_status", GenPart_status, &b_GenPart_status);
    fChain->SetBranchAddress("GenPart_statusFlags", GenPart_statusFlags, &b_GenPart_statusFlags);
