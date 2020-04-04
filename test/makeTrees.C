@@ -92,7 +92,7 @@ void makeTrees(selectortype& selector, string ofilename){
 
 					// if(isMu) cout << "isMu" << endl;
 					// if(isPrompt) cout << "isPrompt" << endl;
-					if(isMu && isPrompt) cout << "isMu && isPrompt" << endl;//nPmus++;
+					if(isMu && isPrompt) nPmus++;
 					// if(isMu && isNotPrompt) nNPmus++;
 					// if(ise) nes++;
 					// if(isPion) npis++; 
