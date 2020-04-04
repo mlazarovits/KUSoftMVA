@@ -90,7 +90,9 @@ void makeTrees(selectortype& selector, string ofilename){
 
 			}
 		}
+		if(i < 10) cout << nPmus << endl;
 		if(nPmus > 1){
+
 			cout << "muontree filled w/ prompt mu" << endl;
 		}
 		muonTree->Fill();
