@@ -12,7 +12,7 @@ void checkMother(){
 		int nMu = 0;
 		for(int j = 0; j < nGenPart; j++){
 			// if(fabs(tree->GetLeaf("GenPart_pdgId")->GetValue(j)) != 211) continue;
-			if(tree->GetLeaf("GenPart_genPartIdxMother")->GetValue(j) != 211) continue;
+			if(abs(tree->GetLeaf("GenPart_genPartIdxMother")->GetValue(j)) != 211) continue;
 			// if(tree->GetLeaf("GenPart_genPartIdxMother")->GetValue() != 0) continue;
 			cout << "event: " << i << endl;
 			cout << "Generator pdg id: " << tree->GetLeaf("GenPart_pdgId")->GetValue(j) << endl;
