@@ -25,7 +25,8 @@ void checkMother(){
 		}
 		cout << "nGenMu " << nMu << endl;
 		cout << "nGenPis " << nPis << endl;
-		if(nMu > 0) cout << "nRecoMus: " << tree->GetLeaf("nMuon")->GetValue() << "\n" << endl;
+		if(nMu > 0) cout << "nRecoMus: " << tree->GetLeaf("nMuon")->GetValue() << endl;
+		cout << "\n" << endl;
 
 
 	}
