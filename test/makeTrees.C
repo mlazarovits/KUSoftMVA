@@ -90,27 +90,26 @@ void makeTrees(selectortype& selector, string ofilename){
 					isPrompt = selector.GenPart_pdgId[motherIdx] == 23 || selector.GenPart_pdgId[motherIdx] == 24; //coming from Z or W
 					isNotPrompt = selector.GenPart_pdgId[motherIdx] == 211; //coming from pions
 
-					// if(isMu) cout << "isMu" << endl;
-					// if(isPrompt) cout << "isPrompt" << endl;
+					
 					if(isMu && isPrompt) nPmus++;
-					// if(isMu && isNotPrompt) nNPmus++;
-					// if(ise) nes++;
-					// if(isPion) npis++; 
-					// else nothers++;
+					if(isMu && isNotPrompt) nNPmus++;
+					if(ise) nes++;
+					if(isPion) npis++; 
+					else nothers++;
 
 				}
 
 			}
 		}
 		//FIGURE OUT WHY THE TREES ARENT FILLING????
-		cout << "nPmus " << nPmus << endl;
+		// cout << "nPmus " << nPmus << endl;
 
 
-		// if(nPmus > 1) cout << "nPmus " << nPmus << endl;//PmuonTree->Fill();
-		// else if(nNPmus > 1) NPmuonTree->Fill();
-		// else if(nes > 1) eTree->Fill();
-		// else if(npis > 1) pionTree->Fill();
-		// else if (nothers++) othersTree->Fill();
+		if(nPmus > 0) PmuonTree->Fill();
+		else if(nNPmus > 0) NPmuonTree->Fill();
+		else if(nes > 0) eTree->Fill();
+		else if(npis > 0) pionTree->Fill();
+		else if (nothers > 0) othersTree->Fill();
 	}
 
 	PmuonTree->SetName("PromptMuons");
