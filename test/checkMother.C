@@ -21,9 +21,10 @@ void checkMother(){
 			cout << "Generator pdg id: " << tree->GetLeaf("GenPart_pdgId")->GetValue(j) << endl;
 			cout << "Generator muon mother id: " << tree->GetLeaf("GenPart_genPartIdxMother")->GetValue(idx) << endl;
 			nMu += 1;
-			cout << "nGenMu " << nMu << endl;
-			cout << "nGenPis " << nPis << endl;
+
 		}
+		cout << "nGenMu " << nMu << endl;
+		cout << "nGenPis " << nPis << endl;
 		if(nMu > 0) cout << "nRecoMus: " << tree->GetLeaf("nMuon")->GetValue() << "\n" << endl;
 
 
