@@ -231,9 +231,9 @@ int main(int argc, char* argv[]){
 	// 	softLepBackground s(chain);
 	// 	makeTrees(s,_ofilename);
 	// }
-	else{
-		cout << "Error: invalid selector class specified" << endl;
-	}
+	// else{
+	// 	cout << "Error: invalid selector class specified" << endl;
+	// }
 
 	return 0;
 
