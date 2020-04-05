@@ -3,10 +3,10 @@ void checkMother(){
 	TTree* tree = (TTree*)file->Get("Events");
 	int nEntries = tree->GetEntries();
 
-	for(int i = 0;i < 100; i++){
+	for(int i = 0;i < nEntries; i++){
 		tree->GetEntry(i);
 		// if(tree->GetLeaf("nMuon")->GetValue == 0) continue;
-		cout << "event: " << i << endl;
+		// cout << "event: " << i << endl;
 		int nGenPart = tree->GetLeaf("nGenPart")->GetValue();
 		int idx;
 		int nPis = 0;
@@ -26,7 +26,7 @@ void checkMother(){
 		// cout << "nGenMu " << nMu << endl;
 		// cout << "nGenPis " << nPis << endl;
 		if(nMu > 0) cout << "nMus from pions: " << nMu << endl;
-		cout << "\n" << endl;
+		// cout << "\n" << endl;
 
 
 	}
