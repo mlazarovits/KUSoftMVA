@@ -13,19 +13,19 @@ void checkMother(){
 		
 		int nMu = 0;
 		for(int j = 0; j < nGenPart; j++){
-			if(fabs(tree->GetLeaf("GenPart_pdgId")->GetValue(j)) == 211) nPis+=1;
+			// if(fabs(tree->GetLeaf("GenPart_pdgId")->GetValue(j)) == 211) nPis+=1;
 			if(fabs(tree->GetLeaf("GenPart_pdgId")->GetValue(j)) != 13) continue;
 			idx = tree->GetLeaf("GenPart_genPartIdxMother")->GetValue(j);
-			// if(tree->GetLeaf("GenPart_genPartIdxMother")->GetValue() != 0) continue;
+			if(tree->GetLeaf("GenPart_genPartIdxMother")->GetValue(idx) != 211) continue;
 			
-			cout << "Generator pdg id: " << tree->GetLeaf("GenPart_pdgId")->GetValue(j) << endl;
-			cout << "Generator muon mother id: " << tree->GetLeaf("GenPart_genPartIdxMother")->GetValue(idx) << endl;
+			// cout << "Generator pdg id: " << tree->GetLeaf("GenPart_pdgId")->GetValue(j) << endl;
+			// cout << "Generator muon mother id: " << tree->GetLeaf("GenPart_genPartIdxMother")->GetValue(idx) << endl;
 			nMu += 1;
 
 		}
-		cout << "nGenMu " << nMu << endl;
-		cout << "nGenPis " << nPis << endl;
-		if(nMu > 0) cout << "nRecoMus: " << tree->GetLeaf("nMuon")->GetValue() << endl;
+		// cout << "nGenMu " << nMu << endl;
+		// cout << "nGenPis " << nPis << endl;
+		if(nMu > 0) cout << "nMus from pions: " << nMu << endl;
 		cout << "\n" << endl;
 
 
