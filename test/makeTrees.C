@@ -141,10 +141,10 @@ int main(int argc, char* argv[]){
 	bool doFile = false;
 	bool doList = false;
 
-	if ( argc < 4 ){
+	if ( argc < 3 ){
 	    cout << "Error at Input: please specify an input file name, a list of input ROOT files and/or a folder path"; 
 	    cout << " , an output filename, and a selector class name:" << endl; 
-	    cout << "  Example:      ./makeTrees.x -ifile=input.root -ofile=output.root -selector=TSelector_ClassName"  << endl;
+	    cout << "  Example:      ./makeTrees.x -ifile=input.root -ofile=output.root"  << endl;
 	    // cout << "  FOR CONDOR USE ONLY Example:      ./MakeReducedNtuple_NANO.x -ilist=input.list -ofile=output.root -selector=TSelector_ClassName"  << endl;
 	    // cout << "  Example:      ./MakeReducedNtuple_NANO.x -ifold=folder_path -ofile=output.root   -selector=TSelector_ClassName" << endl;
 	    // cout << " additional tags for object based reduced tree: -selector=TSelector_ClassName "<<endl; 
@@ -166,9 +166,9 @@ int main(int argc, char* argv[]){
 			sscanf(argv[i],"-ofile=%s",outputFileName);
 		}
 
-		if(strncmp(argv[i],"-selector",9)==0){
-			sscanf(argv[i],"-selector=%s",selectorClassName);
-		}
+		// if(strncmp(argv[i],"-selector",9)==0){
+		// 	sscanf(argv[i],"-selector=%s",selectorClassName);
+		// }
 	}
 
 	gROOT->ProcessLine("#include <vector>");
@@ -218,14 +218,14 @@ int main(int argc, char* argv[]){
 	}
 
 	//convert char arrays to strings
-	string _selectorClassName(selectorClassName);
+	// string _selectorClassName(selectorClassName);
 	string _ofilename(outputFileName);
 
-	if(_selectorClassName.compare("softLepSignal") == 0){
-		cout << "preparing signal tree" << endl;
-		softLepSignal s(chain);
-		makeTrees(s,_ofilename);
-	}
+	// if(_selectorClassName.compare("softLepSignal") == 0){
+	cout << "preparing all trees" << endl;
+	softLepSignal s(chain);
+	makeTrees(s,_ofilename);
+	// }
 	// else if(_selectorClassName.compare("softLepBackground") == 0){
 	// 	cout << "preparing background tree" << endl;
 	// 	softLepBackground s(chain);
