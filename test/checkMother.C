@@ -1,5 +1,5 @@
-void checkMother(){
-	TFile* file = TFile::Open("OutputFiles/DYJetsToLL2018_NANO.root");
+void checkMother(TString filename){
+	TFile* file = TFile::Open(filename);
 	TTree* tree = (TTree*)file->Get("Events");
 	int nEntries = tree->GetEntries();
 
