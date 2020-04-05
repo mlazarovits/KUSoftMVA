@@ -91,7 +91,8 @@ void makeTrees(selectortype& selector, string ofilename){
 					isNotPrompt = selector.GenPart_pdgId[motherIdx] == 211; //coming from pions
 
 					if(selector.GenPart_pdgId[motherIdx] == 211) cout << "from pion" << endl;
-					if(selector.GenPart_pdgId[motherIdx] == 1 || selector.GenPart_pdgId[motherIdx] == 3 || selector.GenPart_pdgId[motherIdx] == 2) cout << "is from light quark" << endl;
+					if(pdgId == 211) cout << "is pion" << endl;
+					// if(selector.GenPart_pdgId[motherIdx] == 1 || selector.GenPart_pdgId[motherIdx] == 3 || selector.GenPart_pdgId[motherIdx] == 2) cout << "is from light quark" << endl;
 					if(isMu && isPrompt) nPmus++;
 					if(isMu && isNotPrompt) nNPmus++;
 					if(ise) nes++;
