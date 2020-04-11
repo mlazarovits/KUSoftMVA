@@ -1,8 +1,16 @@
 import FWCore.ParameterSet.Config as cms
+import FWCore.ParameterSet.VarParsing as VarParsing
+
 #from Configuration.Eras.Era_Run2_2017_cff import Run2_2017
 #from Configuration.Eras.Modifier_run2_nanoAOD_92X_cff import run2_nanoAOD_92X
 #process = cms.Process('NANO',Run2_2017,run2_nanoAOD_92X)
 process = cms.Process("miniflatntuple")
+options = VarParsing.VarParsing('analysis')
+#options.inputFiles = 
+options.outputFile = "defaultout.root"
+options.maxEvents = 100
+options.parseArguments()
+
 
 process.load("FWCore.MessageLogger.MessageLogger_cfi")
 
@@ -13,34 +21,46 @@ from Configuration.AlCa.autoCond import autoCond
 process.GlobalTag.globaltag = autoCond['phase1_2017_realistic']
 
 process.options   = cms.untracked.PSet( wantSummary = cms.untracked.bool(True) )
-process.MessageLogger.cerr.FwkReport.reportEvery = 100
-process.maxEvents = cms.untracked.PSet(input = cms.untracked.int32(1000))
+process.MessageLogger.cerr.FwkReport.reportEvery = 10000
+process.maxEvents = cms.untracked.PSet( input=cms.untracked.int32(options.maxEvents))
 
 process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring())
-process.source.fileNames = [
-#relvals:
-# '/store/relval/CMSSW_9_3_0_pre4/RelValTTbar_13/MINIAODSIM/93X_mc2017_realistic_v1-v1/00000/1CFF7C9C-6A86-E711-A1F2-0CC47A7C35F4.root',
-# '/store/relval/CMSSW_9_3_0_pre4/RelValTTbar_13/MINIAODSIM/93X_mc2017_realistic_v1-v1/00000/107D499F-6A86-E711-8A51-0025905B8592.root',
-# '/store/relval/CMSSW_9_4_0_pre3/RelValProdTTbar_13/MINIAODSIM/94X_mcRun2_asymptotic_v0-v1/10000/06F85EC5-7BB9-E711-A2CB-0025905A6134.root'
+process.source.fileNames = cms.untracked.vstring(options.inputFiles)
 
-#sample with LHE
-#'/store/cmst3/group/nanoAOD/pre-94XMiniAODv2/TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8.root'
-'/store/mc/RunIIAutumn18MiniAOD/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/MINIAODSIM/102X_upgrade2018_realistic_v15-v1/00000/0ACB220F-DB5C-3449-83F5-E04858176001.root'
-]
+
 
 #process.load("PhysicsTools.NanoAOD.nano_cff")
+
+from KUSoftMVA.MuonAnalysis.genparticles_cff import *
+process.load("KUSoftMVA.MuonAnalysis.genparticles_cff")
+
 from KUSoftMVA.MuonAnalysis.muons_cff import *
 process.load("KUSoftMVA.MuonAnalysis.muons_cff")
-process.load(process.muonSequence)
+
+from KUSoftMVA.MuonAnalysis.qparts_cff import *
+process.load("KUSoftMVA.MuonAnalysis.qparts_cff")
+
+process.Path = cms.Path(genParticleSequence+ genParticleTables + muonSequence + muonTables + muonMC +qTables + qMC )
+#process.Path = cms.Path( qTables )
+
 
 #process.Path = cms.Path(process.nanoSequenceMC)
 #for data:
 #process.nanoPath = cms.Path(process.nanoSequence)
 #process.GlobalTag.globaltag = autoCond['run2_data']
 
-process.out = cms.OutputModule("NanoAODOutputModule",
-    fileName = cms.untracked.string('nanoTEST.root'),
-    outputCommands = process.NanoAODEDMEventContent.outputCommands,
+process.out = cms.OutputModule("NanoAODOutputModule", 
+#process.out = cms.OutputModule("PoolOutputModule",
+    fileName = cms.untracked.string(options.outputFile),
+    outputCommands = cms.untracked.vstring(
+        'drop *',
+        "keep nanoaodFlatTable_*Table_*_*",     # event data
+       # "keep edmTriggerResults_*_*_*",  # event data
+       # "keep String_*_genModel_*",  # generator model data
+       # "keep nanoaodMergeableCounterTable_*Table_*_*", # accumulated per/run or per/lumi data
+       # "keep nanoaodUniqueString_nanoMetadata_*_*",   # basic metadata
+    ),
+  #  outputCommands = process.NanoAODEDMEventContent.outputCommands,
    #compressionLevel = cms.untracked.int32(9),
     #compressionAlgorithm = cms.untracked.string("LZMA"),
 

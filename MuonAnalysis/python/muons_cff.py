@@ -41,19 +41,20 @@ slimmedMuonsWithUserData = cms.EDProducer("PATMuonUserDataEmbedder",
      userFloats = cms.PSet(
         miniIsoChg = cms.InputTag("isoForMu:miniIsoChg"),
         miniIsoAll = cms.InputTag("isoForMu:miniIsoAll"),
-        ptRatio = cms.InputTag("ptRatioRelForMu:ptRatio"),
-        ptRel = cms.InputTag("ptRatioRelForMu:ptRel"),
-        jetNDauChargedMVASel = cms.InputTag("ptRatioRelForMu:jetNDauChargedMVASel"),
+ #       ptRatio = cms.InputTag("ptRatioRelForMu:ptRatio"),
+ #       ptRel = cms.InputTag("ptRatioRelForMu:ptRel"),
+ #       jetNDauChargedMVASel = cms.InputTag("ptRatioRelForMu:jetNDauChargedMVASel"),
      ),
-     userCands = cms.PSet(
-        jetForLepJetVar = cms.InputTag("ptRatioRelForMu:jetForLepJetVar") # warning: Ptr is null if no match is found
-     ),
+ #    userCands = cms.PSet(
+ #       jetForLepJetVar = cms.InputTag("ptRatioRelForMu:jetForLepJetVar") # warning: Ptr is null if no match is found
+ #    ),
 )
 run2_miniAOD_80XLegacy.toModify(slimmedMuonsWithUserData, src = "slimmedMuonsUpdated")
 
 finalMuons = cms.EDFilter("PATMuonRefSelector",
     src = cms.InputTag("slimmedMuonsWithUserData"),
-    cut = cms.string("pt > 3 && (passed('CutBasedIdLoose') || passed('SoftCutBasedId') || passed('SoftMvaId') || passed('CutBasedIdGlobalHighPt') || passed('CutBasedIdTrkHighPt'))")
+    #cut = cms.string("pt > 3 && (passed('CutBasedIdLoose') || passed('SoftCutBasedId') || passed('SoftMvaId') || passed('CutBasedIdGlobalHighPt') || passed('CutBasedIdTrkHighPt'))")
+    cut = cms.string("pt>1 && pt<40")
 )
 
 finalLooseMuons = cms.EDFilter("PATMuonRefSelector", # for isotrack cleaning
@@ -121,6 +122,7 @@ fsrTable = cms.EDProducer("SimpleCandidateFlatTableProducer",
 
 muonTable = cms.EDProducer("SimpleCandidateFlatTableProducer",
     src = cms.InputTag("linkedObjects","muons"),
+   # src = cms.InputTag("muons"),
     cut = cms.string(""), #we should not filter on cross linked collections
     name = cms.string("Muon"),
     doc  = cms.string("slimmedMuons after basic selection (" + finalMuons.cut.value()+")"),
@@ -168,11 +170,11 @@ muonTable = cms.EDProducer("SimpleCandidateFlatTableProducer",
         triggerIdLoose = Var("passed('TriggerIdLoose')",bool,doc="TriggerIdLoose ID"), 
         inTimeMuon = Var("passed('InTimeMuon')",bool,doc="inTimeMuon ID"),
         ),
-    externalVariables = cms.PSet(
-        mvaTTH = ExtVar(cms.InputTag("muonMVATTH"),float, doc="TTH MVA lepton ID score",precision=14),
-        mvaLowPt = ExtVar(cms.InputTag("muonMVALowPt"),float, doc="Low pt muon ID score",precision=14),
-        fsrPhotonIdx = ExtVar(cms.InputTag("muonFSRassociation:fsrIndex"),int, doc="Index of the associated FSR photon"),
-    ),
+   # externalVariables = cms.PSet(
+   #     mvaTTH = ExtVar(cms.InputTag("muonMVATTH"),float, doc="TTH MVA lepton ID score",precision=14),
+   #     mvaLowPt = ExtVar(cms.InputTag("muonMVALowPt"),float, doc="Low pt muon ID score",precision=14),
+   #     fsrPhotonIdx = ExtVar(cms.InputTag("muonFSRassociation:fsrIndex"),int, doc="Index of the associated FSR photon"),
+   # ),
 )
 
 
@@ -203,10 +205,19 @@ muonMCTable = cms.EDProducer("CandMCMatchTableProducer",
     docString = cms.string("MC matching to status==1 muons"),
 )
 
-muonSequence = cms.Sequence(isoForMu + ptRatioRelForMu + slimmedMuonsWithUserData + finalMuons + finalLooseMuons )
-muonMC = cms.Sequence(muonsMCMatchForTable + muonMCTable)
-muonTables = cms.Sequence(muonFSRphotons + muonFSRassociation + muonMVATTH + muonMVALowPt + muonTable + fsrTable)
+linkedObjects = cms.EDProducer("PATObjectCrossLinker",
+   jets=cms.InputTag("slimmedJets"),
+   muons=cms.InputTag("finalMuons"),
+   electrons=cms.InputTag("slimmedElectrons"),
+   taus=cms.InputTag("slimmedTaus"),
+   photons=cms.InputTag("slimmedPhotons"),
+)
 
+#muonSequence = cms.Sequence(isoForMu + ptRatioRelForMu + slimmedMuonsWithUserData + finalMuons + finalLooseMuons )
+muonSequence = cms.Sequence(isoForMu + slimmedMuonsWithUserData +finalMuons + finalLooseMuons)
+muonMC = cms.Sequence(muonsMCMatchForTable + muonMCTable)
+#muonTables = cms.Sequence(muonFSRphotons + muonFSRassociation + muonMVATTH + muonMVALowPt + muonTable + fsrTable)
+muonTables = cms.Sequence( linkedObjects + muonTable )
 _withUpdate_sequence = muonSequence.copy()
 _withUpdate_sequence.replace(isoForMu, slimmedMuonsUpdated+isoForMu)
 run2_miniAOD_80XLegacy.toReplaceWith(muonSequence, _withUpdate_sequence)
