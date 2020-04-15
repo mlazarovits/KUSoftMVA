@@ -1,0 +1,168 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{float}
+\usepackage{hyperref}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Soft Muon Finder: Existing MVA and ID Overview}
+\author{Margaret Lazarovits}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\section{Soft Muon ID}
+Developed by BHP group. See Table \ref{tab:softID} for requirements going into the ID. 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ c | c }
+Input Variable                                                                                                               & CMSSW Class           \\ \hline \hline
+isGoodMuon                                                                                                                   & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}                  \\ \hline
+\begin{tabular}[c]{@{}c@{}}recoMu.innerTrack()$\rightarrow$hitPattern().\\ trackerLayersWithMeasurement() $>$ 5\end{tabular} &  \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/HitPattern.h}{innerTrack.hitPattern} \\ \hline
+\begin{tabular}[c]{@{}c@{}}recoMu.innerTrack()$\rightarrow$hitPattern().\\ pixelLayersWithMeasurement() $>$ 0\end{tabular}   & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/HitPattern.h}{innerTrack.hitPattern} \\ \hline
+recoMu.innerTrack()$\rightarrow$quality(reco::TrackBase::highPurity)                                                         & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/TrackBase.h}{TrackBase}                   \\ \hline
+\begin{tabular}[c]{@{}c@{}}fabs(recoMu.innerTrack()$\rightarrow$dxy(vertex$\rightarrow$position())) $<$ 0.3 \&\& \\ fabs(recoMu.innerTrack()$\rightarrow$dz(vertex$\rightarrow$position())) $<$ 20.\end{tabular} &
+  \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/TrackBase.h}{TrackBase}    
+\end{tabular}
+\caption{Soft Muon ID requirements.}
+\label{tab:softID}
+\end{table}
+
+
+
+
+
+
+
+
+
+\section{Soft Muon MVA}
+This MVA is a GBR (Gradient Boosted Regression) Forest built from TMVA-trained trees. Table \ref{tab:softMuonMVA_presel} shows the preselections made before the GBRForest. Table \ref{tab:softMuonMVA_inputs} shows the variables that are fed into the GBRForest. 
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ c | c }
+Preselection  Requirement & CMSSW Class \\ \hline \hline
+global track is nonNull & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/TrackFwd.h}{muon.TrackRef} \\ \hline
+inner track is nonNull & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/TrackFwd.h}{muon.TrackRef} \\ \hline
+outer track is nonNull & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/TrackFwd.h}{muon.TrackRef}
+\end{tabular}
+\caption{Soft Muon MVA preselection table where muon.TrackRef is a reference to a collection of tracks in the muon class}
+\label{tab:softMuonMVA_presel}
+\end{table}
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c|c}
+Input Variable       & Description                                                                                                                                            & CMSSW Class                                                                                                                                                                                                                                 \\ \hline \hline
+pt                   & muon pt                                                                                                                                                & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}                                                                                                   \\ \hline
+eta                  & muon eta                                                                                                                                               & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}                                                                                                   \\ \hline
+chi2LocalMomentum    & \begin{tabular}[c]{@{}c@{}}chi2 value for the STA-TK \\ matching of local momentum\end{tabular}                                                  & \href{https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/MuonQuality.h}{muonQuality}                                                                                                                                \\ \hline
+chi2LocalPosition    & \begin{tabular}[c]{@{}c@{}}chi2 value for the STA-TK \\ matching of local position\end{tabular}                                                  & \href{https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/MuonQuality.h}{muonQuality}                                                                                                                                \\ \hline
+glbTrackProbability  & \begin{tabular}[c]{@{}c@{}}the tail probability \\ (-ln(P)) of the global fit\end{tabular}                                                          & \href{https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/MuonQuality.h}{muonQuality}                                                                                                                                \\ \hline
+trkRelChi2           & \begin{tabular}[c]{@{}c@{}}chi2 value for the inner track \\ stub with respect to \\ the global track\end{tabular}                               & \href{https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/MuonQuality.h}{muonQuality}                                                                                                                                \\ \hline
+trkKink              & \begin{tabular}[c]{@{}c@{}}value of the kink algorithm \\ applied to the inner track stub\end{tabular}                                           & \href{https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/MuonQuality.h}{muonQuality}                                                                                                                                \\ \hline
+glbKink              & \begin{tabular}[c]{@{}c@{}}log(2 + glbKink); value of the kink \\ algorithm applied to the global track\end{tabular}                          & \href{https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/MuonQuality.h}{muonQuality}                                                                                                                                \\ \hline
+segmentCompatibility & \begin{tabular}[c]{@{}c@{}}segment compatibility \\ for a track with matched muon info\end{tabular}                                              & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}                                                                                                   \\ \hline
+timeAtIpInOutErr     & \begin{tabular}[c]{@{}c@{}}time of arrival at the IP \\ for the Beta=1 hypothesis where \\ particle is moving from outside in\end{tabular} & \href{https://github.com/cms-sw/cmssw/blob/master/DataFormats/MuonReco/interface/MuonTime.h}{muonTime}                                                                                                                                      \\ \hline
+VMuonHitComb         & \begin{tabular}[c]{@{}c@{}}DThits/2 +  RPChits \\ per muon station (up to 4)\end{tabular}                                                           & \begin{tabular}[c]{@{}c@{}}the stored value is an int, \\ but you need to \\ count global \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/HitPattern.h}{hits}\end{tabular} \\ \hline
+
+Inner Track: validFraction           & \begin{tabular}[c]{@{}c@{}}fraction of valid hits on the track\end{tabular}                                                            & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/TrackBase.h}{inner track}             \\ \hline
+Inner Track: normalizedChi2     & \begin{tabular}[c]{@{}c@{}}$\chi^2$ of track fit \\ divided by n.d.o.f.\\ (or $\chi^2 \times (1\times10^6)$ if n.d.o.f. is 0)\end{tabular}   & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/TrackBase.h}{inner track}             \\ \hline
+\begin{tabular}[c]{@{}c@{}}Inner Track: layers with \\ measurement \end{tabular} & \begin{tabular}[c]{@{}c@{}}number of \\ tracker barrel \\ layers with measurement\end{tabular}                                         & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/HitPattern.h}{inner track.HitPattern} \\ \hline
+Outer Track: normalizedChi2        & \begin{tabular}[c]{@{}c@{}}$\chi^2$ of track fit \\ divided by n.d.o.f.  \\ (or $\chi^2 \times (1\times10^6)$ if n.d.o.f. is 0)\end{tabular} & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/TrackBase.h}{outer track}             \\ \hline
+Inner \& Outer Tracks: QProd         & product of track electric charge                                                                                                          & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/TrackBase.h}{inner and outer tracks}  
+\end{tabular}
+\caption{Soft Muon MVA input variables}
+\label{tab:softMuonMVA_inputs}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+\section{Lepton (Muon) MVA}
+Trained on inclusive ttZ LO Madgraph for signal (prompt leptons) and semi-leptonic ttbar for background (nonprompt leptons). Table \ref{tab:leptonMVA_presel} shows preselection requirements for the lepton and the associated jet. This MVA also uses a Gradient-Boosted Regression Forest similar to the Soft Muon MVA. See \href{https://twiki.cern.ch/twiki/bin/viewauth/CMS/LeptonMVA}{Twiki} for more information on variables. The preselection for jets is done in \href{https://github.com/cms-sw/cmssw/blob/736475d21640a0bb349922b330939464e214db8b/PhysicsTools/PatAlgos/src/MuonMvaEstimator.cc#L113}{MuonMvaEstimator.cc} (but not for leptons - this is done in \href{https://github.com/cms-sw/cmssw/blob/736475d21640a0bb349922b330939464e214db8b/PhysicsTools/PatAlgos/plugins/PATMuonProducer.cc#L752}{CMSSW muon preselection}).
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c}
+Preselection Variable Requirement                 & CMSSW Class \\ \hline \hline
+pt $> 5$ GeV    & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}           \\ \hline
+loose PF ID (isLooseMuon) &    \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}       \\ \hline
+mini-Isolation $<$ 0.4   (miniIsoLoose)                         & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}          \\ \hline
+SIP3D $<$ 8                                       & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}          \\ \hline
+abs(dxy) $<$ 0.05 \&\& abs(dz) $<$ 0.1            & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}          \\ \hline
+track pt $>$ 1 GeV                                & \href{https://github.com/cms-sw/cmssw/blob/277cb56baa2e8187367f1897cdc3405c998ec2de/DataFormats/ParticleFlowCandidate/interface/PFCandidate.h}{PFCandidate}         \\ \hline
+track charge() != 0                                     & \href{https://github.com/cms-sw/cmssw/blob/277cb56baa2e8187367f1897cdc3405c998ec2de/DataFormats/ParticleFlowCandidate/interface/PFCandidate.h}{PFCandidate}           \\ \hline
+deltaR w.r.t. jet eta,phi $\leq$ 0.4              & \begin{tabular}[c]{@{}c@{}}I don't see this requirement either - \\ deltaR is given as a parameter to the \\ estimator so maybe it's that?\end{tabular}          \\ \hline
+fromPV() $>$ 1                                    & I don't see this in the .cc file?         \\ \hline
+trk$\rightarrow$quality(reco::TrackBase::highPurity)                                                         & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/TrackBase.h}{TrackBase}                   \\ \hline
+trk.hitPattern().numberOfValidHits() $\geq$ 8     & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/HitPattern.h}{hitPattern}          \\ \hline
+trk.hitPattern().numberOfValidPixelHits()$\geq$2  & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/TrackReco/interface/HitPattern.h}{hitPattern}          \\ \hline
+trk.normalizedChi2()$<$5                          & \href{https://github.com/cms-sw/cmssw/blob/277cb56baa2e8187367f1897cdc3405c998ec2de/DataFormats/TrackReco/interface/TrackBase.h}{trackBase}       \\ \hline
+std::fabs(trk.dxy(vtx.position()))$<$0.2          & \href{https://github.com/cms-sw/cmssw/blob/277cb56baa2e8187367f1897cdc3405c998ec2de/DataFormats/TrackReco/interface/TrackBase.h}{trackBase}          \\ \hline
+std::fabs(trk.dz(vtx.position()))$<$17            & \href{https://github.com/cms-sw/cmssw/blob/277cb56baa2e8187367f1897cdc3405c998ec2de/DataFormats/TrackReco/interface/TrackBase.h}{trackBase}          
+\end{tabular}
+\caption{Lepton MVA Preselection}
+\label{tab:leptonMVA_presel}
+\end{table}
+
+Jet distances $dxy$ and $dz$ are measured wrt to the \href{https://github.com/cms-sw/cmssw/blob/277cb56baa2e8187367f1897cdc3405c998ec2de/DataFormats/VertexReco/interface/Vertex.h}{Vertex}.
+
+
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Input Variable                                            & CMSSW Class \\ \hline
+lepton pt                                                 & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon} 
+         \\ \hline
+lepton eta                                                & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon} 
+         \\ \hline
+\begin{tabular}[c]{@{}c@{}}selected track multiplicity of \\ the jet matched to the lepton \end{tabular} &
+  see Table \ref{tab:leptonMVA_presel} \\ \hline
+rel mini-isolation charged component                          & \href{https://github.com/cms-sw/cmssw/blob/a41ba6cb802a727726f33a31be291ca441534016/DataFormats/PatCandidates/interface/PFIsolation.h}{lepton.PFIsolation}         \\ \hline
+rel mini-isolation, neutral component                         & \begin{tabular}[c]{@{}c@{}}subtract charged miniIso from total \\ miniIso given to MVA  (otherwise same \\ class as chargedminiIso)\end{tabular}       \\ \hline
+jet ptRel                                                     & \begin{tabular}[c]{@{}c@{}}calculated from ROOT::XYZTLorentzVector \\ of mu and leading jet  \end{tabular}        \\ \hline
+jet ptRatio                                                   & \begin{tabular}[c]{@{}c@{}}pt ratio of ROOT::XYZTLorentzVector \\ of mu and leading jet  \end{tabular}     \\ \hline
+\begin{tabular}[c]{@{}c@{}}CSVv2 b-tagging discriminator of the \\ jet matched to the lepton\end{tabular} & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/JetReco/interface/JetFloatAssociation.h}{JetFloatAssociation::Container} \\ \hline
+SIP3D                                                     &    \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}   \\ \hline
+lepton dxy                                                & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}         \\ \hline
+lepton dz,                                                & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon}         \\ \hline
+muon segment compatibility (only for muons)               & \href{https://github.com/cms-sw/cmssw/blob/bbac8f91da1cdddfbcb77c19b7ff519fadee878d/DataFormats/PatCandidates/interface/Muon.h}{pat muon} 
+         \\ \hline
+\begin{tabular}[c]{@{}c@{}}electron non-triggering \\ MVA ID value (only for electrons)\end{tabular} & electrons         \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+
+\section{Low pT MVA (muons only)}
+This value is calculated using the same class as the Muon MVA so everything is the same but I guess the preselection differs by the following according to the twiki (bolded):
+\begin{itemize}
+\item pt $>$ 5 GeV
+\item loose PF ID for muons
+\item \textbf{SIP3D $<$ 4}
+\item \textbf{abs(dxy) $<$ 0.5 \&\& abs(dz) $<$ 1}
+\end{itemize}
+In \href{https://github.com/cms-sw/cmssw/blob/736475d21640a0bb349922b330939464e214db8b/PhysicsTools/PatAlgos/plugins/PATMuonProducer.cc}{PATMuonProducer.cc} the estimator object is made from the MuonMVA class, but uses a different input training (weights?) file called ``lowPtmvaTrainingFile" instead of ``mvaTrainingFile" used for the regular MuonMVA. Like for the Muon MVA, the preselection for loose muons is also done in \href{https://github.com/cms-sw/cmssw/blob/736475d21640a0bb349922b330939464e214db8b/PhysicsTools/PatAlgos/plugins/PATMuonProducer.cc#L760}{CMSSW PAT muon producer}.
+
+
+
+\end{document}  
