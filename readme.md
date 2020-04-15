@@ -3,10 +3,12 @@
 
 To setup cmssw release:
 
-	cmsrel CMSSW_10_6_8
+	cmsrel CMSSW_10_6_11_patch1
 
-	cd CMSSW_10_6_8/src
+	cd CMSSW_10_6_11_patch1/src
 	
+	git cms-addpkg PhysicsTools/PatAlgos
+
 	cmsenv
 	
 	scram b
