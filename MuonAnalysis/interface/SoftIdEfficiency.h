@@ -243,7 +243,7 @@ inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 	Int_t nBins;
 	std::vector<Double_t> effbins;
 	//set bins of TEff object
-	if(inputvar == "pt"){
+	if(strstr(inputvar, "pt")){
 		nBins = 20;
 		effbins.push_back(0.0);
 		//SOS binning
@@ -262,7 +262,7 @@ inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 			effbins.push_back(effbins.at(i-1) + 5.);
 		}
 	}
-	else if(inputvar == "eta"){
+	else if(strstr(inputvar, "eta")){
 
 		// nBins = 200;
 		// effbins.push_back(-3.05);
