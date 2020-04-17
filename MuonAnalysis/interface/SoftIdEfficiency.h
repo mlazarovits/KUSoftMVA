@@ -10,7 +10,7 @@
 // #include "../include/prod2016MC_reducedNANO_Triggers.h"
 // #include "../include/prod2017MC_reducedNANO_Triggers.h"
 // #include "../include/prod2018MC_reducedNANO_Triggers.h"
-#include "../NanoTreeTemplate.h"
+#include "softLepSignal.h"
 #include <TLatex.h>
 
 
@@ -32,7 +32,7 @@ public:
 	void SetOutputName(const string& outname);
 	string GetOutputName() const;
 
-	void AddID(string trigger);
+	void AddID(string ID);
 	vector<string> GetIDs();
 
 	void SetVar(string var);
@@ -65,7 +65,6 @@ private:
 
 
 	string m_samplename;
-	string m_trigname;
 	string m_outname;
 	TTree* m_tree;
 	string m_var;
@@ -87,21 +86,11 @@ private:
 	TLeaf* l_GenPart_statusFlags;
 
 
-	// TLeaf* l_nElectron;
-	// TLeaf* l_Electron_pfRelIso03_all;
-	// TLeaf* l_MET;
-	// TLeaf* l_nJet;
-	// TLeaf* l_Jet_pt;
-	// TLeaf* l_Jet_eta;
-	// TLeaf* l_Jet_phi;
-	// TLeaf* l_Jet_mass;
-
-	// TLeaf* l_reqTrigger;
 	
 	TLeaf* l_var;
 	TLeaf* l_weight;
 
-	// vector<string> m_IDs;
+	vector<string> m_IDs;
 	
 	vector<string> m_filenames;
 
@@ -161,8 +150,8 @@ inline string SoftIdEfficiency::GetOutputName() const {
 
 
 
-inline void SoftIdEfficiency::AddID(string trigger){
-	m_IDs.push_back(trigger);
+inline void SoftIdEfficiency::AddID(string ID){
+	m_IDs.push_back(ID);
 }
 
 inline vector<string> SoftIdEfficiency::GetIDs(){
@@ -243,20 +232,6 @@ inline void SoftIdEfficiency::initializeAnalyze(){
 	l_Muon_sip3d = m_tree->GetLeaf("Muon_sip3d");
 	l_GenPart_statusFlags = m_tree->GetLeaf("GenPart_statusFlags");
 
-	l_reqTrigger = m_tree->GetLeaf("HLT_IsoMu27");
-
-	if(strstr(m_samplename.c_str(),"2017")){
-		l_MET = m_tree->GetLeaf("METFixEE2017_pt");
-	}
-	
-	l_nJet = m_tree->GetLeaf("nJet");
-	l_Jet_mass = m_tree->GetLeaf("Jet_mass");
-	l_Jet_phi = m_tree->GetLeaf("Jet_phi");
-	l_Jet_eta = m_tree->GetLeaf("Jet_eta");
-	l_Jet_pt = m_tree->GetLeaf("Jet_pt");
-
-	l_nElectron = m_tree->GetLeaf("nElectron");
-	l_Electron_pfRelIso03_all = m_tree->GetLeaf("Muon_pfRelIso03_all");
 	
 	l_var = m_tree->GetLeaf(m_var.c_str());
 	l_weight = m_tree->GetLeaf("Generator_weight");
@@ -336,7 +311,7 @@ inline TEfficiency* SoftIdEfficiency::Analyze2D(){
 	Int_t nBinsy = effbinsy.size()-2;
 
 
-	//create TEfficiency objects and get trigger leaves
+	//create TEfficiency objects and get ID leaves
 	string title = (m_var+" vs."+m_IDs.at(0)+" Efficiency").c_str();
 	string x_label = (";"+m_var).c_str();
 	string y_label = ";#epsilon";
@@ -400,7 +375,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	Int_t nBins = effbins.size()-2;
 	
 
-	//create TEfficiency objects and get trigger leaves
+	//create TEfficiency objects and get ID leaves
 	for(int i = 0; i < m_IDs.size(); i++){
 		string title = (m_var+" vs."+m_IDs.at(i)+" Efficiency").c_str();
 		string x_label = (";"+m_var).c_str();
@@ -434,7 +409,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 
 	    // float HT = calcHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
 	    // TLorentzVector MHT = calcMHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
-	    
+
 	    // int nMuon = l_nMuon->GetValue();
 	    // float MET = l_MET->GetValue();		   
 
@@ -475,7 +450,7 @@ inline void SoftIdEfficiency::make2DPlot(TEfficiency* eff){
 	
 	cv->Update();
 
-	TString g_PlotTitle = m_samplename+" Trigger Efficiencies";
+	TString g_PlotTitle = m_samplename+" Soft ID Efficiencies";
 	h->GetZaxis()->SetTitle((m_IDs.at(0)+" Efficiency").c_str());
 	h->SetMaximum(1.0);
 	h->SetMinimum(0.0);
@@ -567,7 +542,7 @@ inline void SoftIdEfficiency::makePlots(vector<TEfficiency*> effs){
 	}
 
 
-	cout << "# of triggers: " << gr_effs.size() << endl;
+	cout << "# of IDs: " << gr_effs.size() << endl;
 	// double fmax = -1.;
 	// int imax = -1;
 	// for(int i = 0; i < gr_effs.size(); i++){
@@ -628,7 +603,7 @@ inline void SoftIdEfficiency::makePlots(vector<TEfficiency*> effs){
 	leg->Draw("SAME");
 	cv->Update();
 
-	string g_PlotTitle = m_samplename+" Trigger Efficiencies";
+	string g_PlotTitle = m_samplename+" Soft ID Efficiencies";
 	mg->GetXaxis()->SetTitle(m_var.c_str());
 	mg->GetYaxis()->SetTitle("#epsilon");
 	
