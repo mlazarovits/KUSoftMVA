@@ -48,7 +48,7 @@ if(sampleName=="TTJets"){
 
 else if(sampleName=="QCD"){
 	if(fQCD == NULL) return;
-	TriggerSet QCD(fQCD);
+	SoftIdEfficiency QCD(fQCD);
 	QCD.SetSampleName("QCD 2018");
 
 	QCD.AddID("Muon_mvaId");
