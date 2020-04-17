@@ -30,39 +30,38 @@ void Plot_Efficiency(TString sampleName){
 if(sampleName=="TTJets"){
 	if(fTTJets == NULL) return;
 	SoftIdEfficiency TTJets(fTTJets);
-	TTJets.SetSampleName("TTJets 2018");
+	TTJets.SetSampleName("TTJets 2018 Medium ID");
 
 	TTJets.AddID("Muon_mvaId");
 	TTJets.AddID("Muon_softId");
 	TTJets.AddID("Muon_softMvaId");
 
 	TTJets.SetVar("Muon_pt");
-	TTJets.SetOutputName("TTJets_softIDeffs.root");
+	TTJets.SetOutputName("TTJets_softIDeffs_1L.root");
 
 	vector<TEfficiency*> TTJets_eff = TTJets.Analyze();
-	TTJets.makePlots(TTJets_eff);
+	TTJets.make2DPlots(TTJets_eff);
 }
 
 
 
 
-// else if(sampleName=="QCD"){
-// 	if(fQCD == NULL) return;
-// 	vector<TEfficiency*> QCD;
-// 	TriggerSet wjets16_ele(fQCD);
-// 	QCD.SetSampleName("WJetsToLNu 2016 Loose ID");
-// 	QCD.AddTrigger("HLT_Ele27_WPTight_Gsf");
-// 	QCD.AddTrigger("HLT_Photon175");
-// 	QCD.AddTrigger("HLT_Ele115_CaloIdVT_GsfTrkIdT");
-// 	QCD.AddTrigger("HLT_Ele45_CaloIdVT_GsfTrkIdT_PFJet200_PFJet50");
-// 	QCD.AddTrigger("HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165");
-// 	QCD.AddTrigger("HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165");
-// 	QCD.SetVar("Electron_pt");
-// 	QCD.SetOutputName("WJets16_AllTrigs_SingleEle_loose.root");
+else if(sampleName=="QCD"){
+	if(fQCD == NULL) return;
+	vector<TEfficiency*> QCD_effs;
+	TriggerSet QCD(fQCD);
+	QCD.SetSampleName("QCD 2018");
 
-// 	wjets16_ele_effs = QCD.Analyze();
-// 	QCD.makePlots(wjets16_ele_effs);
-// }
+	QCD.AddID("Muon_mvaId");
+	QCD.AddID("Muon_softId");
+	QCD.AddID("Muon_softMvaId");
+
+	QCD.SetVar("Muon_pt");
+	QCD.SetOutputName("QCD_softIDeffs.root");
+
+	vector<TEfficiency*> QCD_effs = QCD.Analyze();
+	QCD.makePlots(QCD_effs);
+}
 
 // else if(sampleName=="DYJets"){
 // 	if(fDYJets == NULL) return;

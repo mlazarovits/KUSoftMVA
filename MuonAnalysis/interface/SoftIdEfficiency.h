@@ -411,11 +411,21 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		}
 	    fflush(stdout);
 
+
 	    // float HT = calcHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
 	    // TLorentzVector MHT = calcMHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
 
-	    // int nMuon = l_nMuon->GetValue();
-	    // float MET = l_MET->GetValue();		   
+	    int nMuon = l_nMuon->GetValue();
+	    float nMediumMuons = 0;
+
+	    if(nMuon != 1) continue;
+	    // float MET = l_MET->GetValue();
+	    for(int mu = 0; mu < nMuon; mu++){
+		    if(m_tree->GetLeaf("Muon_mediumId")->GetValue(mu)){
+		    	nMediumMuons += 1;
+		    }	
+		}	
+		if(nMediumMuons < 1) continue;   
 
 	    // if(nMuon >= 2) double_lep = true;
 		// if(nMuon != 2) continue; 
