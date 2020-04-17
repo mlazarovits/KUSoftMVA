@@ -3,7 +3,7 @@
 // #include "../include/prod2016MC_reducedNANO_Triggers.h"
 // #include "../include/prod2017MC_reducedNANO_Triggers.h"
 // #include "../include/prod2018MC_reducedNANO_Triggers.h"
-#include "../interface/SoftIdEfficiency.hh"
+#include "../interface/SoftIdEfficiency.h"
 #include "TEfficiency.h"
 #include "TGraphAsymmErrors.h"
 #include "TMultiGraph.h"
