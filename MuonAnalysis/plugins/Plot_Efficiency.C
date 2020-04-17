@@ -30,7 +30,7 @@ void Plot_Efficiency(TString sampleName){
 if(sampleName=="TTJets"){
 	if(fTTJets == NULL) return;
 	SoftIdEfficiency TTJets(fTTJets);
-	TTJets.SetSampleName("TTJets 2018 Medium ID");
+	TTJets.SetSampleName("TTJets 2018 1L w/ No ID");
 
 	TTJets.AddID("Muon_mvaId");
 	TTJets.AddID("Muon_softId");

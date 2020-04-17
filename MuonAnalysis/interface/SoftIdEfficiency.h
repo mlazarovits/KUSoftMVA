@@ -420,11 +420,11 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 
 	    if(nMuon != 1) continue;
 	    // float MET = l_MET->GetValue();
-	    for(int mu = 0; mu < nMuon; mu++){
-		    if(m_tree->GetLeaf("Muon_mediumId")->GetValue(mu)){
-		    	nMediumMuons += 1;
-		    }	
-		}	
+	 //    for(int mu = 0; mu < nMuon; mu++){
+		//     if(m_tree->GetLeaf("Muon_mediumId")->GetValue(mu)){
+		//     	nMediumMuons += 1;
+		//     }	
+		// }	
 		if(nMediumMuons < 1) continue;   
 
 	    // if(nMuon >= 2) double_lep = true;
@@ -464,7 +464,7 @@ inline void SoftIdEfficiency::make2DPlot(TEfficiency* eff){
 	
 	cv->Update();
 
-	TString g_PlotTitle = m_samplename+" Soft ID Efficiencies";
+	TString g_PlotTitle = m_samplename+" Efficiencies";
 	h->GetZaxis()->SetTitle((m_IDs.at(0)+" Efficiency").c_str());
 	h->SetMaximum(1.0);
 	h->SetMinimum(0.0);
@@ -617,7 +617,7 @@ inline void SoftIdEfficiency::makePlots(vector<TEfficiency*> effs){
 	leg->Draw("SAME");
 	cv->Update();
 
-	string g_PlotTitle = m_samplename+" Soft ID Efficiencies";
+	string g_PlotTitle = m_samplename+" Efficiencies";
 	mg->GetXaxis()->SetTitle(m_var.c_str());
 	mg->GetYaxis()->SetTitle("#epsilon");
 	
