@@ -240,27 +240,31 @@ inline void SoftIdEfficiency::initializeAnalyze(){
 
 
 inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
+	//set bins of TEff object
 	Int_t nBins;
 	std::vector<Double_t> effbins;
-	//set bins of TEff object
+	
 	if(strstr(inputvar, "pt")){
 		nBins = 20;
 		effbins.push_back(0.0);
-		//SOS binning
-		for(int i = 1; i < 2; i++){
-			effbins.push_back(effbins.at(i-1) + 4.0);
-			// cout << effbins[i] << endl;
-		}
-		for(int i = 2; i < 5; i++){
+		for(int i = 0; i < 20; i++){
 			effbins.push_back(effbins.at(i-1) + 1.0);
-			// cout << effbins[i] << endl;
 		}
-		for(int i = 5; i < 6; i++){
-			effbins.push_back(effbins.at(i-1) + 3.);
-		}
-		for(int i = 6; i < 11; i++){
-			effbins.push_back(effbins.at(i-1) + 5.);
-		}
+		//SOS binning
+		// for(int i = 1; i < 2; i++){
+		// 	effbins.push_back(effbins.at(i-1) + 4.0);
+		// 	// cout << effbins[i] << endl;
+		// }
+		// for(int i = 2; i < 5; i++){
+		// 	effbins.push_back(effbins.at(i-1) + 1.0);
+		// 	// cout << effbins[i] << endl;
+		// }
+		// for(int i = 5; i < 6; i++){
+		// 	effbins.push_back(effbins.at(i-1) + 3.);
+		// }
+		// for(int i = 6; i < 11; i++){
+		// 	effbins.push_back(effbins.at(i-1) + 5.);
+		// }
 	}
 	else if(strstr(inputvar, "eta")){
 
@@ -555,7 +559,7 @@ inline void SoftIdEfficiency::makePlots(vector<TEfficiency*> effs){
 	// gr_effs[imax]->Draw();
 
 	cv->Update();
-	Int_t chopcolor = gr_effs.size()/3;
+	Int_t chopcolor = gr_effs.size()/2;
 	Int_t chopmarker = gr_effs.size()/3;
 
 	for(int i = 0; i < gr_effs.size(); i++){
