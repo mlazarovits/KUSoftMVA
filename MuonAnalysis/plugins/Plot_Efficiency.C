@@ -40,7 +40,7 @@ if(sampleName=="TTJets"){
 	TTJets.SetOutputName("TTJets_softIDeffs_1L.root");
 
 	vector<TEfficiency*> TTJets_eff = TTJets.Analyze();
-	TTJets.make2DPlots(TTJets_eff);
+	TTJets.makePlots(TTJets_eff);
 }
 
 
@@ -48,7 +48,6 @@ if(sampleName=="TTJets"){
 
 else if(sampleName=="QCD"){
 	if(fQCD == NULL) return;
-	vector<TEfficiency*> QCD_effs;
 	TriggerSet QCD(fQCD);
 	QCD.SetSampleName("QCD 2018");
 
