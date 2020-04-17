@@ -32,9 +32,9 @@ if(sampleName=="TTJets"){
 	SoftIdEfficiency TTJets(fTTJets);
 	TTJets.SetSampleName("TTJets 2018");
 
-	TTJets.AddID("Muon_mvaID");
-	TTJets.AddID("Muon_softID");
-	TTJets.AddID("Muon_softMvaID");
+	TTJets.AddID("Muon_mvaId");
+	TTJets.AddID("Muon_softId");
+	TTJets.AddID("Muon_softMvaId");
 
 	TTJets.SetVar("Muon_pt");
 	TTJets.SetOutputName("TTJets_softIDeffs.root");
