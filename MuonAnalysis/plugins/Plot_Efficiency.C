@@ -29,16 +29,17 @@ void Plot_Efficiency(TString sampleName){
 
 if(sampleName=="TTJets"){
 	if(fTTJets == NULL) return;
-	vector<TEfficiency*> TTJets;
-	TriggerSet wjets16_mu(fTTJets);
+	SoftIdEfficiency TTJets(fTTJets);
 	TTJets.SetSampleName("TTJets 2018");
+
 	TTJets.AddID("Muon_mvaID");
-	TTJets.AddTrigger("Muon_softID");
-	TTJets.AddTrigger("Muon_softMvaID");
+	TTJets.AddID("Muon_softID");
+	TTJets.AddID("Muon_softMvaID");
+
 	TTJets.SetVar("Muon_pt");
 	TTJets.SetOutputName("TTJets_softIDeffs.root");
 
-	TTJets_eff = TTJets.Analyze();
+	vector<TEfficiency*> TTJets_eff = TTJets.Analyze();
 	TTJets.makePlots(TTJets_eff);
 }
 
