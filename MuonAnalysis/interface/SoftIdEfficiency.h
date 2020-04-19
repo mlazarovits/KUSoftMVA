@@ -230,7 +230,7 @@ inline void SoftIdEfficiency::initializeAnalyze(){
 	l_Muon_miniIsoId = m_tree->GetLeaf("Muon_miniIsoId");
 	l_Muon_minipfRelIso_all = m_tree->GetLeaf("Muon_miniPFRelIso_all");
 	l_Muon_sip3d = m_tree->GetLeaf("Muon_sip3d");
-	l_GenPart_statusFlags = m_tree->GetLeaf("GenPart_statusFlags");
+	// l_GenPart_statusFlags = m_tree->GetLeaf("GenPart_statusFlags");
 
 	
 	l_var = m_tree->GetLeaf(m_var.c_str());
@@ -413,30 +413,37 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	    int nMuon = l_nMuon->GetValue();
 	    float nMediumMuons = 0;
 	    float nTightMuons = 0;
+	    float isPrompt = 0;
 
-	    // if(nMuon != 1) continue;
+	    if(nMuon != 1) continue;
+	    
 
 
 	    for(int mu = 0; mu < nMuon; mu++){
 		    if(m_tree->GetLeaf("Muon_mediumId")->GetValue(mu)){
 		    	nMediumMuons += 1;
-		    }	
-		}	
-		   
-
-		 for(int mu = 0; mu < nMuon; mu++){
+		    }
 		    if(m_tree->GetLeaf("Muon_tightId")->GetValue(mu)){
 		    	nTightMuons += 1;
 		    }	
+		    if(m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu) == 0){
+		    	isPrompt += 1;
+		    }
+		    if(m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu) == 0){
+		    	isPrompt += 1;
+		    }
 		}	
+		   
+
+		
 		// if(nMediumMuons < 2) continue; 
 		// if(nTightMuons < 1) continue; 
 				
 	
 		for(int nID = 0; nID < m_IDs.size(); nID++){
 			bool bPassed = vec_lID.at(nID)->GetValue();
-			if(nMuon == 1) vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(0));
-			else vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); 
+			vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(0));
+			// else vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); 
 		}
 	}
 	cout << endl;
