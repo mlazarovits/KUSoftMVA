@@ -276,8 +276,9 @@ inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 		// }
 	}
 	else if(strstr(inputvar,"statusFlags")){
-		for(int i = 0; i < 15; i++){
-			effbins.push_back(i);
+		effbins.push_back(0.0)
+		for(int i = 1; i < 16; i++){
+			effbins.push_back(effbins.at(i) + 1.0);
 		}
 
 	}
