@@ -408,7 +408,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	    float nMediumMuons = 0;
 	    float nTightMuons = 0;
 
-	    if(nMuon != 2) continue;
+	    if(nMuon != 1) continue;
 
 
 	    for(int mu = 0; mu < nMuon; mu++){
@@ -423,7 +423,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    	nTightMuons += 1;
 		    }	
 		}	
-		if(nMediumMuons < 2) continue; 
+		// if(nMediumMuons < 2) continue; 
 		// if(nTightMuons < 1) continue; 
 				
 	
