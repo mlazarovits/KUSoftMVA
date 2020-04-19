@@ -37,7 +37,7 @@ if(sampleName=="TTJets"){
 	TTJets.AddID("Muon_softMvaId");
 
 	TTJets.SetVar("Muon_pt");
-	TTJets.SetOutputName("TTJets_softIDeffs_1L_looseID.root");
+	TTJets.SetOutputName("TTJets_softIDeffs_1L_medID.root");
 
 	vector<TEfficiency*> TTJets_eff = TTJets.Analyze();
 	TTJets.makePlots(TTJets_eff);
