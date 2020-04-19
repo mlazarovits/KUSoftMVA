@@ -40,7 +40,7 @@ if(sampleName=="TTJets"){
 	TTJets.SetVar("GenPart_statusFlags");
 	TTJets.SetOutputName(name+".root");
 
-	vector<TEfficiency*> TTJets_eff = TTJets.Analyze2D();
+	vector<TEfficiency*> TTJets_eff = TTJets.Analyze();
 	TTJets.makePlot(TTJets_eff);
 }
 
