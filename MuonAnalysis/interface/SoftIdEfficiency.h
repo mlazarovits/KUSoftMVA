@@ -245,12 +245,12 @@ inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 	std::vector<Double_t> effbins;
 	
 	if(strstr(inputvar, "pt")){
-		nBins = 10;
+		nBins = 11;
 		effbins.push_back(0.0);
 		// for(int i = 1; i < 60; i++){
 		// 	effbins.push_back(effbins.at(i-1) + 0.5);
 		// }
-		for(int i = 1; i < 11; i++){
+		for(int i = 1; i < 12; i++){
 			effbins.push_back(effbins.at(i-1) +3.0);
 			// cout << effbins[i] << endl;
 		}
