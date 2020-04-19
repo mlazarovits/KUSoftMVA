@@ -434,13 +434,14 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    	nTightMuons += 1;
 		    }	
 		}	
-		// if(nMediumMuons < 1) continue; 
+		if(nMediumMuons < 2) continue; 
 		// if(nTightMuons < 1) continue; 
 				
 	
 		for(int nID = 0; nID < m_IDs.size(); nID++){
 			bool bPassed = vec_lID.at(nID)->GetValue();
-			vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); //leading lepton
+			if(nMuon == 1) vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(0));
+			else vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); 
 		}
 	}
 	cout << endl;
@@ -616,7 +617,7 @@ inline void SoftIdEfficiency::makePlots(vector<TEfficiency*> effs){
 	leg->Draw("SAME");
 	cv->Update();
 
-	string g_PlotTitle = m_samplename+" Efficiencies";
+	string g_PlotTitle = m_samplename;
 	mg->GetXaxis()->SetTitle(m_var.c_str());
 	mg->GetYaxis()->SetTitle("#epsilon");
 	
