@@ -245,26 +245,26 @@ inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 	std::vector<Double_t> effbins;
 	
 	if(strstr(inputvar, "pt")){
-		nBins = 60;
+		nBins = 10;
 		effbins.push_back(0.0);
-		for(int i = 1; i < 60; i++){
-			effbins.push_back(effbins.at(i-1) + 0.5);
-		}
+		// for(int i = 1; i < 60; i++){
+		// 	effbins.push_back(effbins.at(i-1) + 0.5);
+		// }
 		//SOS binning
-		// for(int i = 1; i < 2; i++){
-		// 	effbins.push_back(effbins.at(i-1) + 4.0);
-		// 	// cout << effbins[i] << endl;
-		// }
-		// for(int i = 2; i < 5; i++){
-		// 	effbins.push_back(effbins.at(i-1) + 1.0);
-		// 	// cout << effbins[i] << endl;
-		// }
-		// for(int i = 5; i < 6; i++){
-		// 	effbins.push_back(effbins.at(i-1) + 3.);
-		// }
-		// for(int i = 6; i < 11; i++){
-		// 	effbins.push_back(effbins.at(i-1) + 5.);
-		// }
+		for(int i = 1; i < 2; i++){
+			effbins.push_back(effbins.at(i-1) + 4.0);
+			// cout << effbins[i] << endl;
+		}
+		for(int i = 2; i < 5; i++){
+			effbins.push_back(effbins.at(i-1) + 1.0);
+			// cout << effbins[i] << endl;
+		}
+		for(int i = 5; i < 6; i++){
+			effbins.push_back(effbins.at(i-1) + 3.);
+		}
+		for(int i = 6; i < 11; i++){
+			effbins.push_back(effbins.at(i-1) + 5.);
+		}
 	}
 	else if(strstr(inputvar, "eta")){
 
