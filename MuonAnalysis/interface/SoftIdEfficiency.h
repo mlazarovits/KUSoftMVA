@@ -419,12 +419,12 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	    float nMediumMuons = 0;
 
 	    if(nMuon != 1) continue;
-	    for(int mu = 0; mu < nMuon; mu++){
-		    if(m_tree->GetLeaf("Muon_mediumId")->GetValue(mu)){
-		    	nMediumMuons += 1;
-		    }	
-		}	
-		if(nMediumMuons < 1) continue;   
+	 //    for(int mu = 0; mu < nMuon; mu++){
+		//     if(m_tree->GetLeaf("Muon_mediumId")->GetValue(mu)){
+		//     	nMediumMuons += 1;
+		//     }	
+		// }	
+		// if(nMediumMuons < 1) continue;   
 
 	    // if(nMuon >= 2) double_lep = true;
 		// if(nMuon != 2) continue; 
@@ -517,7 +517,7 @@ inline void SoftIdEfficiency::make2DPlot(TEfficiency* eff){
 	cv->Update();
 
 	if(!debug){
-		TString filename = ("/home/t3-ku/mlazarov/CMSSW_10_6_5/src/ReducedNtuple/effPlots/"+m_outname).c_str();
+		TString filename = ("/home/t3-ku/mlazarov/CMSSW_10_6_8/src/KUSoftMVA/MuonAnalysis/plots/"+m_outname).c_str();
 
 		TFile* file = new TFile(filename,"RECREATE");
 		cout << "file: " << filename << " created" << endl;
@@ -639,7 +639,7 @@ inline void SoftIdEfficiency::makePlots(vector<TEfficiency*> effs){
 	cv->Update();
 
 	if(!debug){
-		TString filename = ("/home/t3-ku/mlazarov/CMSSW_10_6_5/src/ReducedNtuple/effPlots/"+m_outname).c_str();
+		TString filename = ("/home/t3-ku/mlazarov/CMSSW_10_6_8/src/KUSoftMVA/MuonAnalysis/plots/"+m_outname).c_str();
 
 		TFile* file = new TFile(filename,"RECREATE");
 		cout << "file: " << filename << " created" << endl;
