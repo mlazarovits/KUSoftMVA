@@ -436,22 +436,11 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		}	
 		// if(nMediumMuons < 1) continue; 
 		// if(nTightMuons < 1) continue; 
-
-	    // if(nMuon >= 2) double_lep = true;
-		// if(nMuon != 2) continue; 
-
-		// if(MET >= 200) METval = true;//continue;
-		// if(MHT.Pt() >= 60) mHTval = true;//continue;
-
-		// invMuonMass = calcInvMass2Muons(0, 1);
-		// invMuonpT = calcPt2Muons(0, 1);
-		// if(invMuonMass >= 4 && invMuonMass < 60) invMuonMassval = true;
-		// if(invMuonpT >= 3) invMuonpTval = true;
 				
 	
 		for(int nID = 0; nID < m_IDs.size(); nID++){
 			bool bPassed = vec_lID.at(nID)->GetValue();
-			vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(0)); //leading lepton
+			vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); //leading lepton
 		}
 	}
 	cout << endl;
