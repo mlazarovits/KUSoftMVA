@@ -279,7 +279,6 @@ inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 		effbins.push_back(0.0);
 		for(int i = 1; i < 16; i++){
 			effbins.push_back(effbins.at(i-1) + 1.0);
-			cout << effbins.at(i) << endl;
 		}
 
 	}
@@ -439,6 +438,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		
 		// if(nMediumMuons < 2) continue; 
 		// if(nTightMuons < 1) continue; 
+		cout << l_var->GetValue(0) << endl;
 				
 	
 		for(int nID = 0; nID < m_IDs.size(); nID++){
