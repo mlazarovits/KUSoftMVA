@@ -40,7 +40,7 @@ if(sampleName=="TTJets"){
 	TTJets.SetVar("Muon_pt");
 	TTJets.SetOutputName(name+".root");
 
-	vector<TEfficiency*> TTJets_eff = TTJets.Analyze2D();
+	TEfficiency* TTJets_eff = TTJets.Analyze2D();
 	TTJets.make2DPlot(TTJets_eff);
 }
 
