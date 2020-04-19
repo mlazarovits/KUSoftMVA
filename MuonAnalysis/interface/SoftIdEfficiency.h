@@ -473,18 +473,21 @@ inline void SoftIdEfficiency::make2DPlot(TEfficiency* eff){
 
 	Int_t gBin;
 	Double_t error;
+	Int_t nBinsx = h->GetNbinsX();
+	Int_t nBinsy = h->GetNbinsY();
+
 	
-	for(int i = 1; i < 10; i++){
-		for(int j = 1; j < 6; j++){
+	for(int i = 1; i < nBinsx; i++){
+		for(int j = 1; j < nBinsy; j++){
 			gBin = h->GetBin(i,j);
-			cout << "X bin #: " << i << " Y bin #: " << j << endl;
-			cout << "global bin: " << gBin << endl;
-			cout << "Bin Content: " << h->GetBinContent(gBin) << endl;
-			cout << "Bin Error: " << h->GetBinError(gBin) << endl;
-			cout << "Efficiency: " << eff->GetEfficiency(gBin) << endl;
-			cout << "Eff error up: " << eff->GetEfficiencyErrorUp(gBin) << endl;
-			cout << "Eff error low: " << eff->GetEfficiencyErrorLow(gBin) << endl;
-			cout << "\n" << endl;
+			// cout << "X bin #: " << i << " Y bin #: " << j << endl;
+			// cout << "global bin: " << gBin << endl;
+			// cout << "Bin Content: " << h->GetBinContent(gBin) << endl;
+			// cout << "Bin Error: " << h->GetBinError(gBin) << endl;
+			// cout << "Efficiency: " << eff->GetEfficiency(gBin) << endl;
+			// cout << "Eff error up: " << eff->GetEfficiencyErrorUp(gBin) << endl;
+			// cout << "Eff error low: " << eff->GetEfficiencyErrorLow(gBin) << endl;
+			// cout << "\n" << endl;
 
 			if(eff->GetEfficiencyErrorUp(gBin) >= eff->GetEfficiencyErrorLow(gBin)){
 				error = eff->GetEfficiencyErrorUp(gBin);

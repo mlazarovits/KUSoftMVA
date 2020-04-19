@@ -30,7 +30,7 @@ void Plot_Efficiency(TString sampleName){
 if(sampleName=="TTJets"){
 	if(fTTJets == NULL) return;
 	SoftIdEfficiency TTJets(fTTJets);
-	string name = "TTJets_2DsoftIDeffs_1L_looseID";
+	string name = "TTJets_2DmvaIDeff_1L_looseID";
 	TTJets.SetSampleName(name);
 
 	TTJets.AddID("Muon_mvaId");
@@ -64,22 +64,23 @@ else if(sampleName=="QCD"){
 	QCD.makePlot(QCD_effs);
 }
 
-// else if(sampleName=="DYJets"){
-// 	if(fDYJets == NULL) return;
-// 	vector<TEfficiency*> DYJets;
-// 	TriggerSet wjets17_ele(fDYJets);
-// 	wjets17_ele.SetSampleName("WJetsToLNu 2017 Loose ID");
-// 	wjets17_ele.AddTrigger("HLT_Ele32_WPTight_Gsf_L1DoubleEG"); //with HLT_Ele35_WPTight_Gsf_L1EGMT requirement
-// 	wjets17_ele.AddTrigger("HLT_Ele35_WPTight_Gsf");
-// 	wjets17_ele.AddTrigger("HLT_Photon200");
-// 	wjets17_ele.AddTrigger("HLT_Ele115_CaloIdVT_GsfTrkIdT");
-// 	wjets17_ele.AddTrigger("HLT_Ele50_CaloIdVT_GsfTrkIdT_PFJet165");
-// 	wjets17_ele.SetVar("Electron_pt");
-// 	wjets17_ele.SetOutputName("WJets17_AllTrigs_SingleEle_loose.root");
+else if(sampleName=="DYJets"){
+	if(fDYJets == NULL) return;
+	string name = "DYJets_softIDeffs_looseID";
+	SoftIdEfficiency DYJets(fDYJets);
 
-// 	wjets17_ele_effs = wjets17_ele.Analyze();
-// 	wjets17_ele.makePlots(wjets17_ele_effs);
-// }
+	DYJets.SetSampleName(name);
+	DYJets.AddID("Muon_mvaId");
+	DYJets.AddID("Muon_softId");
+	DYJets.AddID("Muon_softMvaId");
+
+	DYJets.SetVar("Muon_pt");
+
+	DYJets.SetOutputName(name+".root");
+
+	vector<TEfficiency*> DYJets_effs = DYJets.Analyze();
+	DYJets.makePlot(DYJets_effs);
+}
 
 
 
