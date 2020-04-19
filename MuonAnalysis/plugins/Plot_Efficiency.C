@@ -30,14 +30,15 @@ void Plot_Efficiency(TString sampleName){
 if(sampleName=="TTJets"){
 	if(fTTJets == NULL) return;
 	SoftIdEfficiency TTJets(fTTJets);
-	TTJets.SetSampleName("TTJets 2018 1L w/ Tight ID");
+	string name = "TTJets_softIDeffs_2L_looseID"
+	TTJets.SetSampleName(name);
 
 	TTJets.AddID("Muon_mvaId");
 	TTJets.AddID("Muon_softId");
 	TTJets.AddID("Muon_softMvaId");
 
 	TTJets.SetVar("Muon_pt");
-	TTJets.SetOutputName("TTJets_softIDeffs_1L_tightID.root");
+	TTJets.SetOutputName(name+".root");
 
 	vector<TEfficiency*> TTJets_eff = TTJets.Analyze();
 	TTJets.makePlots(TTJets_eff);
