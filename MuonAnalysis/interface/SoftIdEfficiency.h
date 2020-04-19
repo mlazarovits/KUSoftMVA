@@ -477,8 +477,8 @@ inline void SoftIdEfficiency::make2DPlot(TEfficiency* eff){
 	Int_t nBinsy = h->GetNbinsY();
 
 	
-	for(int i = 1; i < nBinsx; i++){
-		for(int j = 1; j < nBinsy; j++){
+	for(int i = 1; i < nBinsx+1; i++){
+		for(int j = 1; j < nBinsy+1; j++){
 			gBin = h->GetBin(i,j);
 			// cout << "X bin #: " << i << " Y bin #: " << j << endl;
 			// cout << "global bin: " << gBin << endl;
