@@ -279,6 +279,7 @@ inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 		effbins.push_back(0.0);
 		for(int i = 1; i < 16; i++){
 			effbins.push_back(effbins.at(i-1) + 1.0);
+			cout << effbins.at(i) << endl;
 		}
 
 	}
@@ -413,7 +414,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	    int nMuon = l_nMuon->GetValue();
 	    float nMediumMuons = 0;
 	    float nTightMuons = 0;
-	    float isPrompt = 0;
+	    // float isPrompt = 0;
 
 	    if(nMuon != 1) continue;
 	    
@@ -426,12 +427,12 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    if(m_tree->GetLeaf("Muon_tightId")->GetValue(mu)){
 		    	nTightMuons += 1;
 		    }	
-		    if(m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu) == 0){
-		    	isPrompt += 1;
-		    }
-		    if(m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu) == 0){
-		    	isPrompt += 1;
-		    }
+		    // if(m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu) == 0){
+		    // 	isPrompt += 1;
+		    // }
+		    // if(m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu) == 0){
+		    // 	isPrompt += 1;
+		    // }
 		}	
 		   
 
