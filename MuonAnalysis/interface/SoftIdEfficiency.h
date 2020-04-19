@@ -241,7 +241,7 @@ inline void SoftIdEfficiency::initializeAnalyze(){
 
 inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 	//set bins of TEff object
-	Int_t nBins;
+	// Int_t nBins;
 	std::vector<Double_t> effbins;
 	
 	if(strstr(inputvar, "pt")){
@@ -277,7 +277,7 @@ inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 	}
 	else if(strstr(inputvar,"statusFlags")){
 		for(int i = 0; i < 15; i++){
-			effbins.push_back(effbins.at(i) + 1.0);
+			effbins.push_back(i);
 		}
 
 	}
