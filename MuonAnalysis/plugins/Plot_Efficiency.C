@@ -30,7 +30,7 @@ void Plot_Efficiency(TString sampleName){
 if(sampleName=="TTJets"){
 	if(fTTJets == NULL) return;
 	SoftIdEfficiency TTJets(fTTJets);
-	string name = "TTJets_softIDeffs_2L_medID";
+	string name = "TTJets_2DsoftIDeffs_1L_looseID";
 	TTJets.SetSampleName(name);
 
 	TTJets.AddID("Muon_mvaId");
@@ -40,8 +40,8 @@ if(sampleName=="TTJets"){
 	TTJets.SetVar("Muon_pt");
 	TTJets.SetOutputName(name+".root");
 
-	vector<TEfficiency*> TTJets_eff = TTJets.Analyze();
-	TTJets.makePlots(TTJets_eff);
+	vector<TEfficiency*> TTJets_eff = TTJets.Analyze2D();
+	TTJets.make2DPlot(TTJets_eff);
 }
 
 
@@ -61,7 +61,7 @@ else if(sampleName=="QCD"){
 	QCD.SetOutputName(name+".root");
 
 	vector<TEfficiency*> QCD_effs = QCD.Analyze();
-	QCD.makePlots(QCD_effs);
+	QCD.makePlot(QCD_effs);
 }
 
 // else if(sampleName=="DYJets"){

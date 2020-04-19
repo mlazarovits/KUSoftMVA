@@ -42,7 +42,7 @@ public:
 	vector<TEfficiency*> Analyze();
 	TEfficiency* Analyze2D();
 
-	void makePlots(vector<TEfficiency*> effs);
+	void makePlot(vector<TEfficiency*> effs);
 	void make2DPlot(TEfficiency* eff);
 
 	void SetCuts(string cuts);
@@ -345,9 +345,8 @@ inline TEfficiency* SoftIdEfficiency::Analyze2D(){
 	    fflush(stdout);
 
 
-	    // int nMuon = l_nMuon->GetValue();
-	    // float MET = l_MET->GetValue();
-	    // if(nMuon != 2) continue;
+	    int nMuon = l_nMuon->GetValue();
+	    if(nMuon != 1) continue;
 		
 		
 		
@@ -531,7 +530,7 @@ inline void SoftIdEfficiency::make2DPlot(TEfficiency* eff){
 }
 
 
-inline void SoftIdEfficiency::makePlots(vector<TEfficiency*> effs){
+inline void SoftIdEfficiency::makePlot(vector<TEfficiency*> effs){
 	TCanvas* cv = new TCanvas("cv","cv",800,600);
 	TLegend* leg = new TLegend(0.35,0.2,0.95,0.4);
 	vector<TGraphAsymmErrors*> gr_effs;
