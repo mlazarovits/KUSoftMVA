@@ -33,8 +33,8 @@ if(sampleName=="TTJets"){
 	string name = "TTJets_softIDeffs_1L_looseID_GenStatusFlag";
 	TTJets.SetSampleName(name);
 
-	// TTJets.AddID("Muon_mvaId");
-	// TTJets.AddID("Muon_softId");
+	TTJets.AddID("Muon_mvaId");
+	TTJets.AddID("Muon_softId");
 	TTJets.AddID("Muon_softMvaId");
 
 	TTJets.SetVar("GenPart_statusFlags");
