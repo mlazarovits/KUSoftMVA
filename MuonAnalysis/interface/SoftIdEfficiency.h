@@ -59,6 +59,8 @@ private:
 	void initializeAnalyze();
 	std::vector<Double_t> makeEffBins(TString inputvar);
 
+	std::vector<Int_t> Decimal2Binary(Int_t num);
+
 
 	// bool GoldenMuonSelection();
 	// bool DoubleMuonSelection();
@@ -216,6 +218,18 @@ inline Double_t SoftIdEfficiency::calcPt2Muons(int Muon1, int Muon2){
 }
 
 
+inline std::vector<Int_t> SoftIdEfficiency::Decimal2Binary(Int_t num){
+	int i;
+	std::vector<Int_t> binary;
+	while(num != 0){
+		binary.push_back(num % 2);
+		num /= 2;
+	}
+	std::reverse(binary.begin(),binary.end());
+	return binary;
+}
+
+
 
 
 inline void SoftIdEfficiency::initializeAnalyze(){
@@ -277,7 +291,7 @@ inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 	}
 	else if(strstr(inputvar,"statusFlags")){
 		effbins.push_back(0.0);
-		for(int i = 1; i < 16; i++){
+		for(int i = 1; i < 15; i++){
 			effbins.push_back(effbins.at(i-1) + 1.0);
 		}
 
@@ -413,6 +427,8 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	    int nMuon = l_nMuon->GetValue();
 	    float nMediumMuons = 0;
 	    float nTightMuons = 0;
+	    int bitwiseStatusFlag;
+	    std::vector<int> statusFlags;
 	    // float isPrompt = 0;
 
 	    if(nMuon != 1) continue;
@@ -426,9 +442,8 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    if(m_tree->GetLeaf("Muon_tightId")->GetValue(mu)){
 		    	nTightMuons += 1;
 		    }	
-		    // if(m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu) == 0){
-		    // 	isPrompt += 1;
-		    // }
+		    bitwiseStatusFlag = m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu);
+		    statusFlags = Decimal2Binary(binary);
 		    // if(m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu) == 0){
 		    // 	isPrompt += 1;
 		    // }
