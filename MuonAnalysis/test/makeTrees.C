@@ -17,8 +17,7 @@
 #include "TLeaf.h"
 #include <TSystem.h>
 
-//#include "SoftLepSignal.h"
-#include "NanoTreeTemplate.h"
+#include "softLepSignal.h"
 
 
 using namespace std;
