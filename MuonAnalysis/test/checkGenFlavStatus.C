@@ -24,7 +24,7 @@ void checkGenFlavor(TString filename){
 		float deltaR;
 		float dp;
 
-		for(int mu = 0; mu < nMuons; j++){
+		for(int mu = 0; mu < nMuons; mu++){
 			genPartFlavor = int(tree->GetLeaf("Muon_genPartFlavor")->GetValue(mu));
 			if(genPartFlavor != 0) continue;
 			mu_eta = tree->GetLeaf("Muon_eta")->GetValue(mu);
@@ -55,7 +55,7 @@ void checkGenFlavor(TString filename){
 	}
 
 	dR_hist->Draw();
-	genIdx->Draw();
+	genIdx_hist->Draw();
 
 
 
