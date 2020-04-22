@@ -53,9 +53,13 @@ void checkGenFlavStatus(){
 		}
 
 	}
+	TCanvas* cv = new TCanvas();
+	TCanvas* cv2 = new TCanvas();
 
+	cv->cd();
 	dR_hist->Draw();
-	genIdx_hist->Draw();
+	// cv2->cd();
+	// genIdx_hist->Draw();
 
 
 
