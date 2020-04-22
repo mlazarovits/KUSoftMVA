@@ -3,7 +3,7 @@ void checkGenFlavStatus(){
 	TTree* tree = (TTree*)file->Get("Events");
 	int nEntries = tree->GetEntries();
 
-	TH1F* dR_hist = new TH1F("dR_hist","dR_hist",100,0,0.35);
+	TH1F* dR_hist = new TH1F("dR_hist","dR_hist",100,0,0.6);
 	TH1F* genIdx_hist = new TH1F("genIdx_hist","genIdx_hist",100,-50,50);
 
 
