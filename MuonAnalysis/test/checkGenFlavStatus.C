@@ -69,7 +69,7 @@ void checkGenFlavStatus(){
 	// TCanvas* cv2 = new TCanvas();
 
 	cv->cd();
-	dRdPt_hist->Draw();
+	dRdPt_hist->Draw("colz");
 	// dR_hist->Draw();
 	// cv2->cd();
 	// genIdx_hist->Draw();
