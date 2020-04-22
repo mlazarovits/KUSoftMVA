@@ -25,7 +25,7 @@ void checkGenFlavStatus(){
 		float dp;
 
 		for(int mu = 0; mu < nMuons; mu++){
-			genPartFlavor = int(tree->GetLeaf("Muon_genPartFlavor")->GetValue(mu));
+			genPartFlavor = int(tree->GetLeaf("Muon_genPartFlav")->GetValue(mu));
 			if(genPartFlavor != 0) continue;
 			mu_eta = tree->GetLeaf("Muon_eta")->GetValue(mu);
 			mu_phi = tree->GetLeaf("Muon_phi")->GetValue(mu);
