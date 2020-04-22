@@ -30,7 +30,7 @@ void checkGenFlavStatus(){
 			mu_eta = tree->GetLeaf("Muon_eta")->GetValue(mu);
 			mu_phi = tree->GetLeaf("Muon_phi")->GetValue(mu);
 
-			float dR = 0.3;
+			float dR = 0.5;
 			int genIdx = -999;
 			for(int gP = 0; gP < nGenPart; gP++){
 
