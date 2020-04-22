@@ -5,6 +5,7 @@ void checkGenFlavStatus(){
 
 	TH1F* dR_hist = new TH1F("dR_hist","dR_hist",100,0,0.6);
 	TH1F* genIdx_hist = new TH1F("genIdx_hist","genIdx_hist",100,-50,50);
+	TH2F* dRdPt_hist = new TH2F("dRdPt_hist","dRdPt_hist",100,0,0.6,100,0,1);
 
 
 	for(int i = 0;i < nEntries; i++){
@@ -57,6 +58,7 @@ void checkGenFlavStatus(){
 				
 			}
 			dR_hist->Fill(dR);
+			dRdPt_hist->Fill(dR,dPtRel);
 			if(genIdx != -999) genIdx_hist->Fill(genIdx);
 
 			
@@ -67,7 +69,8 @@ void checkGenFlavStatus(){
 	// TCanvas* cv2 = new TCanvas();
 
 	cv->cd();
-	dR_hist->Draw();
+	dRdPt_hist->Draw();
+	// dR_hist->Draw();
 	// cv2->cd();
 	// genIdx_hist->Draw();
 
