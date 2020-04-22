@@ -23,6 +23,8 @@ void checkGenFlavStatus(){
 		float gp_phi;
 		float deltaR;
 		float dp;
+		float deltaPt;
+		float deltaPtRel;
 
 		for(int mu = 0; mu < nMuons; mu++){
 			genPartFlavor = int(tree->GetLeaf("Muon_genPartFlav")->GetValue(mu));
