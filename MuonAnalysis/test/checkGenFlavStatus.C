@@ -3,7 +3,7 @@ void checkGenFlavStatus(){
 	TTree* tree = (TTree*)file->Get("Events");
 	int nEntries = tree->GetEntries();
 
-	TH1F* dR_hist = new TH1F("dR_hist","dR_hist",100,0,1);
+	TH1F* dR_hist = new TH1F("dR_hist","dR_hist",100,0,10);
 	TH1F* genIdx_hist = new TH1F("genIdx_hist","genIdx_hist",100,-50,50);
 
 
@@ -30,8 +30,8 @@ void checkGenFlavStatus(){
 			mu_eta = tree->GetLeaf("Muon_eta")->GetValue(mu);
 			mu_phi = tree->GetLeaf("Muon_phi")->GetValue(mu);
 
-			float dR = 0;
-			int genIdx;
+			float dR = 0.3;
+			int genIdx = -999;
 			for(int gP = 0; gP < nGenPart; gP++){
 
 				gp_eta = tree->GetLeaf("GenPart_eta")->GetValue(gP);
@@ -47,7 +47,7 @@ void checkGenFlavStatus(){
 				
 			}
 			dR_hist->Fill(dR);
-			genIdx_hist->Fill(genIdx);
+			if(genIdx != -999) genIdx_hist->Fill(genIdx);
 
 			
 		}
