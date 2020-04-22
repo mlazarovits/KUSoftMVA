@@ -1,5 +1,5 @@
-void checkGenFlavStatus(TString filename){
-	TFile* file = TFile::Open(filename);
+void checkGenFlavStatus(){
+	TFile* file = TFile::Open("OutputFiles/DYJetsToLL2018_MINI_numEvents20000.root");
 	TTree* tree = (TTree*)file->Get("Events");
 	int nEntries = tree->GetEntries();
 
