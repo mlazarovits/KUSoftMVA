@@ -1,4 +1,4 @@
-void checkGenFlavor(TString filename){
+void checkGenFlavStatus(TString filename){
 	TFile* file = TFile::Open(filename);
 	TTree* tree = (TTree*)file->Get("Events");
 	int nEntries = tree->GetEntries();
