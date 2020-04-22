@@ -3,7 +3,7 @@ void checkGenFlavStatus(){
 	TTree* tree = (TTree*)file->Get("Events");
 	int nEntries = tree->GetEntries();
 
-	TH1F* dR_hist = new TH1F("dR_hist","dR_hist",100,0,10);
+	TH1F* dR_hist = new TH1F("dR_hist","dR_hist",100,0,1);
 	TH1F* genIdx_hist = new TH1F("genIdx_hist","genIdx_hist",100,-50,50);
 
 
@@ -54,7 +54,7 @@ void checkGenFlavStatus(){
 
 	}
 	TCanvas* cv = new TCanvas();
-	TCanvas* cv2 = new TCanvas();
+	// TCanvas* cv2 = new TCanvas();
 
 	cv->cd();
 	dR_hist->Draw();
