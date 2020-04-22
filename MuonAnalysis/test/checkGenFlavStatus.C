@@ -1,5 +1,5 @@
 void checkGenFlavStatus(){
-	TFile* file = TFile::Open("OutputFiles/DYJetsToLL2018_MINI_numEvents20000.root");
+	TFile* file = TFile::Open("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent20000.root");
 	TTree* tree = (TTree*)file->Get("Events");
 	int nEntries = tree->GetEntries();
 
