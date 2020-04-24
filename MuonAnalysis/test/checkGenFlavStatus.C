@@ -1,5 +1,5 @@
 void checkGenFlavStatus(){
-	TFile* file = TFile::Open("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent20000.root");
+	TFile* file = TFile::Open("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent200.root");
 	TTree* tree = (TTree*)file->Get("Events");
 	int nEntries = tree->GetEntries();
 
@@ -7,6 +7,8 @@ void checkGenFlavStatus(){
 	TH1F* genIdx_hist = new TH1F("genIdx_hist","genIdx_hist",100,-50,50);
 	TH2F* dRdPt_hist = new TH2F("dRdPt_hist","dRdPt_hist",25,0,0.6,25,0,1);
 
+	std::vector<float> dRs;
+	std::vector<float> dPtRels;
 
 	for(int i = 0;i < nEntries; i++){
 		tree->GetEntry(i);
@@ -14,6 +16,7 @@ void checkGenFlavStatus(){
 		// cout << "event: " << i << endl;
 		int nGenPart = tree->GetLeaf("nGenPart")->GetValue();
 		int nMuons = tree->GetLeaf("nMuon")->GetValue();
+
 		int idx;
 		int nPis = 0;
 		int nMu = 0;
@@ -31,6 +34,8 @@ void checkGenFlavStatus(){
 		float dPtRel;
 		float dPt;
 
+		
+
 		if(nMuons < 1) continue;
 
 		for(int mu = 0; mu < nMuons; mu++){
@@ -39,15 +44,7 @@ void checkGenFlavStatus(){
 			mu_eta = tree->GetLeaf("Muon_eta")->GetValue(mu);
 			mu_phi = tree->GetLeaf("Muon_phi")->GetValue(mu);
 
-			
-
-			gp_eta = tree->GetLeaf("GenPart_eta")->GetValue(0);
-			gp_phi = tree->GetLeaf("GenPart_eta")->GetValue(0);
-			dp = std::abs(mu_phi - gp_phi);
-			dR  = std::sqrt((mu_eta - gp_eta)*(mu_eta - gp_eta) + dp*dp);
-
-			dPt = std::abs(tree->GetLeaf("GenPart_pt")->GetValue(0) - tree->GetLeaf("Muon_pt")->GetValue(mu));
-			dPtRel = deltaPt/tree->GetLeaf("Muon_pt")->GetValue(mu);
+		
 
 
 			for(int gP = 0; gP < nGenPart; gP++){
@@ -60,18 +57,26 @@ void checkGenFlavStatus(){
 				deltaPt = std::abs(tree->GetLeaf("GenPart_pt")->GetValue(gP) - tree->GetLeaf("Muon_pt")->GetValue(mu));
 				deltaPtRel = deltaPt/tree->GetLeaf("Muon_pt")->GetValue(mu);
 
-				if(deltaR <= dR && deltaPtRel <= dPtRel){
-					dR = deltaR;
-					dPtRel = deltaPtRel;
-				}
-				else continue;
+				dRs.push_back(deltaR);
+				dPtRels.push_back(deltaPtRel);
+
+				// if(deltaR <= dR && deltaPtRel <= dPtRel){
+				// 	dR = deltaR;
+				// 	dPtRel = deltaPtRel;
+				// }
+				// else continue;
 				// genIdx = gP;
 				
 
 				
 			}
-			dR_hist->Fill(deltaR);
-			dRdPt_hist->Fill(deltaR,deltaPtRel);
+			dR_hist->Fill(*min_element(dRs.begin(),dRs.end()));
+			dRdPt_hist->Fill(*min_element(dRs.begin(),dRs.end()),*min_element(dPtRels.begin(),dPtRels.end()));
+			dRs.clear();
+			dPtRels.clear();
+
+
+
 			
 			// if(genIdx != -999) genIdx_hist->Fill(genIdx);
 
@@ -91,6 +96,8 @@ void checkGenFlavStatus(){
 	dR_hist->GetXaxis()->SetTitle("dR");
 	dR_hist->Draw();
 	
+
+
 
 
 
