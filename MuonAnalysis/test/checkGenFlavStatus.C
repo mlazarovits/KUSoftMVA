@@ -5,7 +5,7 @@ void checkGenFlavStatus(){
 
 	TH1F* dR_hist = new TH1F("dR_hist","dR_hist",100,0,0.6);
 	TH1F* genIdx_hist = new TH1F("genIdx_hist","genIdx_hist",100,-50,50);
-	TH2F* dRdPt_hist = new TH2F("dRdPt_hist","dRdPt_hist",50,0,0.6,50,0,1);
+	TH2F* dRdPt_hist = new TH2F("dRdPt_hist","dRdPt_hist",25,0,0.6,25,0,1);
 
 
 	for(int i = 0;i < nEntries; i++){
