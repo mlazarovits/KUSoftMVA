@@ -3,8 +3,8 @@ void checkGenFlavStatus(){
 	TTree* tree = (TTree*)file->Get("Events");
 	int nEntries = tree->GetEntries();
 
-	TH1F* dR_hist = new TH1F("dR_hist","dR_hist",100,0,0.6);
-	TH1F* genIdx_hist = new TH1F("genIdx_hist","genIdx_hist",100,-50,50);
+	TH1F* dR_hist = new TH1F("dR_hist","dR_hist",100,0,1);
+	// TH1F* genIdx_hist = new TH1F("genIdx_hist","genIdx_hist",100,-50,50);
 	TH2F* dRdPt_hist = new TH2F("dRdPt_hist","dRdPt_hist",25,0,0.6,25,0,1);
 
 	std::vector<float> dRs;
