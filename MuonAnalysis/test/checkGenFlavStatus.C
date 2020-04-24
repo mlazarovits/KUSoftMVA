@@ -5,7 +5,7 @@ void checkGenFlavStatus(){
 
 	TH1F* dR_hist = new TH1F("dR_hist","dR_hist",100,0,10);
 	// TH1F* genIdx_hist = new TH1F("genIdx_hist","genIdx_hist",100,-50,50);
-	TH2F* dRdPt_hist = new TH2F("dRdPt_hist","dRdPt_hist",10,0,10,15,0,1.1);
+	TH2F* dRdPt_hist = new TH2F("dRdPt_hist","dRdPt_hist",10,0,10,11,0,1.1);
 
 	std::vector<float> dRs;
 	std::vector<float> dPtRels;
