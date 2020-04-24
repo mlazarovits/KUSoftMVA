@@ -27,6 +27,8 @@ void checkGenFlavStatus(){
 		float deltaPt;
 		float deltaPtRel;
 
+		if(nMuons < 1) continue;
+
 		for(int mu = 0; mu < nMuons; mu++){
 			genPartFlavor = int(tree->GetLeaf("Muon_genPartFlav")->GetValue(mu));
 			if(genPartFlavor != 0) continue;
@@ -66,13 +68,17 @@ void checkGenFlavStatus(){
 
 	}
 	TCanvas* cv = new TCanvas();
-	// TCanvas* cv2 = new TCanvas();
+	TCanvas* cv2 = new TCanvas();
 
 	cv->cd();
+	dRdPt_hist->GetYaxis()->SetTitle("delta pT rel");
+	dRdPt_hist->GetXaxis()->SetTitle("dR");
 	dRdPt_hist->Draw("colz");
-	// dR_hist->Draw();
-	// cv2->cd();
-	// genIdx_hist->Draw();
+	
+	cv2->cd();
+	dR_hist->GetXaxis()->SetTitle("dR");
+	dR_hist->Draw();
+	
 
 
 
