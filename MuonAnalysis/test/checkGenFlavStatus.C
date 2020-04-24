@@ -84,6 +84,8 @@ void checkGenFlavStatus(){
 		}
 
 	}
+	cout << "# dR entries: " << dR_hist->Integral() << endl;
+	cout << "# dRdPt_hist entries: " << dRdPt_hist->Integral() << endl; 
 	TCanvas* cv = new TCanvas();
 	TCanvas* cv2 = new TCanvas();
 
