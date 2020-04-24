@@ -26,6 +26,9 @@ void checkGenFlavStatus(){
 		float dp;
 		float deltaPt;
 		float deltaPtRel;
+		float dR;
+		// int genIdx = -999;
+		float dPtRel;
 
 		if(nMuons < 1) continue;
 
@@ -35,31 +38,39 @@ void checkGenFlavStatus(){
 			mu_eta = tree->GetLeaf("Muon_eta")->GetValue(mu);
 			mu_phi = tree->GetLeaf("Muon_phi")->GetValue(mu);
 
-			float dR = 0.5;
-			int genIdx = -999;
-			float dPtRel = 1.;
+			
+
+			gp_eta = tree->GetLeaf("GenPart_eta")->GetValue(0);
+			gp_phi = tree->GetLeaf("GenPart_eta")->GetValue(0);
+			dp = std::abs(mu_phi - gp_phi);
+			dR  = std::sqrt((mu_eta - gp_eta)*(mu_eta - gp_eta) + dp*dp);
+
+			dPt = std::abs(tree->GetLeaf("GenPart_pt")->GetValue(0) - tree->GetLeaf("Muon_pt")->GetValue(mu));
+			dPtRel = deltaPt/tree->GetLeaf("Muon_pt")->GetValue(mu);
+
+
 			for(int gP = 0; gP < nGenPart; gP++){
 
-				gp_eta = tree->GetLeaf("GenPart_eta")->GetValue(gP);
+				gp_eta = tree->GetLeaf("GenPart_eta")->GetValue(gp);
 				gp_phi = tree->GetLeaf("GenPart_eta")->GetValue(gP);
 				dp = std::abs(mu_phi - gp_phi);
 				deltaR  = std::sqrt((mu_eta - gp_eta)*(mu_eta - gp_eta) + dp*dp);
 
-				deltaPt = std::abs(tree->GetLeaf("GenPart_pt")->GetValue(gP) - tree->GetLeaf("Muon_pt")->GetValue(mu));
+				deltaPt = std::abs(tree->GetLeaf("GenPart_pt")->GetValue(gp) - tree->GetLeaf("Muon_pt")->GetValue(mu));
 				deltaPtRel = deltaPt/tree->GetLeaf("Muon_pt")->GetValue(mu);
 
-				// if(deltaR <= dR && deltaPtRel <= dPtRel){
-				// 	dR = deltaR;
-				// 	dPtRel = deltaPtRel;
-				// }
-				// if(deltaPtRel <= dPtRel) 
-				// else continue;
+				if(deltaR <= dR && deltaPtRel <= dPtRel){
+					dR = deltaR;
+					dPtRel = deltaPtRel;
+				}
+				else continue;
 				// genIdx = gP;
-				dR_hist->Fill(deltaR);
-				dRdPt_hist->Fill(deltaR,deltaPtRel);
+				
 
 				
 			}
+			dR_hist->Fill(deltaR);
+			dRdPt_hist->Fill(deltaR,deltaPtRel);
 			
 			// if(genIdx != -999) genIdx_hist->Fill(genIdx);
 
