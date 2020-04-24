@@ -60,28 +60,19 @@ void checkGenFlavStatus(){
 				dRs.push_back(deltaR);
 				dPtRels.push_back(deltaPtRel);
 
-				// if(deltaR <= dR && deltaPtRel <= dPtRel){
-				// 	dR = deltaR;
-				// 	dPtRel = deltaPtRel;
-				// }
-				// else continue;
-				// genIdx = gP;
+				dR_hist->Fill(deltaR);
 				
 
 				
 			}
-			dR_hist->Fill(*min_element(dRs.begin(),dRs.end()));
+
+			// dR_hist->Fill(*min_element(dRs.begin(),dRs.end()));
 			dRdPt_hist->Fill(*min_element(dRs.begin(),dRs.end()),*min_element(dPtRels.begin(),dPtRels.end()));
 			dRs.clear();
 			dPtRels.clear();
-
-
-
-			
-			// if(genIdx != -999) genIdx_hist->Fill(genIdx);
-
 			
 		}
+
 
 	}
 	cout << "# dR entries: " << dR_hist->Integral() << endl;
