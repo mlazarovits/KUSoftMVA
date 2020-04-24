@@ -429,7 +429,6 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	    float nTightMuons = 0;
 	    int bitwiseStatusFlag;
 	    std::vector<int> statusFlags;
-	    // float isPrompt = 0;
 
 	    if(nMuon != 1) continue;
 	    
@@ -444,9 +443,8 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    }	
 		    bitwiseStatusFlag = m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu);
 		    statusFlags = Decimal2Binary(binary);
-		    // if(m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu) == 0){
-		    // 	isPrompt += 1;
-		    // }
+		    
+		   
 		}	
 		   
 
