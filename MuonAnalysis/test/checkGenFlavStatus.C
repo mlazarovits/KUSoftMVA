@@ -29,6 +29,7 @@ void checkGenFlavStatus(){
 		float dR;
 		// int genIdx = -999;
 		float dPtRel;
+		float dPt;
 
 		if(nMuons < 1) continue;
 
@@ -51,12 +52,12 @@ void checkGenFlavStatus(){
 
 			for(int gP = 0; gP < nGenPart; gP++){
 
-				gp_eta = tree->GetLeaf("GenPart_eta")->GetValue(gp);
+				gp_eta = tree->GetLeaf("GenPart_eta")->GetValue(gP);
 				gp_phi = tree->GetLeaf("GenPart_eta")->GetValue(gP);
 				dp = std::abs(mu_phi - gp_phi);
 				deltaR  = std::sqrt((mu_eta - gp_eta)*(mu_eta - gp_eta) + dp*dp);
 
-				deltaPt = std::abs(tree->GetLeaf("GenPart_pt")->GetValue(gp) - tree->GetLeaf("Muon_pt")->GetValue(mu));
+				deltaPt = std::abs(tree->GetLeaf("GenPart_pt")->GetValue(gP) - tree->GetLeaf("Muon_pt")->GetValue(mu));
 				deltaPtRel = deltaPt/tree->GetLeaf("Muon_pt")->GetValue(mu);
 
 				if(deltaR <= dR && deltaPtRel <= dPtRel){
