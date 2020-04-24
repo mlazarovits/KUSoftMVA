@@ -60,13 +60,13 @@ void checkGenFlavStatus(){
 				dRs.push_back(deltaR);
 				dPtRels.push_back(deltaPtRel);
 
-				dR_hist->Fill(deltaR);
+				// dR_hist->Fill(deltaR);
 				
 
 				
 			}
 
-			// dR_hist->Fill(*min_element(dRs.begin(),dRs.end()));
+			dR_hist->Fill(*min_element(dRs.begin(),dRs.end()));
 			dRdPt_hist->Fill(*min_element(dRs.begin(),dRs.end()),*min_element(dPtRels.begin(),dPtRels.end()));
 			dRs.clear();
 			dPtRels.clear();
