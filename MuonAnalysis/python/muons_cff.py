@@ -184,7 +184,7 @@ for modifier in  run2_miniAOD_80XLegacy, run2_nanoAOD_94X2016, run2_nanoAOD_94XM
 run2_nanoAOD_102Xv1.toModify(muonTable.variables, puppiIsoId = None)
 
 
-muonsMCMatchForTable = cms.EDProducer("MCMatcher",       # cut on deltaR, deltaPt/Pt; pick best by deltaR
+muonsMCMatchForTable = cms.EDProducer("MCMatcherByPt",       # cut on deltaR, deltaPt/Pt; pick best by deltaR
     src         = muonTable.src,                         # final reco collection
     matched     = cms.InputTag("finalGenParticles"),     # final mc-truth particle collection
     mcPdgId     = cms.vint32(13),               # one or more PDG ID (13 = mu); absolute values (see below)
