@@ -224,7 +224,7 @@ int main(int argc, char* argv[]){
 	// if(_selectorClassName.compare("softLepNANO") == 0){
 	cout << "preparing all trees" << endl;
 	softLepNANO s(chain);
-	makeTrees(s,_ofilename);
+	makeTrees1(s,_ofilename);
 	// }
 	// else if(_selectorClassName.compare("softLepBackground") == 0){
 	// 	cout << "preparing background tree" << endl;
