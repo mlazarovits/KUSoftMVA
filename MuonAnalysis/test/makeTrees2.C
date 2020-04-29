@@ -18,7 +18,6 @@
 #include <TSystem.h>
 
 #include "softLepMINI.h"
-#include "MiniTemplate.h"
 
 
 using namespace std;
