@@ -17,7 +17,8 @@
 #include "TLeaf.h"
 #include <TSystem.h>
 
-#include "softLepSignal.h"
+#include "softLepMINI.h"
+#include "MiniTemplate.h"
 
 
 using namespace std;
@@ -187,10 +188,10 @@ int main(int argc, char* argv[]){
 	// string _selectorClassName(selectorClassName);
 	string _ofilename(outputFileName);
 
-	// if(_selectorClassName.compare("softLepSignal") == 0){
+	// if(_selectorClassName.compare("softLepMINI") == 0){
 	cout << "preparing all trees" << endl;
-	softLepSignal s(chain);
-	makeTrees(s,_ofilename);
+	softLepMINI s(chain);
+	makeTrees2(s,_ofilename);
 	// }
 	// else if(_selectorClassName.compare("softLepBackground") == 0){
 	// 	cout << "preparing background tree" << endl;

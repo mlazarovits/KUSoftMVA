@@ -17,7 +17,7 @@
 #include "TLeaf.h"
 #include <TSystem.h>
 
-#include "softLepSignal.h"
+#include "softLepNANO.h"
 
 
 using namespace std;
@@ -221,9 +221,9 @@ int main(int argc, char* argv[]){
 	// string _selectorClassName(selectorClassName);
 	string _ofilename(outputFileName);
 
-	// if(_selectorClassName.compare("softLepSignal") == 0){
+	// if(_selectorClassName.compare("softLepNANO") == 0){
 	cout << "preparing all trees" << endl;
-	softLepSignal s(chain);
+	softLepNANO s(chain);
 	makeTrees(s,_ofilename);
 	// }
 	// else if(_selectorClassName.compare("softLepBackground") == 0){

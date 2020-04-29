@@ -1,12 +1,12 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
 // Tue Apr 21 18:31:10 2020 by ROOT version 6.14/09
-// from TTree Events/Events
+// from TTree softLepMINI/softLepMINI
 // found on file: OutputFiles/DYJetsToLL2018_MINI_numEvent20000.root
 //////////////////////////////////////////////////////////
 
-#ifndef Events_h
-#define Events_h
+#ifndef softLepMINI_h
+#define softLepMINI_h
 
 #include <TROOT.h>
 #include <TChain.h>
@@ -14,7 +14,7 @@
 
 // Header file for the classes stored in the TTree if any.
 
-class Events {
+class softLepMINI {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    Int_t           fCurrent; //!current Tree number in a TChain
@@ -165,8 +165,8 @@ public :
    TBranch        *b_QP_genPartIdx;   //!
    TBranch        *b_QP_genPartFlav;   //!
 
-   Events(TTree *tree=0);
-   virtual ~Events();
+   softLepMINI(TTree *tree=0);
+   virtual ~softLepMINI();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
@@ -178,8 +178,8 @@ public :
 
 #endif
 
-#ifdef Events_cxx
-Events::Events(TTree *tree) : fChain(0) 
+#ifdef softLepMINI_cxx
+softLepMINI::softLepMINI(TTree *tree) : fChain(0) 
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
@@ -188,25 +188,25 @@ Events::Events(TTree *tree) : fChain(0)
       if (!f || !f->IsOpen()) {
          f = new TFile("OutputFiles/DYJetsToLL2018_MINI_numEvent20000.root");
       }
-      f->GetObject("Events",tree);
+      f->GetObject("softLepMINI",tree);
 
    }
    Init(tree);
 }
 
-Events::~Events()
+softLepMINI::~softLepMINI()
 {
    if (!fChain) return;
    delete fChain->GetCurrentFile();
 }
 
-Int_t Events::GetEntry(Long64_t entry)
+Int_t softLepMINI::GetEntry(Long64_t entry)
 {
 // Read contents of entry.
    if (!fChain) return 0;
    return fChain->GetEntry(entry);
 }
-Long64_t Events::LoadTree(Long64_t entry)
+Long64_t softLepMINI::LoadTree(Long64_t entry)
 {
 // Set the environment to read one entry
    if (!fChain) return -5;
@@ -219,7 +219,7 @@ Long64_t Events::LoadTree(Long64_t entry)
    return centry;
 }
 
-void Events::Init(TTree *tree)
+void softLepMINI::Init(TTree *tree)
 {
    // The Init() function is called when the selector needs to initialize
    // a new tree or chain. Typically here the branch addresses and branch
@@ -308,7 +308,7 @@ void Events::Init(TTree *tree)
    Notify();
 }
 
-Bool_t Events::Notify()
+Bool_t softLepMINI::Notify()
 {
    // The Notify() function is called when a new file is opened. This
    // can be either for a new TTree in a TChain or when when a new TTree
@@ -319,18 +319,18 @@ Bool_t Events::Notify()
    return kTRUE;
 }
 
-void Events::Show(Long64_t entry)
+void softLepMINI::Show(Long64_t entry)
 {
 // Print contents of entry.
 // If entry is not specified, print current entry
    if (!fChain) return;
    fChain->Show(entry);
 }
-Int_t Events::Cut(Long64_t entry)
+Int_t softLepMINI::Cut(Long64_t entry)
 {
 // This function may be called from Loop.
 // returns  1 if entry is accepted.
 // returns -1 otherwise.
    return 1;
 }
-#endif // #ifdef Events_cxx
+#endif // #ifdef softLepMINI_cxx
