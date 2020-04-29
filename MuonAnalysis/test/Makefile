@@ -6,11 +6,11 @@ MakeReducedNtuple_NANO.x: NanoTreeTemplate.o ./MakeReducedNtuple_NANO.C ./NanoTr
 NanoTreeTemplate.o: ./NanoTreeTemplate.h ./NanoTreeTemplate.C
 	g++ -c ./NanoTreeTemplate.C `root-config --cflags --libs`
 
-makeTrees1.x: softLepSignal.o ./makeTrees1.C ./softLepSignal.h
-	g++ -o makeTrees1.x ./makeTrees1.C softLepSignal.o `root-config --cflags --libs`
+makeTrees1.x: softLepNANO.o ./makeTrees1.C ./softLepNANO.h
+	g++ -o makeTrees1.x ./makeTrees1.C softLepNANO.o `root-config --cflags --libs`
 
-makeTrees2.x: softLepSignal.o ./makeTrees2.C ./softLepSignal.h
-	g++ -o makeTrees2.x ./makeTrees2.C softLepSignal.o `root-config --cflags --libs`
+makeTrees2.x: softLepMINI.o ./makeTrees2.C ./softLepMINI.h
+	g++ -o makeTrees2.x ./makeTrees2.C softLepMINI.o `root-config --cflags --libs`
 
 softLepMINI.o: ./softLepMINI.h ./softLepMINI.C
 	g++ -c ./softLepMINI.C `root-config --cflags --libs`
