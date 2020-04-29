@@ -40,7 +40,8 @@ process.load("KUSoftMVA.MuonAnalysis.muons_cff")
 from KUSoftMVA.MuonAnalysis.qparts_cff import *
 process.load("KUSoftMVA.MuonAnalysis.qparts_cff")
 
-process.Path = cms.Path(genParticleSequence+ genParticleTables + muonSequence + muonTables + muonMC +qTables + qMC )
+#process.Path = cms.Path(genParticleSequence+ genParticleTables + muonSequence + muonTables + muonMC +qTables + qMC )
+process.Path = cms.Path(genParticleTables + muonSequence + muonTables + muonMC )
 #process.Path = cms.Path( qTables )
 
 
