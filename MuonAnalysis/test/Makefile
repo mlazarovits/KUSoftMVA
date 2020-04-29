@@ -12,8 +12,11 @@ makeTrees1.x: softLepSignal.o ./makeTrees1.C ./softLepSignal.h
 makeTrees2.x: softLepSignal.o ./makeTrees2.C ./softLepSignal.h
 	g++ -o makeTrees2.x ./makeTrees2.C softLepSignal.o `root-config --cflags --libs`
 
-softLepSignal.o: ./softLepSignal.h ./softLepSignal.C
-	g++ -c ./softLepSignal.C `root-config --cflags --libs`
+softLepMINI.o: ./softLepMINI.h ./softLepMINI.C
+	g++ -c ./softLepMINI.C `root-config --cflags --libs`
+
+softLepNANO.o: ./softLepNANO.h ./softLepNANO.C
+	g++ -c ./softLepNANO.C `root-config --cflags --libs`
 
 clean:
 	rm *.o
