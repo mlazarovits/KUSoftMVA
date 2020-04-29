@@ -23,7 +23,7 @@
 using namespace std;
 
 template<class selectortype>
-void makeTrees(selectortype& selector, string ofilename){
+void makeTrees1(selectortype& selector, string ofilename){
 	auto ofile = new TFile(ofilename.c_str(),"RECREATE");
 	auto PmuonTree = selector.fChain->CloneTree(0);
 	auto NPmuonTree = selector.fChain->CloneTree(0);
