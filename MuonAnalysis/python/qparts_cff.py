@@ -25,6 +25,13 @@ qParts = cms.EDFilter("CandPtrSelector",
 	
 	)
 
+qParts2 = cms.EDFilter("CandPtrSelector",
+	src = cms.InputTag("lostTracks"),
+	cut = cms.string(""),
+	
+	)
+
+
 qTable = cms.EDProducer("SimpleCandidateFlatTableProducer",
 #    src = cms.InputTag("linkedObjects","qParts"),
    # src = cms.InputTag("muons"),
@@ -65,10 +72,39 @@ qMCTable = cms.EDProducer("CandMCMatchTableProducer",
     docString = cms.string("MC matching to status==1 qparts"),
 )
 
+
+qTable2 = cms.EDProducer("SimpleCandidateFlatTableProducer",
+#    src = cms.InputTag("linkedObjects","qParts"),
+   # src = cms.InputTag("muons"),
+    src = cms.InputTag("qParts2"),
+    cut = cms.string(""), #we should not filter on cross linked collections
+    name = cms.string("QP2"),
+    doc  = cms.string("generic pf tracks after basic selection (" + qParts2.cut.value()+")"),
+    singleton = cms.bool(False), # the number of entries is variable
+    extension = cms.bool(False), # this is the main table for the muons
+    variables = cms.PSet(CandVars,
+     #   ptErr   = Var("bestTrack().ptError()", float, doc = "ptError of the qpart track", precision=6),
+     #   dxy = Var("bestTrack().dxy()", float, doc ="dxy of qpart", precision=10),
+     #   dxyError = Var("bestTrack().dxyError()", float, doc="dxy error of qpart", precision=10),
+     #   dz =  Var("bestTrack().dz()", float, doc ="dz of qpart", precision=10),
+#	dzError =  Var("bestTrack().dzError()", float, doc ="dz error of qpart", precision=10),
+
+        )
+)
+
+qMCTable2 = cms.EDProducer("CandMCMatchTableProducer",
+    src     = qTable2.src,
+    mcMap   = cms.InputTag("qMCMatchForTable"),
+    objName = qTable.name,
+    objType = cms.string("Other"),
+    branchName = cms.string("genPart"),
+    docString = cms.string("MC matching to status==1 qparts"),
+)
+
 #qSequence = cms.Sequence(qParts)
 #qTables = cms.Sequence(linkedObjects + qParts + qTable)i
-qTables = cms.Sequence( qParts + qTable)
-qMC = cms.Sequence( qMCMatchForTable + qMCTable )
+qTables = cms.Sequence( qParts + qTable + qParts2 + qTable2)
+qMC = cms.Sequence( qMCMatchForTable + qMCTable)# +qMCTable2 )
 #muonSequence = cms.Sequence(isoForMu + ptRatioRelForMu + slimmedMuonsWithUserData + finalMuons + finalLooseMuons )
 #muonSequence = cms.Sequence(isoForMu + slimmedMuonsWithUserData +finalMuons + finalLooseMuons)
 #muonMC = cms.Sequence(muonsMCMatchForTable + muonMCTable)
