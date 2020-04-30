@@ -31,6 +31,11 @@ void makeTrees2(selectortype& selector, string ofilename){
 	auto othersTree = selector.fChain->CloneTree(0);
 
 	// float deltaR_muGenPart = 0.05;
+	int nPmus;
+	int nNPmus;
+	int nBs;
+	int nTaus;
+	int nothers;
 
 	for(int i = 0;i<selector.fChain->GetEntries();i++){
 		selector.fChain->GetEntry(i);
@@ -40,17 +45,9 @@ void makeTrees2(selectortype& selector, string ofilename){
 
 
 		if(nMu < 1) continue; //need at least 1 reco mu
-		int nPmus;
-		int nNPmus;
-		int nBs;
-		int nTaus;
-		int nothers;
+		
 
-			bool isMu = false;
-			bool isB = false;
-			bool isTau = false;
-			bool isPrompt = false;
-			bool isNotPrompt = false;
+		
 
 			nPmus = 0;
 			nNPmus = 0;
@@ -110,7 +107,7 @@ int main(int argc, char* argv[]){
 	if ( argc < 3 ){
 	    cout << "Error at Input: please specify an input file name, a list of input ROOT files and/or a folder path"; 
 	    cout << " , an output filename, and a selector class name:" << endl; 
-	    cout << "  Example:      ./makeTrees.x -ifile=input.root -ofile=output.root"  << endl;
+	    cout << "  Example:      ./makeTrees.x -ifile=MINIfile.root -ofile=output.root"  << endl;
 	    // cout << "  FOR CONDOR USE ONLY Example:      ./MakeReducedNtuple_NANO.x -ilist=input.list -ofile=output.root -selector=TSelector_ClassName"  << endl;
 	    // cout << "  Example:      ./MakeReducedNtuple_NANO.x -ifold=folder_path -ofile=output.root   -selector=TSelector_ClassName" << endl;
 	    // cout << " additional tags for object based reduced tree: -selector=TSelector_ClassName "<<endl; 
