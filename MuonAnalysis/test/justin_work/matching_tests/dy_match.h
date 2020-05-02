@@ -109,13 +109,28 @@ public :
 
    TH2D matchpt{"matchpt","matchidx and pt;pt;idx", 41, -0.5, 40.5, 22, -1.5, 20.5};
    TH1D unmatchPt{"unmatchPt","pt dist of unmatched", 41,-0.5,40.5};
-   TH1D mupt{"mupt", "pt of all muon",31,-0.5,40.5};
+   TH1D mupt{"mupt", "pt of all muon",41,-0.5,40.5};
    TH1D matchpdg{"matchpdg","pdg of matches",501,-0.5,500.5};
    TH2D nonmuongenflav{"badgenflav","non muon genflav", 3,-0.5,2.5,16,-0.5,15.5};
 
+   TH1D drpion{"drpion","pion delta r",20,0.,0.03};
+   TH1D dptrelpion{"dptrelpion", "pion delta ptrel= |ptmc-pt|/ptmc",20,0.,0.1};
+   
+   TH1D dre{"dre","electorn delta r",20,0.,0.03};
+   TH1D dptrele{"dptrele", "electron delta ptrel= |ptmc-pt|/ptmc",20,0.,0.3};
+
+   TH1D drk{"drk","K+/- delta r",20,0.,0.03};
+   TH1D dptrelk{"dptrelk", "K+/- delta ptrel= |ptmc-pt|/ptmc",20,0.,0.1};
+
+   TH1D drmu{"drmu","mu delta r",20,0.,0.03};
+   TH1D dptrelmu{"dptrelmu", "mu delta ptrel= |ptmc-pt|/ptmc",20,0.,0.1};
+
+   TH1D muptcut{"muptcut","pt of all reco muons after pt cut",41,-0.5,40.5};
+   TH1D unmatchPtcut{"unmatchPtcut","pt of unmatched reco muons after cut",41,-0.5,40.5};
 
    int globalctr_0=0;
    int globalctr_1=0;
+   int globalctr_2=0;
 };
 
 #endif

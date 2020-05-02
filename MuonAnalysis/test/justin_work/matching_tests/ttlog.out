@@ -1,0 +1,1151 @@
+[0mroot [2] Events->Process("dy_match.C"[D[D[D[D[D[D[D[D[D[D[D[D[D[0m[38;5;83m[1m([0m"dy_match.C"[0m[38;5;83m[1m)[D[D[D[D[D[D[D[D[D[D[D[D[D[D[0m("dy_match.C");
+[0mEvt num: 10103516
+This particle (pt,eta,phi):20.0228 0.949219 -1.17383 
+Gen match     (pt,eta,phi):20.5625 0.949219 -1.17578
+match quality (dR,dptrel):0.00195312 0.0262489
+Gen Flav: 15
+This particle genmatch (pdg, idx): -13 66
+Parents (pdg,idx): 
+0 -15 35
+1 -15 33
+2 24 29
+3 24 27
+4 6 21
+5 6 17
+6 6 14
+7 6 12
+8 6 10
+9 6 8
+10 6 6
+11 6 4
+12 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103532
+Attempting to hand match particle (pt,et,phi): 5.36592 0.187927 1.51611 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103532
+Attempting to hand match particle (pt,et,phi): 3.67461 2.32129 -1.37842 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103511
+Attempting to hand match particle (pt,et,phi): 23.6747 0.861328 1.90503 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.0278887 0.0577232) (-13 88) (25.125 0.851562 1.87891)
+
+Evt num: 10103511
+Attempting to hand match particle (pt,et,phi): 2.05434 -2.38477 -2.05518 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103511
+This particle (pt,eta,phi):25.2778 0.85144 1.87988 
+Gen match     (pt,eta,phi):25.125 0.851562 1.87891
+match quality (dR,dptrel):0.000984162 -0.00608127
+Gen Flav: 15
+This particle genmatch (pdg, idx): -13 88
+Parents (pdg,idx): 
+0 -15 44
+1 24 34
+2 24 32
+3 6 25
+4 6 23
+5 6 15
+6 6 12
+7 6 10
+8 6 8
+9 6 6
+10 6 4
+11 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103512
+This particle (pt,eta,phi):3.76227 0.598877 -0.666382 
+Gen match     (pt,eta,phi):3.71875 0.597656 -0.666016
+match quality (dR,dptrel):0.00127445 -0.011704
+Gen Flav: 0
+This particle genmatch (pdg, idx): 211 142
+Parents (pdg,idx): 
+0 333 136
+1 -431 129
+2 -433 120
+3 -521 108
+4 -523 77
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103512
+Attempting to hand match particle (pt,et,phi): 2.92214 1.77075 -0.5448 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103512
+This particle (pt,eta,phi):20.3394 2.01611 -1.92163 
+Gen match     (pt,eta,phi):20.75 2.01562 -1.92188
+match quality (dR,dptrel):0.000545915 0.0197872
+Gen Flav: 15
+This particle genmatch (pdg, idx): 13 95
+Parents (pdg,idx): 
+0 15 46
+1 15 44
+2 -24 41
+3 -24 39
+4 -6 26
+5 -6 22
+6 -6 18
+7 -6 17
+8 -6 16
+9 -6 15
+10 -6 14
+11 -6 12
+12 -6 10
+13 -6 8
+14 -6 5
+15 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103508
+Attempting to hand match particle (pt,et,phi): 3.31032 2.13916 2.26514 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103528
+This particle (pt,eta,phi):6.23619 -0.218353 -1.302 
+Gen match     (pt,eta,phi):6.25 -0.218262 -1.30078
+match quality (dR,dptrel):0.00122413 0.00220963
+Gen Flav: 5
+This particle genmatch (pdg, idx): 13 82
+Parents (pdg,idx): 
+0 -421 77
+1 511 73
+2 513 48
+3 1 15
+4 1 6
+5 1 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103541
+This particle (pt,eta,phi):6.23619 -0.218353 -1.302 
+Gen match     (pt,eta,phi):20.875 1.08984 -1.07422
+match quality (dR,dptrel):1.32788 0.70126
+Gen Flav: 5
+This particle genmatch (pdg, idx): -211 82
+Parents (pdg,idx): 
+0 15 44
+1 15 42
+2 -24 37
+3 -24 35
+4 -6 26
+5 -6 20
+6 -6 13
+7 -6 9
+8 -6 7
+9 -6 5
+10 2 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103523
+Attempting to hand match particle (pt,et,phi): 4.44872 0.406067 -1.17627 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103523
+This particle (pt,eta,phi):26.7961 -1.7937 -2.73535 
+Gen match     (pt,eta,phi):26.6875 -1.79297 -2.73438
+match quality (dR,dptrel):0.0012207 -0.00406942
+Gen Flav: 5
+This particle genmatch (pdg, idx): 13 148
+Parents (pdg,idx): 
+0 -521 92
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103533
+Attempting to hand match particle (pt,et,phi): 4.00827 -1.86816 2.59082 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103533
+This particle (pt,eta,phi):15.0287 2.34473 2.41455 
+Gen match     (pt,eta,phi):15.375 2.34375 2.41406
+match quality (dR,dptrel):0.00109183 0.0225215
+Gen Flav: 1
+This particle genmatch (pdg, idx): 13 46
+Parents (pdg,idx): 
+0 13 44
+1 -24 38
+2 -24 36
+3 -6 22
+4 -6 19
+5 -6 17
+6 -6 14
+7 -6 12
+8 -6 10
+9 -6 5
+10 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103546
+This particle (pt,eta,phi):15.0287 2.34473 2.41455 
+Gen match     (pt,eta,phi):8.6875 4.20312 1.72266
+match quality (dR,dptrel):1.98302 -0.729926
+Gen Flav: 1
+This particle genmatch (pdg, idx): 1 46
+Parents (pdg,idx): 
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103505
+Attempting to hand match particle (pt,et,phi): 6.28081 -1.10107 1.55005 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103558
+Attempting to hand match particle (pt,et,phi): 36.1139 0.891602 1.47217 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103558
+Attempting to hand match particle (pt,et,phi): 3.97167 -0.262268 1.36328 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103504
+Attempting to hand match particle (pt,et,phi): 6.30758 2.0752 -3.02197 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103563
+Attempting to hand match particle (pt,et,phi): 2.49191 -1.53149 -1.57935 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103576
+This particle (pt,eta,phi):10.9523 -1.29102 2.20752 
+Gen match     (pt,eta,phi):10.8125 -1.29297 2.21094
+match quality (dR,dptrel):0.00393665 -0.0129328
+Gen Flav: 1
+This particle genmatch (pdg, idx): 13 48
+Parents (pdg,idx): 
+0 13 46
+1 -24 40
+2 -6 30
+3 -6 23
+4 -6 21
+5 -6 19
+6 -6 16
+7 -6 13
+8 -6 11
+9 -6 9
+10 -6 5
+11 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103573
+This particle (pt,eta,phi):10.9523 -1.29102 2.20752 
+Gen match     (pt,eta,phi):0.0133057 2.21094 0.398438
+match quality (dR,dptrel):3.94163 -822.133
+Gen Flav: 1
+This particle genmatch (pdg, idx): 22 48
+Parents (pdg,idx): 
+0 11 45
+1 -24 37
+2 -24 35
+3 -6 30
+4 -6 28
+5 -6 25
+6 -6 22
+7 -6 20
+8 -6 16
+9 -6 15
+10 -6 13
+11 -6 11
+12 -6 9
+13 -6 5
+14 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103548
+Attempting to hand match particle (pt,et,phi): 9.06242 -0.333435 1.30664 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103548
+Attempting to hand match particle (pt,et,phi): 7.58362 1.03394 3.08496 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.118589 0.0944931) (3 55) (8.375 1.08203 2.97656)
+
+Evt num: 10103548
+Attempting to hand match particle (pt,et,phi): 3.7982 0.384155 -2.80322 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103540
+Attempting to hand match particle (pt,et,phi): 5.90105 -0.222198 -0.0678101 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.0392885 0.198159) (310 70) (7.35938 -0.209473 -0.0306396)
+
+Evt num: 10103540
+This particle (pt,eta,phi):28.0995 -1.05273 0.676636 
+Gen match     (pt,eta,phi):28 -1.05078 0.675781
+match quality (dR,dptrel):0.00213187 -0.00355496
+Gen Flav: 1
+This particle genmatch (pdg, idx): 13 36
+Parents (pdg,idx): 
+0 -24 30
+1 -24 28
+2 -6 20
+3 -6 18
+4 -6 14
+5 -6 12
+6 -6 10
+7 -6 8
+8 -6 5
+9 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103578
+Attempting to hand match particle (pt,et,phi): 12.4313 -1.22729 -1.11572 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103602
+Attempting to hand match particle (pt,et,phi): 14.6012 1.05298 -3.10156 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103602
+Attempting to hand match particle (pt,et,phi): 2.39394 -1.94751 -2.04736 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103602
+Attempting to hand match particle (pt,et,phi): 2.15904 2.09131 -3.1084 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103602
+This particle (pt,eta,phi):25.9163 1.08447 -3 
+Gen match     (pt,eta,phi):25.9375 1.08594 -3
+match quality (dR,dptrel):0.00146484 0.000818386
+Gen Flav: 1
+This particle genmatch (pdg, idx): 13 37
+Parents (pdg,idx): 
+0 13 35
+1 -24 32
+2 -24 30
+3 -6 22
+4 -6 20
+5 -6 17
+6 -6 15
+7 -6 13
+8 -6 11
+9 -6 9
+10 -6 7
+11 -6 5
+12 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103559
+Attempting to hand match particle (pt,et,phi): 5.28454 0.985352 -0.0194435 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103559
+This particle (pt,eta,phi):13.3379 -1.78638 2.58691 
+Gen match     (pt,eta,phi):13.7188 -1.78516 2.58594
+match quality (dR,dptrel):0.00156326 0.0277641
+Gen Flav: 5
+This particle genmatch (pdg, idx): 13 91
+Parents (pdg,idx): 
+0 -521 78
+1 -523 51
+2 5 49
+3 5 41
+4 5 40
+5 5 38
+6 5 36
+7 6 32
+8 6 26
+9 6 20
+10 6 19
+11 6 13
+12 6 11
+13 6 9
+14 6 7
+15 6 4
+16 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103575
+Attempting to hand match particle (pt,et,phi): 2.04003 -1.4541 2.03711 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103575
+This particle (pt,eta,phi):21.7586 1.56958 -0.571289 
+Gen match     (pt,eta,phi):21.5625 1.57031 -0.570312
+match quality (dR,dptrel):0.0012207 -0.00909415
+Gen Flav: 1
+This particle genmatch (pdg, idx): 13 32
+Parents (pdg,idx): 
+0 -24 27
+1 -24 26
+2 -6 20
+3 -6 18
+4 -6 16
+5 -6 15
+6 -6 14
+7 -6 12
+8 -6 11
+9 -6 9
+10 -6 7
+11 -6 5
+12 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103577
+Attempting to hand match particle (pt,et,phi): 3.09774 -1.29688 0.593018 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103595
+Attempting to hand match particle (pt,et,phi): 2.10479 -1.33667 0.222748 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103595
+This particle (pt,eta,phi):31.2622 -2.14746 2.76074 
+Gen match     (pt,eta,phi):31.625 -2.14844 2.75781
+match quality (dR,dptrel):0.00308816 0.0114706
+Gen Flav: 5
+This particle genmatch (pdg, idx): -13 92
+Parents (pdg,idx): 
+0 521 81
+1 523 38
+2 2 35
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103620
+This particle (pt,eta,phi):29.6611 -0.648438 1.91626 
+Gen match     (pt,eta,phi):29.4375 -0.648438 1.91797
+match quality (dR,dptrel):0.00170898 -0.00759583
+Gen Flav: 1
+This particle genmatch (pdg, idx): -13 39
+Parents (pdg,idx): 
+0 -13 37
+1 -13 35
+2 24 23
+3 24 22
+4 24 20
+5 6 17
+6 6 13
+7 6 10
+8 6 8
+9 6 6
+10 6 4
+11 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103600
+This particle (pt,eta,phi):30.8274 -0.828613 0.616089 
+Gen match     (pt,eta,phi):30.625 -0.828125 0.615234
+match quality (dR,dptrel):0.000984162 -0.0066078
+Gen Flav: 1
+This particle genmatch (pdg, idx): 13 61
+Parents (pdg,idx): 
+0 -24 58
+1 -6 41
+2 -6 37
+3 -6 16
+4 -6 14
+5 -6 12
+6 -6 10
+7 -6 8
+8 -6 5
+9 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103636
+This particle (pt,eta,phi):22.1889 -1.21899 2.35645 
+Gen match     (pt,eta,phi):21.5625 -1.21875 2.35938
+match quality (dR,dptrel):0.00293984 -0.0290496
+Gen Flav: 1
+This particle genmatch (pdg, idx): -13 35
+Parents (pdg,idx): 
+0 24 22
+1 24 20
+2 6 17
+3 6 15
+4 6 14
+5 6 10
+6 6 8
+7 6 6
+8 6 4
+9 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103675
+This particle (pt,eta,phi):6.37471 -0.24588 -2.2168 
+Gen match     (pt,eta,phi):6.32812 -0.246582 -2.21875
+match quality (dR,dptrel):0.00207542 -0.00736227
+Gen Flav: 15
+This particle genmatch (pdg, idx): 13 50
+Parents (pdg,idx): 
+0 15 30
+1 15 28
+2 -24 22
+3 -6 14
+4 -6 11
+5 -6 9
+6 -6 7
+7 -6 5
+8 -2 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103650
+Attempting to hand match particle (pt,et,phi): 23.8299 1.18286 1.05127 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103650
+Attempting to hand match particle (pt,et,phi): 4.47257 -1.03271 1.92822 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103625
+Attempting to hand match particle (pt,et,phi): 4.63083 -0.764771 -0.67395 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103625
+Attempting to hand match particle (pt,et,phi): 3.11015 1.84839 2.39209 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103625
+Attempting to hand match particle (pt,et,phi): 2.16459 2.24072 2.04688 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103609
+This particle (pt,eta,phi):15.5027 -2.29004 0.503052 
+Gen match     (pt,eta,phi):15.3438 -2.28906 0.503906
+match quality (dR,dptrel):0.00129763 -0.0103619
+Gen Flav: 5
+This particle genmatch (pdg, idx): 13 93
+Parents (pdg,idx): 
+0 -521 80
+1 -523 42
+2 5 23
+3 6 21
+4 6 18
+5 6 17
+6 6 13
+7 6 11
+8 6 10
+9 6 8
+10 6 4
+11 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103677
+Attempting to hand match particle (pt,et,phi): 4.19188 2.41699 1.11768 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103694
+Attempting to hand match particle (pt,et,phi): 3.8525 -2.21191 -2.91211 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103623
+This particle (pt,eta,phi):17.792 0.153351 -1.31689 
+Gen match     (pt,eta,phi):17.8125 0.15332 -1.31641
+match quality (dR,dptrel):0.000489234 0.00114832
+Gen Flav: 0
+This particle genmatch (pdg, idx): 211 81
+Parents (pdg,idx): 
+0 -15 33
+1 -15 31
+2 24 23
+3 24 21
+4 6 18
+5 6 16
+6 6 14
+7 6 11
+8 6 9
+9 6 7
+10 6 4
+11 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103623
+This particle (pt,eta,phi):11.5395 0.163391 -1.302 
+Gen match     (pt,eta,phi):11.625 0.163574 -1.30078
+match quality (dR,dptrel):0.00123436 0.00735055
+Gen Flav: 0
+This particle genmatch (pdg, idx): 211 80
+Parents (pdg,idx): 
+0 -15 33
+1 -15 31
+2 24 23
+3 24 21
+4 6 18
+5 6 16
+6 6 14
+7 6 11
+8 6 9
+9 6 7
+10 6 4
+11 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103672
+Attempting to hand match particle (pt,et,phi): 5.42474 -0.749878 -2.41699 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103672
+Attempting to hand match particle (pt,et,phi): 4.42677 -1.87329 0.47345 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103672
+Attempting to hand match particle (pt,et,phi): 2.35897 -1.92651 -0.374451 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103721
+This particle (pt,eta,phi):5.03928 -1.92065 0.153564 
+Gen match     (pt,eta,phi):5 -1.92188 0.152832
+match quality (dR,dptrel):0.00142357 -0.00785618
+Gen Flav: 0
+This particle genmatch (pdg, idx): 321 80
+Parents (pdg,idx): 
+0 -421 78
+1 -423 72
+2 -10433 67
+3 531 61
+4 533 46
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103721
+Attempting to hand match particle (pt,et,phi): 2.19869 -1.46777 2.34717 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103711
+Attempting to hand match particle (pt,et,phi): 6.8973 0.717896 1.6228 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.183298 0.149551) (111 77) (6 0.763672 1.44531)
+
+Evt num: 10103711
+Attempting to hand match particle (pt,et,phi): 3.35319 -1.33423 1.70898 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103707
+Attempting to hand match particle (pt,et,phi): 4.80471 -0.305786 -0.320374 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103739
+Attempting to hand match particle (pt,et,phi): 3.63373 -1.70605 0.394287 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103671
+Attempting to hand match particle (pt,et,phi): 18.3274 0.276733 -2.11182 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103671
+Attempting to hand match particle (pt,et,phi): 2.03582 -1.67944 -1.42896 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103713
+Attempting to hand match particle (pt,et,phi): 24.457 -0.981445 -2.33887 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103734
+Attempting to hand match particle (pt,et,phi): 2.07191 1.46948 -2.99414 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103674
+Attempting to hand match particle (pt,et,phi): 5.08639 -0.568848 -1.39502 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103674
+Attempting to hand match particle (pt,et,phi): 3.59009 -2.45215 -2.94531 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103674
+Attempting to hand match particle (pt,et,phi): 2.63626 1.29614 -3.05713 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103674
+Attempting to hand match particle (pt,et,phi): 2.08 1.89526 1.70459 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103724
+Attempting to hand match particle (pt,et,phi): 5.69444 1.71021 2.14502 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103724
+Attempting to hand match particle (pt,et,phi): 2.55538 -1.30078 -1.52319 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103755
+Attempting to hand match particle (pt,et,phi): 13.6837 1.19995 -1.59277 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103755
+Attempting to hand match particle (pt,et,phi): 2.00079 2.30615 -0.164612 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103757
+Attempting to hand match particle (pt,et,phi): 13.5247 1.6731 -1.22876 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.140424 0.12413) (21 64) (12.0312 1.80859 -1.26562)
+! (0.060473 0.0488131) (21 68) (14.2188 1.70312 -1.28125)
+
+Evt num: 10103757
+Attempting to hand match particle (pt,et,phi): 5.89147 1.63135 -1.32104 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.0180812 0.0735778) (1 56) (6.35938 1.62109 -1.33594)
+
+Evt num: 10103778
+Attempting to hand match particle (pt,et,phi): 3.16502 2.33301 2.31641 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103764
+Attempting to hand match particle (pt,et,phi): 3.56067 2.02588 -1.27856 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103818
+Attempting to hand match particle (pt,et,phi): 3.82408 1.83105 2.56641 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103824
+Attempting to hand match particle (pt,et,phi): 4.36382 -0.542358 2.73779 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103824
+Attempting to hand match particle (pt,et,phi): 3.47963 2.09277 -0.207031 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103824
+Attempting to hand match particle (pt,et,phi): 2.5747 1.96997 0.0447617 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103791
+Attempting to hand match particle (pt,et,phi): 23.3882 -0.197906 2.56543 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.0462093 0.162149) (3 44) (20.125 -0.229004 2.53125)
+
+Evt num: 10103791
+Attempting to hand match particle (pt,et,phi): 15.6368 -0.179962 2.59912 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103812
+Attempting to hand match particle (pt,et,phi): 3.42835 0.729492 1.61401 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103843
+Attempting to hand match particle (pt,et,phi): 2.07294 -2.13721 -0.467651 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103876
+Attempting to hand match particle (pt,et,phi): 5.00731 -1.40942 3.05566 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.0644203 0.194805) (14 144) (6.21875 -1.39844 2.99219)
+
+Evt num: 10103884
+Attempting to hand match particle (pt,et,phi): 3.588 1.41895 1.1001 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103880
+Attempting to hand match particle (pt,et,phi): 4.4838 0.623779 0.786987 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103871
+This particle (pt,eta,phi):16.6306 -2.03662 -1.97583 
+Gen match     (pt,eta,phi):17 -2.03906 -1.97656
+match quality (dR,dptrel):0.0025489 0.0217274
+Gen Flav: 0
+This particle genmatch (pdg, idx): -211 110
+Parents (pdg,idx): 
+0 -421 107
+1 -423 104
+2 521 95
+3 523 66
+4 -5 34
+5 -6 26
+6 -6 24
+7 -6 20
+8 -6 19
+9 -6 17
+10 -6 15
+11 -6 13
+12 -6 10
+13 -6 8
+14 -6 5
+15 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103871
+This particle (pt,eta,phi):4.42259 -2.06445 -1.93506 
+Gen match     (pt,eta,phi):4.48438 -2.0625 -1.93359
+match quality (dR,dptrel):0.00244141 0.013777
+Gen Flav: 0
+This particle genmatch (pdg, idx): -211 111
+Parents (pdg,idx): 
+0 -421 107
+1 -423 104
+2 521 95
+3 523 66
+4 -5 34
+5 -6 26
+6 -6 24
+7 -6 20
+8 -6 19
+9 -6 17
+10 -6 15
+11 -6 13
+12 -6 10
+13 -6 8
+14 -6 5
+15 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103871
+This particle (pt,eta,phi):1.11984 -1.96167 -1.91455 
+Gen match     (pt,eta,phi):1.26953 -2.03125 -1.96094
+match quality (dR,dptrel):0.0836248 0.117909
+Gen Flav: 0
+This particle genmatch (pdg, idx): 11 114
+Parents (pdg,idx): 
+0 111 108
+1 -423 104
+2 521 95
+3 523 66
+4 -5 34
+5 -6 26
+6 -6 24
+7 -6 20
+8 -6 19
+9 -6 17
+10 -6 15
+11 -6 13
+12 -6 10
+13 -6 8
+14 -6 5
+15 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103883
+This particle (pt,eta,phi):5.81115 1.28491 0.208405 
+Gen match     (pt,eta,phi):5.875 1.28516 0.206055
+match quality (dR,dptrel):0.0023625 0.0108683
+Gen Flav: 0
+This particle genmatch (pdg, idx): 321 60
+Parents (pdg,idx): 
+0 521 52
+1 523 44
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103856
+Attempting to hand match particle (pt,et,phi): 5.72377 2.31152 -1.78149 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103856
+Attempting to hand match particle (pt,et,phi): 2.33808 -2.16162 -1.65308 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103856
+Attempting to hand match particle (pt,et,phi): 2.12406 1.97925 2.53125 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103906
+Attempting to hand match particle (pt,et,phi): 8.97199 -1.05762 -0.399719 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103903
+Attempting to hand match particle (pt,et,phi): 5.14607 2.10449 1.05078 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.1972 0.0800326) (21 56) (5.59375 2.00781 0.878906)
+
+Evt num: 10103903
+Attempting to hand match particle (pt,et,phi): 4.61947 -1.2334 -1.30029 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103903
+Attempting to hand match particle (pt,et,phi): 2.15257 -2.30371 1.90601 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103911
+Attempting to hand match particle (pt,et,phi): 6.69313 0.97937 -1.88843 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103911
+This particle (pt,eta,phi):4.63026 1.51294 -2.84277 
+Gen match     (pt,eta,phi):4.89062 1.4375 -2.78125
+match quality (dR,dptrel):0.097346 0.0532372
+Gen Flav: 0
+This particle genmatch (pdg, idx): -211 133
+Parents (pdg,idx): 
+0 -421 120
+1 521 108
+2 523 74
+3 21 39
+4 21 7
+5 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103919
+Attempting to hand match particle (pt,et,phi): 6.66192 0.963013 -2.96338 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.121402 0.129872) (21 46) (7.65625 0.900391 -2.85938)
+! (0.0974327 0.077137) (-311 75) (7.21875 0.978516 -2.86719)
+
+Evt num: 10103919
+Attempting to hand match particle (pt,et,phi): 3.0098 -2.37891 0.688965 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103934
+Attempting to hand match particle (pt,et,phi): 14.6485 1.20776 -1.9082 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103925
+Attempting to hand match particle (pt,et,phi): 2.11331 -2.20947 -2.57568 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103890
+Attempting to hand match particle (pt,et,phi): 3.61807 0.772461 -1.06494 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103936
+This particle (pt,eta,phi):19.7231 1.21777 -1.77026 
+Gen match     (pt,eta,phi):16.625 1.23828 -1.74609
+match quality (dR,dptrel):0.0316979 -0.186354
+Gen Flav: 0
+This particle genmatch (pdg, idx): 211 116
+Parents (pdg,idx): 
+0 511 61
+1st Gen Children (pdg, idx): 
+
+Evt num: 10103936
+Attempting to hand match particle (pt,et,phi): 19.4877 1.18164 -1.76318 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.0591627 0.17219) (211 116) (16.625 1.23828 -1.74609)
+! (0.110874 0.177302) (-311 138) (23.6875 1.25781 -1.84375)
+! (0.110874 0.177302) (310 150) (23.6875 1.25781 -1.84375)
+
+Evt num: 10103950
+Attempting to hand match particle (pt,et,phi): 3.43034 0.00162649 2.50195 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103979
+Attempting to hand match particle (pt,et,phi): 10.9324 0.950439 -0.269348 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103945
+Attempting to hand match particle (pt,et,phi): 3.474 -2.14111 -2.36963 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103945
+Attempting to hand match particle (pt,et,phi): 3.0563 -1.80054 2.29395 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103988
+Attempting to hand match particle (pt,et,phi): 4.80955 0.754883 -0.637695 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103988
+Attempting to hand match particle (pt,et,phi): 3.4299 1.60156 -2.35205 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103992
+Attempting to hand match particle (pt,et,phi): 2.5982 -2.0415 1.896 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103989
+Attempting to hand match particle (pt,et,phi): 5.0002 0.56604 2.70166 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103990
+Attempting to hand match particle (pt,et,phi): 5.75058 0.254272 -2.58203 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.0805672 0.125803) (111 69) (6.57812 0.30957 -2.52344)
+
+Evt num: 10103990
+Attempting to hand match particle (pt,et,phi): 3.63002 -2.13818 2.62109 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10103991
+Attempting to hand match particle (pt,et,phi): 4.58021 -1.66089 2.9541 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10104017
+Attempting to hand match particle (pt,et,phi): 2.54441 2.14941 -0.798584 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10104013
+Attempting to hand match particle (pt,et,phi): 9.0069 -0.654175 1.56152 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+! (0.0927607 0.0229799) (111 84) (9.21875 -0.691406 1.47656)
+
+Evt num: 10104002
+Attempting to hand match particle (pt,et,phi): 18.3939 1.55542 -0.394226 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10104002
+Attempting to hand match particle (pt,et,phi): 6.08875 -0.696655 -2.81934 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10104049
+This particle (pt,eta,phi):4.53035 0.833862 2.93066 
+Gen match     (pt,eta,phi):4.46875 0.833984 2.92969
+match quality (dR,dptrel):0.000984162 -0.0137838
+Gen Flav: 0
+This particle genmatch (pdg, idx): -211 97
+Parents (pdg,idx): 
+0 -511 82
+1 -513 60
+1st Gen Children (pdg, idx): 
+
+Evt num: 10104022
+Attempting to hand match particle (pt,et,phi): 4.27684 0.590454 2.51465 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10104078
+Attempting to hand match particle (pt,et,phi): 2.71076 -1.9104 -0.690308 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10104078
+Attempting to hand match particle (pt,et,phi): 2.48972 -1.84692 -0.668823 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10104096
+Attempting to hand match particle (pt,et,phi): 2.47772 1.12573 -1.32324 
+These Gen's are nearby: (dR, dptrel) (pdg,idx) (pt,eta,phi)
+
+Evt num: 10104094
+This particle (pt,eta,phi):4.59542 0.958252 -1.10889 
+Gen match     (pt,eta,phi):4.65625 0.958984 -1.10938
+match quality (dR,dptrel):0.000880262 0.0130648
+Gen Flav: 0
+This particle genmatch (pdg, idx): 321 128
+Parents (pdg,idx): 
+0 443 116
+1 100443 110
+2 -521 99
+3 -523 82
+1st Gen Children (pdg, idx): 
+
+Evt num: 10104094
+This particle (pt,eta,phi):3.55719 0.892212 -1.08862 
+Gen match     (pt,eta,phi):3.55469 0.894531 -1.08984
+match quality (dR,dptrel):0.00262096 -0.000703179
+Gen Flav: 0
+This particle genmatch (pdg, idx): 211 117
+Parents (pdg,idx): 
+0 100443 110
+1 -521 99
+2 -523 82
+1st Gen Children (pdg, idx): 
+
+Evt num: 10104149
+This particle (pt,eta,phi):20.3836 -0.963379 -1.47852 
+Gen match     (pt,eta,phi):21.125 -0.962891 -1.47656
+match quality (dR,dptrel):0.00201324 0.0350981
+Gen Flav: 0
+This particle genmatch (pdg, idx): -321 142
+Parents (pdg,idx): 
+0 421 127
+1 413 102
+2 -511 67
+3 5 65
+4 5 54
+5 5 52
+6 5 50
+7 6 44
+8 6 37
+9 6 34
+10 6 27
+11 6 23
+12 6 18
+13 6 14
+14 6 10
+15 6 4
+16 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10104124
+This particle (pt,eta,phi):6.92899 -1.18188 1.92358 
+Gen match     (pt,eta,phi):6.95312 -1.17969 1.92188
+match quality (dR,dptrel):0.00278363 0.00347112
+Gen Flav: 0
+This particle genmatch (pdg, idx): -211 67
+Parents (pdg,idx): 
+0 -521 59
+1 -523 46
+1st Gen Children (pdg, idx): 
+
+Evt num: 10104159
+This particle (pt,eta,phi):1.11208 2.42285 0.0656281 
+Gen match     (pt,eta,phi):1.25 2.47656 0.0539551
+match quality (dR,dptrel):0.0549647 0.110338
+Gen Flav: 0
+This particle genmatch (pdg, idx): -211 87
+Parents (pdg,idx): 
+0 -411 58
+1st Gen Children (pdg, idx): 
+
+Evt num: 10104298
+This particle (pt,eta,phi):7.49047 1.92163 -2.30078 
+Gen match     (pt,eta,phi):7.53125 1.92188 -2.29688
+match quality (dR,dptrel):0.00391387 0.00541541
+Gen Flav: 0
+This particle genmatch (pdg, idx): -211 85
+Parents (pdg,idx): 
+0 -411 72
+1 -413 63
+2 -521 44
+1st Gen Children (pdg, idx): 
+
+Evt num: 10104330
+This particle (pt,eta,phi):3.51979 1.07886 -1.07178 
+Gen match     (pt,eta,phi):4.3125 1.05859 -0.986328
+match quality (dR,dptrel):0.087819 0.183817
+Gen Flav: 0
+This particle genmatch (pdg, idx): -321 89
+Parents (pdg,idx): 
+0 -411 82
+1 -413 65
+2 -521 38
+3 5 36
+4 5 24
+5 5 22
+6 5 20
+7 6 17
+8 6 16
+9 6 13
+10 6 12
+11 6 10
+12 6 8
+13 6 6
+14 6 4
+15 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10104330
+This particle (pt,eta,phi):3.41768 1.10962 -1.01953 
+Gen match     (pt,eta,phi):3.66406 1.03516 -1.00391
+match quality (dR,dptrel):0.0760846 0.0672432
+Gen Flav: 0
+This particle genmatch (pdg, idx): -11 79
+Parents (pdg,idx): 
+0 411 64
+1 -521 38
+2 5 36
+3 5 24
+4 5 22
+5 5 20
+6 6 17
+7 6 16
+8 6 13
+9 6 12
+10 6 10
+11 6 8
+12 6 6
+13 6 4
+14 21 2
+1st Gen Children (pdg, idx): 
+
+Evt num: 10104319
+This particle (pt,eta,phi):5.62726 1.4021 -3.11523 
+Gen match     (pt,eta,phi):5.5 1.40234 -3.11719
+match quality (dR,dptrel):0.00196832 -0.023139
+Gen Flav: 0
+This particle genmatch (pdg, idx): 211 63
+Parents (pdg,idx): 
+0 -15 37
+1 24 29
+2 6 24
+3 6 20
+4 6 16
+5 6 12
+6 6 10
+7 6 8
+8 6 6
+9 6 4
+10 21 2
+1st Gen Children (pdg, idx): 
+
+[0mroot [3] .>
+[0m
