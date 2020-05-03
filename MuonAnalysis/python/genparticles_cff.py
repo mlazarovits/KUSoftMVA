@@ -33,7 +33,8 @@ finalGenParticles = cms.EDProducer("GenParticlePruner",
 
 ##################### Tables for final output and docs ##########################
 genParticleTable = cms.EDProducer("SimpleCandidateFlatTableProducer",
-    src = cms.InputTag("finalGenParticles"),
+#    src = cms.InputTag("finalGenParticles"),
+    src = cms.InputTag("prunedGenParticles"),
     cut = cms.string(""), #we should not filter after pruning
     name= cms.string("GenPart"),
     doc = cms.string("interesting gen particles "),

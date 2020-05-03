@@ -1,6 +1,7 @@
 
 
-python querydatasetforNanoAODfile.py "/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/CMSSW_10_2_9-102X_upgrade2018_realistic_v15_RelVal_nanoaod102X2018-v1/NANOAODSIM"
+#python querydatasetforNanoAODfile.py "/DYJetsToLL_M-50_TuneCP5_13TeV-madgraphMLM-pythia8/CMSSW_10_2_9-102X_upgrade2018_realistic_v15_RelVal_nanoaod102X2018-v1/NANOAODSIM"
+python querydatasetforNanoAODfile.py "/DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8_CUETP8M1Down/RunIISummer16NanoAOD-PUMoriond17_05Feb2018_94X_mcRun2_asymptotic_v2-v1/NANOAODSIM"
 python gensublists.py 1 20 "./DYJetsToLL2018/"
 python genparentsublists.py "./DYJetsToLL2018/"
 
