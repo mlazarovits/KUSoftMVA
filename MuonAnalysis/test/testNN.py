@@ -24,15 +24,23 @@ def expandList(df, columnNames):
 data = data.drop([i for i, nMu in enumerate(data['nMuon']) if nMu == 0])
 
 #only keep the variables we want - labels and input
-data = data['Muon_genPartFlav','Muon_pt','Muon_eta','Muon_dxy','Muon_dz',
-			'Muon_sip3d','Muon_segmentComp']
-# still need:
-# selected track multiplicity of the jet matched to the lepton (see below for the applied requirements)
-# mini-isolation, charged component (include only charged hadrons in the isolation sum)
-# mini-isolation, neutral component (neutral hadrons + photons)
-# ptRel: the same variable used in multiIso, using the LepAware JEC approach (def. slides)
-# ptRatio: the same variable used in multiIso, using the LepAware JEC approach (def. slides)
-# CSVv2 b-tagging discriminator of the jet matched to the lepton
+
+#soft MVA
+softMVA = data['Muon_genPartFlav','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
+		'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
+		'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
+		'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
+		'Muon_outerTrackCharge','Muon_innerTrackCharge',]
+
+#lepton MVA
+lepMVA = data['Muon_genPartFlav','Muon_pt','Muon_eta','Muon_dxy','Muon_dz',
+			'Muon_sip3d','Muon_segmentComp','Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
+			'Jet_btagCSVV2'] #need jet ptRel and jet ptRatio
+
+#soft cut-based ID
+softID = data['Muon_isGood','Muon_nTrackerLayersWithMeasurement','Muon_isHighPurity',
+				'Muon_nPixelLayers']
+
 
 #expand the list so each row is a muon (not an event)
 data = expandList(data,['Muon_genPartFlav','Muon_pt','Muon_eta','Muon_dxy','Muon_dz','Muon_sip3d','Muon_segmentComp'])
