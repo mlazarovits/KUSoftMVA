@@ -21,7 +21,7 @@ def expandList(df, columnNames):
 
 
 #get rid of 0 muon events
-arr = [i for i in range(data.shape[0]) if data['nMuon'][i] == 0]
+data = data.drop([i for i, nMu in enumerate(data['nMuon']) if nMu == 0])
 
 #only keep the variables we want - labels and input
 data = data['Muon_genPartFlav','Muon_pt','Muon_eta','Muon_dxy','Muon_dz',
@@ -38,9 +38,7 @@ data = data['Muon_genPartFlav','Muon_pt','Muon_eta','Muon_dxy','Muon_dz',
 data = expandList(data,['Muon_genPartFlav','Muon_pt','Muon_eta','Muon_dxy','Muon_dz','Muon_sip3d','Muon_segmentComp'])
 
 #remove unmatched muons
-for i in range(data['Muon_genPartFlav'].shape[0]):
-	if data['Muon_genPartFlav'][i] == 0:
-		data = data.drop(i)
+data = data.drop([i for i, flav in enumerate(data['Muon_genPartFlav']) if flav == 0])
 
 #separate labels from input variables
 target = data['Muon_genPartFlav']
