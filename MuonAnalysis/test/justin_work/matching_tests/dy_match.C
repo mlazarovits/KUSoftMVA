@@ -87,6 +87,22 @@ Bool_t dy_match::Process(Long64_t entry)
 		if( pdg == 11 ) nonmuongenflav.Fill(0., (float)Muon_genPartFlav[i] );
 		if( pdg == 211 ) nonmuongenflav.Fill(1., (float)Muon_genPartFlav[i]);
 		if( pdg == 321 ) nonmuongenflav.Fill(2., (float)Muon_genPartFlav[i]);
+		if( pdg == 323 ) nonmuongenflav.Fill(3., (float)Muon_genPartFlav[i]);
+		if( pdg ==2212 ) nonmuongenflav.Fill(4., (float)Muon_genPartFlav[i]);
+
+
+		//check for muons from decaying pions/kaons
+		if( pdg == 13 ){
+			if(globalctr_3 < 20){
+			int momidx = GenPart_genPartIdxMother[idx];
+			int mompdg = abs(GenPart_pdgId[momidx]);
+			if(mompdg == 211 || mompdg == 321){
+				std::cout<<"Evt num: "<< *event<<std::endl;
+				std::cout<<"muon identified from "<<mompdg<<" decay"<<std::endl;
+			}
+			}
+			
+		}
 		
 		if( globalctr_1 < 20 && (pdg == 11|| pdg==211 ||pdg==321) ){
 			  
@@ -120,6 +136,10 @@ Bool_t dy_match::Process(Long64_t entry)
 		if(pdg == 321){
 			drk.Fill(DR);
 			dptrelk.Fill(DPTREL);
+		}
+		if(pdg ==2212){
+			drp.Fill(DR);
+			dptrelp.Fill(DPTREL);
 		}
 
 		
@@ -205,9 +225,9 @@ void dy_match::Terminate()
    // The Terminate() function is the last function to be called during
    // a query. It always runs on the client, it can be used to present
    // the results graphically or save the results to file.
- // TFile* f = new TFile("dytest.root", "RECREATE");
- //   TFile* f = new TFile("qcdtest.root", "RECREATE");
-	TFile* f = new TFile("ttbartest.root","RECREATE");
+  TFile* f = new TFile("dytest.root", "RECREATE");
+  //  TFile* f = new TFile("qcdtest.root", "RECREATE");
+  //  TFile* f = new TFile("ttbartest.root","RECREATE");
   f->WriteObject(&matchpt,matchpt.GetName());
   f->WriteObject(&unmatchPt, unmatchPt.GetName());
   f->WriteObject(&mupt,mupt.GetName());
@@ -223,6 +243,8 @@ void dy_match::Terminate()
   f->WriteObject(&dptrelmu, dptrelmu.GetName());
   f->WriteObject(&muptcut, muptcut.GetName());
   f->WriteObject(&unmatchPtcut, unmatchPtcut.GetName());
+  f->WriteObject(&drp,drp.GetName());
+  f->WriteObject(&dptrelp, dptrelp.GetName());
 
   f->Write();
   f->Close();
