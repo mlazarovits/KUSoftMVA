@@ -167,10 +167,13 @@ void matchnew::Terminate()
    // The Terminate() function is the last function to be called during
    // a query. It always runs on the client, it can be used to present
    // the results graphically or save the results to file.
-	TFile* f = new TFile("dy.root", "RECREATE");
-
+	//TFile* f = new TFile("dy.root", "RECREATE");
+	TFile* f = new TFile("tt.root", "RECREATE");
 	//do some formatting and normalization
 	labelcomp.Scale(1./labelcomp.Integral());
+
+	rawmatchfraction.Scale(1./rawmatchfraction.Integral());
+	matchfraction.Scale(1./matchfraction.Integral());
 
 	//int nx=5;
 	const char *label[5] = {"Muon","Electron","Pion","Kaon","Proton"};
@@ -290,22 +293,31 @@ void matchnew::Terminate()
 	c4->BuildLegend();
 
 	TCanvas* c5 = new TCanvas();
-	drk.SetTitle("Delta R");
+	//drk.SetTitle("Delta R");
 	drk.Draw("hist C");
 	dre.Draw("same hist C");
 	drpi.Draw("same hist C");
 	drmu.Draw("same hist C");
 	drp.Draw("same hist C");
 	c5->BuildLegend();
+	drk.SetTitle("Delta R");
+	c5->Update();
 
 	TCanvas* c6 = new TCanvas();
-	dptmu.SetTitle("Rel. dPt");
+
 	dptmu.Draw("hist C");
 	dpte.Draw("same hist C");
 	dptpi.Draw("same hist C");
 	dptk.Draw("same hist C");
 	dptp.Draw("same hist C");
 	c6->BuildLegend();
+	dptmu.SetTitle("Rel. dPt");
+	c6->Update();
+
+	TCanvas* c7 = new TCanvas();
+	rawmatchfraction.Draw("bar");
+	TCanvas* c8 = new TCanvas();
+	matchfraction.Draw("bar");
 
 	f->Write();
 	f->Close();
