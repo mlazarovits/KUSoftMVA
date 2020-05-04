@@ -1,16 +1,16 @@
-#define softLepSignal_cxx
-#include "softLepSignal.h"
+#define softLepNANO_cxx
+#include "softLepNANO.h"
 #include <TH2.h>
 #include <TStyle.h>
 #include <TCanvas.h>
 #include <iostream>
 
 
-void softLepSignal::Loop()
+void softLepNANO::Loop()
 {
 //   In a ROOT session, you can do:
-//      root> .L softLepSignal.C
-//      root> softLepSignal t
+//      root> .L softLepNANO.C
+//      root> softLepNANO t
 //      root> t.GetEntry(12); // Fill t data members with entry number 12
 //      root> t.Show();       // Show values of entry 12
 //      root> t.Show(16);     // Read and show values of entry 16

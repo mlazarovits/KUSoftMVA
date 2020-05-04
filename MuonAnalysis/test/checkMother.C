@@ -5,7 +5,7 @@ void checkMother(TString filename){
 
 	for(int i = 0;i < nEntries; i++){
 		tree->GetEntry(i);
-		// if(tree->GetLeaf("nMuon")->GetValue == 0) continue;
+		if(tree->GetLeaf("nMuon")->GetValue == 0) continue;
 		// cout << "event: " << i << endl;
 		int nGenPart = tree->GetLeaf("nGenPart")->GetValue();
 		int idx;

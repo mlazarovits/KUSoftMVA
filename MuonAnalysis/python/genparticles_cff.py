@@ -22,7 +22,8 @@ finalGenParticles = cms.EDProducer("GenParticlePruner",
         "keep isHardProcess() ||  fromHardProcessDecayed()  || fromHardProcessFinalState() || (statusFlags().fromHardProcess() && statusFlags().isLastCopy())",  #keep event summary based on status flags
 	"keep  (status > 70 && status < 80 && pt > 15) ", # keep high pt partons right before hadronization
         "keep abs(pdgId) == 23 || abs(pdgId) == 24 || abs(pdgId) == 25 || abs(pdgId) == 37 ",   # keep VIP(articles)s
-        #"keep abs(pdgId) == 310 && abs(eta) < 2.5 && pt > 1 ",                                                     # keep K0
+        "keep abs(pdgId) == 311 && abs(eta) < 2.5 && pt > 1 ",                                                     # keep K0
+        "keep abs(pdgId) == 321 && abs(eta) < 2.5 && pt > 1", #keep K+/-
         "keep (1000001 <= abs(pdgId) <= 1000039 ) || ( 2000001 <= abs(pdgId) <= 2000015)", #keep SUSY fiction particles
  		
    )

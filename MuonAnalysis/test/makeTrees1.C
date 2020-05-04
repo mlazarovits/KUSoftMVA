@@ -17,13 +17,13 @@
 #include "TLeaf.h"
 #include <TSystem.h>
 
-#include "softLepSignal.h"
+#include "softLepNANO.h"
 
 
 using namespace std;
 
 template<class selectortype>
-void makeTrees(selectortype& selector, string ofilename){
+void makeTrees1(selectortype& selector, string ofilename){
 	auto ofile = new TFile(ofilename.c_str(),"RECREATE");
 	auto PmuonTree = selector.fChain->CloneTree(0);
 	auto NPmuonTree = selector.fChain->CloneTree(0);
@@ -221,10 +221,10 @@ int main(int argc, char* argv[]){
 	// string _selectorClassName(selectorClassName);
 	string _ofilename(outputFileName);
 
-	// if(_selectorClassName.compare("softLepSignal") == 0){
+	// if(_selectorClassName.compare("softLepNANO") == 0){
 	cout << "preparing all trees" << endl;
-	softLepSignal s(chain);
-	makeTrees(s,_ofilename);
+	softLepNANO s(chain);
+	makeTrees1(s,_ofilename);
 	// }
 	// else if(_selectorClassName.compare("softLepBackground") == 0){
 	// 	cout << "preparing background tree" << endl;

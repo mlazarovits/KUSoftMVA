@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2020 15:06
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  15 APR 2020 15:18
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -349,29 +349,29 @@ Overfull \hbox (49.71419pt too wide) in paragraph at lines 64--84
 
 {/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 [2]
-Overfull \hbox (28.28503pt too wide) in paragraph at lines 130--151
+Overfull \hbox (28.28503pt too wide) in paragraph at lines 130--149
  [][] 
  []
 
 [3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 159.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 157.
 
  (/usr/local/texlive/2017/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 159.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 168.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 157.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 166.
  [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 168.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 166.
 
 (./softLepMVAsIDsOverview.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 168.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 168.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 166.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 166.
 Package rerunfilecheck Info: File `softLepMVAsIDsOverview.out' has not changed.
 
 (rerunfilecheck)             Checksum: 81A5DFE3D8A0534CA52C6BDE06675523;209.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 168.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 166.
  ) 
 Here is how much of TeX's memory you used:
  5924 strings out of 492995
@@ -389,7 +389,7 @@ sr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
 /local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
 ocal/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
 l/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on softLepMVAsIDsOverview.pdf (4 pages, 107256 bytes).
+Output written on softLepMVAsIDsOverview.pdf (4 pages, 107103 bytes).
 PDF statistics:
  139 PDF objects out of 1000 (max. 8388607)
  123 compressed objects within 2 object streams
