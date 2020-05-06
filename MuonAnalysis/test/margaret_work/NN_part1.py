@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential, Model
 from keras.layers import *
-from keras.optimizers import SGD, Adam, RMSprop
+from keras.optimizers import SGD, Adam
 from keras.activations import relu
 
 
@@ -130,7 +130,7 @@ outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
 
-model.compile(loss='categorical_crossentropy',optimizer=Adam(learning_rate=0.01),metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.01),metrics=['accuracy'])
 # model.summary()
 
 
