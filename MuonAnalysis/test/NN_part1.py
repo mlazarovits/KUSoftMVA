@@ -123,6 +123,9 @@ x_test = x_test.to_numpy()
 y_train = y_train.to_numpy()
 y_test = y_test.to_numpy()
 
+y_train = np.array([np.array(i) for i in y_train])
+y_test = np.array([np.array(i) for i in y_test])
+
 print(y_train.shape)
 
 
