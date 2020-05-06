@@ -63,21 +63,21 @@ data['Jet_btagCSVV2'] = btags
 
 #only keep the variables we want - labels and input
 #soft MVA
-softMVA = data['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
-		'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
-		'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
-		'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
-		'Muon_outerTrackCharge','Muon_innerTrackCharge']
+softMVA = data[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
+'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
+'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
+'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
+'Muon_outerTrackCharge','Muon_innerTrackCharge']]
 
 #lepton MVA
-lepMVA = data['Muon_genPdgId','Muon_pt','Muon_eta','Muon_dxy','Muon_dz',
+lepMVA = data[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_dxy','Muon_dz',
 			'Muon_sip3d','Muon_segmentComp','Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
-			'Jet_btagCSVV2'] #need jet ptRel and jet ptRatio
+			'Jet_btagCSVV2']] #need jet ptRel and jet ptRatio
 
 
 #soft cut-based ID
-softID = data['Muon_genPdgId','Muon_isGood','Muon_nTrackerLayersWithMeasurement','Muon_isHighPurity',
-				'Muon_nPixelLayers']
+softID = data[['Muon_genPdgId','Muon_isGood','Muon_nTrackerLayersWithMeasurement','Muon_isHighPurity',
+				'Muon_nPixelLayers']]
 
 
 
