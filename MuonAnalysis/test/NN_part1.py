@@ -135,6 +135,7 @@ x = Dense(64,activation='relu')(inputs)
 x = Dense(64,activation='relu')(x)
 x = Dense(64,activation='relu')(x)
 x = Dense(64,activation='relu')(x)
+x = Dense(64, activation='relu')(x)
 outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
