@@ -144,7 +144,7 @@ model.compile(loss='categorical_crossentropy',optimizer=Adam(),metrics=['accurac
 # model.summary()
 
 
-model.fit(x_train,y_train,batch_size=256,epochs=5)
+model.fit(x_train,y_train,batch_size=256,epochs=10)
 
 
 
