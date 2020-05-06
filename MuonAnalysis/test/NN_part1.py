@@ -113,7 +113,7 @@ target = target.map(encode_genPdgId)
 
 
 #create test/train split - try soft cut-based ID first (least columns)
-x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1)
+x_train, x_test, y_train, y_test = train_test_split(softMVA, target, test_size = .3, random_state=1)
 
 
 
