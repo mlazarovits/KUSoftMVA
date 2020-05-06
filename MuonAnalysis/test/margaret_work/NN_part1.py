@@ -52,7 +52,7 @@ data['Muon_genPdgId'] = pdgIds
 data['Jet_btagCSVV2'] = btags
 
 #drop muons with pt < 2
-data = data.drop([i for i, pt in enumerate(data['nMuon']) if pt < 2])
+data = data.drop([i for i, pt in enumerate(data['Muon_pt']) if pt < 2])
 
 
 
