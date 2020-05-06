@@ -106,7 +106,6 @@ target = target.map(encode_genPdgId)
 x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1)
 
 
-
 #convert everything to numpy arrays to feed into network
 x_train = x_train.to_numpy()
 x_test = x_test.to_numpy()
@@ -134,7 +133,7 @@ model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.0001),metrics=
 # model.summary()
 
 
-model.fit(x_train,y_train,batch_size=256,epochs=10)
+model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.25)
 
 
 
