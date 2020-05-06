@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential, Model
 from keras.layers import *
-from keras.optimizers import SGD, Adam
+from keras.optimizers import SGD, Adam, RMSprop
 from keras.activations import relu
 
 
@@ -27,15 +27,6 @@ def expandList(df, columnNames):
 	return outDf
 
 
-
-# pdgIds = np.array([])
-# for i, idxs in enumerate(test['Muon_genPartIdx']):
-# 	for j, mu in enumerate(idxs):
-# 		if mu == -1:
-# 			pdgIds = np.append(pdgIds,-1)
-# 		else:
-# 			pdgIds = np.append(pdgIds,test['GenPart_pdgId'][i][mu])
-
 #make gen pdg ID labels for reco muons
 #-999 if unmatched
 pdgIds = [-999 if mu == -1 else data['GenPart_pdgId'][i][mu] for i, idxs in enumerate(data['Muon_genPartIdx']) for j, mu in enumerate(idxs)]
@@ -53,7 +44,6 @@ data = data.drop([i for i, nMu in enumerate(data['nMuon']) if nMu == 0])
 muonMask = data.columns.str.contains('Muon_.*')
 expCols = data.loc[:,muonMask].columns
 data = expandList(data, expCols)
-
 
 
 #add in gen pgdIds and jet btags of reco muons
