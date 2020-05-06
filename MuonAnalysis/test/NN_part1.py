@@ -120,7 +120,7 @@ x_test = x_test.to_numpy()
 y_train = y_train.to_numpy()
 y_test = y_test.to_numpy()
 
-print(x_train.shape)
+print(y_train.shape)
 #build network here
 inputs = Input(shape=x_train[0].shape)
 x = Dense(64,activation='relu')(inputs)
