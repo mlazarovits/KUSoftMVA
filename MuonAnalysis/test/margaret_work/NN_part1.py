@@ -46,9 +46,14 @@ expCols = data.loc[:,muonMask].columns
 data = expandList(data, expCols)
 
 
+
 #add in gen pgdIds and jet btags of reco muons
 data['Muon_genPdgId'] = pdgIds
 data['Jet_btagCSVV2'] = btags
+
+#drop muons with pt < 2
+data = data.drop([i for i, pt in enumerate(data['nMuon']) if pt < 2])
+
 
 
 
@@ -60,7 +65,7 @@ softMVA = data[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
 'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
 'Muon_outerTrackCharge','Muon_innerTrackCharge']]
 
-#lepton MVA
+#lepton MVA - use LepGood variables
 lepMVA = data[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_dxy','Muon_dz',
 			'Muon_sip3d','Muon_segmentComp','Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
 			'Jet_btagCSVV2']] #need jet ptRel and jet ptRatio
@@ -132,7 +137,7 @@ model = Model(inputs=inputs,outputs=outputs)
 model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.0001),metrics=['accuracy'])
 # model.summary()
 
-
+#test model with validation data but lower lr, maybe increase batch size and play w val split?
 model.fit(x_train,y_train,batch_size=256,epochs=10)
 
 
