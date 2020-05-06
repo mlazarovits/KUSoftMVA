@@ -120,7 +120,7 @@ x_test = x_test.to_numpy()
 y_train = y_train.to_numpy()
 y_test = y_test.to_numpy()
 
-
+print(x_train.shape)
 #build network here
 inputs = Input(shape=x_train[0].shape)
 x = Dense(64,activation='relu')(inputs)
@@ -130,7 +130,7 @@ outputs = Dense(nClasses,activation='softmax')(x)
 model = Model(inputs=inputs,outputs=outputs)
 
 model.compile(loss='categorical_crossentropy',optimizer=Adam(),metrics=['accuracy'])
-model.summary()
+# model.summary()
 
 
 model.fit(x_train,y_train,batch_size=64,epochs=5)
