@@ -115,7 +115,7 @@ target = target.map(encode_genPdgId)
 #create test/train split - try soft cut-based ID first (least columns)
 x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1)
 
-print(y_train.shape)
+
 
 #convert everything to numpy arrays to feed into network
 x_train = x_train.to_numpy()
@@ -126,7 +126,7 @@ y_test = y_test.to_numpy()
 y_train = np.array([np.array(i) for i in y_train])
 y_test = np.array([np.array(i) for i in y_test])
 
-print(y_train.shape)
+
 
 
 #build network here
@@ -141,7 +141,7 @@ model.compile(loss='categorical_crossentropy',optimizer=Adam(),metrics=['accurac
 # model.summary()
 
 
-model.fit(x_train,y_train,batch_size=64,epochs=5)
+model.fit(x_train,y_train,batch_size=128,epochs=5)
 
 
 
