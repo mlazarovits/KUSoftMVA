@@ -140,7 +140,7 @@ outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
 
-model.compile(loss='categorical_crossentropy',optimizer=Adam(),metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy',optimizer=RMSProp(),metrics=['accuracy'])
 # model.summary()
 
 
