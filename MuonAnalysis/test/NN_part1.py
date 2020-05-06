@@ -4,9 +4,9 @@ import pandas as pd
 
 # from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
-from tensorflow.keras.models import Sequential, Model
-from tensorflow.keras.optimizers import SGD, Adam
-from tensorflow.keras.activations import relu
+from keras.models import Sequential, Model
+from keras.optimizers import SGD, Adam
+from keras.activations import relu
 
 
 
