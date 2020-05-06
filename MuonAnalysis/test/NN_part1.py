@@ -111,8 +111,11 @@ for i in otherIds:
 target = target.map(encode_genPdgId)
 
 
+
 #create test/train split - try soft cut-based ID first (least columns)
 x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1)
+
+print(y_train.shape)
 
 #convert everything to numpy arrays to feed into network
 x_train = x_train.to_numpy()
@@ -121,6 +124,8 @@ y_train = y_train.to_numpy()
 y_test = y_test.to_numpy()
 
 print(y_train.shape)
+
+
 #build network here
 inputs = Input(shape=x_train[0].shape)
 x = Dense(64,activation='relu')(inputs)
