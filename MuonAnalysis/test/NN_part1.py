@@ -113,7 +113,7 @@ target = target.map(encode_genPdgId)
 
 
 #create test/train split - try soft cut-based ID first (least columns)
-x_train, x_test, y_train, y_test = train_test_split(softMVA, target, test_size = .3, random_state=1)
+x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1)
 
 
 
@@ -132,6 +132,7 @@ y_test = np.array([np.array(i) for i in y_test])
 #build network here
 inputs = Input(shape=x_train[0].shape)
 x = Dense(64,activation='relu')(inputs)
+x = Dense(64,activation='relu')(x)
 x = Dense(64,activation='relu')(x)
 outputs = Dense(nClasses,activation='softmax')(x)
 
