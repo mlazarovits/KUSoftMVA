@@ -15,7 +15,7 @@ treeName = 'Events'
 
 #take in all samples (dy, tt, qcd) and shuffle for unmatched (sample evenly for other categories)
 gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
-tmp = root_numpy.root2array(gPath+'DYJetsToLL2018_MINI_numEvent100.root',treeName)
+tmp = root_numpy.root2array(gPath+'DYJetsToLL2018_MINI_numEvent100000.root',treeName)
 data = pd.DataFrame(tmp)
 
 #expand list in terms of muon
