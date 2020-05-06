@@ -3,7 +3,7 @@ import root_numpy
 import pandas as pd
 
 # from sklearn.preprocessing import OneHotEncoder
-from sklear.model_selection import train_test_split
+from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.optimizers import SGD, Adam
 from tensorflow.keras.activations import relu
