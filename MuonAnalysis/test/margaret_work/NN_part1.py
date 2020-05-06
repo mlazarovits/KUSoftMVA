@@ -138,7 +138,7 @@ model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.0001),metrics=
 # model.summary()
 
 #test model with validation data but lower lr, maybe increase batch size and play w val split?
-model.fit(x_train,y_train,batch_size=256,epochs=10)
+model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.3)
 
 
 
