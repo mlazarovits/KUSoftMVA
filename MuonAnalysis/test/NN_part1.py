@@ -5,6 +5,7 @@ import pandas as pd
 # from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential, Model
+from keras.layers import *
 from keras.optimizers import SGD, Adam
 from keras.activations import relu
 
@@ -110,8 +111,8 @@ for i in otherIds:
 target = target.map(encode_genPdgId)
 
 
-#create test/train split
-x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .3, random_state=1)
+#create test/train split - try soft cut-based ID first (least columns)
+x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1)
 
 #convert everything to numpy arrays to feed into network
 x_train = x_train.to_numpy()
