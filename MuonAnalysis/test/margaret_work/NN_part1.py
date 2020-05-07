@@ -125,7 +125,7 @@ x = Dense(128,activation='relu')(inputs)
 x = Dense(64,activation='relu')(x)
 x = Dense(64, activation='relu')(x)
 x = Dense(64,activation='relu')(x)
-# x = Dense(128,activation='relu')(x)
+x = Dense(64,activation='relu')(x)
 # x = Dense(128,activation='relu')(x)
 outputs = Dense(nClasses,activation='softmax')(x)
 
