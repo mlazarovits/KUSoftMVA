@@ -6,7 +6,7 @@ def expandList(df, columnNames):
 		outDf[col] = arr
 	return outDf
 
-def prepData(filename):
+def makeData(filename):
 	data = root_numpy.root2array(gPath+filename,treeName)
 	data = pd.DataFrame(data)
 	#make gen pdg ID labels for reco muons
