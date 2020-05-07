@@ -134,14 +134,16 @@ model = Model(inputs=inputs,outputs=outputs)
 model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy'])
 model.summary()
 
-history = model.fit(x_train,y_train,batch_size=256,epochs=100,validation_split=0.1)
+history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.1)
 
-# plotName = 'evenSampling_dyjets+qcd'
-# plotLoss(history,plotName)
 
-# y_pred = model.predict(y_test)
 
-# plotROCcurves(y_test,y_pred,nClasses,plotName)
+plotName = 'evenSampling_dyjets+qcd'
+plotLoss(history,plotName)
+
+y_pred = model.predict(y_test)
+
+plotROCcurves(y_test,y_pred,nClasses,plotName)
 
 
 
