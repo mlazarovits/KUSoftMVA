@@ -75,7 +75,7 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	               ''.format(roc_auc["macro"]),
 	         color='navy', linestyle=':', linewidth=4)
 
-	colors = cycle(['aqua', 'darkorange', 'cornflowerblue','darkviolet','lightcoral'])
+	colors = cycle(['aqua', 'darkorange', 'cornflowerblue','darkviolet','limegreen'])
 	for i, color in zip(range(n_classes), colors):
 	    plt.plot(fpr[i], tpr[i], color=color, lw=lw,
 	             label='ROC curve of class {0} (area = {1:0.2f})'

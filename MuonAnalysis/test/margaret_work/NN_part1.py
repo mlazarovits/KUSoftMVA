@@ -101,7 +101,6 @@ print(y_train.value_counts(normalize=True))
 
 
 
-
 # #convert everything to numpy arrays to feed into network
 x_train = x_train.to_numpy()
 x_test = x_test.to_numpy()
@@ -114,7 +113,6 @@ y_test = np.array([np.array(i) for i in y_test])
 ###### unit testing ######
 # x_train = x_train[:2]
 # y_train = y_train[:2]
-
 
 
 
@@ -133,7 +131,7 @@ model = Model(inputs=inputs,outputs=outputs)
 model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy',Precision()])
 model.summary()
 
-history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.1)
+history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.3)
 
 
 
