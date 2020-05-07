@@ -74,8 +74,9 @@ softID = allSamples[['Muon_genPdgId','Muon_isGood','Muon_nTrackerLayersWithMeasu
 				'Muon_nPixelLayers']]
 
 
+data = softMVA
 #separate labels from input variables
-target = softID['Muon_genPdgId']
+target = data['Muon_genPdgId']
 #take absolute value of gen PDG ID
 target = abs(target)
 #one hot encode the labels - make dictionary of classes for part I
@@ -83,7 +84,7 @@ encode_genPdgId = {13: [1,0,0,0,0], 211: [0,1,0,0,0],
 		321: [0,0,1,0,0], 2212: [0,0,0,1,0], 999: [0,0,0,0,1]}
 target = target.map(encode_genPdgId)
 #drop this column from data
-softID = softID.drop(columns = 'Muon_genPdgId')
+data = data.drop(columns = 'Muon_genPdgId')
 
 
 print('Relative Frequencies of Classes (total):')
@@ -95,7 +96,7 @@ print(target.value_counts(normalize=True))
 # softID = (softID - softID.mean())/softID.std()
 
 #create test/train split - try soft cut-based ID first (least columns)
-x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1, shuffle=True)
+x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .3, random_state=1, shuffle=True)
 print('Relative Frequencies of Classes (training):')
 print(y_train.value_counts(normalize=True))
 
@@ -135,7 +136,7 @@ history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.
 
 
 
-plotName = 'evenSampling_dyjets+qcd'
+plotName = 'plots/softMVAvars_evenSampling_dyjets+qcd'
 plotLoss(history,plotName)
 plotPrecision(history,plotName)
 
