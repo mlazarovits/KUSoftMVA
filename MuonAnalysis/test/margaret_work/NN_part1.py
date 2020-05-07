@@ -100,13 +100,13 @@ print(y_train.value_counts(normalize=True))
 
 
 # #convert everything to numpy arrays to feed into network
-x_train = x_train.to_numpy()
-x_test = x_test.to_numpy()
-y_train = y_train.to_numpy()
-y_test = y_test.to_numpy()
+# x_train = x_train.to_numpy()
+# x_test = x_test.to_numpy()
+# y_train = y_train.to_numpy()
+# y_test = y_test.to_numpy()
 
-y_train = np.array([np.array(i) for i in y_train])
-y_test = np.array([np.array(i) for i in y_test])
+# y_train = np.array([np.array(i) for i in y_train])
+# y_test = np.array([np.array(i) for i in y_test])
 
 ###### unit testing ######
 # x_train = x_train[:2]
