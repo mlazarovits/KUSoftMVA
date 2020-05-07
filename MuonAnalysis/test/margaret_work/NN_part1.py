@@ -23,8 +23,6 @@ from keras.metrics import Precision
 
 
 
-
-
 #define classes
 #classes are:
 #13: actual mu, 211: pi^+\-, 321: K^+\-,  
@@ -123,6 +121,7 @@ x = Dense(128,activation='relu')(x)
 x = Dense(128,activation='relu')(x)
 x = Dense(128,activation='relu')(x)
 x = Dense(128,activation='relu')(x)
+x = Dense(64, activation='relu')(x)
 outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
