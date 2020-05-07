@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 #import user defined functions
 from plotFunctions import plotROCcurves, plotLoss
-from prepData import makeData, expandList
+from prepData import makeData, expandList, precisionScore
 
 
 # from scipy import interp
@@ -14,6 +14,7 @@ from prepData import makeData, expandList
 
 # from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import precision_score
 from keras.models import Sequential, Model
 from keras.layers import *
 from keras.optimizers import SGD, Adam
@@ -131,7 +132,7 @@ outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
 
-model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy','categorical_accuracy',precision_score])
 model.summary()
 
 history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.1)

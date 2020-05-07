@@ -38,3 +38,6 @@ def makeData(filename,definedIds):
 
 	# df = df.drop([i for i, ID in enumerate(df['genPdgId']) if abs(ID) not in definedIds])
 	return data
+
+def precisionScore(yTrue,yPred):
+	return precision_score(yTrue,yPred)
