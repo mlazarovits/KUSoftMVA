@@ -4,7 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 #import user defined functions
-from plotFunctions import plotROCcurves, plotLoss
+from plotFunctions import plotROCcurves, plotLoss, plotPrecision
 from prepData import makeData, expandList, precisionScore
 
 
