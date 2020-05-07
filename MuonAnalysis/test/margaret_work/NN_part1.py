@@ -1,6 +1,7 @@
 import numpy as np
 import root_numpy
 import pandas as pd
+import matplotlib.pyplot as plt
 
 # from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
@@ -151,10 +152,18 @@ outputs = Dense(nClasses,activation='softmax')(x)
 model = Model(inputs=inputs,outputs=outputs)
 
 model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.001),metrics=['accuracy'])
-# model.summary()
+model.summary()
 
 #test model with validation data but lower lr, maybe increase batch size and play w val split?
-model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.3)
+history = model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.3)
+
+plt.figure()
+plt.plot(history.history['val_loss'],label='val loss')
+plt.plot(history.history['loss'],label='training loss')
+plt.xlabel('Epoch')
+plt.ylabel('Loss')
+plt.legend()
+plt.savefig('lossHistory_evenSample.pdf')
 
 
 
