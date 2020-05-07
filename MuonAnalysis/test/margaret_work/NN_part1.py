@@ -132,7 +132,7 @@ inputs = Input(shape=x_train[0].shape)
 
 
 x = Dense(128,activation='relu')(inputs)
-block1Output = Dense(128,activation='relu')(x)
+block_1_output = Dense(128,activation='relu')(x)
 x = Dense(128)(block_1_output)
 x = BatchNormalization()(x)
 x = Activation('relu')(x)
