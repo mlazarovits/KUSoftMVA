@@ -106,10 +106,10 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	         color='navy', linestyle=':', linewidth=4)
 
 	colors = cycle(['aqua', 'darkorange', 'cornflowerblue'])
-	for i, color in zip(classes, colors):
+	for i, color in zip(range(n_classes), colors):
 	    plt.plot(fpr[i], tpr[i], color=color, lw=lw,
 	             label='ROC curve of class {0} (area = {1:0.2f})'
-	             ''.format(i, roc_auc[i]))
+	             ''.format(classes[i], roc_auc[i]))
 
 	plt.plot([0, 1], [0, 1], 'k--', lw=lw)
 	plt.xlabel('False Positive Rate')
