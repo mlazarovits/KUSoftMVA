@@ -76,10 +76,11 @@ for i in otherIds:
 	encode_genPdgId[i] = [0,0,0,0,0,1,0]
 target = target.map(encode_genPdgId)
 
-
+print('Relative Frequencies of Classes (total):')
+print(target.value_counts(normalize=True))
 
 #create test/train split - try soft cut-based ID first (least columns)
-x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1)
+x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1,shuffle=True)
 print('Relative Frequencies of Classes (training):')
 print(y_train.value_counts(normalize=True))
 
