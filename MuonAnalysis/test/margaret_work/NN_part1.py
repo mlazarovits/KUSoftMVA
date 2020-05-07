@@ -120,6 +120,8 @@ y_test = np.array([np.array(i) for i in y_test])
 
 # print('nClasses',nClasses)
 
+print(y_test.shape, nClasses)
+
 
 
 # #build network here
