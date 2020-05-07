@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 #import user defined functions
 from plotFunctions import plotROCcurves, plotLoss
-from prepData import prepData, expandList
+from prepData import makeData, expandList
 
 
 from scipy import interp
@@ -22,20 +22,14 @@ from keras.activations import relu
 
 
 treeName = 'Events'
+gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
 
 #take in all samples (dy, tt, qcd) and shuffle for unmatched (sample evenly for other categories)
-gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
-# dyjets = root_numpy.root2array(gPath+'DYJetsToLL2018_MINI_numEvent100000.root',treeName)
-# dyjets = pd.DataFrame(dyjets)
 
-# qcd = root_numpy.root2array(gPath+'QCD_pt_600to800_2018_MINI_numEvent100000.root',treeName)
-# qcd = pd.DataFrame(qcd)
-
-	
 
 #get dataframes for dyjets and qcd samples
-dyjets = prepData('DYJetsToLL2018_MINI_numEvent100000.root')
-qcd = prepData('QCD_pt_600to800_2018_MINI_numEvent100000.root')
+dyjets = makeData('DYJetsToLL2018_MINI_numEvent100000.root')
+qcd = makeData('QCD_pt_600to800_2018_MINI_numEvent100000.root')
 
 
 #sample 20k muons from each sample set
