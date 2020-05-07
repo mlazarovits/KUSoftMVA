@@ -110,8 +110,8 @@ y_train = np.array([np.array(i) for i in y_train])
 y_test = np.array([np.array(i) for i in y_test])
 
 ###### unit testing ######
-x_train = x_train[:3]
-y_train = y_train[:3]
+x_train = x_train[:15]
+y_train = y_train[:15]
 
 
 
@@ -119,8 +119,8 @@ y_train = y_train[:3]
 # #build network here
 inputs = Input(shape=x_train[0].shape)
 x = Dense(64,activation='relu')(inputs)
-x = Dense(32,activation='relu')(x)
-x = Dense(16, activation='relu')(x)
+x = Dense(64,activation='relu')(x)
+# x = Dense(16, activation='relu')(x)
 
 # # x = Dense(128,activation='relu')(inputs)
 # # x = Dense(128,activation='relu')(x)
