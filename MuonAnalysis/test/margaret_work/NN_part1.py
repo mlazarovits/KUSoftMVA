@@ -122,12 +122,12 @@ x = Dense(128,activation='relu')(x)
 x = Dense(128,activation='relu')(x)
 x = Dense(128,activation='relu')(x)
 x = Dense(128,activation='relu')(x)
-x = Dense(128,activation='relu')(x)
+# x = Dense(128,activation='relu')(x)
 outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
 
-model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-3),metrics=['accuracy',Precision()])
+model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy',Precision()])
 model.summary()
 
 history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.3)
