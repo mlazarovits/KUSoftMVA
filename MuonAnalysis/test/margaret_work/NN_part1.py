@@ -80,7 +80,8 @@ target = target.map(encode_genPdgId)
 
 #create test/train split - try soft cut-based ID first (least columns)
 x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1)
-
+print('Relative Frequencies of Classes (training):')
+print(y_train.value_counts(normalize=True))
 
 #convert everything to numpy arrays to feed into network
 x_train = x_train.to_numpy()
@@ -95,8 +96,7 @@ y_test = np.array([np.array(i) for i in y_test])
 # x_train = x_train[:3]
 # y_train = y_train[:3]
 
-print('Relative Frequencies of Classes (training):')
-print(y_train.value_counts(normalize=True))
+
 
 # print('len y_train',y_train.shape)
 # print('len y_test',y_test.shape)
