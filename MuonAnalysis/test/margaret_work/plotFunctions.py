@@ -64,7 +64,7 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	roc_auc["macro"] = auc(fpr["macro"], tpr["macro"])
 
 	# Plot all ROC curves
-	plt.figure(1)
+	plt.figure()
 	plt.plot(fpr["micro"], tpr["micro"],
 	         label='micro-average ROC curve (area = {0:0.2f})'
 	               ''.format(roc_auc["micro"]),
@@ -75,11 +75,11 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	               ''.format(roc_auc["macro"]),
 	         color='navy', linestyle=':', linewidth=4)
 
-	colors = cycle(['aqua', 'darkorange', 'cornflowerblue'])
+	colors = cycle(['aqua', 'darkorange', 'cornflowerblue','darkviolet','maroon'])
 	for i, color in zip(range(n_classes), colors):
 	    plt.plot(fpr[i], tpr[i], color=color, lw=lw,
 	             label='ROC curve of class {0} (area = {1:0.2f})'
-	             ''.format(i, roc_auc[i]))
+	             ''.format(classes[i], roc_auc[i]))
 
 	plt.plot([0, 1], [0, 1], 'k--', lw=lw)
 	plt.xlim([0.0, 1.0])
@@ -117,3 +117,6 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	plt.title(outName)
 	plt.legend(loc="lower right")
 	plt.savefig(outName+"ROCcurve.pdf")
+
+
+
