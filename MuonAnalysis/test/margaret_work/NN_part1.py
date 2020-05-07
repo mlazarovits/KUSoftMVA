@@ -21,8 +21,6 @@ from keras.activations import relu
 
 
 
-treeName = 'Events'
-gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
 
 #take in all samples (dy, tt, qcd) and shuffle for unmatched (sample evenly for other categories)
 
@@ -93,15 +91,28 @@ y_test = y_test.to_numpy()
 y_train = np.array([np.array(i) for i in y_train])
 y_test = np.array([np.array(i) for i in y_test])
 
+###### unit testing ######
+
+x_train = x_train[0]
+y_train = y_train[0]
+
+
+
+print('len y_train',y_train.shape)
+print('len y_test',y_test.shape)
+
+print('nClasses',nClasses)
+
 
 
 #build network here
 inputs = Input(shape=x_train[0].shape)
-x = Dense(128,activation='relu')(inputs)
-x = Dense(128,activation='relu')(x)
-x = Dense(128,activation='relu')(x)
-x = Dense(128,activation='relu')(x)
-x = Dense(128,activation='relu')(x)
+x = Dense(64,activation='relu')(inputs)
+# x = Dense(128,activation='relu')(inputs)
+# x = Dense(128,activation='relu')(x)
+# x = Dense(128,activation='relu')(x)
+# x = Dense(128,activation='relu')(x)
+# x = Dense(128,activation='relu')(x)
 outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
@@ -113,11 +124,11 @@ model.summary()
 history = model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.3)
 
 
-plotLoss(history)
+# plotLoss(history)
 
-y_pred = model.predict(y_test)
+# y_pred = model.predict(y_test)
 
-plotROCcurves(y_test,y_pred,nClasses)
+# plotROCcurves(y_test,y_pred,nClasses)
 
 
 
