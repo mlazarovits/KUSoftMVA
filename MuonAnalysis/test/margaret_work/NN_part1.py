@@ -3,6 +3,15 @@ import root_numpy
 import pandas as pd
 import matplotlib.pyplot as plt
 
+#import user defined functions
+from plotFunctions import plotROCcurves, plotLoss
+from prepData import prepData, expandList
+
+
+from scipy import interp
+from itertools import cycle
+from sklearn.metrics import roc_curve, auc
+
 # from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from keras.models import Sequential, Model
@@ -22,43 +31,6 @@ gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAna
 # qcd = root_numpy.root2array(gPath+'QCD_pt_600to800_2018_MINI_numEvent100000.root',treeName)
 # qcd = pd.DataFrame(qcd)
 
-#expand list in terms of muon
-def expandList(df, columnNames):
-	outDf = pd.DataFrame()
-	for col in columnNames:
-		arr = pd.Series(np.array([j for i in df[col] for j in i]))
-		outDf[col] = arr
-	return outDf
-
-def prepData(filename):
-	data = root_numpy.root2array(gPath+filename,treeName)
-	data = pd.DataFrame(data)
-	#make gen pdg ID labels for reco muons
-	#-999 if unmatched
-	pdgIds = [-999 if mu == -1 else data['GenPart_pdgId'][i][mu] for i, idxs in enumerate(data['Muon_genPartIdx']) for j, mu in enumerate(idxs)]
-	pdgIds = np.array(pdgIds)
-
-	#make jet btag CSVV2 column
-	btags = [-999 if mu == -1 else data['Jet_btagCSVV2'][i][mu] for i, idxs in enumerate(data['Muon_jetIdx']) for j, mu in enumerate(idxs)]
-	btags = np.array(btags)
-
-
-	#get rid of 0 muon events
-	data = data.drop([i for i, nMu in enumerate(data['nMuon']) if nMu == 0])
-
-	#expand the list so each row is a muon (not an event)
-	muonMask = data.columns.str.contains('Muon_.*')
-	expCols = data.loc[:,muonMask].columns
-	data = expandList(data, expCols)
-
-	#add in gen pgdIds and jet btags of reco muons
-	data['Muon_genPdgId'] = pdgIds
-	data['Jet_btagCSVV2'] = btags
-
-	#drop muons with pt < 2
-	data = data.drop([i for i, pt in enumerate(data['Muon_pt']) if pt < 2])
-	return data
-
 	
 
 #get dataframes for dyjets and qcd samples
@@ -73,9 +45,6 @@ qcdSubset = qcd.sample(n=20000)
 allSamples = pd.concat([dyjetsSubset,qcdSubset],ignore_index=True)
 
 
-
-
-
 #only keep the variables we want - labels and input
 #soft MVA
 softMVA = allSamples[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
@@ -83,11 +52,6 @@ softMVA = allSamples[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMoment
 'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
 'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
 'Muon_outerTrackCharge','Muon_innerTrackCharge']]
-
-#lepton MVA - use LepGood variables
-lepMVA = allSamples[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_dxy','Muon_dz',
-			'Muon_sip3d','Muon_segmentComp','Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
-			'Jet_btagCSVV2']] #need jet ptRel and jet ptRatio
 
 
 #soft cut-based ID
@@ -118,8 +82,6 @@ encode_genPdgId = {13: [1,0,0,0,0,0,0], 211: [0,1,0,0,0,0,0], 11: [0,0,1,0,0,0,0
 #add entry for 'other' classes
 for i in otherIds:
 	encode_genPdgId[i] = [0,0,0,0,0,1,0]
-
-
 target = target.map(encode_genPdgId)
 
 
@@ -136,7 +98,6 @@ y_test = y_test.to_numpy()
 
 y_train = np.array([np.array(i) for i in y_train])
 y_test = np.array([np.array(i) for i in y_test])
-
 
 
 
@@ -157,13 +118,13 @@ model.summary()
 #test model with validation data but lower lr, maybe increase batch size and play w val split?
 history = model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.3)
 
-plt.figure()
-plt.plot(history.history['val_loss'],label='val loss')
-plt.plot(history.history['loss'],label='training loss')
-plt.xlabel('Epoch')
-plt.ylabel('Loss')
-plt.legend()
-plt.savefig('lossHistory_evenSample.pdf')
+
+plotLoss(history)
+
+y_pred = model.predict(y_test)
+
+plotROCcurves(y_test,y_pred,nClasses)
+
 
 
 
