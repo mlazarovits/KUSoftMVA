@@ -1,3 +1,10 @@
+import numpy as np
+from scipy import interp
+import matplotlib.pyplot as plt
+from itertools import cycle
+from sklearn.metrics import roc_curve, auc
+
+
 
 def plotLoss(history):
 	plt.figure()
@@ -7,8 +14,6 @@ def plotLoss(history):
 	plt.ylabel('Loss')
 	plt.legend()
 	plt.savefig('lossHistory_evenSample.pdf')
-
-
 
 
 def plotROCcurves(y_test,y_score,n_classes):

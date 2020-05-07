@@ -1,5 +1,5 @@
 import numpy as np
-import root_numpy
+# import root_numpy
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -8,9 +8,9 @@ from plotFunctions import plotROCcurves, plotLoss
 from prepData import makeData, expandList
 
 
-from scipy import interp
-from itertools import cycle
-from sklearn.metrics import roc_curve, auc
+# from scipy import interp
+# from itertools import cycle
+# from sklearn.metrics import roc_curve, auc
 
 # from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split

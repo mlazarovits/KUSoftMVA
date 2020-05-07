@@ -1,3 +1,7 @@
+import root_numpy
+import numpy as np
+import pandas as pd
+
 #expand list in terms of muon
 def expandList(df, columnNames):
 	outDf = pd.DataFrame()
