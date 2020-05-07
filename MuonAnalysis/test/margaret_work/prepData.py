@@ -1,3 +1,11 @@
+#expand list in terms of muon
+def expandList(df, columnNames):
+	outDf = pd.DataFrame()
+	for col in columnNames:
+		arr = pd.Series(np.array([j for i in df[col] for j in i]))
+		outDf[col] = arr
+	return outDf
+
 def prepData(filename):
 	data = root_numpy.root2array(gPath+filename,treeName)
 	data = pd.DataFrame(data)
