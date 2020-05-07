@@ -1,4 +1,4 @@
-himport numpy as np
+import numpy as np
 import root_numpy
 import pandas as pd
 from sklearn.preprocessing import OneHotEncoder
