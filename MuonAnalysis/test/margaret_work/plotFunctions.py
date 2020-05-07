@@ -6,17 +6,17 @@ from sklearn.metrics import roc_curve, auc
 
 
 
-def plotLoss(history):
+def plotLoss(history,outName):
 	plt.figure()
 	plt.plot(history.history['val_loss'],label='val loss')
 	plt.plot(history.history['loss'],label='training loss')
 	plt.xlabel('Epoch')
 	plt.ylabel('Loss')
 	plt.legend()
-	plt.savefig('lossHistory_evenSample.pdf')
+	plt.savefig(outName+'.pdf')
 
 
-def plotROCcurves(y_test,y_score,n_classes):
+def plotROCcurves(y_test,y_score,n_classes,outName):
 	# Plot linewidth.
 	lw = 2
 
@@ -100,6 +100,6 @@ def plotROCcurves(y_test,y_score,n_classes):
 	plt.plot([0, 1], [0, 1], 'k--', lw=lw)
 	plt.xlabel('False Positive Rate')
 	plt.ylabel('True Positive Rate')
-	plt.title('Some extension of Receiver operating characteristic to multi-class')
+	plt.title(outName)
 	plt.legend(loc="lower right")
-	plt.savefig("ROCcurves.pdf")
+	plt.savefig(outName+".pdf")

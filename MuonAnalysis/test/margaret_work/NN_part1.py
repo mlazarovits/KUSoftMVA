@@ -29,8 +29,9 @@ from keras.activations import relu
 dyjets = makeData('DYJetsToLL2018_MINI_numEvent100000.root')
 qcd = makeData('QCD_pt_600to800_2018_MINI_numEvent100000.root')
 
-
-#sample 20k muons from each sample set
+# TRY SAMPLING EACH CLASS RANDOMLY FROM DYJETS AND QCD (SAMPLE UNMATCHED BIN EVENLY)
+# SO THAT EACH CLASS HAS AN EVEN NUMBER OF MUONS
+#sample 20k muons randomly from each sample set
 dyjetsSubset = dyjets.sample(n=20000)
 qcdSubset = qcd.sample(n=20000)
 
@@ -71,13 +72,16 @@ nClasses = len(definedIds) + 1
 encode_genPdgId = {13: [1,0,0,0,0,0,0], 211: [0,1,0,0,0,0,0], 11: [0,0,1,0,0,0,0], 
 		321: [0,0,0,1,0,0,0], 2212: [0,0,0,1,0,0,0], 999: [0,0,0,0,0,1,0]}
 
+print('Relative Frequencies of Classes (total):')
+print(target.value_counts(normalize=True))
+
+
 #add entry for 'other' classes
 for i in otherIds:
 	encode_genPdgId[i] = [0,0,0,0,0,1,0]
 target = target.map(encode_genPdgId)
 
-print('Relative Frequencies of Classes (total):')
-print(target.value_counts(normalize=True))
+
 
 #create test/train split - try soft cut-based ID first (least columns)
 x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1,shuffle=True)
@@ -111,6 +115,7 @@ inputs = Input(shape=x_train[0].shape)
 x = Dense(64,activation='relu')(inputs)
 x = Dense(32,activation='relu')(x)
 x = Dense(16, activation='relu')(x)
+
 # x = Dense(128,activation='relu')(inputs)
 # x = Dense(128,activation='relu')(x)
 # x = Dense(128,activation='relu')(x)
@@ -123,15 +128,14 @@ model = Model(inputs=inputs,outputs=outputs)
 model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.001),metrics=['accuracy'])
 model.summary()
 
-#test model with validation data but lower lr, maybe increase batch size and play w val split?
 history = model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.3)
 
+plotName = 'evenSampling_dyjets+qcd'
+plotLoss(history,plotName)
 
-# plotLoss(history)
+y_pred = model.predict(y_test)
 
-# y_pred = model.predict(y_test)
-
-# plotROCcurves(y_test,y_pred,nClasses)
+plotROCcurves(y_test,y_pred,nClasses,plotName)
 
 
 
