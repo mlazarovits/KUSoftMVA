@@ -61,6 +61,10 @@ allSamples = pd.concat([unmatchedSubset,muonSubset,protonSubset,pionSubset,kaonS
 target = allSamples['Muon_genPdgId']
 #take absolute value of gen PDG ID
 target = abs(target)
+#one hot encode the labels - make dictionary of classes for part I
+encode_genPdgId = {13: [1,0,0,0,0], 211: [0,1,0,0,0], 
+		321: [0,0,1,0,0], 2212: [0,0,0,1,0], 999: [0,0,0,0,1]}
+target = target.map(encode_genPdgId)
 #drop this column from data
 allSamples = allSamples.drop(columns = 'Muon_genPdgId')
 
@@ -86,9 +90,7 @@ softID = allSamples[['Muon_isGood','Muon_nTrackerLayersWithMeasurement','Muon_is
 
 
 
-#one hot encode the labels - make dictionary of classes for part I
-encode_genPdgId = {13: [1,0,0,0,0], 211: [0,1,0,0,0], 
-		321: [0,0,1,0,0], 2212: [0,0,0,1,0], 999: [0,0,0,0,1]}
+
 
 
 
