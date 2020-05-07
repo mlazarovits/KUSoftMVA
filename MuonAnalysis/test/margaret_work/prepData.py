@@ -1,6 +1,7 @@
 import root_numpy
 import numpy as np
 import pandas as pd
+from sklearn.metrics import precision_score
 
 #expand list in terms of muon
 def expandList(df, columnNames):
