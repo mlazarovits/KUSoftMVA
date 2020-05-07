@@ -134,13 +134,13 @@ history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.
 
 
 
-# plotName = 'plots/softMVAvars_evenSampling_dyjets+qcd+ttjets'
-# plotLoss(history,plotName)
-# plotPrecision(history,plotName)
+plotName = 'plots/softMVAvars_evenSampling_dyjets+qcd+ttjets'
+plotLoss(history,plotName)
+plotPrecision(history,plotName)
 
-# y_pred = model.predict(x_test)
+y_pred = model.predict(x_test)
 
-# plotROCcurves(y_test,y_pred,definedIds,plotName)
+plotROCcurves(y_test,y_pred,definedIds,plotName)
 
 
 

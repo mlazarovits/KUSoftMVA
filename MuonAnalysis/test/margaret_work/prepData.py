@@ -1,7 +1,6 @@
 import root_numpy
 import numpy as np
 import pandas as pd
-from sklearn.metrics import precision_score
 
 #expand list in terms of muon
 def expandList(df, columnNames):
@@ -31,14 +30,10 @@ def makeData(filename,definedIds):
 	#drop muons with pt < 2
 	data = data.drop([i for i, pt in enumerate(data['Muon_pt']) if pt < 2])
 	data = data.reset_index()
-	
 	#drop muons matched to anything not in our defined classes: 13, 221, 321, 2211, or 999
 	data = data.drop([i for i, ID in enumerate(data['Muon_genPdgId']) if abs(ID) not in definedIds])
 	data = data.reset_index()
-
-
 	# df = df.drop([i for i, ID in enumerate(df['genPdgId']) if abs(ID) not in definedIds])
 	return data
 
-def precisionScore(yTrue,yPred):
-	return precision_score(yTrue,yPred)
+
