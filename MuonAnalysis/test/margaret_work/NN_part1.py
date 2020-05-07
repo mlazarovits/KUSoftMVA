@@ -56,19 +56,6 @@ kaonSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 321].sample(n=300
 #even sampling across classes - 2k muons each
 allSamples = pd.concat([unmatchedSubset,muonSubset,protonSubset,pionSubset,kaonSubset],ignore_index=True)
 
-#only keep the variables we want - labels and input
-#soft MVA
-softMVA = allSamples[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
-'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
-'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
-'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
-'Muon_outerTrackCharge','Muon_innerTrackCharge']]
-
-
-#soft cut-based ID
-softID = allSamples[['Muon_genPdgId','Muon_isGood','Muon_nTrackerLayersWithMeasurement','Muon_isHighPurity',
-				'Muon_nPixelLayers']]
-
 
 #separate labels from input variables
 target = allSamples['Muon_genPdgId']
@@ -76,6 +63,24 @@ target = allSamples['Muon_genPdgId']
 target = abs(target)
 #drop this column from data
 allSamples = allSamples.drop(columns = 'Muon_genPdgId')
+
+
+
+#only keep the variables we want - labels and input
+#soft MVA
+softMVA = allSamples[['Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
+'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
+'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
+'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
+'Muon_outerTrackCharge','Muon_innerTrackCharge']]
+
+
+#soft cut-based ID
+softID = allSamples[['Muon_isGood','Muon_nTrackerLayersWithMeasurement','Muon_isHighPurity',
+				'Muon_nPixelLayers']]
+
+
+
 
 
 
