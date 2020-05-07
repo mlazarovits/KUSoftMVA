@@ -131,7 +131,7 @@ outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
 
-model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-4),metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-3),metrics=['accuracy'])
 model.summary()
 
 history = model.fit(x_train,y_train,batch_size=256,epochs=100,validation_split=0.3)
