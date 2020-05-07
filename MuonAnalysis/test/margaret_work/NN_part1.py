@@ -12,7 +12,7 @@ from prepData import makeData, expandList
 # from itertools import cycle
 # from sklearn.metrics import roc_curve, auc
 
-# from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 
 from keras.models import Sequential, Model
@@ -89,7 +89,8 @@ print(target.value_counts(normalize=True))
 
 
 #normalize data
-# softID = (softID - softID.mean())/softID.std()
+norm = MinMaxScaler()
+data = norm.fit_transform(data)
 
 #create test/train split - try soft cut-based ID first (least columns)
 x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .3, random_state=1, shuffle=True)
