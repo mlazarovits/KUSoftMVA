@@ -56,13 +56,16 @@ def prepData(filename):
 
 	#drop muons with pt < 2
 	data = data.drop([i for i, pt in enumerate(data['Muon_pt']) if pt < 2])
+	return data
 
 	
 
-
+#get dataframes for dyjets and qcd samples
 dyjets = prepData('DYJetsToLL2018_MINI_numEvent100000.root')
 qcd = prepData('QCD_pt_600to800_2018_MINI_numEvent100000.root')
 
+
+#sample 20k muons from each sample set
 dyjetsSubset = dyjets.sample(n=20000)
 qcdSubset = qcd.sample(n=20000)
 
