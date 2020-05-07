@@ -107,8 +107,6 @@ print(y_train.value_counts(normalize=True))
 
 
 
-
-
 # #convert everything to numpy arrays to feed into network
 # x_train = x_train.to_numpy()
 # x_test = x_test.to_numpy()
