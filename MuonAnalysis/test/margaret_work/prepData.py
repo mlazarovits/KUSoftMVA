@@ -10,7 +10,11 @@ def expandList(df, columnNames):
 		outDf[col] = arr
 	return outDf
 
+
 def makeData(filename):
+	treeName = 'Events'
+	gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
+
 	data = root_numpy.root2array(gPath+filename,treeName)
 	data = pd.DataFrame(data)
 	#make gen pdg ID labels for reco muons
