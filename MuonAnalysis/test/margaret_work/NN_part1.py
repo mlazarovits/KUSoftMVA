@@ -120,7 +120,10 @@ y_test = np.array([np.array(i) for i in y_test])
 
 # print('nClasses',nClasses)
 
-print(y_test.shape, nClasses)
+print(x_train.shape)
+print(y_train.shape)
+print(x_test.shape)
+print(y_test.shape)
 
 
 
@@ -142,7 +145,7 @@ model = Model(inputs=inputs,outputs=outputs)
 model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.001),metrics=['accuracy'])
 model.summary()
 
-history = model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.3)
+# history = model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.3)
 
 # plotName = 'evenSampling_dyjets+qcd'
 # plotLoss(history,plotName)
