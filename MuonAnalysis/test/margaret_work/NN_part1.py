@@ -118,8 +118,8 @@ y_train = y_train[:15]
 
 # #build network here
 inputs = Input(shape=x_train[0].shape)
-x = Dense(64,activation='relu')(inputs)
-x = Dense(64,activation='relu')(x)
+x = Dense(128,activation='relu')(inputs)
+x = Dense(128,activation='relu')(x)
 x = Dense(64, activation='relu')(x)
 
 # # x = Dense(128,activation='relu')(inputs)
