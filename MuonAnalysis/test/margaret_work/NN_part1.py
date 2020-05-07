@@ -57,16 +57,7 @@ kaonSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 321].sample(n=300
 allSamples = pd.concat([unmatchedSubset,muonSubset,protonSubset,pionSubset,kaonSubset],ignore_index=True)
 
 
-#separate labels from input variables
-target = allSamples['Muon_genPdgId']
-#take absolute value of gen PDG ID
-target = abs(target)
-#one hot encode the labels - make dictionary of classes for part I
-encode_genPdgId = {13: [1,0,0,0,0], 211: [0,1,0,0,0], 
-		321: [0,0,1,0,0], 2212: [0,0,0,1,0], 999: [0,0,0,0,1]}
-target = target.map(encode_genPdgId)
-#drop this column from data
-allSamples = allSamples.drop(columns = 'Muon_genPdgId')
+
 
 
 
@@ -84,7 +75,16 @@ softID = allSamples[['Muon_isGood','Muon_nTrackerLayersWithMeasurement','Muon_is
 				'Muon_nPixelLayers']]
 
 
-
+#separate labels from input variables
+target = softID['Muon_genPdgId']
+#take absolute value of gen PDG ID
+target = abs(target)
+#one hot encode the labels - make dictionary of classes for part I
+encode_genPdgId = {13: [1,0,0,0,0], 211: [0,1,0,0,0], 
+		321: [0,0,1,0,0], 2212: [0,0,0,1,0], 999: [0,0,0,0,1]}
+target = target.map(encode_genPdgId)
+#drop this column from data
+softID = softID.drop(columns = 'Muon_genPdgId')
 
 
 print('Relative Frequencies of Classes (total):')
@@ -141,7 +141,7 @@ history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.
 plotName = 'evenSampling_dyjets+qcd'
 plotLoss(history,plotName)
 
-y_pred = model.predict(y_test)
+y_pred = model.predict(x_test)
 
 plotROCcurves(y_test,y_pred,nClasses,plotName)
 
