@@ -63,7 +63,7 @@ allSamples = pd.concat([unmatchedSubset,muonSubset,protonSubset,pionSubset,kaonS
 
 #only keep the variables we want - labels and input
 #soft MVA
-softMVA = allSamples[['Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
+softMVA = allSamples[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
 'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
 'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
 'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
@@ -71,7 +71,7 @@ softMVA = allSamples[['Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
 
 
 #soft cut-based ID
-softID = allSamples[['Muon_isGood','Muon_nTrackerLayersWithMeasurement','Muon_isHighPurity',
+softID = allSamples[['Muon_genPdgId','Muon_isGood','Muon_nTrackerLayersWithMeasurement','Muon_isHighPurity',
 				'Muon_nPixelLayers']]
 
 
