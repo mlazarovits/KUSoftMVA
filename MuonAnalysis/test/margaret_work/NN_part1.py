@@ -60,9 +60,6 @@ allSamples = pd.concat([unmatchedSubset,muonSubset,protonSubset,pionSubset,kaonS
 
 
 
-
-
-
 #only keep the variables we want - labels and input
 #soft MVA
 softMVA = allSamples[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
@@ -133,7 +130,7 @@ outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
 
-model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy','categorical_accuracy',Precision()])
+model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy',Precision()])
 model.summary()
 
 history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.1)
@@ -142,10 +139,11 @@ history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.
 
 plotName = 'evenSampling_dyjets+qcd'
 plotLoss(history,plotName)
+plotPrecision(history,plotName)
 
 y_pred = model.predict(x_test)
 
-plotROCcurves(y_test,y_pred,nClasses,plotName)
+plotROCcurves(y_test,y_pred,definedIds,plotName)
 
 
 
