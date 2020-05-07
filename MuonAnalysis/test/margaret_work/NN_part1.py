@@ -14,11 +14,12 @@ from prepData import makeData, expandList, precisionScore
 
 # from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_score
+
 from keras.models import Sequential, Model
 from keras.layers import *
 from keras.optimizers import SGD, Adam
 from keras.activations import relu
+from keras.metrics import Precision
 
 
 
@@ -132,7 +133,7 @@ outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
 
-model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy','categorical_accuracy',precisionScore])
+model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy','categorical_accuracy',Precision()])
 model.summary()
 
 history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.1)
