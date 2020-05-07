@@ -45,7 +45,7 @@ muonSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 13].sample(n=1000
 
 #uneven sampling over MC samples based on how many objects are in each MC sample (dyjets has low number of protons, pions, and kaons)
 protonSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 2212].sample(n=500),qcd[abs(qcd['Muon_genPdgId']) == 2212].sample(n=1500)], ignore_index=True)
-pionSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 221].sample(n=500),qcd[abs(qcd['Muon_genPdgId']) == 221].sample(n=1500)], ignore_index=True)
+pionSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 211].sample(n=500),qcd[abs(qcd['Muon_genPdgId']) == 211].sample(n=1500)], ignore_index=True)
 kaonSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 321].sample(n=300),qcd[abs(qcd['Muon_genPdgId']) == 321].sample(n=1700)], ignore_index=True)
 
 
