@@ -13,10 +13,24 @@ def plotLoss(history,outName):
 	plt.xlabel('Epoch')
 	plt.ylabel('Loss')
 	plt.legend()
-	plt.savefig(outName+'.pdf')
+	plt.savefig(outName+'Loss.pdf')
 
 
-def plotROCcurves(y_test,y_score,n_classes,outName):
+def plotPrecision(history,outName):
+	plt.figure()
+	plt.plot(history.history['val_precision_1'],label='val precision')
+	plt.plot(history.history['precision_1'],label='training precision')
+	plt.xlabel('Epoch')
+	plt.ylabel('Loss')
+	plt.legend()
+	plt.savefig(outName+'Precision.pdf')
+
+
+
+
+
+def plotROCcurves(y_test,y_score,classes,outName):
+	n_classes = len(classes)
 	# Plot linewidth.
 	lw = 2
 
@@ -72,7 +86,7 @@ def plotROCcurves(y_test,y_score,n_classes,outName):
 	plt.ylim([0.0, 1.05])
 	plt.xlabel('False Positive Rate')
 	plt.ylabel('True Positive Rate')
-	plt.title('Some extension of Receiver operating characteristic to multi-class')
+	plt.title(outName+'ROC Curve')
 	plt.legend(loc="lower right")
 	plt.show()
 
