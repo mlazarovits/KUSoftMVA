@@ -124,14 +124,14 @@ inputs = Input(shape=x_train[0].shape)
 x = Dense(128,activation='relu')(inputs)
 x = Dense(128,activation='relu')(x)
 x = Dense(128, activation='relu')(x)
-# x = Dense(64,activation='relu')(x)
-# x = Dense(64,activation='relu')(x)
-# x = Dense(128,activation='relu')(x)
+x = Dense(128,activation='relu')(x)
+x = Dense(128,activation='relu')(x)
+x = Dense(128,activation='relu')(x)
 outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
 
-model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=5e-5),metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=5e-3),metrics=['accuracy'])
 model.summary()
 
 history = model.fit(x_train,y_train,batch_size=256,epochs=100,validation_split=0.3)
