@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 #import user defined functions
 from plotFunctions import plotROCcurves, plotLoss, plotPrecision
-from prepData import makeData, expandList, precisionScore
+from prepData import makeData, expandList
 
 
 # from scipy import interp
