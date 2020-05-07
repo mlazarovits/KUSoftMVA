@@ -71,12 +71,7 @@ qcdSubset = qcd.sample(n=20000)
 
 allSamples = pd.concat([dyjetsSubset,qcdSubset],ignore_index=True)
 
-#separate labels from input variables
-target = allSamples['Muon_genPdgId']
-#take absolute value of gen PDG ID
-target = abs(target)
-#drop this column from data
-allSamples = allSamples.drop(columns = 'Muon_genPdgId')
+
 
 
 
@@ -99,7 +94,12 @@ softID = allSamples[['Muon_genPdgId','Muon_isGood','Muon_nTrackerLayersWithMeasu
 				'Muon_nPixelLayers']]
 
 
-
+#separate labels from input variables
+target = allSamples['Muon_genPdgId']
+#take absolute value of gen PDG ID
+target = abs(target)
+#drop this column from data
+allSamples = allSamples.drop(columns = 'Muon_genPdgId')
 
 #define classes
 #classes are:
