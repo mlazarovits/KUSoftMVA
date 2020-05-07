@@ -40,7 +40,7 @@ qcd = makeData('QCD_pt_600to800_2018_MINI_numEvent100000.root',definedIds)
 # SO THAT EACH CLASS HAS AN EVEN NUMBER OF MUONS
 
 #sample 2k muons randomly from each class
-unmatchedSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 999].sample(n=1000),qcd[abs(qcd['Muon_genPdgId']) == 999].sample(n=100)],ignore_index=True)
+unmatchedSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 999].sample(n=1000),qcd[abs(qcd['Muon_genPdgId']) == 999].sample(n=1000)],ignore_index=True)
 muonSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 13].sample(n=1000),qcd[abs(qcd['Muon_genPdgId']) == 13].sample(n=1000)], ignore_index=True)
 
 #uneven sampling over MC samples based on how many objects are in each MC sample (dyjets has low number of protons, pions, and kaons)
@@ -91,9 +91,6 @@ print('Relative Frequencies of Classes (total):')
 print(target.value_counts(normalize=True))
 
 
-
-print('Dictionary of IDs:')
-print(encode_genPdgId)
 
 #create test/train split - try soft cut-based ID first (least columns)
 x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1,shuffle=True)
