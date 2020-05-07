@@ -113,8 +113,8 @@ y_train = np.array([np.array(i) for i in y_train])
 y_test = np.array([np.array(i) for i in y_test])
 
 ###### unit testing ######
-x_train = x_train[:3]
-y_train = y_train[:3]
+x_train = x_train[:2]
+y_train = y_train[:2]
 
 
 
@@ -134,7 +134,7 @@ model = Model(inputs=inputs,outputs=outputs)
 model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.001),metrics=['accuracy'])
 model.summary()
 
-history = model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.3)
+history = model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.5)
 
 # plotName = 'evenSampling_dyjets+qcd'
 # plotLoss(history,plotName)
