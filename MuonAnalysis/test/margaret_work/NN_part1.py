@@ -51,10 +51,10 @@ kaonSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 321].sample(n=300
 
 
 #even sampling from dyjets and qcd - 20k muons each
-allSamples = pd.concat([dyjets.sample(n=20000),qcd.sample(n=20000)],ignore_index=True)
+# allSamples = pd.concat([dyjets.sample(n=20000),qcd.sample(n=20000)],ignore_index=True)
 
 #even sampling across classes - 2k muons each
-# allSamples = pd.concat([unmatchedSubset,muonSubset,protonSubset,pionSubset,kaonSubset],ignore_index=True)
+allSamples = pd.concat([unmatchedSubset,muonSubset,protonSubset,pionSubset,kaonSubset],ignore_index=True)
 
 #only keep the variables we want - labels and input
 #soft MVA
