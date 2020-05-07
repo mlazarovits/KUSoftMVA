@@ -92,6 +92,9 @@ print(target.value_counts(normalize=True))
 
 
 
+#normalize data
+# softID = (softID - softID.mean())/softID.std()
+
 #create test/train split - try soft cut-based ID first (least columns)
 x_train, x_test, y_train, y_test = train_test_split(softID, target, test_size = .3, random_state=1, shuffle=True)
 print('Relative Frequencies of Classes (training):')
@@ -118,7 +121,7 @@ y_train = y_train[:15]
 
 # #build network here
 inputs = Input(shape=x_train[0].shape)
-x = Dense(128,activation='relu')(inputs)
+x = Dense(256,activation='relu')(inputs)
 x = Dense(128,activation='relu')(x)
 x = Dense(128, activation='relu')(x)
 x = Dense(128,activation='relu')(x)
