@@ -139,7 +139,7 @@ x = Activation('relu')(x)
 x = Dropout(0.5)(x)
 x = Dense(128)(x)
 x = BatchNormalization()(x)
-block_2_output = tf.keras.layers.add([x, block_1_output])
+block_2_output = keras.layers.add([x, block_1_output])
 
 
 x = Dense(128)(block_2_output)
@@ -148,7 +148,7 @@ x = Activation('relu')(x)
 x = Dropout(0.5)(x)
 x = Dense(128)(x)
 x = BatchNormalization()(x)
-block_3_output = tf.keras.layers.add([x, block_2_output])
+block_3_output = keras.layers.add([x, block_2_output])
 
 
 x = Dense(128)(block_3_output)
@@ -157,7 +157,7 @@ x = Activation('relu')(x)
 x = Dropout(0.5)(x)
 x = Dense(128)(x)
 x = BatchNormalization()(x)
-block_4_output = tf.keras.layers.add([x, block_3_output])
+block_4_output = keras.layers.add([x, block_3_output])
 
 x = Dense(128, activation='relu')(block_4_output)
 x = Dropout(0.5)(x)
