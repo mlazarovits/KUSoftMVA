@@ -121,12 +121,47 @@ y_test = np.array([np.array(i) for i in y_test])
 
 # #build network here
 inputs = Input(shape=x_train[0].shape)
+# x = Dense(128,activation='relu')(inputs)
+# x = Dense(128,activation='relu')(x)
+# x = Dense(128,activation='relu')(x)
+# x = Dense(128,activation='relu')(x)
+# x = Dense(128,activation='relu')(x)
+# x = Dense(128,activation='relu')(x)
+
+
+
+
 x = Dense(128,activation='relu')(inputs)
-x = Dense(128,activation='relu')(x)
-x = Dense(128, activation='relu')(x)
-x = Dense(128,activation='relu')(x)
-x = Dense(128,activation='relu')(x)
-x = Dense(128,activation='relu')(x)
+block1Output = Dense(128,activation='relu')(x)
+x = Dense(128)(block_1_output)
+x = BatchNormalization()(x)
+x = Activation('relu')(x)
+x = Dropout(0.5)(x)
+x = Dense(128)(x)
+x = BatchNormalization()(x)
+block_2_output = tf.keras.layers.add([x, block_1_output])
+
+
+x = Dense(128)(block_2_output)
+x = BatchNormalization()(x)
+x = Activation('relu')(x)
+x = Dropout(0.5)(x)
+x = Dense(128)(x)
+x = BatchNormalization()(x)
+block_3_output = tf.keras.layers.add([x, block_2_output])
+
+
+x = Dense(128)(block_3_output)
+x = BatchNormalization()(x)
+x = Activation('relu')(x)
+x = Dropout(0.5)(x)
+x = Dense(128)(x)
+x = BatchNormalization()(x)
+block_4_output = tf.keras.layers.add([x, block_3_output])
+
+x = Dense(128, activation='relu')(block_4_output)
+x = Dropout(0.5)(x)
+
 outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
