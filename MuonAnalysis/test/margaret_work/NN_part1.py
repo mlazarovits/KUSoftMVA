@@ -93,8 +93,8 @@ y_test = np.array([np.array(i) for i in y_test])
 
 ###### unit testing ######
 
-x_train = x_train[0]
-y_train = y_train[0]
+x_train = x_train[:3]
+y_train = y_train[:3]
 
 
 
