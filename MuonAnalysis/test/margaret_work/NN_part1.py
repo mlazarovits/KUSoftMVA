@@ -121,55 +121,20 @@ y_test = np.array([np.array(i) for i in y_test])
 
 # #build network here
 inputs = Input(shape=x_train[0].shape)
-# x = Dense(128,activation='relu')(inputs)
-# x = Dense(128,activation='relu')(x)
-# x = Dense(128,activation='relu')(x)
-# x = Dense(128,activation='relu')(x)
-# x = Dense(128,activation='relu')(x)
-# x = Dense(128,activation='relu')(x)
-
-
-
-
 x = Dense(128,activation='relu')(inputs)
-block_1_output = Dense(128,activation='relu')(x)
-x = Dense(128)(block_1_output)
-x = BatchNormalization()(x)
-x = Activation('relu')(x)
-x = Dropout(0.5)(x)
-x = Dense(128)(x)
-x = BatchNormalization()(x)
-block_2_output = keras.layers.add([x, block_1_output])
-
-
-x = Dense(128)(block_2_output)
-x = BatchNormalization()(x)
-x = Activation('relu')(x)
-x = Dropout(0.5)(x)
-x = Dense(128)(x)
-x = BatchNormalization()(x)
-block_3_output = keras.layers.add([x, block_2_output])
-
-
-x = Dense(128)(block_3_output)
-x = BatchNormalization()(x)
-x = Activation('relu')(x)
-x = Dropout(0.5)(x)
-x = Dense(128)(x)
-x = BatchNormalization()(x)
-block_4_output = keras.layers.add([x, block_3_output])
-
-x = Dense(128, activation='relu')(block_4_output)
-x = Dropout(0.5)(x)
-
+x = Dense(128,activation='relu')(x)
+x = Dense(128,activation='relu')(x)
+x = Dense(128,activation='relu')(x)
+x = Dense(128,activation='relu')(x)
+x = Dense(128,activation='relu')(x)
 outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
 
-model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=5e-3),metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy'])
 model.summary()
 
-history = model.fit(x_train,y_train,batch_size=256,epochs=100,validation_split=0.3)
+history = model.fit(x_train,y_train,batch_size=256,epochs=100,validation_split=0.1)
 
 # plotName = 'evenSampling_dyjets+qcd'
 # plotLoss(history,plotName)
