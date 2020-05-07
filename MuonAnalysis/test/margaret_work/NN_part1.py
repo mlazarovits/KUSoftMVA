@@ -121,12 +121,12 @@ y_train = y_train[:3]
 
 # #build network here
 inputs = Input(shape=x_train[0].shape)
-x = Dense(256,activation='relu')(inputs)
-x = Dense(128,activation='relu')(x)
-x = Dense(128, activation='relu')(x)
-x = Dense(128,activation='relu')(x)
-x = Dense(128,activation='relu')(x)
-x = Dense(128,activation='relu')(x)
+x = Dense(64,activation='relu')(inputs)
+x = Dense(32,activation='relu')(x)
+x = Dense(16, activation='relu')(x)
+# x = Dense(128,activation='relu')(x)
+# x = Dense(128,activation='relu')(x)
+# x = Dense(128,activation='relu')(x)
 outputs = Dense(nClasses,activation='softmax')(x)
 
 model = Model(inputs=inputs,outputs=outputs)
