@@ -100,18 +100,14 @@ print(y_train.value_counts(normalize=True))
 
 
 
-
-
-
-
 # #convert everything to numpy arrays to feed into network
-# x_train = x_train.to_numpy()
-# x_test = x_test.to_numpy()
-# y_train = y_train.to_numpy()
-# y_test = y_test.to_numpy()
+x_train = x_train.to_numpy()
+x_test = x_test.to_numpy()
+y_train = y_train.to_numpy()
+y_test = y_test.to_numpy()
 
-# y_train = np.array([np.array(i) for i in y_train])
-# y_test = np.array([np.array(i) for i in y_test])
+y_train = np.array([np.array(i) for i in y_train])
+y_test = np.array([np.array(i) for i in y_test])
 
 ###### unit testing ######
 # x_train = x_train[:3]
@@ -127,24 +123,24 @@ print(y_train.value_counts(normalize=True))
 
 
 # #build network here
-# inputs = Input(shape=x_train[0].shape)
-# x = Dense(64,activation='relu')(inputs)
-# x = Dense(32,activation='relu')(x)
-# x = Dense(16, activation='relu')(x)
+inputs = Input(shape=x_train[0].shape)
+x = Dense(64,activation='relu')(inputs)
+x = Dense(32,activation='relu')(x)
+x = Dense(16, activation='relu')(x)
 
 # # x = Dense(128,activation='relu')(inputs)
 # # x = Dense(128,activation='relu')(x)
 # # x = Dense(128,activation='relu')(x)
 # # x = Dense(128,activation='relu')(x)
 # # x = Dense(128,activation='relu')(x)
-# outputs = Dense(nClasses,activation='softmax')(x)
+outputs = Dense(nClasses,activation='softmax')(x)
 
-# model = Model(inputs=inputs,outputs=outputs)
+model = Model(inputs=inputs,outputs=outputs)
 
-# model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.001),metrics=['accuracy'])
-# model.summary()
+model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=0.001),metrics=['accuracy'])
+model.summary()
 
-# history = model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.3)
+history = model.fit(x_train,y_train,batch_size=256,epochs=10,validation_split=0.3)
 
 # plotName = 'evenSampling_dyjets+qcd'
 # plotLoss(history,plotName)
