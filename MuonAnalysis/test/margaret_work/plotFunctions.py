@@ -14,7 +14,7 @@ def plotLoss(history,outName):
 	plt.ylabel('Loss')
 	plt.legend()
 	plt.title(outName+' Loss')
-	plt.savefig('plots/'+outName+'_Loss.pdf')
+	plt.savefig('plots/'+outName+'_Loss.pdf',dpi=500)
 
 
 def plotPrecision(history,outName):
@@ -25,7 +25,7 @@ def plotPrecision(history,outName):
 	plt.ylabel('Precision')
 	plt.legend()
 	plt.title(outName+' Precision')
-	plt.savefig('plots/'+outName+'_Precision.pdf')
+	plt.savefig('plots/'+outName+'_Precision.pdf',dpi=500)
 
 
 
@@ -118,7 +118,7 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	plt.ylabel('True Positive Rate')
 	plt.title(outName)
 	plt.legend(loc="lower right")
-	plt.savefig('plots/'+outName+"_ROCcurve.pdf")
+	plt.savefig('plots/'+outName+"_ROCcurve.pdf",dpi=500)
 
 
 
