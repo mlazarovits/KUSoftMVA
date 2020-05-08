@@ -12,8 +12,9 @@ from prepData import makeData, expandList
 # from itertools import cycle
 # from sklearn.metrics import roc_curve, auc
 
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import precision_recall_fscore_support
 
 from keras.models import Sequential, Model
 from keras.layers import *
@@ -23,12 +24,7 @@ from keras.metrics import Precision
 print('Packages Loaded')
 
 
-#define classes
-#classes are:
-#13: actual mu, 211: pi^+\-, 321: K^+\-,  
-#2212: p^+, other, 999: unmatched
-definedIds = [13,211,321,2212,999]
-nClasses = len(definedIds)
+
 
 
 #take in all samples (dy, tt, qcd) and shuffle for unmatched (sample evenly for other categories)
@@ -75,10 +71,21 @@ data = softMVA
 target = data['Muon_genPdgId']
 #take absolute value of gen PDG ID
 target = abs(target)
-#one hot encode the labels - make dictionary of classes for part I
-encode_genPdgId = {13: [1,0,0,0,0], 211: [0,1,0,0,0], 
-		321: [0,0,1,0,0], 2212: [0,0,0,1,0], 999: [0,0,0,0,1]}
-target = target.map(encode_genPdgId)
+#one hot encode the labels
+#define classes
+#classes are:
+#13: actual mu, 211: pi^+\-, 321: K^+\-,  
+#2212: p^+, other, 999: unmatched
+definedIds = [13,211,321,2212,999]
+nClasses = len(definedIds)
+enc = OneHotEncoder(sparse=Fase)
+# encode_genPdgId = {13: [1,0,0,0,0], 211: [0,1,0,0,0], 
+		# 321: [0,0,1,0,0], 2212: [0,0,0,1,0], 999: [0,0,0,0,1]}
+# target = target.map(encode_genPdgId)
+
+enc.fit(definedIds)		
+target = enc.transform(target.reshape(-1,1))
+
 #drop this column from data
 data = data.drop(columns = 'Muon_genPdgId')
 
@@ -130,7 +137,7 @@ model = Model(inputs=inputs,outputs=outputs)
 model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-3),metrics=['accuracy',Precision()])
 model.summary()
 
-history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.3)
+history = model.fit(x_train,y_train,batch_size=256,epochs=70,validation_split=0.3)
 
 #STARTS TO OVERFIT AROUND EPOCH 10 - MAYBE INDUCE SOME REGULARIZATION??
 
@@ -138,9 +145,16 @@ plotName = 'softMVAvars_evenSampling_dyjets+qcd+ttjets'
 plotLoss(history,plotName)
 plotPrecision(history,plotName)
 
-y_pred = model.predict(x_test)
+y_predProbs = model.predict(x_test) #need probabilites for ROC curve
+y_predClasses = enc.inverse_transform(y_pred)
 
-plotROCcurves(y_test,y_pred,definedIds,plotName)
+#gives precision (efficiency) of each class
+precision, _, _, _ = precision_recall_fscore_support(y_test,y_predClasses)
+#match to pt in x_test to plot as function of pt
+
+
+
+plotROCcurves(y_test,y_predProbs,definedIds,plotName)
 
 
 
