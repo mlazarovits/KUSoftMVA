@@ -34,8 +34,13 @@ nClasses = len(definedIds)
 #take in all samples (dy, tt, qcd) and shuffle for unmatched (sample evenly for other categories)
 #get dataframes for dyjets and qcd samples
 dyjets = makeData('DYJetsToLL2018_MINI_numEvent100000.root',definedIds)
+print('made dyjets')
 qcd = makeData('QCD_pt_600to800_2018_MINI_numEvent100000.root',definedIds)
+print('made qcd')
+
 ttjets = makeData('TTJets2018_MINI_numEvent100000.root',definedIds)
+print('made ttjets')
+
 
 #sample 3k muons randomly from each class
 unmatchedSubset = pd.concat([dyjets[abs(dyjets['Muon_genPdgId']) == 999].sample(n=1000),qcd[abs(qcd['Muon_genPdgId']) == 999].sample(n=1000),ttjets[abs(ttjets['Muon_genPdgId']) == 999].sample(n=1000)],ignore_index=True)
@@ -115,32 +120,32 @@ y_test = np.array([np.array(i) for i in y_test])
 
 
 # #build network here
-inputs = Input(shape=x_train[0].shape)
-x = Dense(64,activation='relu')(inputs)
-x = Dense(64,activation='relu')(x)
-x = Dense(64,activation='relu')(x)
-x = Dense(64,activation='relu')(x)
-# x = Dense(128,activation='relu')(x)
-# x = Dense(128,activation='relu')(x)
-# x = Dense(64, activation='relu')(x)
-outputs = Dense(nClasses,activation='softmax')(x)
+# inputs = Input(shape=x_train[0].shape)
+# x = Dense(64,activation='relu')(inputs)
+# x = Dense(64,activation='relu')(x)
+# x = Dense(64,activation='relu')(x)
+# x = Dense(64,activation='relu')(x)
+# # x = Dense(128,activation='relu')(x)
+# # x = Dense(128,activation='relu')(x)
+# # x = Dense(64, activation='relu')(x)
+# outputs = Dense(nClasses,activation='softmax')(x)
 
-model = Model(inputs=inputs,outputs=outputs)
+# model = Model(inputs=inputs,outputs=outputs)
 
-model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy',Precision()])
-model.summary()
+# model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-2),metrics=['accuracy',Precision()])
+# model.summary()
 
-history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.3)
+# history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.3)
 
+# #STARTS TO OVERFIT AROUND EPOCH 10 - MAYBE INDUCE SOME REGULARIZATION??
 
+# plotName = 'softMVAvars_evenSampling_dyjets+qcd+ttjets'
+# plotLoss(history,plotName)
+# plotPrecision(history,plotName)
 
-plotName = 'softMVAvars_evenSampling_dyjets+qcd+ttjets'
-plotLoss(history,plotName)
-plotPrecision(history,plotName)
+# y_pred = model.predict(x_test)
 
-y_pred = model.predict(x_test)
-
-plotROCcurves(y_test,y_pred,definedIds,plotName)
+# plotROCcurves(y_test,y_pred,definedIds,plotName)
 
 
 
