@@ -2,7 +2,7 @@ import root_numpy
 import numpy as np
 import pandas as pd
 
-#expand list in terms of muon
+#expand list in terms of muon - takes a long time
 def expandList(df, columnNames):
 	outDf = pd.DataFrame()
 	for col in columnNames:
