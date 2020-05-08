@@ -13,6 +13,7 @@ def plotLoss(history,outName):
 	plt.xlabel('Epoch')
 	plt.ylabel('Loss')
 	plt.legend()
+	plt.title(outName+' Loss')
 	plt.savefig('plots/'+outName+'_Loss.pdf')
 
 
@@ -23,6 +24,7 @@ def plotPrecision(history,outName):
 	plt.xlabel('Epoch')
 	plt.ylabel('Precision')
 	plt.legend()
+	plt.title(outName+' Precision')
 	plt.savefig('plots/'+outName+'_Precision.pdf')
 
 
