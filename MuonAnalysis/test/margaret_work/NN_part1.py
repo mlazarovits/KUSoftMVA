@@ -20,7 +20,7 @@ from keras.layers import *
 from keras.optimizers import SGD, Adam
 from keras.activations import relu
 from keras.metrics import Precision
-
+print('Packages Loaded')
 
 
 #define classes
