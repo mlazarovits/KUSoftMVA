@@ -15,14 +15,11 @@ def makeData(filename,definedIds):
 	treeName = 'Events'
 	gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
 	data = root_numpy.root2array(gPath+filename,treeName)
-	print('did root2array')
 	data = pd.DataFrame(data)
-	print('made dataframe')
 	
 	#make gen pdg ID labels for reco muons
 	#-999 if unmatched
 	pdgIds = np.array([-999 if mu == -1 else data['GenPart_pdgId'][i][mu] for i, idxs in enumerate(data['Muon_genPartIdx']) for j, mu in enumerate(idxs)])
-	print('made genpdgid column')
 	#get rid of 0 muon events
 	data = data.drop([i for i, nMu in enumerate(data['nMuon']) if nMu == 0])
 	
@@ -30,17 +27,14 @@ def makeData(filename,definedIds):
 	muonMask = data.columns.str.contains('Muon_.*')
 	expCols = data.loc[:,muonMask].columns
 	data = expandList(data, expCols)
-	print('expanded list')
 	#add in gen pgdIds and jet btags of reco muons
 	data['Muon_genPdgId'] = pdgIds
 	#drop muons with pt < 2
 	data = data.drop([i for i, pt in enumerate(data['Muon_pt']) if pt < 2])
 	data = data.reset_index()
-	print('dropped pt < 2')
 	#drop muons matched to anything not in our defined classes: 13, 221, 321, 2211, or 999
 	data = data.drop([i for i, ID in enumerate(data['Muon_genPdgId']) if abs(ID) not in definedIds])
 	data = data.reset_index()
-	print('dropped ids matched to something else')
 	# df = df.drop([i for i, ID in enumerate(df['genPdgId']) if abs(ID) not in definedIds])
 	return data
 
