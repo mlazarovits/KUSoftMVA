@@ -1,0 +1,46 @@
+Report for data Drell-Yan
+('mu', (33432, 75))
+('unmathched', (216064, 75))
+('elec', (170, 75))
+('pion', (1050, 75))
+('kaon', (544, 75))
+('prot', (1238, 75))
+Report for data TTJets
+('mu', (64623, 75))
+('unmathched', (232150, 75))
+('elec', (592, 75))
+('pion', (5530, 75))
+('kaon', (3101, 75))
+('prot', (1882, 75))
+
+Begin Model 1
+Sample 0 Report
+(30000, 75)
+Sample 1 Report
+(30000, 75)
+Sample 0 Report
+(30000, 75)
+Sample 1 Report
+(30000, 75)
+Training model: model1
+Desc.: Model trained only on true muons and unmatched
+Model Report:
+Training accuracy: 0.9827 
+Validation accuracy: 0.9456
+Training loss: 0.0584
+Validation loss: 0.3237
+Test Accuracy: 0.9423
+Test loss: 0.3351
+Evaluating model....
+Reporting results from test data
+label 0:
+Correct ID: 5516.0 of 5517.0   0.99981874207
+Mis.    ID: 371.0 of 5517.0   0.0672466920428
+label 1:
+Correct ID: 5792.0 of 5793.0   0.99982737787
+Mis.    ID: 321.0 of 5793.0   0.0554117037804
+Overall performance: 
+Correct ID: 11308.0 of 12000.0   0.942333333333
+Mis.    ID: 692.0 of 12000.0   0.0576666666667
+
+
