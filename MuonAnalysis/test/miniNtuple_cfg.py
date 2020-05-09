@@ -8,7 +8,7 @@ process = cms.Process("miniflatntuple")
 options = VarParsing.VarParsing('analysis')
 #options.inputFiles = 
 options.outputFile = "defaultout.root"
-options.maxEvents = 100
+options.maxEvents = -1
 options.parseArguments()
 
 
@@ -21,7 +21,7 @@ from Configuration.AlCa.autoCond import autoCond
 process.GlobalTag.globaltag = autoCond['phase1_2017_realistic']
 
 process.options   = cms.untracked.PSet( wantSummary = cms.untracked.bool(True) )
-process.MessageLogger.cerr.FwkReport.reportEvery = 10000
+process.MessageLogger.cerr.FwkReport.reportEvery = 500000
 process.maxEvents = cms.untracked.PSet( input=cms.untracked.int32(options.maxEvents))
 
 process.source = cms.Source("PoolSource", fileNames = cms.untracked.vstring())

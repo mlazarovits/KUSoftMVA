@@ -36,15 +36,22 @@ pdgIds = np.array(pdgIds)
 
 #get rid of 0 muon events
 data = data.drop([i for i, nMu in enumerate(data['nMuon']) if nMu == 0])
+
 #expand the list so each row is a muon (not an event)
 muonMask = data.columns.str.contains('Muon_.*')
 expCols = data.loc[:,muonMask].columns
 data = expandList(data, expCols)
 
+pdgIds = np.delete(pdgIds, [ i for i ,pt in enumerate(data['Muon_pt']) if pt<2])
+data = data.drop([i for i, pt in enumerate(data['Muon_pt']) if pt < 2])
 
+print("after drop pt")
+print(data['Muon_pt'])
 #add in gen pgdIds and jet btags of reco muons
 data['Muon_genPdgId'] = pdgIds
 
+
+#data = data
 #collect n matched and umatched
 ndata = 30000
 data1 = data[abs(data.Muon_genPdgId) == 13]
@@ -97,8 +104,8 @@ softID = data[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
 'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers']]
 
 
-softID= softID.drop(columns='Muon_pt')
-softID =softID.drop(columns='Muon_eta')
+softID =softID.drop(columns='Muon_pt')
+softID = softID.drop(columns='Muon_eta')
 #softID.drop(columns='Muon_phi')
 
 #separate labels from input variables
@@ -138,7 +145,6 @@ print("norm softid")
 softID = (softID-softID.mean())/softID.std()
 #print(softID)
 print("variables: ",softID.columns)
-
 #print("target")
 #print(target)
 #create test/train split - try soft cut-based ID first (least columns)
@@ -192,19 +198,14 @@ model = Sequential()
 model.add(Dense(128, activation='relu', kernel_initializer='he_normal', input_shape=(n_features,)))
 model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
 model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
-#model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
+model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
 model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
 
 model.add(Dense(Classes, activation='softmax'))
 # compile the model
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 # fit the model
-
-modout = model.fit(x_train, y_train, epochs=25, batch_size=256,validation_split=0.1,verbose=0)
-print(modout.history['acc'])
-print(modout.history['loss'])
-print(modout.history['val_acc'])
-print(modout.history['val_loss'])
+model.fit(x_train, y_train, epochs=25, batch_size=256,validation_split=0.1)
 model.summary()
 loss, acc = model.evaluate(x_test,y_test,verbose=0)
 print('Test Accuracy: %.3f' % acc)

@@ -14,6 +14,9 @@ from sklearn.utils import shuffle
 #from sklearn  import preprocessing
 treeName = 'Events'
 
+#this NN will incoporate umatched and non true muons together
+
+
 #take in all samples (dy, tt, qcd) and shuffle for unmatched (sample evenly for other categories)
 gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
 tmp = root_numpy.root2array(gPath+'DYJetsToLL2018_MINI_numEvent100000.root',treeName)
@@ -46,13 +49,32 @@ data = expandList(data, expCols)
 data['Muon_genPdgId'] = pdgIds
 
 #collect n matched and umatched
-ndata = 30000
+ndatas =  2000
+ndatabg = 500
 data1 = data[abs(data.Muon_genPdgId) == 13]
 data2 = data[data.Muon_genPdgId == -999]
-data1 = data1[:ndata]
-data2= data2[:ndata]
-data = pd.concat([data1, data2])
+data3 = data[abs(data.Muon_genPdgId) == 11]
+data4 = data[abs(data.Muon_genPdgId) == 211]
+data5 = data[abs(data.Muon_genPdgId) == 321]
+data6 = data[abs(data.Muon_genPdgId) == 2212] 
+
+print("data shapes")
+print("mu", data1.shape)
+print("unmathched", data2.shape)
+print("elec", data3.shape)
+print("pion", data4.shape)
+print("kaon", data5.shape)
+print("prot", data6.shape)
+
+data1 = data1[:ndatas]
+data2= data2[:ndatabg]
+#data3= data3[:ndatabg]
+data4=data4[:ndatabg]
+data5=data5[:ndatabg]
+data6=data6[:ndatabg]
+data = pd.concat([data1, data2,data4,data5,data6])
 data = shuffle(data)
+print(data)
 #normalize
 #test = data.values
 #min_max_scaler = preprocessing.MinMaxScaler()
@@ -97,10 +119,6 @@ softID = data[['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
 'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers']]
 
 
-softID= softID.drop(columns='Muon_pt')
-softID =softID.drop(columns='Muon_eta')
-#softID.drop(columns='Muon_phi')
-
 #separate labels from input variables
 target = softID['Muon_genPdgId']
 #take absolute value of gen PDG ID
@@ -121,7 +139,7 @@ Classes = len(definedIds)
 #encode_genPdgId = {13: [1,0,0,0,0,0,0], 211: [0,1,0,0,0,0,0], 11: [0,0,1,0,0,0,0], 
 
 #		321: [0,0,0,1,0,0,0], 2212: [0,0,0,1,0,0,0], 999: [0,0,0,0,0,1,0]}
-encode_genPdgId = {13: [1,0], 999: [0,1]}
+encode_genPdgId = {13: [1,0], 999: [0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
 
 
 
@@ -137,7 +155,6 @@ target = target.map(encode_genPdgId)
 print("norm softid")
 softID = (softID-softID.mean())/softID.std()
 #print(softID)
-print("variables: ",softID.columns)
 
 #print("target")
 #print(target)
@@ -192,19 +209,14 @@ model = Sequential()
 model.add(Dense(128, activation='relu', kernel_initializer='he_normal', input_shape=(n_features,)))
 model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
 model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
-#model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
+model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
 model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
 
 model.add(Dense(Classes, activation='softmax'))
 # compile the model
 model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 # fit the model
-
-modout = model.fit(x_train, y_train, epochs=25, batch_size=256,validation_split=0.1,verbose=0)
-print(modout.history['acc'])
-print(modout.history['loss'])
-print(modout.history['val_acc'])
-print(modout.history['val_loss'])
+model.fit(x_train, y_train, epochs=100, batch_size=256,validation_split=0.1)
 model.summary()
 loss, acc = model.evaluate(x_test,y_test,verbose=0)
 print('Test Accuracy: %.3f' % acc)
