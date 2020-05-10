@@ -39,8 +39,8 @@ def prepareTrainingSet( sample , model_vars, label_dict ):
 	pt_train, pt_test, _, _ = train_test_split(pt,target, test_size= .35, random_state=1)
 
 
-	x_train = x_train.to_numpy()
-	x_test = x_test.to_numpy()
+	# x_train = x_train.to_numpy()
+	# x_test = x_test.to_numpy()
 	y_train = y_train.to_numpy()
 	y_test = y_test.to_numpy()
 
