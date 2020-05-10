@@ -3,7 +3,7 @@ from scipy import interp
 import matplotlib.pyplot as plt
 from itertools import cycle
 from sklearn.metrics import roc_curve, auc
-from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph
+from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph, TLatex, TGraphAsymmErrors, TMultigraph
 
 
 def plotLoss(history,outName):
@@ -33,7 +33,12 @@ def plotPrecision(history,outName):
 
 
 
-def plotEfficiency(y_test,y_predClasses,pt,definedIds):
+
+	
+
+
+
+def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 	nClasses = len(definedIds)
 	passedHists = [TH1D("num_"+str(ID), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
 	totalHists =  [TH1D("eff_"+str(ID), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
@@ -48,13 +53,13 @@ def plotEfficiency(y_test,y_predClasses,pt,definedIds):
 				elif n[0] != n[1]: #incorrect match
 					totalHists[j].Fill(pt.iloc[i])
 
-
-
 	goodEff = [ TEfficiency(passedHists[i],totalHists[i]) for i in range(nClasses) ]
 
 
 	outfile = TFile("./test.root","RECREATE")
 	[ outfile.WriteTObject(x) for x in goodEff ]
+	cv = plotEfficiency(outName,goodEff)
+	outfile.WriteTObject(cv)
 
 
 def plotROCcurves(y_test,y_score,classes,outName):
@@ -147,6 +152,104 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	plt.legend(loc="lower right")
 	plt.savefig('plots/'+outName+"_ROCcurvesZoom.pdf",dpi=500)
 	plt.close()
+
+
+
+
+def plotEfficiency(effs,outName):
+	cv = TCanvas("cv","cv",800,600)
+	leg = TLegend(0.35,0.2,0.95,0.4)
+	gr_effs = []
+	mg = TMultiGraph()
+
+
+	cv.cd()
+	cv.SetGridx()
+	cv.SetGridy()
+	cv.SetLeftMargin(0.13)
+	cv.SetRightMargin(0.04)
+	cv.SetBottomMargin(0.15)
+	cv.SetTopMargin(0.085)
+
+	effs[0].Draw("AP")
+	cv.Update()
+	gr_effs.push_back(effs[0].GetPaintedGraph())
+	for i in effs:
+		i.Draw("same")
+		cv.Update()
+		gr_effs.append(i.GetPaintedGraph())
+	cv.Update()
+	chopcolor = gr_effs.size()/1
+	chopmarker = gr_effs.size()/3
+
+	
+	for i, gr in enumerate(gr_effs):
+		gr_effs[i].SetMarkerSize(1.5)
+		gr_effs[i].SetLineWidth(2)
+		gr_effs[i].GetYaxis().SetRangeUser(0.0,1.0)
+		
+		if i / chopmarker == 0:
+			gr_effs[i].SetMarkerStyle(22) //triangle
+		
+		elif i / chopmarker == 1:
+			gr_effs[i].SetMarkerStyle(21)//square
+		
+		elif i /chopmarker == 2:
+			gr_effs[i].SetMarkerStyle(20) //circle
+		
+		if i % chopcolor == 0:
+			gr_effs[i].SetMarkerColor(kBlue-7)
+			gr_effs[i].SetLineColor(kBlue-7)
+		
+		elif i % chopcolor == 1
+			gr_effs[i].SetMarkerColor(kRed-7)
+			gr_effs[i].SetLineColor(kRed-7)
+		
+		elif i % chopcolor == 2:
+			gr_effs[i].SetMarkerColor(kGreen-7)
+			gr_effs[i].SetLineColor(kGreen-7)
+		
+		else:
+			gr_effs[i].SetMarkerColor(kCyan-7)
+			gr_effs[i].SetLineColor(kCyan-7)
+		
+		
+		mg.Add(gr_effs[i])
+		leg.AddEntry(gr_effs[i])
+	
+	leg.SetTextFont(132)
+	leg.SetTextSize(0.03)
+	leg.SetFillColor(kWhite)
+	leg.SetLineColor(kWhite)
+	leg.SetShadowColor(kWhite)
+
+	mg.Draw("AP")
+	leg.Draw("SAME")
+	cv.Update()
+
+	g_PlotTitle = outName
+	mg.GetXaxis().SetTitle('Muon pT (GeV)')
+	mg.GetYaxis().SetTitle("#epsilon")
+	
+
+	TLatex l
+	l.SetTextFont(132)
+	l.SetNDC()
+	l.SetTextSize(0.035)
+	l.SetTextFont(42)
+	l.SetTextSize(0.03)
+	l.SetTextFont(61)
+	l.DrawLatex(0.16,0.92,"CMS")
+	l.SetTextFont(52)
+	l.DrawLatex(0.21,0.92,"Preliminary")
+	l.SetTextFont(132)
+	l.SetNDC()
+	l.SetTextSize(0.05)
+	l.SetTextFont(132)
+	l.DrawLatex(0.40,0.92,g_PlotTitle.c_str())
+	cv.Update()
+
+	return cv
 
 
 

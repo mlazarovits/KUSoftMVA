@@ -9,7 +9,7 @@ from os import path
 # from sklearn.metrics import roc_curve, auc
 
 #import user defined functions
-from plotFunctions import plotROCcurves, plotLoss, plotEfficiency
+from plotFunctions import plotROCcurves, plotLoss, makeEfficiency
 from prepData import makeData#, expandList
 
 
@@ -169,7 +169,7 @@ y_testClasses = enc.inverse_transform(y_test)
 
 
 
-plotEfficiency(y_testClasses, y_predClasses, pt_test, definedIds)
+makeEfficiency(y_testClasses, y_predClasses, pt_test, definedIds,plotName)
 
 
 #gives precision (efficiency) of each class
