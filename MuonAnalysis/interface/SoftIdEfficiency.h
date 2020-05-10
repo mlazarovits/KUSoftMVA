@@ -438,7 +438,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	    int bitwiseStatusFlag;
 	    std::vector<int> statusFlags;
 
-	    if(nMuon != 1) continue;
+	    if(nMuon < 1) continue;
 	    
 
 
@@ -454,17 +454,18 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    
 		   
 		}	
-		   
 
 		
 		// if(nMediumMuons < 2) continue; 
 		// if(nTightMuons < 1) continue; 
-		cout << l_var->GetValue(0) << endl;
+		// cout << l_var->GetValue(0) << endl;
 				
 	
 		for(int nID = 0; nID < m_IDs.size(); nID++){
-			bool bPassed = vec_lID.at(nID)->GetValue();
-			vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(0));
+			for(int nMu = ; nMu < nMuon; nMu++){
+				bool bPassed = vec_lID.at(nID)->GetValue(nMu);
+				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
+			}
 			// else vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); 
 		}
 	}
