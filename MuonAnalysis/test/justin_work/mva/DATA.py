@@ -28,13 +28,13 @@ def prepareTrainingSet( sample , model_vars, label_dict ):
 
 	
 	pt = data['Muon_pt']
-	data = data.drop(columns='Muon_pt')
+#	data = data.drop(columns='Muon_pt')
 
 	target = target.map(label_dict)
 	data = (data-data.mean())/data.std()	
 	
-	x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .2, random_state=1)
-	pt_train, pt_test, y_train2, y_test2 = train_test_split(pt,target, test_size= .2, random_state=1)
+	x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .35, random_state=1)
+	pt_train, pt_test, y_train2, y_test2 = train_test_split(pt,target, test_size= .35, random_state=1)
 
 
 	x_train = x_train.to_numpy()
