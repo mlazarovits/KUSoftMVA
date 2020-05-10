@@ -12,7 +12,7 @@ from keras.models import Sequential, Model
 from keras.layers import *
 from keras.optimizers import SGD, Adam
 from keras.activations import relu
-np.set_printoptions(threshold=sys.maxsize)
+# np.set_printoptions(threshold=sys.maxsize)
 from keras import layers
 from sklearn.utils import shuffle
 

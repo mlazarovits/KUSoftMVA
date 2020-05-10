@@ -73,7 +73,7 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	roc_auc = dict()
 	print(y_test.shape,y_score.shape,n_classes)
 	for i in range(n_classes):
-		print(i,y_test.shape, y_score.shape)
+		print(i)
 		fpr[i], tpr[i], _ = roc_curve(y_test[:, i], y_score[:, i])
 		roc_auc[i] = auc(fpr[i], tpr[i])
 
