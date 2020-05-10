@@ -430,7 +430,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 
 	    // float HT = calcHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
 	    // TLorentzVector MHT = calcMHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
-
+ cout << "a1" << endl;
 	    int nMuon = l_nMuon->GetValue();
 	     cout << "a" << endl;
 	    float nMediumMuons = 0;
