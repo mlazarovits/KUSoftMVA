@@ -117,7 +117,7 @@ inline SoftIdEfficiency::SoftIdEfficiency(TFile* file,bool i_debug=false){
 }
 
 inline SoftIdEfficiency::SoftIdEfficiency(TChain* chain){
-	m_tree = chain->GetTree();
+	m_tree = chain;
 	if(m_tree == NULL){
 		cout << "Error: No tree found" << endl;
 	}
