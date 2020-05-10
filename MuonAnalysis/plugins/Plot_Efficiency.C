@@ -20,14 +20,16 @@ void Plot_Efficiency(TString sampleName){
 	}
 
 	
-	string gPathname = "/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/";
+	string gPathname = "/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/";//"/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/";
 	TFile* fTTJets = TFile::Open((gPathname+"OutputFiles/TTJets2018_MINI_numEvent100000.root").c_str());
 	TFile* fQCD = TFile::Open((gPathname+"OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root").c_str());
 	TFile* fDYJets = TFile::Open((gPathname+"OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root").c_str());
-	TChain* allFiles = new TChain("Events");
-	allFiles->Add((gPathname+"OutputFiles/TTJets2018_MINI_numEvent100000.root").c_str());
-	allFiles->Add((gPathname+"OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root").c_str());
-	allFiles->Add((gPathname+"OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root").c_str());
+	
+	TFile *fAll = TFile::Open((gPathname+"OutputFiles/allSamples_MINI_100000.root").c_str());
+	// TChain* allFiles = new TChain("Events");
+	// allFiles->Add((gPathname+"OutputFiles/TTJets2018_MINI_numEvent100000.root").c_str());
+	// allFiles->Add((gPathname+"OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root").c_str());
+	// allFiles->Add((gPathname+"OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root").c_str());
 
 
 if(sampleName=="TTJets"){
@@ -65,15 +67,14 @@ else if(sampleName=="QCD"){
 
 else if(sampleName=="DYJets"){
 	if(fDYJets == NULL) return;
-	string name = "DYJets_softIDeffs_looseID_pt";
 	SoftIdEfficiency DYJets(fDYJets);
+	string name = "DYJets_softIDeffs_looseID_pt";
 
 	DYJets.SetSampleName(name);
 	DYJets.AddID("Muon_softId");
 	DYJets.AddID("Muon_softMvaId");
 
 	DYJets.SetVar("Muon_pt");
-
 	DYJets.SetOutputName(name+".root");
 
 	vector<TEfficiency*> DYJets_effs = DYJets.Analyze();
