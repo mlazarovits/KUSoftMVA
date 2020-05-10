@@ -25,9 +25,9 @@ void Plot_Efficiency(TString sampleName){
 	TFile* fQCD = TFile::Open((gPathname+"OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root").c_str());;
 	TFile* fDYJets = TFile::Open((gPathname+"OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root").c_str());;
 	TChain* allFiles = new TChain();
-	allFiles->Add(fTTJets);
-	allFiles->Add(fQCD);
-	allFiles->Add(fDYJets);
+	allFiles->AddFile(fTTJets);
+	allFiles->AddFile(fQCD);
+	allFiles->AddFile(fDYJets);
 
 
 if(sampleName=="TTJets"){
@@ -82,7 +82,7 @@ else if(sampleName=="DYJets"){
 	DYJets.makePlot(DYJets_effs);
 }
 
-else if(sampleName=="all"){
+else if(sampleName=="allFiles"){
 	if(allFiles == NULL) return;
 	string name = "AllSamples_softIDeffs_looseID";
 	SoftIdEfficiency allSamples(allFiles);
