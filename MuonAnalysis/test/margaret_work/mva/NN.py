@@ -155,9 +155,9 @@ class NN:
 		print("Training model: "+self.name)
 		print("Desc.: "+ self.modeldesc)
 		self.Hist = self.model.fit(self.x_train, self.y_train, epochs=100, batch_size=256,validation_split=0.1, verbose=0)
-		self.tr_acc = self.Hist.history['acc']
+		self.tr_acc = self.Hist.history['accuracy']
 		self.tr_loss = self.Hist.history['loss']		
-		self.tr_valacc = self.Hist.history['val_acc']
+		self.tr_valacc = self.Hist.history['val_accuracy']
 		self.tr_valloss = self.Hist.history['val_loss']
 		self.results = [ self.tr_acc, self.tr_loss, self.tr_valacc, self.tr_valloss]	
 
