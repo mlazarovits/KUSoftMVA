@@ -432,14 +432,14 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	    // TLorentzVector MHT = calcMHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
  // cout << "a1" << endl;
 	    int nMuon = l_nMuon->GetValue();
-	     cout << "a" << endl;
+	     // cout << "a" << endl;
 	    float nMediumMuons = 0;
 	    float nTightMuons = 0;
 	    int bitwiseStatusFlag;
 	    std::vector<int> statusFlags;
 
 
-	    if(nMuon < 1) continue;
+	    // if(nMuon < 1) continue;
 		// cout << "b" << endl;
 
 
@@ -463,8 +463,9 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    }	
 		    bitwiseStatusFlag = m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu);
 		    statusFlags = Decimal2Binary(bitwiseStatusFlag);
-		    cout << m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) << endl;
-		    
+		    if(m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) == 1){
+			    cout << m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) << endl;
+		    }
 		   
 		}	
 		 // cout << "c" << endl;
