@@ -1,5 +1,5 @@
 import numpy as np
-import root_numpy
+# import root_numpy
 import pandas as pd
 import matplotlib.pyplot as plt
 from os import path
