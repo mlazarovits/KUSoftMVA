@@ -54,7 +54,7 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 	# print(type(goodEff))
 	# print(type(goodEff[0]))
 
-	cv = plotEfficiency(goodEff,outName)
+	
 	print('1')
 	goodEff.append(cv)
 	print('2')
@@ -63,6 +63,7 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 	
 
 	[ outfile.WriteTObject(x) for x in goodEff ]
+	plotEfficiency(goodEff,outName,outfile)
 	print('4')
 	
 	# outfile.WriteTObject(cv)
@@ -162,7 +163,7 @@ def plotROCcurves(y_test,y_score,classes,outName):
 
 
 
-def plotEfficiency(effs,outName):
+def plotEfficiency(effs,outName,outFile):
 	cv = TCanvas("cv","cv",800,600)
 	leg = TLegend(0.35,0.2,0.95,0.4)
 	gr_effs = []
@@ -260,10 +261,13 @@ def plotEfficiency(effs,outName):
 	l.SetTextFont(132)
 	l.DrawLatex(0.40,0.92,g_PlotTitle)
 	cv.Update()
+	
+	outfile.cd()
+	cv.Write()
 
 	print('e')
 
-	return cv
+	# return cv
 
 
 
