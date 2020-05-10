@@ -63,19 +63,19 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 
 def plotROCcurves(y_test,y_score,classes,outName):
 	n_classes = len(classes)
+	y_test = np.array(y_test)
+	y_score = np.array(y_score)
 	# Plot linewidth.
 	lw = 2
-
 	# Compute ROC curve and ROC area for each class
 	fpr = dict()
 	tpr = dict()
 	roc_auc = dict()
-
 	print(y_test.shape,y_score.shape,n_classes)
-
 	for i in range(n_classes):
-	    fpr[i], tpr[i], _ = roc_curve(y_test[:, i], y_score[:, i])
-	    roc_auc[i] = auc(fpr[i], tpr[i])
+		print(i,y_test.shape, y_score.shape)
+		fpr[i], tpr[i], _ = roc_curve(y_test[:, i], y_score[:, i])
+		roc_auc[i] = auc(fpr[i], tpr[i])
 
 	# Compute micro-average ROC curve and ROC area
 	fpr["micro"], tpr["micro"], _ = roc_curve(y_test.ravel(), y_score.ravel())
