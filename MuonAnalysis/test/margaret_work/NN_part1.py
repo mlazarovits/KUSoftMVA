@@ -4,22 +4,18 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from os import path
 
-from itertools import cycle
-from scipy import interp
-from sklearn.metrics import roc_curve, auc
+# from itertools import cycle
+# from scipy import interp
+# from sklearn.metrics import roc_curve, auc
 
 #import user defined functions
-from plotFunctions import plotROCcurves, plotLoss, plotPrecision
+from plotFunctions import plotROCcurves, plotLoss, plotEfficiency
 from prepData import makeData#, expandList
 
 
-# from scipy import interp
-# from itertools import cycle
-# from sklearn.metrics import roc_curve, auc
-
 from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_recall_fscore_support
+# from sklearn.metrics import precision_recall_fscore_support
 
 from keras.models import Sequential, Model
 from keras.layers import *
