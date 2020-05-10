@@ -118,6 +118,7 @@ data = data.drop(columns = 'Muon_genPdgId')
 
 #normalize data
 norm = MinMaxScaler()
+cols = data.columns
 data = norm.fit_transform(data)
 
 #create test/train split - try soft cut-based ID first (least columns)
@@ -168,7 +169,7 @@ y_testClasses = enc.inverse_transform(y_test)
 
 
 #make efficiency plots
-getPt = pd.DataFrame(x_test,columns=data.columns)
+getPt = pd.DataFrame(x_test,columns=cols)
 getPt = getPt['Muon_pt']
 
 plotEfficiency(y_testClasses, y_predClasses, getPt, definedIds)
