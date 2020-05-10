@@ -61,12 +61,13 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 	outfile = TFile("./test.root","RECREATE")
 	print('3')
 	
-
 	[ outfile.WriteTObject(x) for x in goodEff ]
+
+
 	plotEfficiency(goodEff,outName,outfile)
 	print('4')
 	
-	# outfile.WriteTObject(cv)
+	
 
 
 def plotROCcurves(y_test,y_score,classes,outName):
@@ -165,7 +166,7 @@ def plotROCcurves(y_test,y_score,classes,outName):
 
 def plotEfficiency(effs,outName,outFile):
 	cv = TCanvas("cv","cv",800,600)
-	leg = TLegend(0.35,0.2,0.95,0.4)
+	# leg = TLegend(0.35,0.2,0.95,0.4)
 	gr_effs = []
 	mg = TMultiGraph()
 
@@ -184,10 +185,10 @@ def plotEfficiency(effs,outName,outFile):
 	effs[0].Draw("AP")
 	cv.Update()
 	gr_effs.append(effs[0].GetPaintedGraph())
-	for i in effs:
-		i.Draw("same")
+	for i, gr in enumerate(effs):
+		effs[i].Draw("same")
 		cv.Update()
-		gr_effs.append(i.GetPaintedGraph())
+		gr_effs.append(effs[i].GetPaintedGraph())
 	cv.Update()
 	chopcolor = len(gr_effs)/1
 	chopmarker = len(gr_effs)/3
@@ -224,17 +225,17 @@ def plotEfficiency(effs,outName,outFile):
 			gr_effs[i].SetLineColor(432-7)
 		
 		mg.Add(gr_effs[i])
-		leg.AddEntry(gr_effs[i])
+		# leg.AddEntry(gr_effs[i])
 	
-	leg.SetTextFont(132)
-	leg.SetTextSize(0.03)
-	leg.SetFillColor(0)
-	leg.SetLineColor(0)
-	leg.SetShadowColor(0)
+	# leg.SetTextFont(132)
+	# leg.SetTextSize(0.03)
+	# leg.SetFillColor(0)
+	# leg.SetLineColor(0)
+	# leg.SetShadowColor(0)
 	
 
 	mg.Draw("AP")
-	leg.Draw("SAME")
+	# leg.Draw("SAME")
 	cv.Update()
 
 
