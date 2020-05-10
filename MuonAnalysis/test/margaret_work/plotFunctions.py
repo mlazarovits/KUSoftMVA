@@ -116,7 +116,7 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	plt.ylabel('True Positive Rate')
 	plt.title(outName+'ROC Curve')
 	plt.legend(loc="lower right")
-	plt.show()
+	plt.close()
 
 
 	# Zoom in view of the upper left corner.
@@ -142,9 +142,9 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	plt.plot([0, 1], [0, 1], 'k--', lw=lw)
 	plt.xlabel('False Positive Rate')
 	plt.ylabel('True Positive Rate')
-	plt.title(outName)
+	plt.title(outName+'ROC Curve zoomed')
 	plt.legend(loc="lower right")
-	plt.savefig('plots/'+outName+"_ROCcurve.pdf",dpi=500)
+	plt.savefig('plots/'+outName+"_ROCcurveZoom.pdf",dpi=500)
 	plt.close()
 
 
