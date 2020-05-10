@@ -54,11 +54,14 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 	# print(type(goodEff))
 	# print(type(goodEff[0]))
 
-
-	outfile = TFile("./test.root","RECREATE")
-	[ outfile.WriteTObject(x) for x in goodEff ]
 	cv = plotEfficiency(goodEff,outName)
-	outfile.WriteTObject(cv)
+	goodEff.append(cv)
+	outfile = TFile("./test.root","RECREATE")
+	
+
+	[ outfile.WriteTObject(x) for x in goodEff ]
+	
+	# outfile.WriteTObject(cv)
 
 
 def plotROCcurves(y_test,y_score,classes,outName):
@@ -217,7 +220,6 @@ def plotEfficiency(effs,outName):
 		
 		mg.Add(gr_effs[i])
 		leg.AddEntry(gr_effs[i])
-		print(i,'a')
 	
 	leg.SetTextFont(132)
 	leg.SetTextSize(0.03)
@@ -226,14 +228,12 @@ def plotEfficiency(effs,outName):
 	leg.SetShadowColor(0)
 	
 
-	print('b')
 
 
 	mg.Draw("AP")
 	leg.Draw("SAME")
 	cv.Update()
 
-	print('c')
 
 	g_PlotTitle = outName
 	mg.GetXaxis().SetTitle('Muon pT (GeV)')
