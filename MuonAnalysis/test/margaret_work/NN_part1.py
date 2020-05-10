@@ -106,6 +106,10 @@ enc = OneHotEncoder(sparse=False)
 		# 321: [0,0,1,0,0], 2212: [0,0,0,1,0], 999: [0,0,0,0,1]}
 # target = target.map(encode_genPdgId)
 
+print('Relative Frequencies of Classes (total):')
+print(target.value_counts(normalize=True))
+
+
 enc.fit(definedIds.reshape(-1,1))		
 target = enc.transform(target.to_numpy().reshape(-1,1))
 
@@ -113,8 +117,7 @@ target = enc.transform(target.to_numpy().reshape(-1,1))
 data = data.drop(columns = 'Muon_genPdgId')
 
 
-print('Relative Frequencies of Classes (total):')
-print(target.value_counts(normalize=True))
+
 
 
 #normalize data
