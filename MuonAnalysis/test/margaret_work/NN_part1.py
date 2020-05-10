@@ -112,7 +112,8 @@ target = enc.transform(target.to_numpy().reshape(-1,1))
 #drop this column from data
 data = data.drop(columns = 'Muon_genPdgId')
 
-
+#make separate pt column for unnormalize pt to use in efficiency analysis
+effPt = data['Muon_pt']
 
 
 
@@ -123,12 +124,10 @@ data = norm.fit_transform(data)
 
 #create test/train split - try soft cut-based ID first (least columns)
 x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .3, random_state=1, shuffle=True)
-
+_, pt_test, _, _ = train_test_split(effPt, target,test_size = .3, random_state=1)
 
 
 #convert 1hot encoding to numpy arrays
-
-
 y_train = np.array([np.array(i) for i in y_train])
 y_test = np.array([np.array(i) for i in y_test])
 
@@ -168,11 +167,9 @@ y_predClasses = enc.inverse_transform(y_predProbs)
 y_testClasses = enc.inverse_transform(y_test)
 
 
-#make efficiency plots
-getPt = pd.DataFrame(x_test,columns=cols)
-getPt = getPt['Muon_pt']
 
-plotEfficiency(y_testClasses, y_predClasses, getPt, definedIds)
+
+plotEfficiency(y_testClasses, y_predClasses, pt_test, definedIds)
 
 
 #gives precision (efficiency) of each class
