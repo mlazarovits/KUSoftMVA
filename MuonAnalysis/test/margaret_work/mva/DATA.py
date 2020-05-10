@@ -106,7 +106,7 @@ class DATA:
 		if path.exists(self.fname+'.csv'):
 			self.data = pd.read_csv(self.fname+'.csv')
 		else:
-			self.data = makeData(self.data,definedIds)
+			self.data = makeData(self.fname,definedIds)
 		# self.tmp = root_numpy.root2array(self.fname,self.treeName)
 		# self.data = pd.DataFrame(self.tmp)
 
