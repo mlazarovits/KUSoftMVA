@@ -79,13 +79,27 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 			
 	print("Reporting results from test data")
 	for x in range(nClasses):
+		if den_ctr[x] == 0:
+			perc = 0.
+			fperc = 0.
+		else:
+			perc = num_ctr[x]/den_ctr[x]
+			fperc = fnum_ctr[x]/den_ctr[x]
+	
 		print("label "+str(x)+":")
-		print("Correct ID: "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(num_ctr[x]/den_ctr[x]))
-		print("Mis.    ID: "+ str(fnum_ctr[x])+" of "+ str(den_ctr[x])+"   "+str(fnum_ctr[x]/den_ctr[x]))
+		print("Correct ID: "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(perc))
+		print("Mis.    ID: "+ str(fnum_ctr[x])+" of "+ str(den_ctr[x])+"   "+str(fperc))
+
+	if all_den_ctr == 0:
+		allperc = 0.
+		allfperc = 0.
+	else:
+		allperc = all_num_ctr/all_den_ctr
+		allfperc = all_fnum_ctr/all_den_ctr
 		
 	print("Overall performance: ")
-	print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
-	print("Mis.    ID: "+ str(all_fnum_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_fnum_ctr/all_den_ctr))
+	print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(allperc))
+	print("Mis.    ID: "+ str(all_fnum_ctr)+" of "+ str( all_den_ctr)+"   "+str(allfperc))
 	
 
 
