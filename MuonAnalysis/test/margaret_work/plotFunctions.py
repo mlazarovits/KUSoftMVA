@@ -236,9 +236,9 @@ def plotEfficiency(effs,outName,outFile):
 	# leg.SetShadowColor(0)
 	
 
-	mg.Draw("AP")
+	# mg.Draw("AP")
 	# leg.Draw("SAME")
-	cv.Update()
+	# cv.Update()
 
 
 	g_PlotTitle = outName
