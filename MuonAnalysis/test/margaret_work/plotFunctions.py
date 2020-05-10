@@ -33,7 +33,7 @@ def plotPrecision(history,outName):
 
 
 
-def plotEfficiency(y_test,y_predClasses,x_test,definedIds):
+def plotEfficiency(y_test,y_predClasses,pt,definedIds):
 	nClasses = len(definedIds)
 	passedHists = [TH1D("num_"+str(i), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
 	totalHists =  [TH1D("den_"+str(i), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
@@ -44,13 +44,13 @@ def plotEfficiency(y_test,y_predClasses,x_test,definedIds):
 		for i, n in enumerate(zip(y_test,y_predClasses)):
 			print(i,j)
 			i = int(i)
-			print(x_test['Muon_pt'].loc[i])
+			print(pt.loc[i])
 			if n[0] == ID:
 				if n[0] == n[1]: #correct match
-					passedHists[j].Fill(x_test['Muon_pt'].loc[i])
-					totalHists[j].Fill(x_test['Muon_pt'].loc[i])
+					passedHists[j].Fill(pt.loc[i])
+					totalHists[j].Fill(pt.loc[i])
 				elif n[0] != n[1]: #incorrect match
-					totalHists[j].Fill(x_test['Muon_pt'].loc[i])
+					totalHists[j].Fill(pt.loc[i])
 
 
 

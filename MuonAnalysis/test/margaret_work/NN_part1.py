@@ -168,7 +168,10 @@ y_testClasses = enc.inverse_transform(y_test)
 
 
 #make efficiency plots
-plotEfficiency(y_testClasses, y_predClasses, x_test, definedIds)
+getPt = pd.DataFrame(x_test,columns=data.columns)
+getPt = getPt['Muon_pt']
+
+plotEfficiency(y_testClasses, y_predClasses, getPt, definedIds)
 
 
 #gives precision (efficiency) of each class
