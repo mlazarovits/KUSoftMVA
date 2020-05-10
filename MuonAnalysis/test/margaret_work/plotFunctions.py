@@ -3,7 +3,7 @@ from scipy import interp
 import matplotlib.pyplot as plt
 from itertools import cycle
 from sklearn.metrics import roc_curve, auc
-from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph, TLatex, TGraphAsymmErrors, TMultiGraph, TLegend
+from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph, TLatex, TGraphAsymmErrors, TMultiGraph, TLegend, SetOwnership
 
 
 def plotLoss(history,outName):
@@ -38,7 +38,7 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 	nClasses = len(definedIds)
 	passedHists = [TH1D("num_"+str(ID), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
 	totalHists =  [TH1D("eff_"+str(ID), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
-
+	
 	#break it down by class
 	for j, ID in enumerate(definedIds):
 		for i, n in enumerate(zip(y_test,y_predClasses)):
@@ -48,22 +48,17 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 					totalHists[j].Fill(pt.iloc[i])
 				elif n[0] != n[1]: #incorrect match
 					totalHists[j].Fill(pt.iloc[i])
-
 	goodEff = [ TEfficiency(passedHists[i],totalHists[i]) for i in range(nClasses) ]
-
+	for i, ID in enumerate(goodEff):
+		ID.SetTitle("class "+str(definedIds[i])+" eff")
 	# print(type(goodEff))
 	# print(type(goodEff[0]))
-
-	
 	print('1')
 	# goodEff.append(cv)
 	print('2')
 	outfile = TFile("./test.root","RECREATE")
 	print('3')
-	
 	[ outfile.WriteTObject(x) for x in goodEff ]
-
-
 	plotEfficiency(goodEff,outName,outfile)
 	print('4')
 	
@@ -169,8 +164,6 @@ def plotEfficiency(effs,outName,outFile):
 	leg = TLegend(0.35,0.2,0.95,0.4)
 	gr_effs = []
 	mg = TMultiGraph()
-
-
 	cv.cd()
 	cv.SetGridx()
 	cv.SetGridy()
@@ -178,79 +171,56 @@ def plotEfficiency(effs,outName,outFile):
 	cv.SetRightMargin(0.04)
 	cv.SetBottomMargin(0.15)
 	cv.SetTopMargin(0.085)
-
-
-
 	effs[0].Draw("AP")
 	cv.Update()
-
 	gr_effs.append(effs[0].GetPaintedGraph())
-	for i in range(1, len(effs)):
+	for i in range(1,len(effs)):
 		effs[i].Draw("same")
 		cv.Update()
 		gr_effs.append(effs[i].GetPaintedGraph())
 	cv.Update()
-
-
 	chopcolor = len(gr_effs)/1
 	chopmarker = len(gr_effs)/3
-
-	
 	for i in range(len(gr_effs)):
 		gr_effs[i].SetMarkerSize(1.5)
 		gr_effs[i].SetLineWidth(2)
 		gr_effs[i].GetYaxis().SetRangeUser(0.0,1.0)
-		
 		if i / chopmarker == 0:
 			gr_effs[i].SetMarkerStyle(22) #triangle
-		
 		elif i / chopmarker == 1:
 			gr_effs[i].SetMarkerStyle(21) #square
-		
 		elif i /chopmarker == 2:
 			gr_effs[i].SetMarkerStyle(20)  #circle
-		
 		if i % chopcolor == 0:
 			gr_effs[i].SetMarkerColor(600-7)
 			gr_effs[i].SetLineColor(600-7)
-		
 		elif i % chopcolor == 1:
 			gr_effs[i].SetMarkerColor(632-7)
 			gr_effs[i].SetLineColor(632-7)
-		
 		elif i % chopcolor == 2:
 			gr_effs[i].SetMarkerColor(416-7)
 			gr_effs[i].SetLineColor(416-7)
-		
 		else:
 			gr_effs[i].SetMarkerColor(432-7)
 			gr_effs[i].SetLineColor(432-7)
-		
-		# mg.Add(gr_effs[i]) #causing segfault
-		gr_effs[i].Draw("APsame")
+		# ###mg.Add(gr_effs[i]) #causing segfault
+		##### gr_effs[i].Draw("sameAP") #only draws one
 		leg.AddEntry(gr_effs[i])
-	
+	for i, gr in enumerate(gr_effs):
+		mg.Add(copy.deepcopy(gr_effs[i]))
 	leg.SetTextFont(132)
 	leg.SetTextSize(0.03)
 	leg.SetFillColor(0)
 	leg.SetLineColor(0)
 	leg.SetShadowColor(0)
-	
-
-	# mg.Draw("AP")
+	mg.Draw("AP")
+	print('drawn mg')
 	leg.Draw("SAME")
 	cv.Update()
-
-
 	g_PlotTitle = outName
-	gr_effs[-1].GetXaxis().SetTitle('Muon pT (GeV)')
-	gr_effs[-1].GetYaxis().SetTitle("#epsilon")
-	# mg.GetXaxis().SetTitle('Muon pT (GeV)')
-	# mg.GetYaxis().SetTitle("#epsilon")
-
-	print('d')
-	
-
+	mg.GetXaxis().SetTitle('Muon pT (GeV)')
+	mg.GetYaxis().SetTitle("#epsilon")
+	print('changed axes names')
 	l = TLatex()
 	l.SetTextFont(132)
 	l.SetNDC()
@@ -267,13 +237,12 @@ def plotEfficiency(effs,outName,outFile):
 	l.SetTextFont(132)
 	l.DrawLatex(0.40,0.92,g_PlotTitle)
 	cv.Update()
-
 	outFile.cd()
 	outFile.WriteTObject(cv)
-
-	print('e')
-
+	print('written canvas to file')
 	# return cv
+
+
 
 
 
