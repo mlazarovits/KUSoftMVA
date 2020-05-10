@@ -20,6 +20,7 @@ class SoftIdEfficiency{
 public:
 	
 	SoftIdEfficiency(TFile* file, bool i_debug=false);
+	SoftIdEfficiency(TChain* chain);
 	virtual ~SoftIdEfficiency(){};
 
 	void AddFile(const string& filename);
@@ -113,6 +114,13 @@ inline SoftIdEfficiency::SoftIdEfficiency(TFile* file,bool i_debug=false){
 		cout << "Error: No tree found" << endl;
 	}
 	debug = i_debug;
+}
+
+inline SoftIdEfficiency::SoftIdEfficiency(TChain* chain){
+	m_tree = chain->GetTree();
+	if(m_tree == NULL){
+		cout << "Error: No tree found" << endl;
+	}
 }
 
 
