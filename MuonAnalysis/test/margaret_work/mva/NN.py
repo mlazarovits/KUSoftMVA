@@ -111,7 +111,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 	[ outfile.WriteTObject(x) for x in h_num ]
 	[ outfile.WriteTObject(x) for x in h_fnum]
 	[ outfile.WriteTObject(x) for x in h_den ]
-	plotEfficiency(goodEff,outName,outfile)
+	plotEfficiency(goodEff,fname+tag,outfile)
 	[ outfile.WriteTObject(x) for x in goodEff ]
 	[ outfile.WriteTObject(x) for x in badEff ]
 	outfile.WriteObject(h_loss, "trainingLoss")
