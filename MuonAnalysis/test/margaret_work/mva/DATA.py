@@ -102,6 +102,7 @@ class DATA:
 		self.name = name
 		self.treeName = 'Events'
 		self.fname = fname
+		print(self.fname)
 		#speeds up processing time
 		if path.exists(self.fname+'.csv'):
 			self.data = pd.read_csv(self.fname+'.csv')
