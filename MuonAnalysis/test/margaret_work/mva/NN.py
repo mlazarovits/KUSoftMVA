@@ -86,8 +86,8 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, mdict, results ):
 		print("Mis.    ID: "+ str(fnum_ctr[x])+" of "+ str(den_ctr[x])+"   "+str(fnum_ctr[x]/den_ctr[x]))
 		
 	print("Overall performance: ")
-        print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
-        print("Mis.    ID: "+ str(all_fnum_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_fnum_ctr/all_den_ctr))
+    print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
+    print("Mis.    ID: "+ str(all_fnum_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_fnum_ctr/all_den_ctr))
 	
 
 
