@@ -52,16 +52,11 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 	goodEff = [ TEfficiency(passedHists[i],totalHists[i]) for i in range(nClasses) ]
 	for i, ID in enumerate(goodEff):
 		ID.SetTitle("class "+str(definedIds[i])+" eff")
-	# print(type(goodEff))
-	# print(type(goodEff[0]))
-	print('1')
-	# goodEff.append(cv)
-	print('2')
 	outfile = TFile("./test.root","RECREATE")
-	print('3')
+
 	[ outfile.WriteTObject(x) for x in goodEff ]
 	plotEfficiency(goodEff,outName,outfile)
-	print('4')
+
 	
 	
 
@@ -193,19 +188,17 @@ def plotEfficiency(effs,outName,outFile):
 		elif int(i /chopmarker) == 2:
 			gr_effs[i].SetMarkerStyle(20)  #circle
 		if int(i % chopcolor) == 0:
-			gr_effs[i].SetMarkerColor(600-7)
-			gr_effs[i].SetLineColor(600-7)
-		elif int(i % chopcolor) == 1:
 			gr_effs[i].SetMarkerColor(632-7)
 			gr_effs[i].SetLineColor(632-7)
+		elif int(i % chopcolor) == 1:
+			gr_effs[i].SetMarkerColor(600-7)
+			gr_effs[i].SetLineColor(600-7)
 		elif int(i % chopcolor) == 2:
 			gr_effs[i].SetMarkerColor(416-7)
 			gr_effs[i].SetLineColor(416-7)
 		else:
 			gr_effs[i].SetMarkerColor(432-7)
 			gr_effs[i].SetLineColor(432-7)
-		# ###mg.Add(gr_effs[i]) #causing segfault
-		##### gr_effs[i].Draw("sameAP") #only draws one
 		leg.AddEntry(gr_effs[i])
 	for i, gr in enumerate(gr_effs):
 		mg.Add(copy.deepcopy(gr_effs[i]))
@@ -242,21 +235,7 @@ def plotEfficiency(effs,outName,outFile):
 	outFile.WriteTObject(cv)
 	print('written canvas to file')
 	cv.Close()
-	# return cv
 
-
-# import numpy as np
-# import pandas as pd
-# import copy
-# from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph, TLatex, TGraphAsymmErrors, TMultiGraph, TLegend, SetOwnership
-
-
-# pt = pd.Series([3.4, 5.6, 13.0, 43.2, 2.2, 5.7, 10.9, 6.9, 2.3, 4.5, 10.3,4.3])
-# y_test = [999,999,13,13,211,321,2212,2212,13,13,321,999]
-# y_pred = [999,13,13,999,211,321,321,2212,13,13,211,999]
-# definedIds = np.array([13,211,321,2212,999])
-
-# makeEfficiency(y_test,y_pred,pt,definedIds,"test")
 
 
 
