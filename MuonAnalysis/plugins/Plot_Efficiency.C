@@ -14,17 +14,20 @@
 using namespace std;
 
 void Plot_Efficiency(TString sampleName){
-	if(gSystem->OpenDirectory("/home/t3-ku/mlazarov/CMSSW_10_6_8/src/KUSoftMVA/MuonAnalysis/plots/") == 0){
-		gSystem->mkdir("/home/t3-ku/mlazarov/CMSSW_10_6_8/src/KUSoftMVA/MuonAnalysis/plots/");
+	if(gSystem->OpenDirectory("home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/plots/") == 0){
+		gSystem->mkdir("home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/plots/");
 		cout << "Created plots folder." << endl;
 	}
 
 	
-	string gPathname = "/home/t3-ku/mlazarov/CMSSW_10_6_8/src/KUSoftMVA/MuonAnalysis/test/";
-	TFile* fTTJets = TFile::Open((gPathname+"OutputFiles/TTJets2018_NANO.root").c_str());
-	TFile* fQCD = NULL;
-	TFile* fDYJets = NULL;
-	
+	string gPathname = "home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/";
+	TFile* fTTJets = TFile::Open((gPathname+"OutputFiles/TTJets2018_MINI_numEvent100000.root").c_str());
+	TFile* fQCD = TFile::Open((gPathname+"OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root").c_str());;
+	TFile* fDYJets = TFile::Open((gPathname+"OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root").c_str());;
+	TChain* allFiles = new TChain();
+	allFiles->Add(fTTJets);
+	allFiles->Add(fQCD);
+	allFiles->Add(fDYJets);
 
 
 if(sampleName=="TTJets"){
@@ -33,7 +36,6 @@ if(sampleName=="TTJets"){
 	string name = "TTJets_softIDeffs_1L_looseID_GenStatusFlag";
 	TTJets.SetSampleName(name);
 
-	TTJets.AddID("Muon_mvaId");
 	TTJets.AddID("Muon_softId");
 	TTJets.AddID("Muon_softMvaId");
 
@@ -53,7 +55,6 @@ else if(sampleName=="QCD"){
 	string name = "QCD_softIDeffs";
 	QCD.SetSampleName(name);
 	
-	QCD.AddID("Muon_mvaId");
 	QCD.AddID("Muon_softId");
 	QCD.AddID("Muon_softMvaId");
 
@@ -70,7 +71,6 @@ else if(sampleName=="DYJets"){
 	SoftIdEfficiency DYJets(fDYJets);
 
 	DYJets.SetSampleName(name);
-	DYJets.AddID("Muon_mvaId");
 	DYJets.AddID("Muon_softId");
 	DYJets.AddID("Muon_softMvaId");
 
@@ -80,6 +80,23 @@ else if(sampleName=="DYJets"){
 
 	vector<TEfficiency*> DYJets_effs = DYJets.Analyze();
 	DYJets.makePlot(DYJets_effs);
+}
+
+else if(sampleName=="all"){
+	if(allFiles == NULL) return;
+	string name = "AllSamples_softIDeffs_looseID";
+	SoftIdEfficiency allSamples(allFiles);
+
+	allSamples.SetSampleName(name);
+	allSamples.AddID("Muon_softId");
+	allSamples.AddID("Muon_softMvaId");
+
+	allSamples.SetVar("Muon_pt");
+
+	allSamples.SetOutputName(name+".root");
+
+	vector<TEfficiency*> allSamples_effs = allSamples.Analyze();
+	allSamples.makePlot(allSamples_effs);
 }
 
 
