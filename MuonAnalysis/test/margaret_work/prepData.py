@@ -1,6 +1,6 @@
-import root_numpy
-import numpy as np
-import pandas as pd
+# import root_numpy
+# import numpy as np
+# import pandas as pd
 
 #expand list in terms of muon - takes a long time
 def expandList(df, columnNames):
@@ -14,15 +14,13 @@ def expandList(df, columnNames):
 def makeData(filename,definedIds):
 	treeName = 'Events'
 	gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
-	data = root_numpy.root2array(gPath+filename,treeName)
+	data = root_numpy.root2array(gPath+filename+'.root',treeName)
 	data = pd.DataFrame(data)
-	
 	#make gen pdg ID labels for reco muons
 	#-999 if unmatched
 	pdgIds = np.array([-999 if mu == -1 else data['GenPart_pdgId'][i][mu] for i, idxs in enumerate(data['Muon_genPartIdx']) for j, mu in enumerate(idxs)])
 	#get rid of 0 muon events
 	data = data.drop([i for i, nMu in enumerate(data['nMuon']) if nMu == 0])
-	
 	#expand the list so each row is a muon (not an event)
 	muonMask = data.columns.str.contains('Muon_.*')
 	expCols = data.loc[:,muonMask].columns
@@ -36,6 +34,7 @@ def makeData(filename,definedIds):
 	data = data.drop([i for i, ID in enumerate(data['Muon_genPdgId']) if abs(ID) not in definedIds])
 	data = data.reset_index()
 	# df = df.drop([i for i, ID in enumerate(df['genPdgId']) if abs(ID) not in definedIds])
+	data.to_csv(filename+'.csv')
 	return data
 
 
