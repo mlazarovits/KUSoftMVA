@@ -155,7 +155,7 @@ model = Model(inputs=inputs,outputs=outputs)
 model.compile(loss='categorical_crossentropy',optimizer=Adam(lr=1e-3),metrics=['accuracy',Precision()])
 model.summary()
 
-history = model.fit(x_train,y_train,batch_size=256,epochs=70,validation_split=0.3)
+history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.3)
 
 #STARTS TO OVERFIT AROUND EPOCH 10 - MAYBE INDUCE SOME REGULARIZATION??
 
@@ -168,8 +168,17 @@ plotROCcurves(y_test,y_predProbs,definedIds,plotName)
 
 y_predClasses = enc.inverse_transform(y_predProbs) #need classes for confusion matrix/precison by class
 
+
+print(y_predProbs.shape)
+
+
+
+#make efficiency plots
+# plotEfficiency(y_true, y_predClasses, x_test, definedIds)
+
+
 #gives precision (efficiency) of each class
-precision, _, _, _ = precision_recall_fscore_support(y_test,y_predClasses)
+# precision, _, _, _ = precision_recall_fscore_support(y_test,y_predClasses)
 
 
 #match to pt in x_test to plot as function of pt
@@ -196,26 +205,10 @@ precision, _, _, _ = precision_recall_fscore_support(y_test,y_predClasses)
 # 	precision_pt.append(precision)
 
 
-passedHists = [TH1D("num_"+str(i), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
-totalHists =  [TH1D("den_"+str(i), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
-
-#break it down by class
-for j, ID in enumerate(definedIds):
-	for i, n in enumerate(zip(y_test,y_predClasses)):
-		if n[0] == ID:
-			if n[0] == n[1]: #correct match
-				passedHists[j].Fill(x_test['Muon_pt'].loc[i])
-				totalHists[j].Fill(x_test['Muon_pt'].loc[i])
-			elif n[0] != n[1]: #incorrect match
-				totalHists[j].Fill(x_test['Muon_pt'].loc[i])
 
 
 
-goodEff = [ TEfficiency(passedHists[i],totalHists[i]) for i in range(nClasses) ]
 
-
-outfile = TFile("./test.root","RECREATE")
-[ outfile.WriteTObject(x) for x in goodEff ]
 
 
 

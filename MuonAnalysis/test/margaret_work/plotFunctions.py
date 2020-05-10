@@ -1,8 +1,8 @@
-import numpy as np
-from scipy import interp
-import matplotlib.pyplot as plt
-from itertools import cycle
-from sklearn.metrics import roc_curve, auc
+# import numpy as np
+# from scipy import interp
+# import matplotlib.pyplot as plt
+# from itertools import cycle
+# from sklearn.metrics import roc_curve, auc
 
 
 
@@ -15,6 +15,7 @@ def plotLoss(history,outName):
 	plt.legend()
 	plt.title(outName+' Loss')
 	plt.savefig('plots/'+outName+'_Loss.pdf',dpi=500)
+	plt.close()
 
 
 def plotPrecision(history,outName):
@@ -26,9 +27,34 @@ def plotPrecision(history,outName):
 	plt.legend()
 	plt.title(outName+' Precision')
 	plt.savefig('plots/'+outName+'_Precision.pdf',dpi=500)
+	plt.close()
 
 
 
+
+
+def plotEfficiency(y_test,y_predClasses,x_test,definedIds):
+	nClasses = len(definedIds)
+	passedHists = [TH1D("num_"+str(i), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
+	totalHists =  [TH1D("den_"+str(i), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
+
+	#break it down by class
+	for j, ID in enumerate(definedIds):
+		for i, n in enumerate(zip(y_test,y_predClasses)):
+			if n[0] == ID:
+				if n[0] == n[1]: #correct match
+					passedHists[j].Fill(x_test['Muon_pt'].loc[i])
+					totalHists[j].Fill(x_test['Muon_pt'].loc[i])
+				elif n[0] != n[1]: #incorrect match
+					totalHists[j].Fill(x_test['Muon_pt'].loc[i])
+
+
+
+	goodEff = [ TEfficiency(passedHists[i],totalHists[i]) for i in range(nClasses) ]
+
+
+	outfile = TFile("./test.root","RECREATE")
+	[ outfile.WriteTObject(x) for x in goodEff ]
 
 
 def plotROCcurves(y_test,y_score,classes,outName):
@@ -119,6 +145,7 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	plt.title(outName)
 	plt.legend(loc="lower right")
 	plt.savefig('plots/'+outName+"_ROCcurve.pdf",dpi=500)
+	plt.close()
 
 
 
