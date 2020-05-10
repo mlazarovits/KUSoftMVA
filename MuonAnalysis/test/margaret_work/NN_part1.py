@@ -107,7 +107,7 @@ enc = OneHotEncoder(sparse=False)
 # target = target.map(encode_genPdgId)
 
 enc.fit(definedIds.reshape(-1,1))		
-target = enc.transform(target)
+target = enc.transform(target.to_numpy().reshape(-1,1))
 
 #drop this column from data
 data = data.drop(columns = 'Muon_genPdgId')
