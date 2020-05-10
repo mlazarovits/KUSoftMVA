@@ -267,12 +267,12 @@ inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 	std::vector<Double_t> effbins;
 	
 	if(strstr(inputvar, "pt")){
-		effbins.push_back(0.0);
+		effbins.push_back(2.0);
 		// for(int i = 1; i < 60; i++){
 		// 	effbins.push_back(effbins.at(i-1) + 0.5);
 		// }
-		for(int i = 1; i < 12; i++){
-			effbins.push_back(effbins.at(i-1) +3.0);
+		for(int i = 1; i < 41; i++){
+			effbins.push_back(effbins.at(i-1) +1.0);
 			// cout << effbins[i] << endl;
 		}
 		
@@ -439,6 +439,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	    std::vector<int> statusFlags;
 
 	    if(nMuon < 1) continue;
+
 	    
 
 
@@ -463,6 +464,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	
 		for(int nID = 0; nID < m_IDs.size(); nID++){
 			for(int nMu = 0; nMu < nMuon; nMu++){
+				if(m_tree->GetLeaf("Muon_pt")->GetValue(nMu) < 2.) continue;
 				bool bPassed = vec_lID.at(nID)->GetValue();
 				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(0));
 			}
