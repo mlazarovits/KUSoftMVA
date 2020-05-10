@@ -182,49 +182,49 @@ def plotEfficiency(effs,outName,outFile):
 	# print(type(effs))
 	# print(type(effs[0]))
 
-	effs[0].Draw("AP")
-	cv.Update()
-	gr_effs.append(effs[0].GetPaintedGraph())
-	for i, gr in enumerate(effs):
-		effs[i].Draw("same")
-		cv.Update()
-		gr_effs.append(effs[i].GetPaintedGraph())
-	cv.Update()
-	chopcolor = len(gr_effs)/1
-	chopmarker = len(gr_effs)/3
+	# effs[0].Draw("AP")
+	# cv.Update()
+	# gr_effs.append(effs[0].GetPaintedGraph())
+	# for i, gr in enumerate(effs):
+	# 	effs[i].Draw("same")
+	# 	cv.Update()
+	# 	gr_effs.append(effs[i].GetPaintedGraph())
+	# cv.Update()
+	# chopcolor = len(gr_effs)/1
+	# chopmarker = len(gr_effs)/3
 
 	
-	for i, gr in enumerate(gr_effs):
-		gr_effs[i].SetMarkerSize(1.5)
-		gr_effs[i].SetLineWidth(2)
-		gr_effs[i].GetYaxis().SetRangeUser(0.0,1.0)
+	# for i, gr in enumerate(gr_effs):
+		# gr_effs[i].SetMarkerSize(1.5)
+		# gr_effs[i].SetLineWidth(2)
+		# gr_effs[i].GetYaxis().SetRangeUser(0.0,1.0)
 		
-		if i / chopmarker == 0:
-			gr_effs[i].SetMarkerStyle(22) #triangle
+		# if i / chopmarker == 0:
+		# 	gr_effs[i].SetMarkerStyle(22) #triangle
 		
-		elif i / chopmarker == 1:
-			gr_effs[i].SetMarkerStyle(21) #square
+		# elif i / chopmarker == 1:
+		# 	gr_effs[i].SetMarkerStyle(21) #square
 		
-		elif i /chopmarker == 2:
-			gr_effs[i].SetMarkerStyle(20)  #circle
+		# elif i /chopmarker == 2:
+		# 	gr_effs[i].SetMarkerStyle(20)  #circle
 		
-		if i % chopcolor == 0:
-			gr_effs[i].SetMarkerColor(600-7)
-			gr_effs[i].SetLineColor(600-7)
+		# if i % chopcolor == 0:
+		# 	gr_effs[i].SetMarkerColor(600-7)
+		# 	gr_effs[i].SetLineColor(600-7)
 		
-		elif i % chopcolor == 1:
-			gr_effs[i].SetMarkerColor(632-7)
-			gr_effs[i].SetLineColor(632-7)
+		# elif i % chopcolor == 1:
+		# 	gr_effs[i].SetMarkerColor(632-7)
+		# 	gr_effs[i].SetLineColor(632-7)
 		
-		elif i % chopcolor == 2:
-			gr_effs[i].SetMarkerColor(416-7)
-			gr_effs[i].SetLineColor(416-7)
+		# elif i % chopcolor == 2:
+		# 	gr_effs[i].SetMarkerColor(416-7)
+		# 	gr_effs[i].SetLineColor(416-7)
 		
-		else:
-			gr_effs[i].SetMarkerColor(432-7)
-			gr_effs[i].SetLineColor(432-7)
+		# else:
+		# 	gr_effs[i].SetMarkerColor(432-7)
+		# 	gr_effs[i].SetLineColor(432-7)
 		
-		mg.Add(gr_effs[i])
+		# # mg.Add(gr_effs[i])
 		# leg.AddEntry(gr_effs[i])
 	
 	# leg.SetTextFont(132)
@@ -234,34 +234,34 @@ def plotEfficiency(effs,outName,outFile):
 	# leg.SetShadowColor(0)
 	
 
-	mg.Draw("AP")
+	# mg.Draw("AP")
 	# leg.Draw("SAME")
-	cv.Update()
+	# cv.Update()
 
 
 	g_PlotTitle = outName
-	mg.GetXaxis().SetTitle('Muon pT (GeV)')
-	mg.GetYaxis().SetTitle("#epsilon")
+	# mg.GetXaxis().SetTitle('Muon pT (GeV)')
+	# mg.GetYaxis().SetTitle("#epsilon")
 
 	print('d')
 	
 
-	l = TLatex()
-	l.SetTextFont(132)
-	l.SetNDC()
-	l.SetTextSize(0.035)
-	l.SetTextFont(42)
-	l.SetTextSize(0.03)
-	l.SetTextFont(61)
-	l.DrawLatex(0.16,0.92,"CMS")
-	l.SetTextFont(52)
-	l.DrawLatex(0.21,0.92,"Preliminary")
-	l.SetTextFont(132)
-	l.SetNDC()
-	l.SetTextSize(0.05)
-	l.SetTextFont(132)
-	l.DrawLatex(0.40,0.92,g_PlotTitle)
-	cv.Update()
+	# l = TLatex()
+	# l.SetTextFont(132)
+	# l.SetNDC()
+	# l.SetTextSize(0.035)
+	# l.SetTextFont(42)
+	# l.SetTextSize(0.03)
+	# l.SetTextFont(61)
+	# l.DrawLatex(0.16,0.92,"CMS")
+	# l.SetTextFont(52)
+	# l.DrawLatex(0.21,0.92,"Preliminary")
+	# l.SetTextFont(132)
+	# l.SetNDC()
+	# l.SetTextSize(0.05)
+	# l.SetTextFont(132)
+	# l.DrawLatex(0.40,0.92,g_PlotTitle)
+	# cv.Update()
 
 	outFile.cd()
 	outFile.WriteTObject(cv)
