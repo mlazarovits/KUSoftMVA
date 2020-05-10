@@ -165,12 +165,12 @@ plotROCcurves(y_test,y_predProbs,definedIds,plotName)
 y_predClasses = enc.inverse_transform(y_predProbs) #need classes for confusion matrix/precison by class
 
 
-print(y_predProbs.shape)
-
+print(y_predClasses.shape)
+y_testClasses = enc.inverse_transform(y_test)
 
 
 #make efficiency plots
-plotEfficiency(y_test, y_predClasses, x_test, definedIds)
+plotEfficiency(y_testClasses, y_predClasses, x_test, definedIds)
 
 
 #gives precision (efficiency) of each class
