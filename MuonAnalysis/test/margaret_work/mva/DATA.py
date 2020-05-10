@@ -71,7 +71,7 @@ def expandList( df, columnNames):
 def makeData(filename,definedIds,treeName):
 	# treeName = 'Events'
 	# gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
-	data = root_numpy.root2array(gPath+filename+'.root',treeName)
+	data = root_numpy.root2array(filename+'.root',treeName)
 	data = pd.DataFrame(data)
 	#make gen pdg ID labels for reco muons
 	#-999 if unmatched
