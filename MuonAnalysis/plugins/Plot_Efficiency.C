@@ -25,7 +25,7 @@ void Plot_Efficiency(TString sampleName){
 	TFile* fQCD = TFile::Open((gPathname+"OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root").c_str());
 	TFile* fDYJets = TFile::Open((gPathname+"OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root").c_str());
 	
-	TFile *fAll = TFile::Open((gPathname+"OutputFiles/allSamples_MINI_100000.root").c_str());
+	TFile *allFiles = TFile::Open((gPathname+"OutputFiles/allSamples_MINI_100000.root").c_str());
 	// TChain* allFiles = new TChain("Events");
 	// allFiles->Add((gPathname+"OutputFiles/TTJets2018_MINI_numEvent100000.root").c_str());
 	// allFiles->Add((gPathname+"OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root").c_str());
