@@ -452,7 +452,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    }	
 		    bitwiseStatusFlag = m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu);
 		    statusFlags = Decimal2Binary(bitwiseStatusFlag);
-		    cout << m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) << endl;
+		    // cout << m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) << endl;
 		    
 		   
 		}	
