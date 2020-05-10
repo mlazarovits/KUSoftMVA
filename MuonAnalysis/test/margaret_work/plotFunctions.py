@@ -3,7 +3,7 @@ from scipy import interp
 import matplotlib.pyplot as plt
 from itertools import cycle
 from sklearn.metrics import roc_curve, auc
-from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph, TLatex, TGraphAsymmErrors, TMultigraph
+from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph, TLatex, TGraphAsymmErrors, TMultiGraph
 
 
 def plotLoss(history,outName):
