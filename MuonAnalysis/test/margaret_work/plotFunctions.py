@@ -228,7 +228,7 @@ def plotEfficiency(effs,outName):
 	mg.GetYaxis().SetTitle("#epsilon")
 	
 
-	TLatex l
+	l = TLatex()
 	l.SetTextFont(132)
 	l.SetNDC()
 	l.SetTextSize(0.035)
