@@ -668,7 +668,7 @@ inline void SoftIdEfficiency::makePlot(vector<TEfficiency*> effs){
 	cv->Update();
 
 	if(!debug){
-		TString filename = ("/home/t3-ku/mlazarov/CMSSW_10_6_8/src/KUSoftMVA/MuonAnalysis/plots/"+m_outname).c_str();
+		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/"+m_outname).c_str();
 
 		TFile* file = new TFile(filename,"RECREATE");
 		cout << "file: " << filename << " created" << endl;

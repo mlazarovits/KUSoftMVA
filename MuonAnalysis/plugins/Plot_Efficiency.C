@@ -14,8 +14,8 @@
 using namespace std;
 
 void Plot_Efficiency(TString sampleName){
-	if(gSystem->OpenDirectory("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/plots/") == 0){
-		gSystem->mkdir("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/plots/");
+	if(gSystem->OpenDirectory("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots") == 0){
+		gSystem->mkdir("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots");
 		cout << "Created plots folder." << endl;
 	}
 
@@ -33,13 +33,13 @@ void Plot_Efficiency(TString sampleName){
 if(sampleName=="TTJets"){
 	if(fTTJets == NULL) return;
 	SoftIdEfficiency TTJets(fTTJets);
-	string name = "TTJets_softIDeffs_1L_looseID_GenStatusFlag";
+	string name = "TTJets_softIDeffs_1L_looseID_pt";
 	TTJets.SetSampleName(name);
 
 	TTJets.AddID("Muon_softId");
 	TTJets.AddID("Muon_softMvaId");
 
-	TTJets.SetVar("GenPart_statusFlags");
+	TTJets.SetVar("Muon_pt");
 	TTJets.SetOutputName(name+".root");
 
 	vector<TEfficiency*> TTJets_eff = TTJets.Analyze();
@@ -47,12 +47,10 @@ if(sampleName=="TTJets"){
 }
 
 
-
-
 else if(sampleName=="QCD"){
 	if(fQCD == NULL) return;
 	SoftIdEfficiency QCD(fQCD);
-	string name = "QCD_softIDeffs";
+	string name = "QCD_softIDeffs_pt";
 	QCD.SetSampleName(name);
 	
 	QCD.AddID("Muon_softId");
@@ -67,7 +65,7 @@ else if(sampleName=="QCD"){
 
 else if(sampleName=="DYJets"){
 	if(fDYJets == NULL) return;
-	string name = "DYJets_softIDeffs_looseID";
+	string name = "DYJets_softIDeffs_looseID_pt";
 	SoftIdEfficiency DYJets(fDYJets);
 
 	DYJets.SetSampleName(name);
