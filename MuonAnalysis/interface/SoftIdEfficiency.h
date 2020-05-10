@@ -458,9 +458,9 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    }	
 		    bitwiseStatusFlag = m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu);
 		    statusFlags = Decimal2Binary(bitwiseStatusFlag);
-		    if(m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) == 1){
-			    cout << m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) << endl;
-		    }
+		    // if(m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) == 1){
+			   //  cout << m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) << endl;
+		    // }
 		   
 		}	
 		 // cout << "c" << endl;
@@ -472,21 +472,25 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		// if(nTightMuons < 1) continue; 
 		// cout << l_var->GetValue(0) << endl;
 				
-	
+		bool bReal;
 		for(int nID = 0; nID < m_IDs.size(); nID++){
 			 // cout << "d" << endl;
 			for(int nMu = 0; nMu < nMuon; nMu++){
 				genIdx = m_tree->GetLeaf("Muon_genPartIdx")->GetValue(nMu);
 		    	genID = m_tree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 
-		    	if(abs(genID) != 13) continue;
+		    	
 				if(m_tree->GetLeaf("Muon_pt")->GetValue(nMu) < 2.) continue;
 
 				if(nID == 1){
 					if(m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) == 0) continue;
 				}
+				if(abs(genID) == 13){
+					bReal = true;
+				}
+				else bReal = false;
 
-				bool bPassed = vec_lID.at(nID)->GetValue(nMu);
+				bool bPassed = (vec_lID.at(nID)->GetValue(nMu) && bReal);
 				// cout << "Muon_pt " << m_tree->GetLeaf("Muon_pt")->GetValue(nMu) << endl;
 				// if(nID == 1 && bPassed){
 					// cout << "softMVAId passed" << endl;
