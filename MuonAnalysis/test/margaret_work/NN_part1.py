@@ -1,11 +1,15 @@
 import numpy as np
-# import root_numpy
+import root_numpy
 import pandas as pd
 import matplotlib.pyplot as plt
 
+from itertools import cycle
+from scipy import interp
+from sklearn.metrics import roc_curve, auc
+
 #import user defined functions
 from plotFunctions import plotROCcurves, plotLoss, plotPrecision
-from prepData import makeData, expandList
+from prepData import makeData#, expandList
 
 
 # from scipy import interp
@@ -25,7 +29,12 @@ print('Packages Loaded')
 
 
 
-
+#define classes
+#classes are:
+#13: actual mu, 211: pi^+\-, 321: K^+\-,  
+#2212: p^+, other, 999: unmatched
+definedIds = np.array([13,211,321,2212,999])
+nClasses = len(definedIds)
 
 #take in all samples (dy, tt, qcd) and shuffle for unmatched (sample evenly for other categories)
 #get dataframes for dyjets and qcd samples
@@ -67,23 +76,22 @@ softID = allSamples[['Muon_genPdgId','Muon_isGood','Muon_nTrackerLayersWithMeasu
 
 #choose which variables to train with
 data = softMVA
-#separate labels from input variables
-target = data['Muon_genPdgId']
-#take absolute value of gen PDG ID
-target = abs(target)
+#separate labels from input variables and take absolute value of gen PDG ID
+target = abs(data['Muon_genPdgId'])
+
 #one hot encode the labels
 #define classes
 #classes are:
 #13: actual mu, 211: pi^+\-, 321: K^+\-,  
 #2212: p^+, other, 999: unmatched
-definedIds = [13,211,321,2212,999]
-nClasses = len(definedIds)
-enc = OneHotEncoder(sparse=Fase)
+
+
+enc = OneHotEncoder(sparse=False)
 # encode_genPdgId = {13: [1,0,0,0,0], 211: [0,1,0,0,0], 
 		# 321: [0,0,1,0,0], 2212: [0,0,0,1,0], 999: [0,0,0,0,1]}
 # target = target.map(encode_genPdgId)
 
-enc.fit(definedIds)		
+enc.fit(definedIds.reshape(-1,1))		
 target = enc.transform(target.reshape(-1,1))
 
 #drop this column from data
@@ -103,6 +111,9 @@ x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .3
 
 print('Relative Frequencies of Classes (training):')
 print(y_train.value_counts(normalize=True))
+
+
+
 
 
 
@@ -143,18 +154,72 @@ history = model.fit(x_train,y_train,batch_size=256,epochs=70,validation_split=0.
 
 plotName = 'softMVAvars_evenSampling_dyjets+qcd+ttjets'
 plotLoss(history,plotName)
-plotPrecision(history,plotName)
+
 
 y_predProbs = model.predict(x_test) #need probabilites for ROC curve
-y_predClasses = enc.inverse_transform(y_pred)
+plotROCcurves(y_test,y_predProbs,definedIds,plotName)
+
+y_predClasses = enc.inverse_transform(y_predProbs) #need classes for confusion matrix/precison by class
 
 #gives precision (efficiency) of each class
 precision, _, _, _ = precision_recall_fscore_support(y_test,y_predClasses)
+
+
 #match to pt in x_test to plot as function of pt
+#bin x_test in pt
+# bins = np.linspace(x_test['Muon_pt'].min(),x_test['Muon_pt'].max(),int(x_test['Muon_pt'].max() - x_test['Muon_pt'].min()))
+# bins = bins.round(3)
+# x_test['bins'] = pd.cut(x_test['Muon_pt'],bins)
+# precision_pt = []
+# for i, Bin in enumerate(bins):
+# 	if Bin == bins[-1]:
+# 		break
+# 	left = x_test['Muon_pt'] > bins[i]
+# 	right = x_test['Muon_pt'] < bins[i+1]
+
+# 	x_testSubset = x_test[left & right]
+# 	idxs = x_testSubset.index.to_numpy()
+# 	y_testSubset = y_test.loc[idxs]
+
+# 	y_predProbsSubset = model.predict(x_testSubset)
+
+# 	y_predClassesSubset = enc.inverse_transform(y_predProbsSubset)
+# 	precision, _, _, _ = precision_recall_fscore_support(y_testSubset,y_predClassesSubset,average=None)
+	
+# 	precision_pt.append(precision)
+
+
+passedHists = [TH1D("num_"+str(i), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
+totalHists =  [TH1D("den_"+str(i), "label "+str(ID), 41, -0.5, 40.5 ) for i,ID in enumerate(definedIds)]
+
+#break it down by class
+for j, ID in enumerate(definedIds):
+	for i, n in enumerate(zip(y_test,y_predClasses)):
+		if n[0] == ID:
+			if n[0] == n[1]: #correct match
+				passedHists[j].Fill(x_test['Muon_pt'].loc[i])
+				totalHists[j].Fill(x_test['Muon_pt'].loc[i])
+			elif n[0] != n[1]: #incorrect match
+				totalHists[j].Fill(x_test['Muon_pt'].loc[i])
 
 
 
-plotROCcurves(y_test,y_predProbs,definedIds,plotName)
+goodEff = [ TEfficiency(passedHists[i],totalHists[i]) for i in range(nClasses) ]
+
+
+outfile = TFile("./test.root","RECREATE")
+[ outfile.WriteTObject(x) for x in goodEff ]
+
+
+
+
+
+
+# plotPrecision(history,plotName)
+
+
+
+
 
 
 
