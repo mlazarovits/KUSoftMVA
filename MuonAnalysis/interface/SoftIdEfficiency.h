@@ -643,6 +643,7 @@ inline void SoftIdEfficiency::makePlot(vector<TEfficiency*> effs){
 
 	mg->Draw("AP");
 	leg->Draw("SAME");
+	mg->GetYaxis()->SetRangeUser(0.0,1.0);
 	cv->Update();
 
 	string g_PlotTitle = m_samplename;
