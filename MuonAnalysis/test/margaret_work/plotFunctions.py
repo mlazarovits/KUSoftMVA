@@ -226,7 +226,7 @@ def plotEfficiency(effs,outName,outFile):
 			gr_effs[i].SetMarkerColor(432-7)
 			gr_effs[i].SetLineColor(432-7)
 		
-		# # mg.Add(gr_effs[i])
+		mg.Add(gr_effs[i])
 		# leg.AddEntry(gr_effs[i])
 	
 	# leg.SetTextFont(132)
