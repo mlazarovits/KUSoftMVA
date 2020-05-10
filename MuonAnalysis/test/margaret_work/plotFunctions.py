@@ -41,6 +41,7 @@ def plotEfficiency(y_test,y_predClasses,x_test,definedIds):
 	#break it down by class
 	for j, ID in enumerate(definedIds):
 		for i, n in enumerate(zip(y_test,y_predClasses)):
+			print(i,j)
 			if n[0] == ID:
 				if n[0] == n[1]: #correct match
 					passedHists[j].Fill(x_test['Muon_pt'].loc[i])
