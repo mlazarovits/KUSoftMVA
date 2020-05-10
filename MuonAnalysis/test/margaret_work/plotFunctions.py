@@ -263,7 +263,7 @@ def plotEfficiency(effs,outName,outFile):
 	cv.Update()
 
 	outFile.cd()
-	cv.Write()
+	outFile.WriteTObject(cv)
 
 	print('e')
 
