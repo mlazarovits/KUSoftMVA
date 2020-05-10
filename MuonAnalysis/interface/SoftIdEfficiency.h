@@ -433,7 +433,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
  // cout << "a1" << endl;
 	    int nMuon = l_nMuon->GetValue();
 	     cout << "a" << endl;
-	    // float nMediumMuons = 0;
+	    float nMediumMuons = 0;
 	    float nTightMuons = 0;
 	    int bitwiseStatusFlag;
 	    std::vector<int> statusFlags;
