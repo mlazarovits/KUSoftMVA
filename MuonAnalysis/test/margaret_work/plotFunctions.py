@@ -2,6 +2,7 @@ import numpy as np
 from scipy import interp
 import matplotlib.pyplot as plt
 from itertools import cycle
+import copy
 from sklearn.metrics import roc_curve, auc
 from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph, TLatex, TGraphAsymmErrors, TMultiGraph, TLegend, SetOwnership
 
@@ -240,9 +241,22 @@ def plotEfficiency(effs,outName,outFile):
 	outFile.cd()
 	outFile.WriteTObject(cv)
 	print('written canvas to file')
+	cv.Close()
 	# return cv
 
 
+# import numpy as np
+# import pandas as pd
+# import copy
+# from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph, TLatex, TGraphAsymmErrors, TMultiGraph, TLegend, SetOwnership
+
+
+# pt = pd.Series([3.4, 5.6, 13.0, 43.2, 2.2, 5.7, 10.9, 6.9, 2.3, 4.5, 10.3,4.3])
+# y_test = [999,999,13,13,211,321,2212,2212,13,13,321,999]
+# y_pred = [999,13,13,999,211,321,321,2212,13,13,211,999]
+# definedIds = np.array([13,211,321,2212,999])
+
+# makeEfficiency(y_test,y_pred,pt,definedIds,"test")
 
 
 
