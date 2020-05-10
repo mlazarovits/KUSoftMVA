@@ -367,7 +367,6 @@ inline TEfficiency* SoftIdEfficiency::Analyze2D(){
 	    if(nMuon != 1) continue;
 		
 		
-		
 		bool bPassed = l_ID->GetValue();
 		eff->Fill((bPassed),l_Muonpt->GetValue(1),fabs(l_Muoneta->GetValue(1)));  //subleading lepton
 		
@@ -433,12 +432,15 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 	    // TLorentzVector MHT = calcMHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
 
 	    int nMuon = l_nMuon->GetValue();
+	     cout << "a" << endl;
 	    float nMediumMuons = 0;
 	    float nTightMuons = 0;
 	    int bitwiseStatusFlag;
 	    std::vector<int> statusFlags;
 
+
 	    if(nMuon < 1) continue;
+	     cout << "b" << endl;
 
 	    
 
@@ -456,6 +458,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    
 		   
 		}	
+		 cout << "c" << endl;
 
 
 
@@ -466,16 +469,22 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 				
 	
 		for(int nID = 0; nID < m_IDs.size(); nID++){
+			 cout << "d" << endl;
 			for(int nMu = 0; nMu < nMuon; nMu++){
+
 				if(m_tree->GetLeaf("Muon_pt")->GetValue(nMu) < 2.) continue;
 				bool bPassed = vec_lID.at(nID)->GetValue(nMu);
 				// cout << "Muon_pt " << m_tree->GetLeaf("Muon_pt")->GetValue(nMu) << endl;
 				if(nID == 1 && bPassed){
 					cout << "softMVAId passed" << endl;
 				}
+			 cout << "e" << endl;
+
 				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
 			}
 			// else vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); 
+			 cout << "f" << endl;
+
 		}
 	}
 	cout << endl;
