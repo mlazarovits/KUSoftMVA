@@ -129,23 +129,13 @@ x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .3
 
 
 
+#convert 1hot encoding to numpy arrays
 
-
-
-
-
-# #convert everything to numpy arrays to feed into network
-# x_train = x_train.to_numpy()
-# x_test = x_test.to_numpy()
-y_train = y_train.to_numpy()
-y_test = y_test.to_numpy()
 
 y_train = np.array([np.array(i) for i in y_train])
 y_test = np.array([np.array(i) for i in y_test])
 
-###### unit testing ######
-# x_train = x_train[:2]
-# y_train = y_train[:2]
+
 
 
 
