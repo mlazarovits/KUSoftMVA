@@ -119,12 +119,12 @@ effPt = data['Muon_pt']
 
 #normalize data
 norm = MinMaxScaler()
-cols = data.columns
+# cols = data.columns
 data = norm.fit_transform(data)
 
 #create test/train split - try soft cut-based ID first (least columns)
 x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .3, random_state=1, shuffle=True)
-_, pt_test, _, _ = train_test_split(effPt, target,test_size = .3, random_state=1)
+_, pt_test, _, _ = train_test_split(effPt, target,test_size = .3, random_state=1,shuffle=True)
 
 
 #convert 1hot encoding to numpy arrays

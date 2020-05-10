@@ -43,10 +43,10 @@ def plotEfficiency(y_test,y_predClasses,pt,definedIds):
 		for i, n in enumerate(zip(y_test,y_predClasses)):
 			if n[0] == ID:
 				if n[0] == n[1]: #correct match
-					passedHists[j].Fill(pt.loc[i])
-					totalHists[j].Fill(pt.loc[i])
+					passedHists[j].Fill(pt.iloc[i])
+					totalHists[j].Fill(pt.iloc[i])
 				elif n[0] != n[1]: #incorrect match
-					totalHists[j].Fill(pt.loc[i])
+					totalHists[j].Fill(pt.iloc[i])
 
 
 
