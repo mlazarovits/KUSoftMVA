@@ -167,6 +167,9 @@ def plotEfficiency(effs,outName):
 	cv.SetBottomMargin(0.15)
 	cv.SetTopMargin(0.085)
 
+	print(type(effs))
+	print(type(effs[0]))
+
 	effs[0].Draw("AP")
 	cv.Update()
 	gr_effs.push_back(effs[0].GetPaintedGraph())
