@@ -215,23 +215,31 @@ def plotEfficiency(effs,outName):
 			gr_effs[i].SetMarkerColor(432-7)
 			gr_effs[i].SetLineColor(432-7)
 		
-		
 		mg.Add(gr_effs[i])
 		leg.AddEntry(gr_effs[i])
+		print(i,'a')
 	
 	leg.SetTextFont(132)
 	leg.SetTextSize(0.03)
 	leg.SetFillColor(0)
 	leg.SetLineColor(0)
 	leg.SetShadowColor(0)
+	
+
+	print('b')
+
 
 	mg.Draw("AP")
 	leg.Draw("SAME")
 	cv.Update()
 
+	print('c')
+
 	g_PlotTitle = outName
 	mg.GetXaxis().SetTitle('Muon pT (GeV)')
 	mg.GetYaxis().SetTitle("#epsilon")
+
+	print('d')
 	
 
 	l = TLatex()
@@ -250,6 +258,8 @@ def plotEfficiency(effs,outName):
 	l.SetTextFont(132)
 	l.DrawLatex(0.40,0.92,g_PlotTitle)
 	cv.Update()
+
+	print('e')
 
 	return cv
 
