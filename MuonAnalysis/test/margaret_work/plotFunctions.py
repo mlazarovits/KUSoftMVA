@@ -201,30 +201,30 @@ def plotEfficiency(effs,outName,outFile):
 		gr_effs[i].SetLineWidth(2)
 		gr_effs[i].GetYaxis().SetRangeUser(0.0,1.0)
 		
-		# if i / chopmarker == 0:
-		# 	gr_effs[i].SetMarkerStyle(22) #triangle
+		if i / chopmarker == 0:
+			gr_effs[i].SetMarkerStyle(22) #triangle
 		
-		# elif i / chopmarker == 1:
-		# 	gr_effs[i].SetMarkerStyle(21) #square
+		elif i / chopmarker == 1:
+			gr_effs[i].SetMarkerStyle(21) #square
 		
-		# elif i /chopmarker == 2:
-		# 	gr_effs[i].SetMarkerStyle(20)  #circle
+		elif i /chopmarker == 2:
+			gr_effs[i].SetMarkerStyle(20)  #circle
 		
-		# if i % chopcolor == 0:
-		# 	gr_effs[i].SetMarkerColor(600-7)
-		# 	gr_effs[i].SetLineColor(600-7)
+		if i % chopcolor == 0:
+			gr_effs[i].SetMarkerColor(600-7)
+			gr_effs[i].SetLineColor(600-7)
 		
-		# elif i % chopcolor == 1:
-		# 	gr_effs[i].SetMarkerColor(632-7)
-		# 	gr_effs[i].SetLineColor(632-7)
+		elif i % chopcolor == 1:
+			gr_effs[i].SetMarkerColor(632-7)
+			gr_effs[i].SetLineColor(632-7)
 		
-		# elif i % chopcolor == 2:
-		# 	gr_effs[i].SetMarkerColor(416-7)
-		# 	gr_effs[i].SetLineColor(416-7)
+		elif i % chopcolor == 2:
+			gr_effs[i].SetMarkerColor(416-7)
+			gr_effs[i].SetLineColor(416-7)
 		
-		# else:
-		# 	gr_effs[i].SetMarkerColor(432-7)
-		# 	gr_effs[i].SetLineColor(432-7)
+		else:
+			gr_effs[i].SetMarkerColor(432-7)
+			gr_effs[i].SetLineColor(432-7)
 		
 		# # mg.Add(gr_effs[i])
 		# leg.AddEntry(gr_effs[i])
