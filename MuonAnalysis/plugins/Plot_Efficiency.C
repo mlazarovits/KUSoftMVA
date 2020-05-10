@@ -14,8 +14,8 @@
 using namespace std;
 
 void Plot_Efficiency(TString sampleName){
-	if(gSystem->OpenDirectory("home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/plots/") == 0){
-		gSystem->mkdir("home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/plots/");
+	if(gSystem->OpenDirectory("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/plots/") == 0){
+		gSystem->mkdir("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/plots/");
 		cout << "Created plots folder." << endl;
 	}
 
