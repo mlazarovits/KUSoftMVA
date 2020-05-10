@@ -162,10 +162,8 @@ plotLoss(history,plotName)
 y_predProbs = model.predict(x_test) #need probabilites for ROC curve
 plotROCcurves(y_test,y_predProbs,definedIds,plotName)
 
-y_predClasses = enc.inverse_transform(y_predProbs) #need classes for confusion matrix/precison by class
-
-
-print(y_predClasses.shape)
+#transform predictions and labels from 1hot to categorical for efficiency analysis
+y_predClasses = enc.inverse_transform(y_predProbs) 
 y_testClasses = enc.inverse_transform(y_test)
 
 
