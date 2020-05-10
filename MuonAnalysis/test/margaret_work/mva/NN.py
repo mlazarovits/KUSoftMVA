@@ -174,7 +174,7 @@ class NN:
 		self.predictions = self.model.predict(x_test)	
 	#	self.predictions = self.model.predict(x_train)
 		
-	        evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, self.nClasses, self.results )			
+        evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, self.nClasses, self.results )			
 
 
 
