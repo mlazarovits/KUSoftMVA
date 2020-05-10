@@ -443,11 +443,6 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		// cout << "b" << endl;
 
 
-
-
-
-	    
-
 		int genIdx;
 		int genID;
 	    for(int mu = 0; mu < nMuon; mu++){
@@ -486,6 +481,10 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 
 		    	if(abs(genID) != 13) continue;
 				if(m_tree->GetLeaf("Muon_pt")->GetValue(nMu) < 2.) continue;
+
+				if(nID == 1){
+					if(m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) == 0) continue;
+				}
 
 				bool bPassed = vec_lID.at(nID)->GetValue(nMu);
 				// cout << "Muon_pt " << m_tree->GetLeaf("Muon_pt")->GetValue(nMu) << endl;

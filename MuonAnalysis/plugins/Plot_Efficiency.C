@@ -39,7 +39,9 @@ if(sampleName=="TTJets"){
 	TTJets.SetSampleName(name);
 
 	TTJets.AddID("Muon_softId");
+	TTJets.AddId("Muon_softId"); //with loose ID
 	TTJets.AddID("Muon_softMvaId");
+
 
 	TTJets.SetVar("Muon_pt");
 	TTJets.SetOutputName(name+".root");
