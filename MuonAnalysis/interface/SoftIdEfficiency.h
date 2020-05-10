@@ -466,6 +466,9 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 			for(int nMu = 0; nMu < nMuon; nMu++){
 				if(m_tree->GetLeaf("Muon_pt")->GetValue(nMu) < 2.) continue;
 				bool bPassed = vec_lID.at(nID)->GetValue(nMu);
+				cout << "Muon_pt " << m_tree->GetLeaf("Muon_pt")->GetValue(nMu) << endl;
+				if nID == 1:
+					cout << "softMVAId: " << bPassed << endl;
 				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
 			}
 			// else vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); 
