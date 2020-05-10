@@ -128,7 +128,7 @@ data = norm.fit_transform(data)
 x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .3, random_state=1, shuffle=True)
 
 print('Relative Frequencies of Classes (training):')
-print(y_train.value_counts(normalize=True))
+print(pd.Series(y_train).value_counts(normalize=True))
 
 
 
