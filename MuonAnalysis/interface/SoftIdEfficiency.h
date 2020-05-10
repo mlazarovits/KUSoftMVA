@@ -442,7 +442,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    	nTightMuons += 1;
 		    }	
 		    bitwiseStatusFlag = m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu);
-		    statusFlags = Decimal2Binary(binary);
+		    statusFlags = Decimal2Binary(bitwiseStatusFlag);
 		    
 		   
 		}	
