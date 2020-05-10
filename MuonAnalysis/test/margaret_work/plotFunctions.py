@@ -51,10 +51,13 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 
 	goodEff = [ TEfficiency(passedHists[i],totalHists[i]) for i in range(nClasses) ]
 
+	# print(type(goodEff))
+	# print(type(goodEff[0]))
+
 
 	outfile = TFile("./test.root","RECREATE")
 	[ outfile.WriteTObject(x) for x in goodEff ]
-	cv = plotEfficiency(outName,goodEff)
+	cv = plotEfficiency(goodEff,outName)
 	outfile.WriteTObject(cv)
 
 
@@ -167,8 +170,8 @@ def plotEfficiency(effs,outName):
 	cv.SetBottomMargin(0.15)
 	cv.SetTopMargin(0.085)
 
-	print(type(effs))
-	print(type(effs[0]))
+	# print(type(effs))
+	# print(type(effs[0]))
 
 	effs[0].Draw("AP")
 	cv.Update()
