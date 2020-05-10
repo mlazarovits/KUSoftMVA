@@ -20,9 +20,7 @@ from plotFunctions import plotEfficiency, plotROCcurves
 
 
 
-def evaluateModel(model_y, true_y, model_pt, fname, tag, mdict, results ):
-	values = pd.Series(mdict.values()).to_numpy()
-	nClasses = np.unique(values)
+def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 
 	# print(model_y)
 	#translate model prediction probabilities to onehot
@@ -130,13 +128,16 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, mdict, results ):
 
 
 class NN:
-	def __init__(self,x_train,x_test,y_train,y_test, name, modeldesc, nClasses, pt_train, pt_test, tag):
+	def __init__(self,x_train,x_test,y_train,y_test, name, modeldesc, mdict, pt_train, pt_test, tag):
 		self.x_train = x_train
 		self.y_train = y_train
 		self.x_test = x_test
 		self.y_test = y_test
 		self.pt_train = pt_train
 		self.pt_test = pt_test
+		self.mdict = mdict
+		values = pd.Series(mdict.values()).to_numpy()
+		nClasses = np.unique(values)
 		self.nClasses = nClasses	
 		self.name = name
 		self.tag = tag
