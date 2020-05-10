@@ -183,7 +183,7 @@ def plotEfficiency(effs,outName,outFile):
 
 	effs[0].Draw("AP")
 	cv.Update()
-
+	
 	gr_effs.append(effs[0].GetPaintedGraph())
 	for i in range(1, len(effs)):
 		effs[i].Draw("same")
@@ -198,8 +198,8 @@ def plotEfficiency(effs,outName,outFile):
 	
 	for i in range(len(gr_effs)):
 		gr_effs[i].SetMarkerSize(1.5)
-		# gr_effs[i].SetLineWidth(2)
-		# gr_effs[i].GetYaxis().SetRangeUser(0.0,1.0)
+		gr_effs[i].SetLineWidth(2)
+		gr_effs[i].GetYaxis().SetRangeUser(0.0,1.0)
 		
 		# if i / chopmarker == 0:
 		# 	gr_effs[i].SetMarkerStyle(22) #triangle
