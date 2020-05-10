@@ -175,14 +175,14 @@ def plotEfficiency(effs,outName):
 
 	effs[0].Draw("AP")
 	cv.Update()
-	gr_effs.push_back(effs[0].GetPaintedGraph())
+	gr_effs.append(effs[0].GetPaintedGraph())
 	for i in effs:
 		i.Draw("same")
 		cv.Update()
 		gr_effs.append(i.GetPaintedGraph())
 	cv.Update()
-	chopcolor = gr_effs.size()/1
-	chopmarker = gr_effs.size()/3
+	chopcolor = len(gr_effs)/1
+	chopmarker = len(gr_effs)/3
 
 	
 	for i, gr in enumerate(gr_effs):
@@ -191,13 +191,13 @@ def plotEfficiency(effs,outName):
 		gr_effs[i].GetYaxis().SetRangeUser(0.0,1.0)
 		
 		if i / chopmarker == 0:
-			gr_effs[i].SetMarkerStyle(22) //triangle
+			gr_effs[i].SetMarkerStyle(22) #triangle
 		
 		elif i / chopmarker == 1:
-			gr_effs[i].SetMarkerStyle(21)//square
+			gr_effs[i].SetMarkerStyle(21) #square
 		
 		elif i /chopmarker == 2:
-			gr_effs[i].SetMarkerStyle(20) //circle
+			gr_effs[i].SetMarkerStyle(20)  #circle
 		
 		if i % chopcolor == 0:
 			gr_effs[i].SetMarkerColor(kBlue-7)
