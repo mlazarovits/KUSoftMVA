@@ -127,8 +127,7 @@ data = norm.fit_transform(data)
 #create test/train split - try soft cut-based ID first (least columns)
 x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .3, random_state=1, shuffle=True)
 
-print('Relative Frequencies of Classes (training):')
-print(pd.Series(y_train).value_counts(normalize=True))
+
 
 
 
