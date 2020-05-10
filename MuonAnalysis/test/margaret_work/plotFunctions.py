@@ -261,8 +261,8 @@ def plotEfficiency(effs,outName,outFile):
 	l.SetTextFont(132)
 	l.DrawLatex(0.40,0.92,g_PlotTitle)
 	cv.Update()
-	
-	outfile.cd()
+
+	outFile.cd()
 	cv.Write()
 
 	print('e')
