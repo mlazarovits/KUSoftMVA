@@ -20,8 +20,8 @@ void Plot_Efficiency(TString sampleName){
 	}
 
 	
-	string gPathname = "/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/";//"/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/";
-	TFile* fTTJets = TFile::Open((gPathname+"OutputFiles/TTJets2018_MINI_numEvent100000.root").c_str());
+	string gPathname = "/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/";
+	TFile* fTTJets = TFile::Open((gPathname+"OutputFiles/TTJets2018_MINI_numEvent100.root").c_str());
 	TFile* fQCD = TFile::Open((gPathname+"OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root").c_str());
 	TFile* fDYJets = TFile::Open((gPathname+"OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root").c_str());
 	

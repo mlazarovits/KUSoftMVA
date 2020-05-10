@@ -430,17 +430,17 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 
 	    // float HT = calcHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
 	    // TLorentzVector MHT = calcMHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
- cout << "a1" << endl;
+ // cout << "a1" << endl;
 	    int nMuon = l_nMuon->GetValue();
 	     cout << "a" << endl;
-	    float nMediumMuons = 0;
+	    // float nMediumMuons = 0;
 	    float nTightMuons = 0;
 	    int bitwiseStatusFlag;
 	    std::vector<int> statusFlags;
 
 
 	    if(nMuon < 1) continue;
-		cout << "b" << endl;
+		// cout << "b" << endl;
 
 
 
@@ -463,11 +463,11 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    }	
 		    bitwiseStatusFlag = m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu);
 		    statusFlags = Decimal2Binary(bitwiseStatusFlag);
-		    // cout << m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) << endl;
+		    cout << m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) << endl;
 		    
 		   
 		}	
-		 cout << "c" << endl;
+		 // cout << "c" << endl;
 
 
 
@@ -478,7 +478,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 				
 	
 		for(int nID = 0; nID < m_IDs.size(); nID++){
-			 cout << "d" << endl;
+			 // cout << "d" << endl;
 			for(int nMu = 0; nMu < nMuon; nMu++){
 				genIdx = m_tree->GetLeaf("Muon_genPartIdx")->GetValue(nMu);
 		    	genID = m_tree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
@@ -488,15 +488,15 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 
 				bool bPassed = vec_lID.at(nID)->GetValue(nMu);
 				// cout << "Muon_pt " << m_tree->GetLeaf("Muon_pt")->GetValue(nMu) << endl;
-				if(nID == 1 && bPassed){
-					cout << "softMVAId passed" << endl;
-				}
-			 cout << "e" << endl;
+				// if(nID == 1 && bPassed){
+					// cout << "softMVAId passed" << endl;
+				// }
+			 // cout << "e" << endl;
 
 				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
 			}
 			// else vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); 
-			 cout << "f" << endl;
+			 // cout << "f" << endl;
 
 		}
 	}
