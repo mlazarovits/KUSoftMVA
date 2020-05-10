@@ -35,7 +35,7 @@ void Plot_Efficiency(TString sampleName){
 if(sampleName=="TTJets"){
 	if(fTTJets == NULL) return;
 	SoftIdEfficiency TTJets(fTTJets);
-	string name = "TTJets_softIDeffs_1L_looseID_pt";
+	string name = "TTJets_softIDpurity";
 	TTJets.SetSampleName(name);
 
 	TTJets.AddID("Muon_softId");
