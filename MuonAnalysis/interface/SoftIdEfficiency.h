@@ -597,8 +597,8 @@ inline void SoftIdEfficiency::makePlot(vector<TEfficiency*> effs){
 	// gr_effs[imax]->Draw();
 
 	cv->Update();
-	Int_t chopcolor = gr_effs.size()/1;
-	Int_t chopmarker = gr_effs.size()/3;
+	Int_t chopcolor = gr_effs.size();
+	Int_t chopmarker = gr_effs.size();
 
 	for(int i = 0; i < gr_effs.size(); i++){
 		gr_effs[i]->SetMarkerSize(1.5);
