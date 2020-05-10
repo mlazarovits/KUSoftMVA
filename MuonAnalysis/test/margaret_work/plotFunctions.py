@@ -208,13 +208,11 @@ def plotEfficiency(effs,outName,outFile):
 	leg.SetLineColor(0)
 	leg.SetShadowColor(0)
 	mg.Draw("AP")
-	print('drawn mg')
 	leg.Draw("SAME")
 	cv.Update()
 	g_PlotTitle = outName
 	mg.GetXaxis().SetTitle('Muon pT (GeV)')
 	mg.GetYaxis().SetTitle("#epsilon")
-	print('changed axes names')
 	l = TLatex()
 	l.SetTextFont(132)
 	l.SetNDC()
@@ -233,7 +231,6 @@ def plotEfficiency(effs,outName,outFile):
 	cv.Update()
 	outFile.cd()
 	outFile.WriteTObject(cv)
-	print('written canvas to file')
 	cv.Close()
 
 
