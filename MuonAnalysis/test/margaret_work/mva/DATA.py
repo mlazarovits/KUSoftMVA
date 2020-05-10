@@ -68,9 +68,9 @@ def expandList( df, columnNames):
                 return outDf
 
 
-def makeData(filename,definedIds):
-	treeName = 'Events'
-	gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
+def makeData(filename,definedIds,treeName):
+	# treeName = 'Events'
+	# gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
 	data = root_numpy.root2array(gPath+filename+'.root',treeName)
 	data = pd.DataFrame(data)
 	#make gen pdg ID labels for reco muons
@@ -106,7 +106,7 @@ class DATA:
 		if path.exists(self.fname+'.csv'):
 			self.data = pd.read_csv(self.fname+'.csv')
 		else:
-			self.data = makeData(self.fname,definedIds)
+			self.data = makeData(self.fname,definedIds,self.treeName)
 		# self.tmp = root_numpy.root2array(self.fname,self.treeName)
 		# self.data = pd.DataFrame(self.tmp)
 
