@@ -68,7 +68,7 @@ def expandList( df, columnNames):
                 return outDf
 
 
- def makeData(filename,definedIds):
+def makeData(filename,definedIds):
 	treeName = 'Events'
 	gPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/'
 	data = root_numpy.root2array(gPath+filename+'.root',treeName)
