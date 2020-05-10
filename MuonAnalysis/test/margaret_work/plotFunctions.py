@@ -166,7 +166,7 @@ def plotROCcurves(y_test,y_score,classes,outName):
 
 def plotEfficiency(effs,outName,outFile):
 	cv = TCanvas("cv","cv",800,600)
-	# leg = TLegend(0.35,0.2,0.95,0.4)
+	leg = TLegend(0.35,0.2,0.95,0.4)
 	gr_effs = []
 	mg = TMultiGraph()
 
@@ -179,11 +179,10 @@ def plotEfficiency(effs,outName,outFile):
 	cv.SetBottomMargin(0.15)
 	cv.SetTopMargin(0.085)
 
-	# print(type(effs))
-	# print(type(effs[0]))
 
-	# effs[0].Draw("AP")
-	# cv.Update()
+
+	effs[0].Draw("AP")
+	cv.Update()
 	# gr_effs.append(effs[0].GetPaintedGraph())
 	# for i, gr in enumerate(effs):
 	# 	effs[i].Draw("same")
