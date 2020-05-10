@@ -180,25 +180,25 @@ def plotEfficiency(effs,outName,outFile):
 		cv.Update()
 		gr_effs.append(effs[i].GetPaintedGraph())
 	cv.Update()
-	chopcolor = len(gr_effs)/1
-	chopmarker = len(gr_effs)/3
+	chopcolor = int(len(gr_effs)/2)
+	chopmarker = int(len(gr_effs))
 	for i in range(len(gr_effs)):
 		gr_effs[i].SetMarkerSize(1.5)
 		gr_effs[i].SetLineWidth(2)
 		gr_effs[i].GetYaxis().SetRangeUser(0.0,1.0)
-		if i / chopmarker == 0:
+		if int(i / chopmarker) == 0:
 			gr_effs[i].SetMarkerStyle(22) #triangle
-		elif i / chopmarker == 1:
+		elif int(i / chopmarker) == 1:
 			gr_effs[i].SetMarkerStyle(21) #square
-		elif i /chopmarker == 2:
+		elif int(i /chopmarker) == 2:
 			gr_effs[i].SetMarkerStyle(20)  #circle
-		if i % chopcolor == 0:
+		if int(i % chopcolor) == 0:
 			gr_effs[i].SetMarkerColor(600-7)
 			gr_effs[i].SetLineColor(600-7)
-		elif i % chopcolor == 1:
+		elif int(i % chopcolor) == 1:
 			gr_effs[i].SetMarkerColor(632-7)
 			gr_effs[i].SetLineColor(632-7)
-		elif i % chopcolor == 2:
+		elif int(i % chopcolor) == 2:
 			gr_effs[i].SetMarkerColor(416-7)
 			gr_effs[i].SetLineColor(416-7)
 		else:
