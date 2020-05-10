@@ -2,6 +2,7 @@ import numpy as np
 import root_numpy
 import pandas as pd
 import matplotlib.pyplot as plt
+from os import path
 
 from itertools import cycle
 from scipy import interp
@@ -38,11 +39,25 @@ nClasses = len(definedIds)
 
 #take in all samples (dy, tt, qcd) and shuffle for unmatched (sample evenly for other categories)
 #get dataframes for dyjets and qcd samples
-dyjets = makeData('DYJetsToLL2018_MINI_numEvent100000.root',definedIds)
+# dyjets = makeData('DYJetsToLL2018_MINI_numEvent100000.root',definedIds)
+# qcd = makeData('QCD_pt_600to800_2018_MINI_numEvent100000.root',definedIds)
+# ttjets = makeData('TTJets2018_MINI_numEvent100000.root',definedIds)
 
-qcd = makeData('QCD_pt_600to800_2018_MINI_numEvent100000.root',definedIds)
+if path.exists('DYJetsToLL2018_MINI_numEvent100000.csv'):
+	dyjets = pd.read_csv('DYJetsToLL2018_MINI_numEvent100000.csv')
+else:
+	dyjets = makeData('DYJetsToLL2018_MINI_numEvent100000',definedIds)
 
-ttjets = makeData('TTJets2018_MINI_numEvent100000.root',definedIds)
+
+if path.exists('TTJets2018_MINI_numEvent100000.csv'):
+	ttjets = pd.read_csv('TTJets2018_MINI_numEvent100000.csv')
+else:
+	ttjets = makeData('TTJets2018_MINI_numEvent100000',definedIds)
+
+if path.exists('QCD_pt_600to800_2018_MINI_numEvent100000.csv'):
+	qcd = pd.read_csv('QCD_pt_600to800_2018_MINI_numEvent100000.csv')
+else:
+	qcd = makeData('QCD_pt_600to800_2018_MINI_numEvent100000',definedIds)
 
 
 #sample 3k muons randomly from each MC sample for unmatched and true muons
@@ -92,7 +107,7 @@ enc = OneHotEncoder(sparse=False)
 # target = target.map(encode_genPdgId)
 
 enc.fit(definedIds.reshape(-1,1))		
-target = enc.transform(target.reshape(-1,1))
+target = enc.transform(target)
 
 #drop this column from data
 data = data.drop(columns = 'Muon_genPdgId')
