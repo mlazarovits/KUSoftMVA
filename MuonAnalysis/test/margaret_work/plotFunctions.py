@@ -183,7 +183,7 @@ def plotEfficiency(effs,outName,outFile):
 
 	effs[0].Draw("AP")
 	cv.Update()
-	
+
 	gr_effs.append(effs[0].GetPaintedGraph())
 	for i in range(1, len(effs)):
 		effs[i].Draw("same")
@@ -226,7 +226,8 @@ def plotEfficiency(effs,outName,outFile):
 			gr_effs[i].SetMarkerColor(432-7)
 			gr_effs[i].SetLineColor(432-7)
 		
-		mg.Add(gr_effs[i])
+		# mg.Add(gr_effs[i]) #causing segfault
+		gr_effs[i].Draw("same")
 		# leg.AddEntry(gr_effs[i])
 	
 	# leg.SetTextFont(132)
