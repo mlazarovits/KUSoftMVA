@@ -480,12 +480,12 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		for(int nID = 0; nID < m_IDs.size(); nID++){
 			 cout << "d" << endl;
 			for(int nMu = 0; nMu < nMuon; nMu++){
-				genIdx = m_tree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+				genIdx = m_tree->GetLeaf("Muon_genPartIdx")->GetValue(nMu);
 		    	genID = m_tree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 
 		    	if(abs(genID) != 13) continue;
 				if(m_tree->GetLeaf("Muon_pt")->GetValue(nMu) < 2.) continue;
-				
+
 				bool bPassed = vec_lID.at(nID)->GetValue(nMu);
 				// cout << "Muon_pt " << m_tree->GetLeaf("Muon_pt")->GetValue(nMu) << endl;
 				if(nID == 1 && bPassed){
