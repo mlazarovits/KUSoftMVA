@@ -56,7 +56,7 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 
 	
 	print('1')
-	goodEff.append(cv)
+	# goodEff.append(cv)
 	print('2')
 	outfile = TFile("./test.root","RECREATE")
 	print('3')
