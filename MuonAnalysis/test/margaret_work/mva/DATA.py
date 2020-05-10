@@ -144,7 +144,7 @@ class DATA:
 		# print("prot", self.data6.shape)
 
 		print('Relative Frequencies of Classes (total):')
-		print(self.data.value_counts(normalize=True))
+		print(self.data.Muon_genPdgId.value_counts(normalize=True))
 
 
 
