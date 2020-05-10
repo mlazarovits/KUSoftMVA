@@ -1,9 +1,9 @@
-# import numpy as np
-# from scipy import interp
-# import matplotlib.pyplot as plt
-# from itertools import cycle
-# from sklearn.metrics import roc_curve, auc
-
+import numpy as np
+from scipy import interp
+import matplotlib.pyplot as plt
+from itertools import cycle
+from sklearn.metrics import roc_curve, auc
+from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph
 
 
 def plotLoss(history,outName):
