@@ -30,10 +30,6 @@ def plotPrecision(history,outName):
 	plt.close()
 
 
-
-
-
-
 	
 
 
@@ -201,7 +197,7 @@ def plotEfficiency(effs,outName):
 			gr_effs[i].SetMarkerColor(kBlue-7)
 			gr_effs[i].SetLineColor(kBlue-7)
 		
-		elif i % chopcolor == 1
+		elif i % chopcolor == 1:
 			gr_effs[i].SetMarkerColor(kRed-7)
 			gr_effs[i].SetLineColor(kRed-7)
 		
