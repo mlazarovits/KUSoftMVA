@@ -462,7 +462,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 				
 	
 		for(int nID = 0; nID < m_IDs.size(); nID++){
-			for(int nMu = ; nMu < nMuon; nMu++){
+			for(int nMu = 0; nMu < nMuon; nMu++){
 				bool bPassed = vec_lID.at(nID)->GetValue(nMu);
 				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
 			}
