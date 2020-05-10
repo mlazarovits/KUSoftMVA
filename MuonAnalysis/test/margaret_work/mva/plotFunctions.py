@@ -61,19 +61,16 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 	
 
 
-def plotROCcurves(y_test,y_score,classes,outName):
-	n_classes = len(classes)
-	y_test = np.array(y_test)
-	y_score = np.array(y_score)
+def plotROCcurves(y_test,y_score,n_classes,outName):
 	# Plot linewidth.
 	lw = 2
 	# Compute ROC curve and ROC area for each class
 	fpr = dict()
 	tpr = dict()
 	roc_auc = dict()
-	print(y_test.shape,y_score.shape,n_classes)
+	# print(y_test.shape,y_score.shape,n_classes)
 	for i in range(n_classes):
-		print(i)
+		# print(i)
 		fpr[i], tpr[i], _ = roc_curve(y_test[:, i], y_score[:, i])
 		roc_auc[i] = auc(fpr[i], tpr[i])
 
@@ -114,7 +111,7 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	for i, color in zip(range(n_classes), colors):
 	    plt.plot(fpr[i], tpr[i], color=color, lw=lw,
 	             label='ROC curve of class {0} (area = {1:0.2f})'
-	             ''.format(classes[i], roc_auc[i]))
+	             ''.format(i, roc_auc[i]))
 
 	plt.plot([0, 1], [0, 1], 'k--', lw=lw)
 	plt.xlim([0.0, 1.0])
@@ -145,7 +142,7 @@ def plotROCcurves(y_test,y_score,classes,outName):
 	for i, color in zip(range(n_classes), colors):
 	    plt.plot(fpr[i], tpr[i], color=color, lw=lw,
 	             label='ROC curve of class {0} (area = {1:0.2f})'
-	             ''.format(classes[i], roc_auc[i]))
+	             ''.format(i, roc_auc[i]))
 
 	plt.plot([0, 1], [0, 1], 'k--', lw=lw)
 	plt.xlabel('False Positive Rate')
