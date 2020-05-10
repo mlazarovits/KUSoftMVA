@@ -200,20 +200,20 @@ def plotEfficiency(effs,outName):
 			gr_effs[i].SetMarkerStyle(20)  #circle
 		
 		if i % chopcolor == 0:
-			gr_effs[i].SetMarkerColor(kBlue-7)
-			gr_effs[i].SetLineColor(kBlue-7)
+			gr_effs[i].SetMarkerColor(600-7)
+			gr_effs[i].SetLineColor(600-7)
 		
 		elif i % chopcolor == 1:
-			gr_effs[i].SetMarkerColor(kRed-7)
-			gr_effs[i].SetLineColor(kRed-7)
+			gr_effs[i].SetMarkerColor(632-7)
+			gr_effs[i].SetLineColor(632-7)
 		
 		elif i % chopcolor == 2:
-			gr_effs[i].SetMarkerColor(kGreen-7)
-			gr_effs[i].SetLineColor(kGreen-7)
+			gr_effs[i].SetMarkerColor(416-7)
+			gr_effs[i].SetLineColor(416-7)
 		
 		else:
-			gr_effs[i].SetMarkerColor(kCyan-7)
-			gr_effs[i].SetLineColor(kCyan-7)
+			gr_effs[i].SetMarkerColor(432-7)
+			gr_effs[i].SetLineColor(432-7)
 		
 		
 		mg.Add(gr_effs[i])
@@ -221,9 +221,9 @@ def plotEfficiency(effs,outName):
 	
 	leg.SetTextFont(132)
 	leg.SetTextSize(0.03)
-	leg.SetFillColor(kWhite)
-	leg.SetLineColor(kWhite)
-	leg.SetShadowColor(kWhite)
+	leg.SetFillColor(0)
+	leg.SetLineColor(0)
+	leg.SetShadowColor(0)
 
 	mg.Draw("AP")
 	leg.Draw("SAME")
