@@ -55,11 +55,15 @@ def makeEfficiency(y_test,y_predClasses,pt,definedIds,outName):
 	# print(type(goodEff[0]))
 
 	cv = plotEfficiency(goodEff,outName)
+	print('1')
 	goodEff.append(cv)
+	print('2')
 	outfile = TFile("./test.root","RECREATE")
+	print('3')
 	
 
 	[ outfile.WriteTObject(x) for x in goodEff ]
+	print('4')
 	
 	# outfile.WriteTObject(cv)
 
@@ -227,8 +231,6 @@ def plotEfficiency(effs,outName):
 	leg.SetLineColor(0)
 	leg.SetShadowColor(0)
 	
-
-
 
 	mg.Draw("AP")
 	leg.Draw("SAME")
