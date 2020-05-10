@@ -46,7 +46,7 @@ datatest =pd.concat([ pd.concat(m1dysample), pd.concat(m1ttsample) ])
 x_train, x_test, y_train, y_test, pt_train, pt_test  = prepareTrainingSet(datatest, model_vars, m1dict)
 #print(x_train, x_test, y_train, y_test)
 #print(pt_test)
-m1 = NN(x_train, x_test, y_train, y_test, "model1", "Model trained only on true muons and unmatched, binary classicification", 2, pt_train, pt_test, eval_tag)
+m1 = NN(x_train, x_test, y_train, y_test, "model1", "Model trained only on true muons and unmatched, binary classicification", m1dict, pt_train, pt_test, eval_tag)
 
 print("\n")
 
@@ -65,7 +65,7 @@ mdict = {13: [1,0], 999: [0,1], 11:[0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
 datatest = pd.concat([pd.concat(mdysample), pd.concat(mttsample), pd.concat(mqcdsample) ])
 x_train, x_test, y_train, y_test, pt_train, pt_test  = prepareTrainingSet(datatest, model_vars, mdict)
 
-m = NN(x_train, x_test, y_train, y_test, "model2", "Model trained only on true muons vs unmatched with non muons, binary classification", 2, pt_train, pt_test, eval_tag)
+m = NN(x_train, x_test, y_train, y_test, "model2", "Model trained only on true muons vs unmatched with non muons, binary classification", mdict, pt_train, pt_test, eval_tag)
 
 print("\n")
 
@@ -84,7 +84,7 @@ mdict = {13: [1,0], 11:[0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
 datatest = pd.concat([pd.concat(mdysample), pd.concat(mttsample), pd.concat(mqcdsample) ])
 x_train, x_test, y_train, y_test, pt_train, pt_test  = prepareTrainingSet(datatest, model_vars, mdict)
 
-m = NN(x_train, x_test, y_train, y_test, "model3", "Model trained only on true muons vs all  non muons, binary classification", 2, pt_train, pt_test, eval_tag)
+m = NN(x_train, x_test, y_train, y_test, "model3", "Model trained only on true muons vs all  non muons, binary classification", mdict, pt_train, pt_test, eval_tag)
 
 print("\n")
 ######################################################
@@ -102,7 +102,7 @@ mdict = {13: [1,0,0,0,0,0],999:[0,1,0,0,0,0], 11:[0,0,1,0,0,0], 211:[0,0,0,1,0,0
 datatest = pd.concat([pd.concat(mdysample), pd.concat(mttsample), pd.concat(mqcdsample) ])
 x_train, x_test, y_train, y_test, pt_train, pt_test  = prepareTrainingSet(datatest, model_vars, mdict)
 
-m = NN(x_train, x_test, y_train, y_test, "model4", "Model trained on all classes , classification of all possible labels", 6, pt_train, pt_test, eval_tag)
+m = NN(x_train, x_test, y_train, y_test, "model4", "Model trained on all classes , classification of all possible labels", mdict, pt_train, pt_test, eval_tag)
 
 print("\n")
 ######################################################
@@ -120,7 +120,7 @@ mdict = {13: [1,0], 999: [0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
 datatest = pd.concat([pd.concat(mdysample), pd.concat(mttsample), pd.concat(mqcdsample) ])
 x_train, x_test, y_train, y_test, pt_train, pt_test  = prepareTrainingSet(datatest, model_vars, mdict)
 
-m = NN(x_train, x_test, y_train, y_test, "model5", "Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification", 2, pt_train, pt_test, eval_tag)
+m = NN(x_train, x_test, y_train, y_test, "model5", "Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification", mdict, pt_train, pt_test, eval_tag)
 
 print("\n")
 ######################################################
@@ -138,7 +138,7 @@ mdict = {13: [1,0], 211:[0,1], 321:[0,1], 2212:[0,1]}
 datatest = pd.concat([pd.concat(mdysample), pd.concat(mttsample), pd.concat(mqcdsample) ])
 x_train, x_test, y_train, y_test, pt_train, pt_test  = prepareTrainingSet(datatest, model_vars, mdict)
 
-m = NN(x_train, x_test, y_train, y_test, "model6", "Model trained on true muons vs all  non muons, EXCLUDING electrons in both test and in training, binary classification", 2, pt_train, pt_test, eval_tag)
+m = NN(x_train, x_test, y_train, y_test, "model6", "Model trained on true muons vs all  non muons, EXCLUDING electrons in both test and in training, binary classification", mdict, pt_train, pt_test, eval_tag)
 
 print("\n")
 ######################################################
@@ -156,7 +156,7 @@ mdict = {13: [1,0,0,0,0],999:[0,1,0,0,0], 211:[0,0,1,0,0], 321:[0,0,0,1,0], 2212
 datatest = pd.concat([pd.concat(mdysample), pd.concat(mttsample), pd.concat(mqcdsample) ])
 x_train, x_test, y_train, y_test, pt_train, pt_test  = prepareTrainingSet(datatest, model_vars, mdict)
 
-m = NN(x_train, x_test, y_train, y_test, "model7", "Model trained on all classes EXCLUDING electrons in both training and testing , classification of  most  labels", 5, pt_train, pt_test, eval_tag)
+m = NN(x_train, x_test, y_train, y_test, "model7", "Model trained on all classes EXCLUDING electrons in both training and testing , classification of  most  labels", mdict, pt_train, pt_test, eval_tag)
 
 print("\n")
 
