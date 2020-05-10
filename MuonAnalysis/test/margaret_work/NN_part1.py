@@ -170,7 +170,7 @@ print(y_predProbs.shape)
 
 
 #make efficiency plots
-plotEfficiency(y_true, y_predClasses, x_test, definedIds)
+plotEfficiency(y_test, y_predClasses, x_test, definedIds)
 
 
 #gives precision (efficiency) of each class
