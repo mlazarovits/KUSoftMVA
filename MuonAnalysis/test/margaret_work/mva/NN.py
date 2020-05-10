@@ -136,8 +136,8 @@ class NN:
 		self.pt_train = pt_train
 		self.pt_test = pt_test
 		self.mdict = mdict
-		values = pd.Series(mdict.values()).to_numpy()
-		nClasses = np.unique(values)
+		values = pd.Series(list(mdict.values())).to_numpy()
+		nClasses = len(np.unique(values))
 		self.nClasses = nClasses	
 		self.name = name
 		self.tag = tag
