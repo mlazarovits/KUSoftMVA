@@ -185,13 +185,13 @@ def plotEfficiency(effs,outName,outFile):
 	cv.Update()
 
 	gr_effs.append(effs[0].GetPaintedGraph())
-	for i in range(1, len(effs):
+	for i in range(1, len(effs)):
 		effs[i].Draw("same")
 		cv.Update()
 		gr_effs.append(effs[i].GetPaintedGraph())
 	cv.Update()
 
-	
+
 	# chopcolor = len(gr_effs)/1
 	# chopmarker = len(gr_effs)/3
 
