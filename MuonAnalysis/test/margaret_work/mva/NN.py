@@ -88,9 +88,17 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 	print("efficiency = # of objects correctly classified for a specific label / # of true objects of that label")
 	print("purity = # of objects correctly classified for a specific label/ # of objects classified for that label")
 	for x in range(nClasses):
+		if den_ctr[x] == 0:
+			perc = 0.
+		else:
+			perc = num_ctr[x]/den_ctr[x]
+		if fden_ctr[x] == 0:
+			fperc = 0
+		else:
+			fperc = num_ctr[x]/fden_ctr[x]
 		print("label "+str(x)+":")
-		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(num_ctr[x]/den_ctr[x]))
-		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(num_ctr[x]/fden_ctr[x]))
+		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(perc))
+		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(fperc))
 
 	print("Overall performance: ")
 	# print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
