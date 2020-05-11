@@ -135,16 +135,16 @@ class DATA:
 	
 			
 	def report(self):
-		# print("Report for data "+self.name)
-		# print("mu", self.data1.shape)
-		# print("unmatched", self.data2.shape)
-		# print("elec", self.data3.shape)
-		# print("pion", self.data4.shape)
-		# print("kaon", self.data5.shape)
-		# print("prot", self.data6.shape)
+		print("Report for data "+self.name)
+		print("mu", self.data1.shape[0])
+		print("unmatched", self.data2.shape[0])
+		print("elec", self.data3.shape[0])
+		print("pion", self.data4.shape[0])
+		print("kaon", self.data5.shape[0])
+		print("prot", self.data6.shape[0])
 
 		print('Relative Frequencies of Classes (total):')
-		print(self.data.Muon_genPdgId.value_counts(normalize=True))
+		print(abs(self.data.Muon_genPdgId).value_counts(normalize=True))
 
 
 

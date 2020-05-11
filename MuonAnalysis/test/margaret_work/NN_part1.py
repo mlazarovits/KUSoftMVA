@@ -116,7 +116,6 @@ effPt = data['Muon_pt']
 
 #normalize data
 norm = MinMaxScaler()
-# cols = data.columns
 data = norm.fit_transform(data)
 
 #create test/train split

@@ -135,7 +135,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 	outfile.Write()
 	outfile.Close()
 
-	plotROCcurves(true_y,model_y,nClasses,tag)
+	plotROCcurves(true_y,model_y,nClasses,fname)
 
 	return 1	
 
