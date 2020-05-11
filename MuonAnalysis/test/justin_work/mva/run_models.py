@@ -144,9 +144,9 @@ print("\n")
 ######################################################
 ####################MODEL 7###########################
 print("\nBegin Model 7")
-mdysample = dataset_DY.sample(['mu','U','pi','k','p' ],[10000,2000,2000,2000,2000])
-mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[10000,2000,2000,2000,2000])
-mqcdsample = dataset_QCD.sample(['mu','U','pi','k','p'],[4000,2000,2000,2000,2000])
+mdysample = dataset_DY.sample(['mu','U','pi','k','p' ],[2000,2000,2000,2000,2000])
+mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[2000,2000,2000,2000,2000])
+mqcdsample = dataset_QCD.sample(['mu','U','pi','k','p'],[2000,2000,2000,2000,2000])
 
 reportSample( mdysample )
 reportSample( mttsample )
