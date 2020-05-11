@@ -32,23 +32,25 @@ Sample 1 Report
 Training model: model1
 Desc.: Model trained only on true muons and unmatched, binary classicification
 Model Report:
-Training accuracy: 0.9896 
-Validation accuracy: 0.9578
-Training loss: 0.0315
-Validation loss: 0.2504
-Test Accuracy: 0.9551
-Test loss: 0.2559
+Training accuracy: 0.9905 
+Validation accuracy: 0.9542
+Training loss: 0.0279
+Validation loss: 0.2681
+Test Accuracy: 0.9558
+Test loss: 0.2678
 Evaluating model....
 Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
 label 0:
-Correct ID: 19936.0 of 19937.0   0.999949842002
-Mis.    ID: 1090.0 of 19937.0   0.0546722174851
+Efficiency : 20097.0 of 21064.0   0.954092290163
+Purity     : 20097.0 of 20988.0   0.957547169811
 label 1:
-Correct ID: 20178.0 of 20179.0   0.99995044353
-Mis.    ID: 796.0 of 20179.0   0.0394469497993
+Efficiency : 20045.0 of 20936.0   0.957441727169
+Purity     : 20045.0 of 21012.0   0.95397867885
 Overall performance: 
-Correct ID: 40114.0 of 42000.0   0.955095238095
-Mis.    ID: 1886.0 of 42000.0   0.0449047619048
+Purity: 40142.0 of 42000.0    0.955761904762
 
 
 
@@ -92,23 +94,25 @@ Sample 5 Report
 Training model: model2
 Desc.: Model trained only on true muons vs unmatched with non muons, binary classification
 Model Report:
-Training accuracy: 0.9936 
-Validation accuracy: 0.9143
-Training loss: 0.0231
-Validation loss: 0.5065
-Test Accuracy: 0.9151
-Test loss: 0.5386
+Training accuracy: 0.9924 
+Validation accuracy: 0.9221
+Training loss: 0.0252
+Validation loss: 0.5723
+Test Accuracy: 0.9212
+Test loss: 0.5058
 Evaluating model....
 Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
 label 0:
-Correct ID: 2483.0 of 2484.0   0.99959742351
-Mis.    ID: 271.0 of 2484.0   0.109098228663
+Efficiency : 2572.0 of 2786.0   0.923187365398
+Purity     : 2572.0 of 2848.0   0.90308988764
 label 1:
-Correct ID: 3208.0 of 3209.0   0.999688376441
-Mis.    ID: 257.0 of 3209.0   0.0800872545964
+Efficiency : 3157.0 of 3433.0   0.919603845033
+Purity     : 3157.0 of 3371.0   0.936517353901
 Overall performance: 
-Correct ID: 5691.0 of 6219.0   0.915098890497
-Mis.    ID: 528.0 of 6219.0   0.0849011095031
+Purity: 5729.0 of 6219.0    0.92120919762
 
 
 
@@ -146,23 +150,25 @@ Sample 4 Report
 Training model: model3
 Desc.: Model trained only on true muons vs all  non muons, binary classification
 Model Report:
-Training accuracy: 0.9951 
-Validation accuracy: 0.9171
-Training loss: 0.0303
-Validation loss: 0.5074
-Test Accuracy: 0.9167
-Test loss: 0.4930
+Training accuracy: 0.9913 
+Validation accuracy: 0.9151
+Training loss: 0.0280
+Validation loss: 0.4254
+Test Accuracy: 0.9125
+Test loss: 0.4830
 Evaluating model....
 Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
 label 0:
-Correct ID: 2485.0 of 2486.0   0.999597747385
-Mis.    ID: 247.0 of 2486.0   0.0993563958166
+Efficiency : 2565.0 of 2800.0   0.916071428571
+Purity     : 2565.0 of 2813.0   0.911837895485
 label 1:
-Correct ID: 2574.0 of 2575.0   0.999611650485
-Mis.    ID: 213.0 of 2575.0   0.0827184466019
+Efficiency : 2471.0 of 2719.0   0.908789996322
+Purity     : 2471.0 of 2706.0   0.913155949741
 Overall performance: 
-Correct ID: 5059.0 of 5519.0   0.916651567313
-Mis.    ID: 460.0 of 5519.0   0.0833484326871
+Purity: 5036.0 of 5519.0    0.912484145679
 
 
 
@@ -206,35 +212,37 @@ Sample 5 Report
 Training model: model4
 Desc.: Model trained on all classes , classification of all possible labels
 Model Report:
-Training accuracy: 0.9549 
+Training accuracy: 0.9457 
 Validation accuracy: 0.5775
-Training loss: 0.1422
-Validation loss: 2.6285
-Test Accuracy: 0.5708
-Test loss: 2.4683
+Training loss: 0.1729
+Validation loss: 2.2899
+Test Accuracy: 0.5687
+Test loss: 2.4299
 Evaluating model....
 Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
 label 0:
-Correct ID: 2545.0 of 2546.0   0.999607227023
-Mis.    ID: 239.0 of 2546.0   0.0938727415554
+Efficiency : 2511.0 of 2803.0   0.895825900821
+Purity     : 2511.0 of 2750.0   0.913090909091
 label 1:
-Correct ID: 254.0 of 255.0   0.996078431373
-Mis.    ID: 459.0 of 255.0   1.8
+Efficiency : 227.0 of 674.0   0.336795252226
+Purity     : 227.0 of 539.0   0.421150278293
 label 2:
-Correct ID: 196.0 of 197.0   0.994923857868
-Mis.    ID: 413.0 of 197.0   2.09644670051
+Efficiency : 242.0 of 651.0   0.371735791091
+Purity     : 242.0 of 773.0   0.313065976714
 label 3:
-Correct ID: 153.0 of 155.0   0.987096774194
-Mis.    ID: 546.0 of 155.0   3.52258064516
+Efficiency : 176.0 of 690.0   0.255072463768
+Purity     : 176.0 of 644.0   0.273291925466
 label 4:
-Correct ID: 107.0 of 113.0   0.946902654867
-Mis.    ID: 612.0 of 113.0   5.41592920354
+Efficiency : 72.0 of 688.0   0.104651162791
+Purity     : 72.0 of 369.0   0.19512195122
 label 5:
-Correct ID: 191.0 of 194.0   0.984536082474
-Mis.    ID: 504.0 of 194.0   2.59793814433
+Efficiency : 200.0 of 713.0   0.280504908836
+Purity     : 200.0 of 1144.0   0.174825174825
 Overall performance: 
-Correct ID: 3446.0 of 6219.0   0.554108377553
-Mis.    ID: 2773.0 of 6219.0   0.445891622447
+Purity: 3428.0 of 6219.0    0.551214021547
 
 
 
@@ -272,23 +280,25 @@ Sample 4 Report
 Training model: model5
 Desc.: Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification
 Model Report:
-Training accuracy: 0.9916 
-Validation accuracy: 0.9247
-Training loss: 0.0249
-Validation loss: 0.5241
-Test Accuracy: 0.9235
-Test loss: 0.4939
+Training accuracy: 0.9894 
+Validation accuracy: 0.9157
+Training loss: 0.0335
+Validation loss: 0.5248
+Test Accuracy: 0.9210
+Test loss: 0.4801
 Evaluating model....
 Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
 label 0:
-Correct ID: 7660.0 of 7661.0   0.999869468738
-Mis.    ID: 710.0 of 7661.0   0.0926771961885
+Efficiency : 7743.0 of 8488.0   0.912229029218
+Purity     : 7743.0 of 8235.0   0.940255009107
 label 1:
-Correct ID: 6793.0 of 6794.0   0.999852811304
-Mis.    ID: 487.0 of 6794.0   0.0716808949073
+Efficiency : 6670.0 of 7162.0   0.931304104999
+Purity     : 6670.0 of 7415.0   0.899527983817
 Overall performance: 
-Correct ID: 14453.0 of 15650.0   0.923514376997
-Mis.    ID: 1197.0 of 15650.0   0.0764856230032
+Purity: 14413.0 of 15650.0    0.920958466454
 
 
 
@@ -320,29 +330,31 @@ Sample 3 Report
 Training model: model6
 Desc.: Model trained on true muons vs all  non muons, EXCLUDING electrons in both test and in training, binary classification
 Model Report:
-Training accuracy: 0.9934 
-Validation accuracy: 0.9140
-Training loss: 0.0221
-Validation loss: 0.5657
-Test Accuracy: 0.9124
-Test loss: 0.5386
+Training accuracy: 0.9931 
+Validation accuracy: 0.9107
+Training loss: 0.0208
+Validation loss: 0.5066
+Test Accuracy: 0.9176
+Test loss: 0.5039
 Evaluating model....
 Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
 label 0:
-Correct ID: 5881.0 of 5882.0   0.999829989799
-Mis.    ID: 471.0 of 5882.0   0.0800748044883
+Efficiency : 5885.0 of 6293.0   0.935166057524
+Purity     : 5885.0 of 6420.0   0.916666666667
 label 1:
-Correct ID: 4566.0 of 4567.0   0.99978103788
-Mis.    ID: 532.0 of 4567.0   0.116487847602
+Efficiency : 4622.0 of 5157.0   0.896257514059
+Purity     : 4622.0 of 5030.0   0.91888667992
 Overall performance: 
-Correct ID: 10447.0 of 11450.0   0.912401746725
-Mis.    ID: 1003.0 of 11450.0   0.0875982532751
+Purity: 10507.0 of 11450.0    0.917641921397
 
 
 
 Begin Model 7
 Sample 0 Report
-(10000, 75)
+(2000, 75)
 Sample 1 Report
 (2000, 75)
 Sample 2 Report
@@ -352,7 +364,7 @@ Sample 3 Report
 Sample 4 Report
 (1238, 75)
 Sample 0 Report
-(10000, 75)
+(2000, 75)
 Sample 1 Report
 (2000, 75)
 Sample 2 Report
@@ -362,7 +374,7 @@ Sample 3 Report
 Sample 4 Report
 (1882, 75)
 Sample 0 Report
-(4000, 75)
+(2000, 75)
 Sample 1 Report
 (2000, 75)
 Sample 2 Report
@@ -374,31 +386,33 @@ Sample 4 Report
 Training model: model7
 Desc.: Model trained on all classes EXCLUDING electrons in both training and testing , classification of  most  labels
 Model Report:
-Training accuracy: 0.9303 
-Validation accuracy: 0.6804
-Training loss: 0.1925
-Validation loss: 1.7296
-Test Accuracy: 0.6797
-Test loss: 1.6903
+Training accuracy: 0.8590 
+Validation accuracy: 0.5003
+Training loss: 0.3817
+Validation loss: 2.1398
+Test Accuracy: 0.4929
+Test loss: 2.1604
 Evaluating model....
 Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
 label 0:
-Correct ID: 7841.0 of 7842.0   0.99987248151
-Mis.    ID: 535.0 of 7842.0   0.0682223922469
+Efficiency : 1768.0 of 2122.0   0.833176248822
+Purity     : 1768.0 of 2069.0   0.854519091348
 label 1:
-Correct ID: 1180.0 of 1182.0   0.998307952623
-Mis.    ID: 893.0 of 1182.0   0.755499153976
+Efficiency : 982.0 of 2068.0   0.474854932302
+Purity     : 982.0 of 1622.0   0.60542540074
 label 2:
-Correct ID: 608.0 of 610.0   0.996721311475
-Mis.    ID: 1195.0 of 610.0   1.95901639344
+Efficiency : 571.0 of 1813.0   0.314947600662
+Purity     : 571.0 of 1589.0   0.359345500315
 label 3:
-Correct ID: 362.0 of 364.0   0.994505494505
-Mis.    ID: 1225.0 of 364.0   3.36538461538
+Efficiency : 340.0 of 1589.0   0.213971050975
+Purity     : 340.0 of 1139.0   0.298507462687
 label 4:
-Correct ID: 425.0 of 426.0   0.99765258216
-Mis.    ID: 1386.0 of 426.0   3.25352112676
+Efficiency : 636.0 of 1758.0   0.361774744027
+Purity     : 636.0 of 2931.0   0.216990788127
 Overall performance: 
-Correct ID: 10416.0 of 15650.0   0.665559105431
-Mis.    ID: 5234.0 of 15650.0   0.334440894569
+Purity: 4297.0 of 9350.0    0.459572192513
 
 
