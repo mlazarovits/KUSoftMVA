@@ -52,7 +52,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 	all_fnum_ctr = 0
 	all_fden_ctr = 0
 
-    # begin the counting 
+	# begin the counting 
 	for i , (my, ty, pt) in enumerate(zip(pred, true_y, model_pt)):
 		#print i,my,ty,pt
 		labelidx = -1
@@ -90,20 +90,15 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(num_ctr[x]/den_ctr[x]))
 		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(num_ctr[x]/fden_ctr[x]))
 
-    print("Overall performance: ")
-   # print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
-    #print("Mis.    ID: "+ str(all_fnum_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_fnum_ctr/all_den_ctr))
-    print("Purity: "+ str(all_num_ctr)+" of "+str(all_den_ctr)+"    "+str(all_num_ctr/all_den_ctr))
-
-
-	
-
-
+	print("Overall performance: ")
+	# print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
+	#print("Mis.    ID: "+ str(all_fnum_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_fnum_ctr/all_den_ctr))
+	print("Purity: "+ str(all_num_ctr)+" of "+str(all_den_ctr)+"    "+str(all_num_ctr/all_den_ctr))
 
 
 	goodEff = [ TEfficiency(h_num[i],h_den[i]) for i in range(nClasses) ]
 	[ goodEff[i].SetName("correct"+str(i)) for i in range(nClasses) ]
-	badEff = [ TEfficiency(h_fnum[i],h_fden[i]) for i in range(nClasses) ]
+	badEff = [ TEfficiency(h_num[i],h_fden[i]) for i in range(nClasses) ]
 	[ badEff[i].SetName("pure"+str(i)) for i in range(nClasses) ]
 
 #[ self.tr_acc, self.tr_loss, self.tr_valacc, self.tr_valloss]
