@@ -42,30 +42,39 @@ Deep neural network with two kinds of predictions:
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Data Preparation}
+\begin{frame}{Data Preparation \& Network Input}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+Data Preparation
 \begin{itemize}
 \item Taking data from ROOT trees and converted it to pandas DataFrames
 \item Evenly sampled among classes from different MC generated processes
 \begin{itemize}
-\item Each process produces kinematically different muons
-\item Muons also have different origins
+\item Each process produces kinematically different muons with different origins
 \end{itemize}
 \item One-hot encoded the classes for categorical output
 \item Normalized data
 \end{itemize}
-\end{frame}
+\end{column}
 
-\begin{frame}{Network Input}
+\begin{column}{0.5\textwidth}
+Network Inputs
 \begin{itemize}
-\item Minimal model: good muon variables (cut-based benchmark)
+\item Minimal model: variables that can ID a good muon (cut-based benchmark)
 \item Complex model: energy, position, track information (MVA benchmark)
 \item Custom: combination of the two
+\item Evaluate performance with accuracy and loss values and efficiency and ROC plots
 \end{itemize}
+\end{column}
+\end{columns}
 \end{frame}
 
 
 
-\begin{frame}{Network Architecture}
+\begin{frame}{Network Architecture \& Training Stats}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+Architecture
 \begin{itemize}
 \item 4 hidden layers
 \item 128 neurons/layer
@@ -74,45 +83,15 @@ Deep neural network with two kinds of predictions:
 \item Adam optimizer
 \item Categorical cross entropy loss
 \end{itemize}
-\end{frame}
+\end{column}
 
-\begin{frame}{Training Stats}
+\begin{column}{0.5\textwidth}
+Training
 \begin{itemize}
 \item 35/65 test/training split
 \item 10/90 validation/training split
 \item 100 epochs
 \item 256 batch size
-\item Accuracy, loss, efficiency, and ROC curve
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}{Results: Binary Classifier}
-Network statistics \\
-\quad \quad
-\begin{columns}
-\begin{column}{0.3\textwidth}
-Training
-\begin{itemize}
-\small
-\item Accuracy: 0.9916
-\item Loss: 0.0249
-\end{itemize}
-\end{column}
-\begin{column}{0.3\textwidth}
-Validation
-\begin{itemize}
-\small
-\item Accuracy: 0.9247
-\item Loss: 0.95241
-\end{itemize}
-\end{column}
-\begin{column}{0.3\textwidth}
-Test
-\begin{itemize}
-\small
-\item Accuracy: 0.9235
-\item Loss: 0.4939
 \end{itemize}
 \end{column}
 \end{columns}
@@ -120,16 +99,53 @@ Test
 
 
 \begin{frame}{Results: Binary Classifier}
-Muon Classification \\
-\quad \quad
+Network statistics \\
+\quad \quad \\
+\begin{columns}
+\begin{column}{0.3\textwidth}
+Training
 \begin{itemize}
-\item Recall (Correct ID rate): 99.9869\%
-\item Purity (MisID rate): 9.2677\%
+\small
+\item Accuracy: 0.9593
+\item Loss: 0.1060
+\end{itemize}
+\end{column}
+\begin{column}{0.3\textwidth}
+Validation
+\begin{itemize}
+\small
+\item Accuracy: 0.9299
+\item Loss: 0.2374
+\end{itemize}
+\end{column}
+\begin{column}{0.3\textwidth}
+Test
+\begin{itemize}
+\small
+\item Accuracy: 0.9244
+\item Loss: 0.2728
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}{Results: Binary Classifier}
+\quad \\ \quad \\
+Muon Classification \\
+\begin{itemize}
+\item Efficiency: 95.274\%
+\item Purity: 91.540\%
 \end{itemize}
 \quad \quad \\
-Recall = $\frac{TP}{TP+FN}$ \\
+Efficiency = $\frac{TP}{TP+FN}$ \\
 \quad \\
-Purity = $\frac{FP}{TP+FP}$
+Purity = $\frac{TP}{TP+FP}$
+\end{frame}
+
+\begin{frame}{Results: Binary Classifier}
+\centering
+\includegraphics[scale=0.6]{model5_ROCcurves.pdf}
 \end{frame}
 
 
@@ -141,24 +157,24 @@ Network statistics \\
 Training
 \begin{itemize}
 \small
-\item Accuracy: 0.9303
-\item Loss: 0.1925
+\item Accuracy: 0.6854
+\item Loss: 0.7739
 \end{itemize}
 \end{column}
 \begin{column}{0.3\textwidth}
 Validation
 \begin{itemize}
 \small
-\item Accuracy: 0.6804
-\item Loss: 1.7296
+\item Accuracy: 0.5323
+\item Loss: 1.2388
 \end{itemize}
 \end{column}
 \begin{column}{0.3\textwidth}
 Test
 \begin{itemize}
 \small
-\item Accuracy: 0.6797
-\item Loss: 1.6903
+\item Accuracy: 0.5330
+\item Loss: 1.2864
 \end{itemize}
 \end{column}
 \end{columns}
@@ -169,66 +185,142 @@ Test
 \begin{column}{0.5\textwidth}
 Muon Classification
 \begin{itemize}
-\item Recall (Correct ID rate): 
-\item Purity (MisID rate): 
+\item Efficiency: 84.032\%
+\item Purity: 87.322\%
 \end{itemize}
 Pion Classification
 \begin{itemize}
-\item Recall: 
-\item Purity: 
+\item Efficiency: 17.401\%
+\item Purity: 41.398\%
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
 Kaon Classification
 \begin{itemize}
-\item Recall: 
-\item Purity: 
+\item Efficiency: 21.601\%
+\item Purity: 33.932\%
 \end{itemize}
 Proton Classification
 \begin{itemize}
-\item Recall: 
-\item Purity: 
+\item Efficiency: 11.496\%
+\item Purity: 4.088\%
 \end{itemize}
 \end{column}
 \end{columns}
 
 \quad  \\
 \quad  \\
-Recall = $\frac{TP}{TP+FN}$ \\
+\quad \quad \\
+Efficiency = $\frac{TP}{TP+FN}$ \\
 \quad \\
-Purity = $\frac{FP}{TP+FP}$
+Purity = $\frac{TP}{TP+FP}$
 \end{frame}
 
-\begin{frame}{Baseline Model}
+
+
+
+\begin{frame}{Results: Multiclass Classifier}
+\centering
+\includegraphics[scale=0.6]{model7_ROCcurves.pdf}
+\end{frame}
+
+
+\begin{frame}{Results: Efficiencies}
+\centering
+\includegraphics[scale=0.5]{NN_efficiencies.pdf}
+
+$\epsilon$ = \# true muons that pass ID/\# true muons
+\end{frame}
+
+\begin{frame}{Results: Purities}
+\centering
+\includegraphics[scale=.5]{NN_purities.pdf}
+
+Purity = \# true muons that pass ID/ \#reconstructed muons
+\end{frame}
+
+\begin{frame}{Benchmark Model}
+Current techniques to identify low momentum muons are a cut-based ID and a multi-variate analysis (MVA) that uses a gradient boosted regression forest
+\quad \\
 \begin{itemize}
 \item Cut-based ID - uses cuts on a few key variables
 \item Soft MVA - gradient boosted regression forest
-\item Looked at 3 different samples: DY+Jets, TT+Jets, and QCD
+\end{itemize}
+\quad \\
+\quad \\
+Evaluation Statistics
+\begin{itemize}
 \item Efficiency $\epsilon$ = \# true muons that pass ID/\# true muons
+\item Purity = \# true muons that pass ID/ \#reconstructed muons
 \end{itemize}
 \end{frame}
 
 
 
 
-\begin{frame}{Baseline Model Performances}
+\begin{frame}{Benchmark Model: Efficiency}
+\centering
 \includegraphics[scale=.5]{benchmarkEfficiency_TTjets.pdf}
 
 $\epsilon$ = \# true muons that pass ID/\# true muons
 \end{frame}
 
 
-\begin{frame}{Baseline Model Performances}
+\begin{frame}{Results: Efficiencies}
+\centering
+\includegraphics[scale=0.5]{NN_efficiencies.pdf}
+
+$\epsilon$ = \# true muons that pass ID/\# true muons
+\end{frame}
+
+
+\begin{frame}{Benchmark Model: Purity}
+\centering
 \includegraphics[scale=.5]{benchmarkPurity_TTjets.pdf}
 
 Purity = \# true muons that pass ID/ \#reconstructed muons
 \end{frame}
 
+
+\begin{frame}{Results: Purities}
+\centering
+\includegraphics[scale=.5]{NN_purities.pdf}
+
+Purity = \# true muons that pass ID/ \#reconstructed muons
+\end{frame}
+
+
 \begin{frame}{Summary}
+Goal: correctly classify low momentum muons from proton-proton collisions at the LHC with a neural network
+\quad \\
+\quad \\
+Results
+\begin{itemize}
+\item kicked ass
+\item we did it lads
+\item binary classifier more successful at classifying electrons than multiclass output
+\begin{itemize}
+\item higher efficiency and purity
+\end{itemize}
+\item both models competitive with current classification techniques in efficiency
+\item both models have similar or higher purity than current classification techniques
+\end{itemize}
+\quad \\
+\quad \\
+Future work: integrate classifier into searches for Supersymmetry to find Dark Matter candidates
+\quad \\
+\quad \\
 Project Repository: \url{https://github.com/Jphsx/KUSoftMVA}
 \end{frame}
 
-\begin{frame}{backup}
+\begin{frame}{Thank You!}
+\centering
+Questions?
+\end{frame}
+
+\begin{frame}{}
+\centering
+Backup
 \end{frame}
 
 
@@ -236,10 +328,21 @@ Project Repository: \url{https://github.com/Jphsx/KUSoftMVA}
 
 
 
-\begin{frame}{Baseline Model Performances}
+\begin{frame}{Benchmark Model Performances}
+\centering
 \includegraphics[scale=.5]{benchmarkEfficiency_TTjetszoomed.pdf}
 
 $\epsilon$ = \# true muons that pass ID/\# true muons
+\end{frame}
+
+\begin{frame}{Results: Multiclass Classifier}
+\centering
+\includegraphics[scale=0.6]{model5_ROCcurveszoom.pdf}
+\end{frame}
+
+\begin{frame}{Results: Multiclass Classifier}
+\centering
+\includegraphics[scale=0.6]{model7_ROCcurveszoom.pdf}
 \end{frame}
 
 
