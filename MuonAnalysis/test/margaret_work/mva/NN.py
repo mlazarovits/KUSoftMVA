@@ -39,7 +39,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 	den_ctr = [ 0. for i in range(nClasses) ]
 
 	all_fnum_ctr = 0
-    all_fden_ctr = 0
+	all_fden_ctr = 0
 
 	h_fnum = [ TH1D("fnum_"+str(i), "correct id label "+str(i), 41, -0.5, 40.5 ) for i in range(nClasses) ]
 
@@ -53,47 +53,47 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 	all_fden_ctr = 0
 
     # begin the counting 
-    for i , (my, ty, pt) in enumerate(zip(pred, true_y, model_pt)):
-            #print i,my,ty,pt
-            labelidx = -1
-            modelidx = -1
-            for idx in range(len(ty)):
-                    if( ty[idx] == 1):
-                            labelidx = idx
-            for idx in range(len(my)):
-                    if( my[idx] ==1):
-                            modelidx = idx
-             if( (my == ty).all() ): #we have a correct classification
-                    h_num[labelidx].Fill(pt)
-                    h_fnum[labelidx].Fill(pt)
+	for i , (my, ty, pt) in enumerate(zip(pred, true_y, model_pt)):
+		#print i,my,ty,pt
+		labelidx = -1
+		modelidx = -1
+		for idx in range(len(ty)):
+			if( ty[idx] == 1):
+				labelidx = idx
+		for idx in range(len(my)):
+			if( my[idx] ==1):
+				modelidx = idx
+		 if( (my == ty).all() ): #we have a correct classification
+			h_num[labelidx].Fill(pt)
+			h_fnum[labelidx].Fill(pt)
 
-                    num_ctr[labelidx] = num_ctr[labelidx] + 1.
+			num_ctr[labelidx] = num_ctr[labelidx] + 1.
 
-                    all_num_ctr = all_num_ctr + 1.
-            #       all_fnum_ctr = all_fnum_ctr + 1.
+			all_num_ctr = all_num_ctr + 1.
+			#       all_fnum_ctr = all_fnum_ctr + 1.
 
-            h_den[labelidx].Fill(pt)
-            h_fden[modelidx].Fill(pt)
+		h_den[labelidx].Fill(pt)
+		h_fden[modelidx].Fill(pt)
 
-            den_ctr[labelidx] = den_ctr[labelidx] + 1.
-            fden_ctr[modelidx] = fden_ctr[modelidx] + 1.
+		den_ctr[labelidx] = den_ctr[labelidx] + 1.
+		fden_ctr[modelidx] = fden_ctr[modelidx] + 1.
 
-            all_den_ctr = all_den_ctr + 1.
+		all_den_ctr = all_den_ctr + 1.
 
 
-		print("Reporting results from test data")
-		print("We define efficiency and purity s.t.")
-		print("efficiency = # of objects correctly classified for a specific label / # of true objects of that label")
-		print("purity = # of objects correctly classified for a specific label/ # of objects classified for that label")
-        for x in range(nClasses):
-            print("label "+str(x)+":")
-            print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(num_ctr[x]/den_ctr[x]))
-            print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(num_ctr[x]/fden_ctr[x]))
+	print("Reporting results from test data")
+	print("We define efficiency and purity s.t.")
+	print("efficiency = # of objects correctly classified for a specific label / # of true objects of that label")
+	print("purity = # of objects correctly classified for a specific label/ # of objects classified for that label")
+	for x in range(nClasses):
+		print("label "+str(x)+":")
+		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(num_ctr[x]/den_ctr[x]))
+		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(num_ctr[x]/fden_ctr[x]))
 
-        print("Overall performance: ")
-       # print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
-        #print("Mis.    ID: "+ str(all_fnum_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_fnum_ctr/all_den_ctr))
-        print("Purity: "+ str(all_num_ctr)+" of "+str(all_den_ctr)+"    "+str(all_num_ctr/all_den_ctr))
+    print("Overall performance: ")
+   # print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
+    #print("Mis.    ID: "+ str(all_fnum_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_fnum_ctr/all_den_ctr))
+    print("Purity: "+ str(all_num_ctr)+" of "+str(all_den_ctr)+"    "+str(all_num_ctr/all_den_ctr))
 
 
 	
