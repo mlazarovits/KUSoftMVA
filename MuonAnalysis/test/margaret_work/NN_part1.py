@@ -35,9 +35,6 @@ nClasses = len(definedIds)
 
 #take in all samples (dy, tt, qcd) and shuffle for unmatched (sample evenly for other categories)
 #get dataframes for dyjets and qcd samples
-# dyjets = makeData('DYJetsToLL2018_MINI_numEvent100000.root',definedIds)
-# qcd = makeData('QCD_pt_600to800_2018_MINI_numEvent100000.root',definedIds)
-# ttjets = makeData('TTJets2018_MINI_numEvent100000.root',definedIds)
 
 if path.exists('DYJetsToLL2018_MINI_numEvent100000.csv'):
 	dyjets = pd.read_csv('DYJetsToLL2018_MINI_numEvent100000.csv')
@@ -119,10 +116,9 @@ effPt = data['Muon_pt']
 
 #normalize data
 norm = MinMaxScaler()
-# cols = data.columns
 data = norm.fit_transform(data)
 
-#create test/train split - try soft cut-based ID first (least columns)
+#create test/train split
 x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .3, random_state=1, shuffle=True)
 _, pt_test, _, _ = train_test_split(effPt, target,test_size = .3, random_state=1,shuffle=True)
 
@@ -130,8 +126,6 @@ _, pt_test, _, _ = train_test_split(effPt, target,test_size = .3, random_state=1
 #convert 1hot encoding to numpy arrays
 y_train = np.array([np.array(i) for i in y_train])
 y_test = np.array([np.array(i) for i in y_test])
-
-
 
 
 
@@ -153,7 +147,6 @@ model.summary()
 
 history = model.fit(x_train,y_train,batch_size=256,epochs=50,validation_split=0.3)
 
-#STARTS TO OVERFIT AROUND EPOCH 10 - MAYBE INDUCE SOME REGULARIZATION??
 
 plotName = 'softMVAvars_evenSampling_dyjets+qcd+ttjets'
 plotLoss(history,plotName)
@@ -168,49 +161,9 @@ y_testClasses = enc.inverse_transform(y_test)
 
 
 
-
 makeEfficiency(y_testClasses, y_predClasses, pt_test, definedIds,plotName)
 
 
-#gives precision (efficiency) of each class
-# precision, _, _, _ = precision_recall_fscore_support(y_test,y_predClasses)
-
-
-#match to pt in x_test to plot as function of pt
-#bin x_test in pt
-# bins = np.linspace(x_test['Muon_pt'].min(),x_test['Muon_pt'].max(),int(x_test['Muon_pt'].max() - x_test['Muon_pt'].min()))
-# bins = bins.round(3)
-# x_test['bins'] = pd.cut(x_test['Muon_pt'],bins)
-# precision_pt = []
-# for i, Bin in enumerate(bins):
-# 	if Bin == bins[-1]:
-# 		break
-# 	left = x_test['Muon_pt'] > bins[i]
-# 	right = x_test['Muon_pt'] < bins[i+1]
-
-# 	x_testSubset = x_test[left & right]
-# 	idxs = x_testSubset.index.to_numpy()
-# 	y_testSubset = y_test.loc[idxs]
-
-# 	y_predProbsSubset = model.predict(x_testSubset)
-
-# 	y_predClassesSubset = enc.inverse_transform(y_predProbsSubset)
-# 	precision, _, _, _ = precision_recall_fscore_support(y_testSubset,y_predClassesSubset,average=None)
-	
-# 	precision_pt.append(precision)
-
-
-
-
-
-
-
-
-
-
-
-
-# plotPrecision(history,plotName)
 
 
 
