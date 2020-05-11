@@ -63,7 +63,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 		for idx in range(len(my)):
 			if( my[idx] ==1):
 				modelidx = idx
-		 if( (my == ty).all() ): #we have a correct classification
+		if( (my == ty).all() ): #we have a correct classification
 			h_num[labelidx].Fill(pt)
 			h_fnum[labelidx].Fill(pt)
 
