@@ -6,3 +6,4 @@
 *.d
 *.so
 *.csv
+MuonAnalysis/test/margaret_work/plots/*.pdf
