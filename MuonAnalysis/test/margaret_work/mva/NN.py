@@ -38,8 +38,10 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 	num_ctr = [ 0. for i in range(nClasses) ]
 	den_ctr = [ 0. for i in range(nClasses) ]
 
-	all_fnum_ctr = 0
-	all_fden_ctr = 0
+	all_num_ctr =  0. 
+	all_den_ctr =  0. 		
+
+
 
 	h_fnum = [ TH1D("fnum_"+str(i), "correct id label "+str(i), 41, -0.5, 40.5 ) for i in range(nClasses) ]
 
