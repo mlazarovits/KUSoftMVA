@@ -535,12 +535,9 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(string Option){
 		    	
 				if(m_tree->GetLeaf("Muon_pt")->GetValue(nMu) < 2.) continue;
 
-				if(nID == 0){
-					if(m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) == 0) continue;
-				}
+				
 
 				if(Option == "purity"){
-				//set to plot purity rn
 					if(abs(genID) == 13){
 						bReal = true;
 					}
@@ -550,19 +547,17 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(string Option){
 				}
 				else if(Option == "efficiency"){
 					if(abs(genID) != 13) continue;
-					bPassed = (vec_lID.at(nID)->GetValue(nMu));
+					if(nID == 0){
+						bPassed = (vec_lID.at(nID)->GetValue(nMu) && m_tree->GetLeaf("Muon_looseId")->GetValue(nMu));
+					}
+					else bPassed = (vec_lID.at(nID)->GetValue(nMu));
 				}
+				else cout << "Invalid plot type specified: " << Option << "\n can only plot purity and efficiency"<< endl;
 				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
-				// cout << "Muon_pt " << m_tree->GetLeaf("Muon_pt")->GetValue(nMu) << endl;
-				// if(nID == 1 && bPassed){
-					// cout << "softMVAId passed" << endl;
-				// }
-			 // cout << "e" << endl;
 
 				
 			}
-			// else vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); 
-			 // cout << "f" << endl;
+
 
 		}
 	}
