@@ -519,13 +519,6 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(string Option){
 
 
 
-
-
-
-
-
-
-
 		
 		// if(nMediumMuons < 2) continue; 
 		// if(nTightMuons < 1) continue; 
@@ -556,7 +549,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(string Option){
 					bPassed = (vec_lID.at(nID)->GetValue(nMu) && bReal);
 				}
 				else if(Option == "efficiency"){
-					if(abs(genID) == 13) continue;
+					if(abs(genID) != 13) continue;
 					bPassed = (vec_lID.at(nID)->GetValue(nMu));
 				}
 				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
