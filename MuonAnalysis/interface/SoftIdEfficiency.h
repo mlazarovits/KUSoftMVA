@@ -466,6 +466,65 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		 // cout << "c" << endl;
 
 
+//efficiency = # true muons passed ID/ # true muons
+// TH1D hNum("num_hist","num_hist",40,0,40);
+// TH1D hDen("den_hist","den_hist",40,0,40);
+// int nEvt = Events->GetEntries();
+// for(int i = 0; i < nEvt; i++){
+// Events->GetEntry(i);
+// int nMuon = Events->GetLeaf("nMuon")->GetValue();
+// for(int mu = 0; mu < nMuon; mu++){
+// int genIdx = Events->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+// int genID = Events->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+// if(abs(genID) != 13) continue;
+// if(Events->GetLeaf("Muon_softId")->GetValue(mu)){
+// hNum.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// }
+// else hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// }
+// }
+// TEfficiency* eff = new TEfficiency(hNum,hDen);
+// eff->Draw();
+
+
+//purity = # true muons passed ID/# reco muons
+
+TH1D hNum("num_hist","num_hist",40,0,40);
+TH1D hDen("den_hist","den_hist",40,0,40);
+int nEvt = Events->GetEntries();
+bool bReal;
+for(int i = 0; i < nEvt; i++){
+Events->GetEntry(i);
+int nMuon = Events->GetLeaf("nMuon")->GetValue();
+for(int mu = 0; mu < nMuon; mu++){
+int genIdx = Events->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+int genID = Events->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+if(abs(genID) == 13) bReal = true;
+else bReal = false;
+if(Events->GetLeaf("Muon_softId")->GetValue(mu) && bReal){
+hNum.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+}
+else hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+}
+}
+TEfficiency* eff1 = new TEfficiency(hNum,hDen);
+eff1->Draw();
+
+//eff = softId
+//eff1 = mvaId
+
+
+
+
+
+
+
+
+
+
+
 
 		
 		// if(nMediumMuons < 2) continue; 
@@ -482,9 +541,10 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    	
 				if(m_tree->GetLeaf("Muon_pt")->GetValue(nMu) < 2.) continue;
 
-				if(nID == 1){
-					if(m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) == 0) continue;
-				}
+				// if(nID == 1){
+				// 	if(m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) == 0) continue;
+				// }
+				//set to plot purity rn
 				if(abs(genID) == 13){
 					bReal = true;
 				}
