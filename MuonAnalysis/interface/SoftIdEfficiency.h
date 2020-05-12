@@ -542,8 +542,10 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(string Option){
 						bReal = true;
 					}
 					else bReal = false;
-
-					bPassed = (vec_lID.at(nID)->GetValue(nMu) && bReal);
+					if(nID == 0){
+						bPassed = (vec_lID.at(nID)->GetValue(nMu) && m_tree->GetLeaf("Muon_looseId")->GetValue(nMu));
+					}
+					else bPassed = (vec_lID.at(nID)->GetValue(nMu) && bReal);
 				}
 				else if(Option == "efficiency"){
 					if(abs(genID) != 13) continue;
@@ -552,7 +554,9 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(string Option){
 					}
 					else bPassed = (vec_lID.at(nID)->GetValue(nMu));
 				}
+				
 				else cout << "Invalid plot type specified: " << Option << "\n can only plot purity and efficiency"<< endl;
+				
 				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
 
 				
