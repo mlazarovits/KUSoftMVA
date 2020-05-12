@@ -40,7 +40,7 @@ public:
 	string GetVar();
 
 
-	vector<TEfficiency*> Analyze();
+	vector<TEfficiency*> Analyze(string Option);
 	TEfficiency* Analyze2D();
 
 	void makePlot(vector<TEfficiency*> effs);
@@ -379,7 +379,7 @@ inline TEfficiency* SoftIdEfficiency::Analyze2D(){
 
 
 
-inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
+inline vector<TEfficiency*> SoftIdEfficiency::Analyze(string Option){
 	vector<TEfficiency*> vec_eff;
 	vector<TLeaf*> vec_lID;
 	
@@ -490,27 +490,27 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 
 //purity = # true muons passed ID/# reco muons
 
-TH1D hNum("num_hist","num_hist",40,0,40);
-TH1D hDen("den_hist","den_hist",40,0,40);
-int nEvt = Events->GetEntries();
-bool bReal;
-for(int i = 0; i < nEvt; i++){
-Events->GetEntry(i);
-int nMuon = Events->GetLeaf("nMuon")->GetValue();
-for(int mu = 0; mu < nMuon; mu++){
-int genIdx = Events->GetLeaf("Muon_genPartIdx")->GetValue(mu);
-int genID = Events->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
-if(abs(genID) == 13) bReal = true;
-else bReal = false;
-if(Events->GetLeaf("Muon_softId")->GetValue(mu) && bReal){
-hNum.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
-hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
-}
-else hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
-}
-}
-TEfficiency* eff1 = new TEfficiency(hNum,hDen);
-eff1->Draw();
+// TH1D hNum("num_hist","num_hist",40,0,40);
+// TH1D hDen("den_hist","den_hist",40,0,40);
+// int nEvt = Events->GetEntries();
+// bool bReal;
+// for(int i = 0; i < nEvt; i++){
+// Events->GetEntry(i);
+// int nMuon = Events->GetLeaf("nMuon")->GetValue();
+// for(int mu = 0; mu < nMuon; mu++){
+// int genIdx = Events->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+// int genID = Events->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+// if(abs(genID) == 13) bReal = true;
+// else bReal = false;
+// if(Events->GetLeaf("Muon_softId")->GetValue(mu) && bReal){
+// hNum.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// }
+// else hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// }
+// }
+// TEfficiency* eff1 = new TEfficiency(hNum,hDen);
+// eff1->Draw();
 
 //eff = softId
 //eff1 = mvaId
@@ -544,20 +544,28 @@ eff1->Draw();
 				// if(nID == 1){
 				// 	if(m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) == 0) continue;
 				// }
-				//set to plot purity rn
-				if(abs(genID) == 13){
-					bReal = true;
-				}
-				else bReal = false;
 
-				bool bPassed = (vec_lID.at(nID)->GetValue(nMu) && bReal);
+				if(Option == 'purity'){
+				//set to plot purity rn
+					if(abs(genID) == 13){
+						bReal = true;
+					}
+					else bReal = false;
+
+					bool bPassed = (vec_lID.at(nID)->GetValue(nMu) && bReal);
+				}
+				else if(Option == "efficiency"){
+					if(abs(genID) == 13) continue;
+					bool bPassed = (vec_lID.at(nID)->GetValue(nMu) && bReal);
+				}
+				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
 				// cout << "Muon_pt " << m_tree->GetLeaf("Muon_pt")->GetValue(nMu) << endl;
 				// if(nID == 1 && bPassed){
 					// cout << "softMVAId passed" << endl;
 				// }
 			 // cout << "e" << endl;
 
-				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
+				
 			}
 			// else vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); 
 			 // cout << "f" << endl;

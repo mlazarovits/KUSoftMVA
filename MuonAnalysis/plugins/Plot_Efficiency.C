@@ -46,7 +46,7 @@ if(sampleName=="TTJets"){
 	TTJets.SetVar("Muon_pt");
 	TTJets.SetOutputName(name+".root");
 
-	vector<TEfficiency*> TTJets_eff = TTJets.Analyze();
+	vector<TEfficiency*> TTJets_eff = TTJets.Analyze("purity");
 	TTJets.makePlot(TTJets_eff);
 }
 
