@@ -543,7 +543,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(string Option){
 					}
 					else bReal = false;
 					if(nID == 0){
-						bPassed = (vec_lID.at(nID)->GetValue(nMu) && m_tree->GetLeaf("Muon_looseId")->GetValue(nMu));
+						bPassed = (vec_lID.at(nID)->GetValue(nMu) && m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) && bReal);
 					}
 					else bPassed = (vec_lID.at(nID)->GetValue(nMu) && bReal);
 				}
