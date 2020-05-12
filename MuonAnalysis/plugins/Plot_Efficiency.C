@@ -63,7 +63,7 @@ else if(sampleName=="QCD"){
 	QCD.SetVar("Muon_pt");
 	QCD.SetOutputName(name+".root");
 
-	vector<TEfficiency*> QCD_effs = QCD.Analyze();
+	vector<TEfficiency*> QCD_effs = QCD.Analyze("efficiency");
 	QCD.makePlot(QCD_effs);
 }
 
@@ -79,7 +79,7 @@ else if(sampleName=="DYJets"){
 	DYJets.SetVar("Muon_pt");
 	DYJets.SetOutputName(name+".root");
 
-	vector<TEfficiency*> DYJets_effs = DYJets.Analyze();
+	vector<TEfficiency*> DYJets_effs = DYJets.Analyze("efficiency");
 	DYJets.makePlot(DYJets_effs);
 }
 
@@ -96,7 +96,7 @@ else if(sampleName=="allFiles"){
 
 	allSamples.SetOutputName(name+".root");
 
-	vector<TEfficiency*> allSamples_effs = allSamples.Analyze();
+	vector<TEfficiency*> allSamples_effs = allSamples.Analyze("efficiency");
 	allSamples.makePlot(allSamples_effs);
 }
 
