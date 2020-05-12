@@ -20,6 +20,7 @@ class SoftIdEfficiency{
 public:
 	
 	SoftIdEfficiency(TFile* file, bool i_debug=false);
+	SoftIdEfficiency(TChain* chain);
 	virtual ~SoftIdEfficiency(){};
 
 	void AddFile(const string& filename);
@@ -113,6 +114,13 @@ inline SoftIdEfficiency::SoftIdEfficiency(TFile* file,bool i_debug=false){
 		cout << "Error: No tree found" << endl;
 	}
 	debug = i_debug;
+}
+
+inline SoftIdEfficiency::SoftIdEfficiency(TChain* chain){
+	m_tree = chain;
+	if(m_tree == NULL){
+		cout << "Error: No tree found" << endl;
+	}
 }
 
 
@@ -259,12 +267,12 @@ inline std::vector<Double_t> SoftIdEfficiency::makeEffBins(TString inputvar){
 	std::vector<Double_t> effbins;
 	
 	if(strstr(inputvar, "pt")){
-		effbins.push_back(0.0);
+		effbins.push_back(2.0);
 		// for(int i = 1; i < 60; i++){
 		// 	effbins.push_back(effbins.at(i-1) + 0.5);
 		// }
-		for(int i = 1; i < 12; i++){
-			effbins.push_back(effbins.at(i-1) +3.0);
+		for(int i = 1; i < 41; i++){
+			effbins.push_back(effbins.at(i-1) +1.0);
 			// cout << effbins[i] << endl;
 		}
 		
@@ -359,7 +367,6 @@ inline TEfficiency* SoftIdEfficiency::Analyze2D(){
 	    if(nMuon != 1) continue;
 		
 		
-		
 		bool bPassed = l_ID->GetValue();
 		eff->Fill((bPassed),l_Muonpt->GetValue(1),fabs(l_Muoneta->GetValue(1)));  //subleading lepton
 		
@@ -423,18 +430,26 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 
 	    // float HT = calcHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
 	    // TLorentzVector MHT = calcMHT(l_nJet, l_Jet_pt, l_Jet_eta, l_Jet_phi, l_Jet_mass);
-
+ // cout << "a1" << endl;
 	    int nMuon = l_nMuon->GetValue();
+	     // cout << "a" << endl;
 	    float nMediumMuons = 0;
 	    float nTightMuons = 0;
 	    int bitwiseStatusFlag;
 	    std::vector<int> statusFlags;
 
-	    if(nMuon != 1) continue;
-	    
+
+	    // if(nMuon < 1) continue;
+		// cout << "b" << endl;
 
 
+		int genIdx;
+		int genID;
 	    for(int mu = 0; mu < nMuon; mu++){
+	    	// genIdx = m_tree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+	    	// genID = m_tree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+
+
 		    if(m_tree->GetLeaf("Muon_mediumId")->GetValue(mu)){
 		    	nMediumMuons += 1;
 		    }
@@ -442,22 +457,51 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    	nTightMuons += 1;
 		    }	
 		    bitwiseStatusFlag = m_tree->GetLeaf("GenPart_statusFlags")->GetValue(mu);
-		    statusFlags = Decimal2Binary(binary);
-		    
+		    statusFlags = Decimal2Binary(bitwiseStatusFlag);
+		    // if(m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) == 1){
+			   //  cout << m_tree->GetLeaf("Muon_softMvaId")->GetValue(mu) << endl;
+		    // }
 		   
 		}	
-		   
+		 // cout << "c" << endl;
+
+
 
 		
 		// if(nMediumMuons < 2) continue; 
 		// if(nTightMuons < 1) continue; 
-		cout << l_var->GetValue(0) << endl;
+		// cout << l_var->GetValue(0) << endl;
 				
-	
+		bool bReal;
 		for(int nID = 0; nID < m_IDs.size(); nID++){
-			bool bPassed = vec_lID.at(nID)->GetValue();
-			vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(0));
+			 // cout << "d" << endl;
+			for(int nMu = 0; nMu < nMuon; nMu++){
+				genIdx = m_tree->GetLeaf("Muon_genPartIdx")->GetValue(nMu);
+		    	genID = m_tree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+
+		    	
+				if(m_tree->GetLeaf("Muon_pt")->GetValue(nMu) < 2.) continue;
+
+				if(nID == 1){
+					if(m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) == 0) continue;
+				}
+				if(abs(genID) == 13){
+					bReal = true;
+				}
+				else bReal = false;
+
+				bool bPassed = (vec_lID.at(nID)->GetValue(nMu) && bReal);
+				// cout << "Muon_pt " << m_tree->GetLeaf("Muon_pt")->GetValue(nMu) << endl;
+				// if(nID == 1 && bPassed){
+					// cout << "softMVAId passed" << endl;
+				// }
+			 // cout << "e" << endl;
+
+				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
+			}
 			// else vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); 
+			 // cout << "f" << endl;
+
 		}
 	}
 	cout << endl;
@@ -588,8 +632,8 @@ inline void SoftIdEfficiency::makePlot(vector<TEfficiency*> effs){
 	// gr_effs[imax]->Draw();
 
 	cv->Update();
-	Int_t chopcolor = gr_effs.size()/1;
-	Int_t chopmarker = gr_effs.size()/3;
+	Int_t chopcolor = gr_effs.size();
+	Int_t chopmarker = gr_effs.size();
 
 	for(int i = 0; i < gr_effs.size(); i++){
 		gr_effs[i]->SetMarkerSize(1.5);
@@ -634,6 +678,7 @@ inline void SoftIdEfficiency::makePlot(vector<TEfficiency*> effs){
 
 	mg->Draw("AP");
 	leg->Draw("SAME");
+	mg->GetYaxis()->SetRangeUser(0.0,1.0);
 	cv->Update();
 
 	string g_PlotTitle = m_samplename;
@@ -659,7 +704,7 @@ inline void SoftIdEfficiency::makePlot(vector<TEfficiency*> effs){
 	cv->Update();
 
 	if(!debug){
-		TString filename = ("/home/t3-ku/mlazarov/CMSSW_10_6_8/src/KUSoftMVA/MuonAnalysis/plots/"+m_outname).c_str();
+		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/"+m_outname).c_str();
 
 		TFile* file = new TFile(filename,"RECREATE");
 		cout << "file: " << filename << " created" << endl;
