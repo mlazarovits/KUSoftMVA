@@ -545,7 +545,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(string Option){
 				// 	if(m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) == 0) continue;
 				// }
 
-				if(Option == 'purity'){
+				if(Option == "purity"){
 				//set to plot purity rn
 					if(abs(genID) == 13){
 						bReal = true;
