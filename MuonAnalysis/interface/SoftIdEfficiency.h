@@ -542,9 +542,9 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(string Option){
 		    	
 				if(m_tree->GetLeaf("Muon_pt")->GetValue(nMu) < 2.) continue;
 
-				// if(nID == 1){
-				// 	if(m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) == 0) continue;
-				// }
+				if(nID == 0){
+					if(m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) == 0) continue;
+				}
 
 				if(Option == "purity"){
 				//set to plot purity rn
@@ -734,6 +734,8 @@ inline void SoftIdEfficiency::makePlot(vector<TEfficiency*> effs){
 			gr_effs[i]->SetMarkerColor(kCyan-7);
 			gr_effs[i]->SetLineColor(kCyan-7);
 		}
+		if i == 0:
+			gr_effs[i]->SetTitle("Muon_softId+looseId");
 		// gr_effs[i]->Draw("same");
 		mg->Add(gr_effs[i]);
 		// cv->Update();

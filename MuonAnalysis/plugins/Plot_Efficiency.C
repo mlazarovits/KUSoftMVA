@@ -13,7 +13,7 @@
 
 using namespace std;
 
-void Plot_Efficiency(TString sampleName){
+void Plot_Efficiency(TString sampleName,string plotType){
 	if(gSystem->OpenDirectory("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots") == 0){
 		gSystem->mkdir("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots");
 		cout << "Created plots folder." << endl;
@@ -35,18 +35,18 @@ void Plot_Efficiency(TString sampleName){
 if(sampleName=="TTJets"){
 	if(fTTJets == NULL) return;
 	SoftIdEfficiency TTJets(fTTJets);
-	string name = "TTJets_softIDpurity";
+	string name = "TTJets_softID"+plotType;
 	TTJets.SetSampleName(name);
 
+	TTJets.AddID("Muon_softId");  //with loose ID
 	TTJets.AddID("Muon_softId");
-	// TTJets.AddID("Muon_softId"); //with loose ID
 	TTJets.AddID("Muon_softMvaId");
 
 
 	TTJets.SetVar("Muon_pt");
 	TTJets.SetOutputName(name+".root");
 
-	vector<TEfficiency*> TTJets_eff = TTJets.Analyze("purity");
+	vector<TEfficiency*> TTJets_eff = TTJets.Analyze(plotType);
 	TTJets.makePlot(TTJets_eff);
 }
 
@@ -63,7 +63,7 @@ else if(sampleName=="QCD"){
 	QCD.SetVar("Muon_pt");
 	QCD.SetOutputName(name+".root");
 
-	vector<TEfficiency*> QCD_effs = QCD.Analyze("efficiency");
+	vector<TEfficiency*> QCD_effs = QCD.Analyze(plotType);
 	QCD.makePlot(QCD_effs);
 }
 
@@ -79,7 +79,7 @@ else if(sampleName=="DYJets"){
 	DYJets.SetVar("Muon_pt");
 	DYJets.SetOutputName(name+".root");
 
-	vector<TEfficiency*> DYJets_effs = DYJets.Analyze("efficiency");
+	vector<TEfficiency*> DYJets_effs = DYJets.Analyze(plotType);
 	DYJets.makePlot(DYJets_effs);
 }
 
@@ -96,7 +96,7 @@ else if(sampleName=="allFiles"){
 
 	allSamples.SetOutputName(name+".root");
 
-	vector<TEfficiency*> allSamples_effs = allSamples.Analyze("efficiency");
+	vector<TEfficiency*> allSamples_effs = allSamples.Analyze(plotType);
 	allSamples.makePlot(allSamples_effs);
 }
 
