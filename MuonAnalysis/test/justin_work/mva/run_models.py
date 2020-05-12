@@ -20,7 +20,9 @@ model_vars = ['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
 'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
 'Muon_outerTrackCharge','Muon_innerTrackCharge',
 'Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
-'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers']
+'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers']#,'Muon_miniPFRelIso_chg','Muon_miniPFRelIso_all', 'Muon_looseId', 'Muon_softId', 'Muon_softMvaId' ]
+
+bench_vars = ['Muon_looseId', 'Muon_softId', 'Muon_softMvaId']
 
 dataset_DY = DATA(dypath,"Drell-Yan")
 dataset_QCD = DATA(qcdpath, "QCD")
@@ -121,6 +123,8 @@ datatest = pd.concat([pd.concat(mdysample), pd.concat(mttsample), pd.concat(mqcd
 x_train, x_test, y_train, y_test, pt_train, pt_test  = prepareTrainingSet(datatest, model_vars, mdict)
 
 m = NN(x_train, x_test, y_train, y_test, "model5", "Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification", 2, pt_train, pt_test, eval_tag)
+
+
 
 print("\n")
 ######################################################
