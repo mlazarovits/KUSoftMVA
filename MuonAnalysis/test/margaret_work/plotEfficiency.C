@@ -31,7 +31,7 @@ int plotEfficiency(string inSample){
 		model->SetTitle("QCD_NN");
 	}
 
-	else if(inSample == "tjets"){
+	else if(inSample == "ttjets"){
 		softId = (TEfficiency*)TFile::Open("mva/TTfullB_SoftId.root")->Get("correct0");
 		softId->SetTitle("TTJets_softId");
 		
