@@ -97,31 +97,38 @@ class DATA:
 		self.name = name
 		self.treeName = 'Events'
 		self.fname = fname
-		self.tmp = root_numpy.root2array(self.fname,self.treeName)
-		self.data = pd.DataFrame(self.tmp)
+		tmp = root_numpy.root2array(self.fname,self.treeName)
+		data = pd.DataFrame(tmp)
 
-		self.pdgIds = [-999 if mu == -1 else self.data['GenPart_pdgId'][i][mu] for i, idxs in enumerate(self.data['Muon_genPartIdx']) for j, mu in enumerate(idxs)]
-		self.pdgIds = np.array(self.pdgIds)
-		self.data = self.data.drop([i for i, nMu in enumerate(self.data['nMuon']) if nMu == 0])
+		pdgIds = [-999 if mu == -1 else data['GenPart_pdgId'][i][mu] for i, idxs in enumerate(data['Muon_genPartIdx']) for j, mu in enumerate(idxs)]
+		pdgIds = np.array(pdgIds)
+		data = data.drop([i for i, nMu in enumerate(data['nMuon']) if nMu == 0])
 		
-		self.muonMask = self.data.columns.str.contains('Muon_.*')
-		self.expCols = self.data.loc[:,self.muonMask].columns
+		muonMask = data.columns.str.contains('Muon_.*')
+		expCols = data.loc[:,muonMask].columns
 		
 
-		self.data = expandList(self.data, self.expCols)
+		data = expandList(data, expCols)
 		
-		self.data['Muon_genPdgId'] = self.pdgIds
+		data['Muon_genPdgId'] = pdgIds
 	
-		self.data1 = self.data[abs(self.data.Muon_genPdgId) == 13]
-		self.data2 = self.data[self.data.Muon_genPdgId == -999]
-		self.data3 = self.data[abs(self.data.Muon_genPdgId) == 11]
-		self.data4 = self.data[abs(self.data.Muon_genPdgId) == 211]
-		self.data5 = self.data[abs(self.data.Muon_genPdgId) == 321]
-		self.data6 = self.data[abs(self.data.Muon_genPdgId) == 2212]
+		self.data1 = data[abs(data.Muon_genPdgId) == 13]
+		self.data2 = data[data.Muon_genPdgId == -999]
+		self.data3 = data[abs(data.Muon_genPdgId) == 11]
+		self.data4 = data[abs(data.Muon_genPdgId) == 211]
+		self.data5 = data[abs(data.Muon_genPdgId) == 321]
+		self.data6 = data[abs(data.Muon_genPdgId) == 2212]
 
 		self.datacoll = {'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6}
 			
 	
+	def __del__(self):
+		del self.data1
+		del self.data2
+		del self.data3
+		del self.data4
+		del self.data5	
+		del self.data6
 			
 	def report(self):
 		print("Report for data "+self.name)
