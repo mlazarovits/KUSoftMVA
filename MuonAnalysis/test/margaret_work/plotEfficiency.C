@@ -10,7 +10,7 @@ int plotEfficiency(string inSample){
 
 
 	if(inSample == "dyjets"){
-		softId = (TEfficiency*)TFile::Open("mva/DYfullB_SoftID.root")->Get("correct0");
+		softId = (TEfficiency*)TFile::Open("mva/DYfullB_SoftId.root")->Get("correct0");
 		softId->SetTitle("DYJets_softId");
 		
 		softIdLoose = (TEfficiency*)TFile::Open("mva/DYfullB_SoftLoose.root")->Get("correct0");
@@ -21,7 +21,7 @@ int plotEfficiency(string inSample){
 	}
 
 	else if(inSample == "qcd"){
-		softId = (TEfficiency*)TFile::Open("mva/QCDfullB_SoftID.root")->Get("correct0");
+		softId = (TEfficiency*)TFile::Open("mva/QCDfullB_SoftId.root")->Get("correct0");
 		softId->SetTitle("QCD_softId");
 		
 		softIdLoose = (TEfficiency*)TFile::Open("mva/QCDfullB_SoftLoose.root")->Get("correct0");
@@ -32,7 +32,7 @@ int plotEfficiency(string inSample){
 	}
 
 	else if(inSample == "tjets"){
-		softId = (TEfficiency*)TFile::Open("mva/TTfullB_SoftID.root")->Get("correct0");
+		softId = (TEfficiency*)TFile::Open("mva/TTfullB_SoftId.root")->Get("correct0");
 		softId->SetTitle("TTJets_softId");
 		
 		softIdLoose = (TEfficiency*)TFile::Open("mva/TTfullB_SoftLoose.root")->Get("correct0");
@@ -46,7 +46,7 @@ int plotEfficiency(string inSample){
 	}
 
 	else if(inSample == "all"){
-		softId = (TEfficiency*)TFile::Open("mva/CombB_SoftID.root")->Get("correct0");
+		softId = (TEfficiency*)TFile::Open("mva/CombB_SoftId.root")->Get("correct0");
 		softId->SetTitle("combSamples_softId");
 		
 		softIdLoose = (TEfficiency*)TFile::Open("mva/CombB_SoftLoose.root")->Get("correct0");
