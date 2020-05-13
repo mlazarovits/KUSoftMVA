@@ -38,6 +38,9 @@ int plotEfficiency(string inSample, string plotType){
 		
 		softIdLoose = (TEfficiency*)TFile::Open("mva/QCDfullB_SoftLoose.root")->Get(plotName.c_str());
 		softIdLoose->SetTitle("QCD_softId+LooseId");
+
+		softMva = (TEfficiency*)TFile::Open("mva/QCDfullB_SoftMva.root")->Get(plotName.c_str());
+		softMva->SetTitle("QCD_softMva");
 		
 		model = (TEfficiency*)TFile::Open("mva/model5_QCD.root")->Get(plotName.c_str());
 		model->SetTitle("QCD_NN");
