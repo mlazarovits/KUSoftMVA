@@ -162,7 +162,7 @@ void plotEfficiency(string inSample){
 	cv->Update();
 
 	string g_PlotTitle = m_samplename;
-	mg->GetXaxis()->SetTitle(m_var.c_str());
+	mg->GetXaxis()->SetTitle("Muon pT (GeV)");
 	mg->GetYaxis()->SetTitle("#epsilon");
 	
 
