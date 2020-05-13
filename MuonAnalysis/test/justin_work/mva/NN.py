@@ -25,7 +25,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 	pred = model_y
 	pred[ pred >= 0.5 ] = 1.
 	pred[ pred <0.5 ] = 0.
-
+#	print(pred)
 	#this num is model predicts class and object matched to same class
 	h_num = [ TH1D("num_"+str(i), "label "+str(i), 41, -0.5, 40.5 ) for i in range(nClasses) ]	
 	
@@ -96,9 +96,15 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 	print("efficiency = # of objects correctly classified for a specific label / # of true objects of that label")
 	print("purity = # of objects correctly classified for a specific label/ # of objects classified for that label")
 	for x in range(nClasses):
+		tempden = -1
+		tempfden = -1
+		if(den_ctr[x] != 0):
+			 tempden = den_ctr[x]
+		if(fden_ctr[x] != 0):
+			tempfden = fden_ctr[x]
 		print("label "+str(x)+":")
-		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(num_ctr[x]/den_ctr[x]))
-		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(num_ctr[x]/fden_ctr[x]))
+		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(num_ctr[x]/tempden))
+		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(num_ctr[x]/tempfden))
 		
 	print("Overall performance: ")
        # print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
