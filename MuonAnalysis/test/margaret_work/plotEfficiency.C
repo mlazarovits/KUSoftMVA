@@ -142,9 +142,6 @@ int plotEfficiency(string inSample){
 			gr_effs[i]->SetMarkerColor(kCyan-7);
 			gr_effs[i]->SetLineColor(kCyan-7);
 		}
-		if(i == 0){
-			gr_effs[i]->SetTitle("Muon_softId+looseId");
-		}
 		// gr_effs[i]->Draw("same");
 		mg->Add(gr_effs[i]);
 		// cv->Update();
