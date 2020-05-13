@@ -10,10 +10,10 @@ int plotEfficiency(string inSample){
 
 
 	if(inSample == "dyjets"){
-		softId = (TEfficiency*)TFile::Open(mva/"DYfullB_SoftID.root")->Get("correct0");
+		softId = (TEfficiency*)TFile::Open("mva/DYfullB_SoftID.root")->Get("correct0");
 		softId->SetTitle("DYJets_softId");
 		
-		softIdLoose = (TEfficiency*)TFile::Open(mva/"DYfullB_SoftLoose.root")->Get("correct0");
+		softIdLoose = (TEfficiency*)TFile::Open("mva/DYfullB_SoftLoose.root")->Get("correct0");
 		softIdLoose->SetTitle("DYJets_softId+LooseId");
 		
 		model = (TEfficiency*)TFile::Open("mva/model5_DY.root")->Get("correct0");
