@@ -170,7 +170,7 @@ int plotEfficiency(string inSample, string plotType){
 	mg->GetYaxis()->SetRangeUser(0.0,1.0);
 	cv->Update();
 
-	string g_PlotTitle = inSample+" "+plotName;
+	string g_PlotTitle = inSample+" "+plotType;
 	mg->GetXaxis()->SetTitle("Muon pT (GeV)");
 	mg->GetYaxis()->SetTitle("#epsilon");
 	
@@ -193,7 +193,7 @@ int plotEfficiency(string inSample, string plotType){
 	cv->Update();
 
 
-	TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/mva/plots/"+inSample+"_"+plotName+".root").c_str();
+	TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/mva/plots/"+inSample+"_"+plotType+".root").c_str();
 
 	TFile* file = new TFile(filename,"RECREATE");
 	cout << "file: " << filename << " created" << endl;
