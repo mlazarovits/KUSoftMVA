@@ -1,7 +1,7 @@
 #include <iostream>
 
 
-void plotEfficiency(string inSample){
+int plotEfficiency(string inSample){
 	TEfficiency* softId = NULL;
 	TEfficiency* softIdLoose = NULL;
 	TEfficiency* softMva = NULL;
@@ -58,7 +58,7 @@ void plotEfficiency(string inSample){
 	else{
 		cout << "Invalid sample specified. Options are:" << endl;
 		cout << "dyjets  qcd   ttjets   all" << endl;
-		return;
+		return 0;
 	}
 
 	effs.push_back(softId);
@@ -161,7 +161,7 @@ void plotEfficiency(string inSample){
 	mg->GetYaxis()->SetRangeUser(0.0,1.0);
 	cv->Update();
 
-	string g_PlotTitle = m_samplename;
+	string g_PlotTitle = inSample+" Efficiency";
 	mg->GetXaxis()->SetTitle("Muon pT (GeV)");
 	mg->GetYaxis()->SetTitle("#epsilon");
 	
@@ -183,17 +183,15 @@ void plotEfficiency(string inSample){
 	l.DrawLatex(0.40,0.92,g_PlotTitle.c_str());
 	cv->Update();
 
-	if(!debug){
-		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/mva/plots/"+inSample+"_efficiencies.root").c_str();
 
-		TFile* file = new TFile(filename,"RECREATE");
-		cout << "file: " << filename << " created" << endl;
-		file->cd();
-		cv->Write();
-	}
-	else{
-		return;
-	}
+	TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/mva/plots/"+inSample+"_efficiencies.root").c_str();
+
+	TFile* file = new TFile(filename,"RECREATE");
+	cout << "file: " << filename << " created" << endl;
+	file->cd();
+	cv->Write();
+	
+	return 0;
 	
 
 }
