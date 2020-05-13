@@ -143,7 +143,16 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 
 	return 1	
 
-
+def evaluateSubset( NN, model,y_testsub,x_testsub , pt_testsub ,  tagsub  ):
+	
+	model_y = model.predict(x_testsub)
+	print("true_y")
+#	print(true_y)
+	true_y = y_testsub
+#	print(true_y)
+	model_pt = pt_testsub
+	
+	evaluateModel(model_y, true_y, model_pt, NN.name, tagsub, NN.nClasses, NN.results )	
 
 class NN:
 	def __init__(self,x_train,x_test,y_train,y_test, name, modeldesc, nClasses, pt_train, pt_test, tag):
