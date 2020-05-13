@@ -71,7 +71,7 @@ int plotEfficiency(string inSample){
 
 
 	TCanvas* cv = new TCanvas("cv","cv",800,600);
-	TLegend* leg = new TLegend(0.35,0.2,0.65,0.4);
+	TLegend* leg = new TLegend(0.65,0.2,0.95,0.4);
 	vector<TGraphAsymmErrors*> gr_effs;
 	TMultiGraph* mg = new TMultiGraph();
 
@@ -127,20 +127,20 @@ int plotEfficiency(string inSample){
 			gr_effs[i]->SetMarkerStyle(20); //circle
 		}
 		if(i % chopcolor == 0){
-			gr_effs[i]->SetMarkerColor(kBlue-7);
-			gr_effs[i]->SetLineColor(kBlue-7);
+			gr_effs[i]->SetMarkerColor(kBlue-9);
+			gr_effs[i]->SetLineColor(kBlue-9);
 		}
 		else if(i % chopcolor == 1){
-			gr_effs[i]->SetMarkerColor(kRed-7);
-			gr_effs[i]->SetLineColor(kRed-7);
+			gr_effs[i]->SetMarkerColor(kRed-9);
+			gr_effs[i]->SetLineColor(kRed-9);
 		}
 		else if(i % chopcolor == 2){
-			gr_effs[i]->SetMarkerColor(kGreen-7);
-			gr_effs[i]->SetLineColor(kGreen-7);
+			gr_effs[i]->SetMarkerColor(kGreen-9);
+			gr_effs[i]->SetLineColor(kGreen-9);
 		}
 		else{
-			gr_effs[i]->SetMarkerColor(kCyan-7);
-			gr_effs[i]->SetLineColor(kCyan-7);
+			gr_effs[i]->SetMarkerColor(kCyan-9);
+			gr_effs[i]->SetLineColor(kCyan-9);
 		}
 		// gr_effs[i]->Draw("same");
 		mg->Add(gr_effs[i]);
