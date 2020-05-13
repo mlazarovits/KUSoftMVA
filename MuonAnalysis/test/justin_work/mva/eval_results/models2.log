@@ -1,0 +1,53 @@
+Report for data Drell-Yan
+('mu', (33432, 75))
+('unmathched', (216064, 75))
+('elec', (170, 75))
+('pion', (1050, 75))
+('kaon', (544, 75))
+('prot', (1238, 75))
+Report for data QCD
+('mu', (6460, 75))
+('unmathched', (334741, 75))
+('elec', (1061, 75))
+('pion', (3029, 75))
+('kaon', (2320, 75))
+('prot', (7209, 75))
+Report for data TTJets
+('mu', (64623, 75))
+('unmathched', (232150, 75))
+('elec', (592, 75))
+('pion', (5530, 75))
+('kaon', (3101, 75))
+('prot', (1882, 75))
+
+Begin Model 5
+Sample 0 Report
+(10000, 75)
+Sample 1 Report
+(2000, 75)
+Sample 2 Report
+(1050, 75)
+Sample 3 Report
+(544, 75)
+Sample 4 Report
+(1238, 75)
+Sample 0 Report
+(10000, 75)
+Sample 1 Report
+(2000, 75)
+Sample 2 Report
+(2000, 75)
+Sample 3 Report
+(2000, 75)
+Sample 4 Report
+(1882, 75)
+Sample 0 Report
+(4000, 75)
+Sample 1 Report
+(2000, 75)
+Sample 2 Report
+(2000, 75)
+Sample 3 Report
+(2000, 75)
+Sample 4 Report
+(2000, 75)

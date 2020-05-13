@@ -161,7 +161,7 @@ NtRp59
 (dp60
 S'inputDataset'
 p61
-S'/QCD_Pt_600to800_TuneCP5_13TeV_pythia8/RunIIWinter19PFCalibMiniAOD-2018Conditions_105X_upgrade2018_realistic_v4-v1/MINIAODSIM'
+S'/QCD_Pt_600to800_TuneCP5_13TeV_pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM'
 p62
 sS'outputDatasetTag'
 p63
@@ -174,7 +174,7 @@ S'FileBased'
 p65
 sS'unitsPerJob'
 p66
-I5
+I3
 sg13
 S''
 sg14
@@ -260,7 +260,7 @@ S'prod'
 p92
 sS'RequestName'
 p93
-V200508_184753:jsingera_crab_MVA_QCD2018
+V200512_233543:jsingera_crab_MVA_QCD2018
 p94
 sS'voRole'
 p95
