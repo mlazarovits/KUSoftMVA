@@ -9,7 +9,7 @@ int plotEfficiency(string inSample){
 	vector<TEfficiency*> effs;
 
 
-	if(inSample == 'dyjets'){
+	if(inSample == "dyjets"){
 		softId = (TEfficiency*)TFile::Open("DYfullB_SoftID.root")->Get("correct0");
 		softId->SetTitle("DYJets_softId");
 		
@@ -20,7 +20,7 @@ int plotEfficiency(string inSample){
 		model->SetTitle("DYJets_NN");
 	}
 
-	else if(inSample == 'qcd'){
+	else if(inSample == "qcd"){
 		softId = (TEfficiency*)TFile::Open("QCDfullB_SoftID.root")->Get("correct0");
 		softId->SetTitle("QCD_softId");
 		
@@ -31,7 +31,7 @@ int plotEfficiency(string inSample){
 		model->SetTitle("QCD_NN");
 	}
 
-	else if(inSample == 'tjets'){
+	else if(inSample == "tjets"){
 		softId = (TEfficiency*)TFile::Open("TTfullB_SoftID.root")->Get("correct0");
 		softId->SetTitle("TTJets_softId");
 		
@@ -45,7 +45,7 @@ int plotEfficiency(string inSample){
 		model->SetTitle("TTJets_NN");
 	}
 
-	else if(inSample == 'all'){
+	else if(inSample == "all"){
 		softId = (TEfficiency*)TFile::Open("CombB_SoftID.root")->Get("correct0");
 		softId->SetTitle("combSamples_softId");
 		
