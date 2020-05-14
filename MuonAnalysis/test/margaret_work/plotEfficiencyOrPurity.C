@@ -22,52 +22,52 @@ int plotEfficiencyOrPurity(string inSample, string plotType){
 
 
 	if(inSample == "dyjets"){
-		softId = (TEfficiency*)TFile::Open("mva/DYfullB_SoftId.root")->Get(plotName.c_str());
+		softId = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/DYfullB_SoftId.root")->Get(plotName.c_str());
 		softId->SetTitle("DYJets_softId");
 		
-		softIdLoose = (TEfficiency*)TFile::Open("mva/DYfullB_SoftLoose.root")->Get(plotName.c_str());
+		softIdLoose = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/DYfullB_SoftLoose.root")->Get(plotName.c_str());
 		softIdLoose->SetTitle("DYJets_softId+LooseId");
 		
-		model = (TEfficiency*)TFile::Open("mva/model5_DY.root")->Get(plotName.c_str());
+		model = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/model5_DY.root")->Get(plotName.c_str());
 		model->SetTitle("DYJets_NN");
 	}
 
 	else if(inSample == "qcd"){
-		softId = (TEfficiency*)TFile::Open("mva/QCDfullB_SoftId.root")->Get(plotName.c_str());
+		softId = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/QCDfullB_SoftId.root")->Get(plotName.c_str());
 		softId->SetTitle("QCD_softId");
 		
-		softIdLoose = (TEfficiency*)TFile::Open("mva/QCDfullB_SoftLoose.root")->Get(plotName.c_str());
+		softIdLoose = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/QCDfullB_SoftLoose.root")->Get(plotName.c_str());
 		softIdLoose->SetTitle("QCD_softId+LooseId");
 
-		softMva = (TEfficiency*)TFile::Open("mva/QCDfullB_SoftMva.root")->Get(plotName.c_str());
+		softMva = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/QCDfullB_SoftMva.root")->Get(plotName.c_str());
 		softMva->SetTitle("QCD_softMva");
 		
-		model = (TEfficiency*)TFile::Open("mva/model5_QCD.root")->Get(plotName.c_str());
+		model = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/model5_QCD.root")->Get(plotName.c_str());
 		model->SetTitle("QCD_NN");
 	}
 
 	else if(inSample == "ttjets"){
-		softId = (TEfficiency*)TFile::Open("mva/TTfullB_SoftId.root")->Get(plotName.c_str());
+		softId = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/TTfullB_SoftId.root")->Get(plotName.c_str());
 		softId->SetTitle("TTJets_softId");
 		
-		softIdLoose = (TEfficiency*)TFile::Open("mva/TTfullB_SoftLoose.root")->Get(plotName.c_str());
+		softIdLoose = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/TTfullB_SoftLoose.root")->Get(plotName.c_str());
 		softIdLoose->SetTitle("TTJets_softId+LooseId");
 		
-		softMva = (TEfficiency*)TFile::Open("mva/TTfullB_SoftMva.root")->Get(plotName.c_str());
+		softMva = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/TTfullB_SoftMva.root")->Get(plotName.c_str());
 		softMva->SetTitle("TTJets_softMva");
 		
-		model = (TEfficiency*)TFile::Open("mva/model5_TT.root")->Get(plotName.c_str());
+		model = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/model5_TT.root")->Get(plotName.c_str());
 		model->SetTitle("TTJets_NN");
 	}
 
 	else if(inSample == "all"){
-		softId = (TEfficiency*)TFile::Open("mva/CombB_SoftId.root")->Get(plotName.c_str());
+		softId = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/CombB_SoftId.root")->Get(plotName.c_str());
 		softId->SetTitle("combSamples_softId");
 		
-		softIdLoose = (TEfficiency*)TFile::Open("mva/CombB_SoftLoose.root")->Get(plotName.c_str());
+		softIdLoose = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/CombB_SoftLoose.root")->Get(plotName.c_str());
 		softIdLoose->SetTitle("combSamples_softId+LooseId");
 
-		model = (TEfficiency*)TFile::Open("mva/model5_COMB.root")->Get(plotName.c_str());
+		model = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/model5_COMB.root")->Get(plotName.c_str());
 		model->SetTitle("combSamples_NN");
 	}
 	else{
