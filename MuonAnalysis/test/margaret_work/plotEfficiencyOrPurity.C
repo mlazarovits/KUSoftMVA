@@ -22,13 +22,13 @@ int plotEfficiencyOrPurity(string inSample, string plotType){
 
 
 	if(inSample == "dyjets"){
-		softId = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/DYfullB_SoftId.root")->Get(plotName.c_str());
+		softId = (TEfficiency*)TFile::Open("mva/DYfullB_SoftId.root")->Get(plotName.c_str());
 		softId->SetTitle("DYJets_softId");
 		
-		softIdLoose = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/DYfullB_SoftLoose.root")->Get(plotName.c_str());
+		softIdLoose = (TEfficiency*)TFile::Open("mva/DYfullB_SoftLoose.root")->Get(plotName.c_str());
 		softIdLoose->SetTitle("DYJets_softId+LooseId");
 		
-		model = (TEfficiency*)TFile::Open("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/justin_work/mva/eval_results/model5_DY.root")->Get(plotName.c_str());
+		model = (TEfficiency*)TFile::Open("mva/model5_DY.root")->Get(plotName.c_str());
 		model->SetTitle("DYJets_NN");
 	}
 
@@ -209,7 +209,7 @@ int plotEfficiencyOrPurity(string inSample, string plotType){
 	cv->Write();
 	
 	return 0;
-	}
+	
 	
 
 }
