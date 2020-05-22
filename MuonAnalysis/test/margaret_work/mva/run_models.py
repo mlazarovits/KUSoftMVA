@@ -22,6 +22,8 @@ model_vars = ['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
 'Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
 'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers']
 
+bench_vars = ['Muon_looseId', 'Muon_softId', 'Muon_softMvaId']
+
 dataset_DY = DATA(dypath,"Drell-Yan")
 dataset_QCD = DATA(qcdpath, "QCD")
 dataset_TT = DATA(ttpath, "TTJets")

@@ -39,12 +39,9 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 	den_ctr = [ 0. for i in range(nClasses) ]
 
 	all_num_ctr =  0. 
-	all_den_ctr =  0. 		
+	all_den_ctr =  0. 
 
-
-
-	h_fnum = [ TH1D("fnum_"+str(i), "correct id label "+str(i), 41, -0.5, 40.5 ) for i in range(nClasses) ]
-
+	h_fnum = [ TH1D("fnum_"+str(i), "correct id label "+str(i), 41, -0.5, 40.5 ) for i in range(nClasses) ]		
 	#den of all objects that are labeled by model
 	h_fden = [ TH1D("fden_"+str(i), "model predicts label "+str(i), 41, -0.5, 40.5 ) for i in range(nClasses) ]
 
@@ -65,7 +62,9 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 		for idx in range(len(my)):
 			if( my[idx] ==1):
 				modelidx = idx
+
 		if( (my == ty).all() ): #we have a correct classification
+
 			h_num[labelidx].Fill(pt)
 			h_fnum[labelidx].Fill(pt)
 
@@ -82,20 +81,19 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 
 		all_den_ctr = all_den_ctr + 1.
 
+		#collect all classifications as well
 
 	print("Reporting results from test data")
 	print("We define efficiency and purity s.t.")
 	print("efficiency = # of objects correctly classified for a specific label / # of true objects of that label")
 	print("purity = # of objects correctly classified for a specific label/ # of objects classified for that label")
-	for x in range(nClasses):
-		if den_ctr[x] == 0:
-			perc = 0.
-		else:
-			perc = num_ctr[x]/den_ctr[x]
-		if fden_ctr[x] == 0:
-			fperc = 0
-		else:
-			fperc = num_ctr[x]/fden_ctr[x]
+	#account for 0 entries
+		tempden = -1
+		tempfden = -1
+		if(den_ctr[x] != 0):
+			tempden = den_ctr[x]
+		if(fden_ctr[x] != 0):
+			tempfden = fden_ctr[x]
 		print("label "+str(x)+":")
 		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(perc))
 		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(fperc))
