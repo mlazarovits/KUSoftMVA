@@ -88,6 +88,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 	print("efficiency = # of objects correctly classified for a specific label / # of true objects of that label")
 	print("purity = # of objects correctly classified for a specific label/ # of objects classified for that label")
 	#account for 0 entries
+	for x in range(nClasses):	
 		tempden = -1
 		tempfden = -1
 		if(den_ctr[x] != 0):
