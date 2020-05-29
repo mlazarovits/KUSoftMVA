@@ -182,7 +182,7 @@ Network Inputs
 \item Minimal model: variables that can ID a good muon (cut-based benchmark)
 \item Complex model: energy, position, track information (MVA benchmark)
 \item Custom: combination of the two
-\item Evaluate performance with accuracy and loss values and efficiency and ROC plots
+\item Evaluate performance with accuracy and loss values and efficiency, purity, and ROC plots
 \end{itemize}
 \end{column}
 \end{columns}
@@ -365,7 +365,7 @@ Current techniques to identify low momentum muons are a cut-based ID and a multi
 \quad \\
 \begin{itemize}
 \item Cut-based ID - uses cuts on a few key variables
-\item Soft MVA - more complex, uses energy and track information
+\item MVA - more complex, uses energy and track information
 \end{itemize}
 \quad \\
 \quad \\
@@ -417,8 +417,6 @@ Goal: correctly classify low momentum muons from proton-proton collisions at the
 \quad \\
 Results
 \begin{itemize}
-\item kicked ass
-\item we did it lads
 \item binary classifier more successful at classifying electrons than multiclass output
 \begin{itemize}
 \item higher efficiency and purity
@@ -446,8 +444,17 @@ Backup
 
 
 
+\begin{frame}{Binary Classifier: Loss}
+\centering
+\includegraphics[scale=0.5]{binaryNetworkLoss.pdf}
+\end{frame}
 
 
+
+\begin{frame}{Multiclass Classifier: Loss}
+\centering
+\includegraphics[scale=0.5]{multiclassNetworkLoss.pdf}
+\end{frame}
 
 \begin{frame}{Benchmark Model Performances}
 \centering

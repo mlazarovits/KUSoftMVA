@@ -40,7 +40,7 @@ public:
 	string GetVar();
 
 
-	vector<TEfficiency*> Analyze();
+	vector<TEfficiency*> Analyze(string Option);
 	TEfficiency* Analyze2D();
 
 	void makePlot(vector<TEfficiency*> effs);
@@ -379,7 +379,7 @@ inline TEfficiency* SoftIdEfficiency::Analyze2D(){
 
 
 
-inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
+inline vector<TEfficiency*> SoftIdEfficiency::Analyze(string Option){
 	vector<TEfficiency*> vec_eff;
 	vector<TLeaf*> vec_lID;
 	
@@ -466,6 +466,58 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		 // cout << "c" << endl;
 
 
+//efficiency = # true muons passed ID/ # true muons
+// TH1D hNum("num_hist","num_hist",40,0,40);
+// TH1D hDen("den_hist","den_hist",40,0,40);
+// int nEvt = Events->GetEntries();
+// for(int i = 0; i < nEvt; i++){
+// Events->GetEntry(i);
+// int nMuon = Events->GetLeaf("nMuon")->GetValue();
+// for(int mu = 0; mu < nMuon; mu++){
+// int genIdx = Events->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+// int genID = Events->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+// if(abs(genID) != 13) continue;
+// if(Events->GetLeaf("Muon_softId")->GetValue(mu)){
+// hNum.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// }
+// else hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// }
+// }
+// TEfficiency* eff = new TEfficiency(hNum,hDen);
+// eff->Draw();
+
+
+//purity = # true muons passed ID/# reco muons
+
+// TH1D hNum("num_hist","num_hist",40,0,40);
+// TH1D hDen("den_hist","den_hist",40,0,40);
+// int nEvt = Events->GetEntries();
+// bool bReal;
+// for(int i = 0; i < nEvt; i++){
+// Events->GetEntry(i);
+// int nMuon = Events->GetLeaf("nMuon")->GetValue();
+// for(int mu = 0; mu < nMuon; mu++){
+// int genIdx = Events->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+// int genID = Events->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+// if(abs(genID) == 13) bReal = true;
+// else bReal = false;
+// if(Events->GetLeaf("Muon_softId")->GetValue(mu) && bReal){
+// hNum.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// }
+// else hDen.Fill(Events->GetLeaf("Muon_pt")->GetValue(mu));
+// }
+// }
+// TEfficiency* eff1 = new TEfficiency(hNum,hDen);
+// eff1->Draw();
+
+//eff = softId
+//eff1 = mvaId
+
+
+
+
 
 		
 		// if(nMediumMuons < 2) continue; 
@@ -473,6 +525,7 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		// cout << l_var->GetValue(0) << endl;
 				
 		bool bReal;
+		bool bPassed;
 		for(int nID = 0; nID < m_IDs.size(); nID++){
 			 // cout << "d" << endl;
 			for(int nMu = 0; nMu < nMuon; nMu++){
@@ -482,25 +535,33 @@ inline vector<TEfficiency*> SoftIdEfficiency::Analyze(){
 		    	
 				if(m_tree->GetLeaf("Muon_pt")->GetValue(nMu) < 2.) continue;
 
-				if(nID == 1){
-					if(m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) == 0) continue;
-				}
-				if(abs(genID) == 13){
-					bReal = true;
-				}
-				else bReal = false;
+				
 
-				bool bPassed = (vec_lID.at(nID)->GetValue(nMu) && bReal);
-				// cout << "Muon_pt " << m_tree->GetLeaf("Muon_pt")->GetValue(nMu) << endl;
-				// if(nID == 1 && bPassed){
-					// cout << "softMVAId passed" << endl;
-				// }
-			 // cout << "e" << endl;
-
+				if(Option == "purity"){
+					if(abs(genID) == 13){
+						bReal = true;
+					}
+					else bReal = false;
+					if(nID == 0){
+						bPassed = (vec_lID.at(nID)->GetValue(nMu) && m_tree->GetLeaf("Muon_looseId")->GetValue(nMu) && bReal);
+					}
+					else bPassed = (vec_lID.at(nID)->GetValue(nMu) && bReal);
+				}
+				else if(Option == "efficiency"){
+					if(abs(genID) != 13) continue;
+					if(nID == 0){
+						bPassed = (vec_lID.at(nID)->GetValue(nMu) && m_tree->GetLeaf("Muon_looseId")->GetValue(nMu));
+					}
+					else bPassed = (vec_lID.at(nID)->GetValue(nMu));
+				}
+				
+				else cout << "Invalid plot type specified: " << Option << "\n can only plot purity and efficiency"<< endl;
+				
 				vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(nMu));
+
+				
 			}
-			// else vec_eff.at(nID)->Fill((bPassed),l_var->GetValue(1)); 
-			 // cout << "f" << endl;
+
 
 		}
 	}
@@ -664,6 +725,9 @@ inline void SoftIdEfficiency::makePlot(vector<TEfficiency*> effs){
 		else{
 			gr_effs[i]->SetMarkerColor(kCyan-7);
 			gr_effs[i]->SetLineColor(kCyan-7);
+		}
+		if(i == 0){
+			gr_effs[i]->SetTitle("Muon_softId+looseId");
 		}
 		// gr_effs[i]->Draw("same");
 		mg->Add(gr_effs[i]);
