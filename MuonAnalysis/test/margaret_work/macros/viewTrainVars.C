@@ -58,7 +58,7 @@ void viewTrainVars(){
 		qcdTree->SetBranchStatus(trainVars[i].c_str(),1);
 		for(int i = 0; i < qcdTree->GetEntries(); i++){
 			qcdTree->GetEntry(i);
-			for(int mu = 0; mu < qcdTree->GetLeaf(trainVars[i].c_str())->GetNdata()){
+			for(int mu = 0; mu < qcdTree->GetLeaf(trainVars[i].c_str())->GetNdata(); mu++){
 				float var = qcdTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				histQCD->Fill(var);
 			}
