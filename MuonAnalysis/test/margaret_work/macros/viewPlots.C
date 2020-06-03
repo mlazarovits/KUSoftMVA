@@ -21,6 +21,7 @@ void viewPlots(string inVar){
 	cv->SetGridx();
 	cv->SetGridy();
 	cv->SetLogy();
+	gStyle->SetOptStats(0);
 
 	fQCD->cd();
 	TTree* qcdTree = (TTree*)fQCD->Get("Events");
@@ -29,9 +30,9 @@ void viewPlots(string inVar){
 	
 	qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
 	TH1F* histQCD = (TH1F*)gDirectory->Get("histQCD");
+	histQCD->SetTitle("QCD 2018");
 	leg->AddEntry(histQCD);
 	histQCD->SetLineColor(kGreen);
-	histQCD->SetStats(0);
 	histQCD->Draw("same");
 	delete qcdTree;
 
@@ -43,13 +44,12 @@ void viewPlots(string inVar){
 
 	dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
 	TH1F* histDY = (TH1F*)gDirectory->Get("histDY");
+	histDY->SetTitle("DY+jets 2018");
 	leg->AddEntry(histDY);
 	histDY->SetLineColor(kRed);
-	histDY->SetStats(0);
 	histDY->Draw("same");
 	delete dyTree;
 
-	
 	
 
 
@@ -60,9 +60,9 @@ void viewPlots(string inVar){
 	
 	ttTree->Draw((inVar+">>histTT").c_str(),"","goff");
 	TH1F* histTT = (TH1F*)gDirectory->Get("histTT");
+	histTT->SetTitle("ttbar 2018");
 	leg->AddEntry(histTT);
 	histTT->SetLineColor(kBlue);
-	histTT->SetStats(0);
 	histTT->Draw("same");
 	delete ttTree;
 
