@@ -35,7 +35,7 @@ void viewTrainVars(){
 	for(int i = 0; i < 2; i++){
 		cout << "Plotting " << trainVars[i] << endl;
 
-		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trueMuons"+trainVars[i]+"2018.root").c_str();
+		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trueMuons_"+trainVars[i]+"2018.root").c_str();
 		TFile* oFile = new TFile(filename,"RECREATE");
 		
 
@@ -55,26 +55,28 @@ void viewTrainVars(){
 
 		TH1F* histQCD = new TH1F("histQCD","histQCD",treehistQCD->GetNbinsX(),treehistQCD->GetXaxis()->GetXmin(),treehistQCD->GetXaxis()->GetXmax());
 		delete treehistQCD;
-		// qcdTree->SetBranchStatus("*",0);
-		// qcdTree->SetBranchStatus(trainVars[i].c_str(),1);
+	
 		for(int evt = 0; evt < qcdTree->GetEntries(); evt++){
 			qcdTree->GetEntry(evt);
-			// cout << "evt: " << evt << endl;
+
 			int nMus = qcdTree->GetLeaf(trainVars[i].c_str())->GetNdata();
-			// cout << "a" << endl;
+
 			for(int mu = 0; mu < nMus; mu++){
 				float var = qcdTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
-				// cout << "mu: " << mu << endl;
+				int genIdx = qcdTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+				int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+
+				if(abs(genPdgId) != 13) continue;
 				histQCD->Fill(var);
 			}
 		}
-		cout << "b" << endl;
+	
 		histQCD->SetTitle("QCD 2018");
-		cout << "c" << endl;
+
 		leg->AddEntry(histQCD);
 		histQCD->SetLineColor(kGreen);
 		histQCD->Draw("same");
-		cout << "d" << endl;
+
 
 
 		// dyTree->Draw((trainVars[i]+">>histDY").c_str(),"","goff");
@@ -84,6 +86,34 @@ void viewTrainVars(){
 		// histDY->SetLineColor(kRed);
 		// histDY->Draw("same");
 
+		dyTree->Draw((trainVars[i]+">>treehistDY").c_str(),"","goff");
+		TH1F* treehistDY = (TH1F*)gDirectory->Get("treehistDY");
+
+		TH1F* histDY = new TH1F("histDY","histDY",treehistDY->GetNbinsX(),treehistDY->GetXaxis()->GetXmin(),treehistDY->GetXaxis()->GetXmax());
+		delete treehistDY;
+	
+		for(int evt = 0; evt < dyTree->GetEntries(); evt++){
+			dyTree->GetEntry(evt);
+
+			int nMus = dyTree->GetLeaf(trainVars[i].c_str())->GetNdata();
+
+			for(int mu = 0; mu < nMus; mu++){
+				float var = dyTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
+				int genIdx = dyTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+				int genPdgId = dyTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+
+				if(abs(genPdgId) != 13) continue;
+
+				histDY->Fill(var);
+			}
+		}
+	
+		histDY->SetTitle("DY+jets 2018");
+
+		leg->AddEntry(histDY);
+		histDY->SetLineColor(kRed);
+		histDY->Draw("same");
+
 
 		// ttTree->Draw((trainVars[i]+">>histTT").c_str(),"","goff");
 		// TH1F* histTT = (TH1F*)gDirectory->Get("histTT");
@@ -91,6 +121,34 @@ void viewTrainVars(){
 		// leg->AddEntry(histTT);
 		// histTT->SetLineColor(kBlue);
 		// histTT->Draw("same");
+
+		ttTree->Draw((trainVars[i]+">>treehistTT").c_str(),"","goff");
+		TH1F* treehistTT = (TH1F*)gDirectory->Get("treehistTT");
+
+		TH1F* histTT = new TH1F("histTT","histTT",treehistTT->GetNbinsX(),treehistTT->GetXaxis()->GetXmin(),treehistTT->GetXaxis()->GetXmax());
+		delete treehistTT;
+	
+		for(int evt = 0; evt < ttTree->GetEntries(); evt++){
+			ttTree->GetEntry(evt);
+
+			int nMus = ttTree->GetLeaf(trainVars[i].c_str())->GetNdata();
+
+			for(int mu = 0; mu < nMus; mu++){
+				float var = ttTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
+				int genIdx = ttTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+				int genPdgId = ttTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+
+				if(abs(genPdgId) != 13) continue;
+
+				histTT->Fill(var);
+			}
+		}
+	
+		histTT->SetTitle("DY+jets 2018");
+
+		leg->AddEntry(histTT);
+		histTT->SetLineColor(kRed);
+		histTT->Draw("same");
 
 
 
