@@ -30,7 +30,7 @@ void viewTrainVars(){
 	fTT->cd();
 	TTree* ttTree = (TTree*)fTT->Get("Events");
 
-	TString filename = "/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/unmatchedMuons2018.root"
+	TString filename = "/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/unmatchedMuons2018.root";
 	TFile* oFile = new TFile(filename,"RECREATE");
 
 	
