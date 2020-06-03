@@ -22,6 +22,8 @@ void viewPlots(string inVar){
 	cv->SetGridy();
 
 	TH1F* histDY;
+	TH1F* histQCD;
+	TH1F* histTT;
 
 
 	fDY->cd();
