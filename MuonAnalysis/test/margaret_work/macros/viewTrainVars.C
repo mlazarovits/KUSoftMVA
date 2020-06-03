@@ -35,7 +35,7 @@ void viewTrainVars(){
 	for(int i = 0; i < trainVars.size(); i++){
 		cout << "Plotting " << trainVars[i] << endl;
 
-		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/"+trainVars[i]+"2018.root").c_str();
+		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/unmatched_"+trainVars[i]+"2018.root").c_str();
 		TFile* oFile = new TFile(filename,"RECREATE");
 		
 
@@ -66,7 +66,7 @@ void viewTrainVars(){
 				int genIdx = qcdTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 				// int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 
-				// if(genIdx != -1) continue;
+				if(genIdx != -1) continue;
 				histQCD->Fill(var);
 			}
 		}
@@ -98,9 +98,9 @@ void viewTrainVars(){
 			for(int mu = 0; mu < nMus; mu++){
 				float var = dyTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				int genIdx = dyTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
-				int genPdgId = dyTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+				// int genPdgId = dyTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 
-				// if(abs(genPdgId) != 13) continue;
+				if(genIdx != -1) continue;
 
 				histDY->Fill(var);
 			}
@@ -132,9 +132,9 @@ void viewTrainVars(){
 			for(int mu = 0; mu < nMus; mu++){
 				float var = ttTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				int genIdx = ttTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
-				int genPdgId = ttTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+				// int genPdgId = ttTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 
-				// if(abs(genPdgId) != 13) continue;
+				if(genIdx != -1) continue;
 
 				histTT->Fill(var);
 			}
