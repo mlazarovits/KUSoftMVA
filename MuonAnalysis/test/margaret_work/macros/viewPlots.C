@@ -28,30 +28,36 @@ void viewPlots(string inVar){
 
 	fDY->cd();
 	TTree* dyTree = (TTree*)fDY->Get("Events");
-	dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
+	dyTree->SetBranchAddress("*",0);
+	dyTree->SetBranchAddress(inVar,0);
+	// dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
+	for(int i = 0; i < dyTree->GetEntries(); i++){
+		dyTree->GetEntry(i);
+		histDY->Fill();
+	}
 	histDY->SetLineColor(kRed);
 	histDY->Draw();
 	leg->AddEntry(histDY);
 	delete dyTree;
 
-	fQCD->cd();
-	TTree* qcdTree = (TTree*)fQCD->Get("Events");
-	qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
-	histQCD->SetLineColor(kBlue);
-	histQCD->Draw("same");
-	leg->AddEntry(histQCD);
-	delete qcdTree;
+	// fQCD->cd();
+	// TTree* qcdTree = (TTree*)fQCD->Get("Events");
+	// qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
+	// histQCD->SetLineColor(kBlue);
+	// histQCD->Draw("same");
+	// leg->AddEntry(histQCD);
+	// delete qcdTree;
 
 
-	fTT->cd();
-	TTree* ttTree = (TTree*)fTT->Get("Events");
-	ttTree->Draw((inVar+">>histTT").c_str(),"","goff");
-	histTT->SetLineColor(kGreen);
-	histTT->Draw("same");
-	leg->AddEntry(histTT);
-	delete ttTree;
+	// fTT->cd();
+	// TTree* ttTree = (TTree*)fTT->Get("Events");
+	// ttTree->Draw((inVar+">>histTT").c_str(),"","goff");
+	// histTT->SetLineColor(kGreen);
+	// histTT->Draw("same");
+	// leg->AddEntry(histTT);
+	// delete ttTree;
 
-	leg->Draw("same");
+	// leg->Draw("same");
 
 	oFile->cd();
 	cv->Write();
