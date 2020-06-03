@@ -71,8 +71,11 @@ void viewTrainVars(){
 		cout << "c" << endl;
 
 		qcdTree->Draw((trainVars[i]+">>histQCD").c_str(),"","goff");
+		cout << "c1" << endl;
 		TH1F* histQCD = (TH1F*)gDirectory->Get("histQCD");
+		cout << "c2" << endl;
 		histQCD->SetTitle("QCD 2018");
+		cout << "c3" << endl;
 		leg->AddEntry(histQCD);
 		histQCD->SetLineColor(kGreen);
 		histQCD->Draw("same");
