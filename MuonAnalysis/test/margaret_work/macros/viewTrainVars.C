@@ -53,8 +53,8 @@ void viewTrainVars(){
 		// qcdTree->Draw((trainVars[i]+">>histQCD").c_str(),"","goff");
 		// TH1F* histQCD = (TH1F*)gDirectory->Get("histQCD");
 		TH1F* histQCD = new TH1F("histQCD","histQCD",100,0,500);
-		qcdTree->SetBranchStatus("*",0);
-		qcdTree->SetBranchStatus(trainVars[i].c_str(),1);
+		// qcdTree->SetBranchStatus("*",0);
+		// qcdTree->SetBranchStatus(trainVars[i].c_str(),1);
 		for(int evt = 0; evt < qcdTree->GetEntries(); i++){
 			qcdTree->GetEntry(evt);
 			for(int mu = 0; mu < qcdTree->GetLeaf(trainVars[i].c_str())->GetNdata(); mu++){
