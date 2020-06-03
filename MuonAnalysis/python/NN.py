@@ -133,6 +133,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 	outfile.Write()
 	outfile.Close()
 
+	#map true values to [0,1] for muon - 1 or not - 0 to match dim of scores output (prob for each class)
 	plotROCcurves(true_y,model_y,nClasses,fname)
 
 	return 1	
