@@ -20,7 +20,7 @@ from plotFunctions import plotEfficiency, plotROCcurves
 
 
 
-def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results ):
+def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 
 	# print(model_y)
 	#translate model prediction probabilities to onehot
@@ -96,8 +96,8 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 		if(fden_ctr[x] != 0):
 			tempfden = fden_ctr[x]
 		print("label "+str(x)+":")
-		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(perc))
-		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(fperc))
+		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(num_ctr[x]/tempden))
+		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(num_ctr[x]/tempfden))
 
 	print("Overall performance: ")
 	# print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
@@ -118,7 +118,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 #	c1 = TCanvas()
 #	goodEff[0].Draw()
 	
-
+	#make new outFile directory
 	outfile = TFile("./eval_results/"+fname+"_"+tag+".root","RECREATE")
 	[ outfile.WriteTObject(x) for x in h_num ]
 	[ outfile.WriteTObject(x) for x in h_fnum]
@@ -198,7 +198,7 @@ class NN:
 		self.predictions = self.model.predict(x_test)	
 	#	self.predictions = self.model.predict(x_train)
 		
-		evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, self.nClasses, self.mdict, self.results )			
+		evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, self.nClasses, self.results )			
 
 
 

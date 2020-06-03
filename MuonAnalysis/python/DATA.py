@@ -2,7 +2,8 @@
 
 
 import numpy as np
-import root_numpy
+#import root_numpy
+import uproot
 import pandas as pd
 import sys
 # from sklearn.preprocessing import OneHotEncoder
@@ -83,34 +84,63 @@ def reportSample( sample):
 
 
 
-def expandList( df, columnNames):
-                outDf = pd.DataFrame()
-                for col in columnNames:
-                        arr = pd.Series(np.array([j for i in df[col] for j in i]))
-                        outDf[col] = arr
-                return outDf
+# def expandList( df, columnNames):
+#                 outDf = pd.DataFrame()
+#                 for col in columnNames:
+#                         arr = pd.Series(np.array([j for i in df[col] for j in i]))
+#                         outDf[col] = arr
+#                 return outDf
+
+
+
+
+
 
 class DATA:
-
 
 	def __init__(self,fname,name):
 		self.name = name
 		self.treeName = 'Events'
 		self.fname = fname
-		tmp = root_numpy.root2array(self.fname,self.treeName)
-		data = pd.DataFrame(tmp)
-
-		pdgIds = [-999 if mu == -1 else data['GenPart_pdgId'][i][mu] for i, idxs in enumerate(data['Muon_genPartIdx']) for j, mu in enumerate(idxs)]
-		pdgIds = np.array(pdgIds)
-		data = data.drop([i for i, nMu in enumerate(data['nMuon']) if nMu == 0])
-		
-		muonMask = data.columns.str.contains('Muon_.*')
-		expCols = data.loc[:,muonMask].columns
+		# tmp = root_numpy.root2array(self.fname,self.treeName)
+		file = uproot.open(self.fname)
+		events = file[self.treeName]
+		# data = pd.DataFrame(tmp)
 		
 
-		data = expandList(data, expCols)
+		#### using uproot to chunk mu and gen data ####
+		# startTot = time.process_time()
+		pdgIds = np.array([])
+		memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6)] #read 1 MB at a time
+		for i in memChunks:
+			memStart = i[0]
+			memStop = i[1]
+			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
+			dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
+			# startChunk = time.process_time()
+			pdgIds = np.append(pdgIds,[-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
+			# stopChunk = time.process_time()
+			# print("chunk time",stopChunk-startChunk,"secs")
+
+		pdgIds = pdgIds.flatten()
+		# stopTot = time.process_time()
+		# print("total time",stopTot-startTot,"secs")
+		# print(pdgIds.shape)
+
+	
+		# pdgIds = [-999 if mu == -1 else genData['GenPart_pdgId'][i][mu] for i, idxs in enumerate(np.array(data['Muon_genPartIdx'])) for j, mu in enumerate(idxs)]
+		# pdgIds = np.array(pdgIds)
+		# data = data.drop([i for i, nMu in enumerate(data['nMuon']) if nMu == 0])
 		
+		# muonMask = data.columns.str.contains('Muon_.*')
+		# expCols = data.loc[:,muonMask].columns
+		
+# 
+		# data = expandList(data, expCols)
+		data = events.pandas.df('Muon_*')
 		data['Muon_genPdgId'] = pdgIds
+
+
 	
 		self.data1 = data[abs(data.Muon_genPdgId) == 13]
 		self.data2 = data[data.Muon_genPdgId == -999]
@@ -118,9 +148,10 @@ class DATA:
 		self.data4 = data[abs(data.Muon_genPdgId) == 211]
 		self.data5 = data[abs(data.Muon_genPdgId) == 321]
 		self.data6 = data[abs(data.Muon_genPdgId) == 2212]
+		
 
 		self.datacoll = {'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6}
-			
+		
 	
 	def __del__(self):
 		del self.data1
@@ -133,11 +164,12 @@ class DATA:
 	def report(self):
 		print("Report for data "+self.name)
 		print("mu", self.data1.shape)
-		print("unmathched", self.data2.shape)
+		print("unmatched", self.data2.shape)
 		print("elec", self.data3.shape)
 		print("pion", self.data4.shape)
 		print("kaon", self.data5.shape)
 		print("prot", self.data6.shape)
+		print("\n")
 
 
 
