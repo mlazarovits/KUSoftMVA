@@ -72,10 +72,8 @@ void viewTrainVars(){
 		}
 	
 		histQCD->SetTitle("QCD 2018");
-
 		leg->AddEntry(histQCD);
-		histQCD->SetLineColor(kGreen);
-		histQCD->Draw("same");
+	
 
 
 
@@ -109,10 +107,8 @@ void viewTrainVars(){
 		}
 	
 		histDY->SetTitle("DY+jets 2018");
-
 		leg->AddEntry(histDY);
-		histDY->SetLineColor(kRed);
-		histDY->Draw("same");
+	
 
 
 		// ttTree->Draw((trainVars[i]+">>histTT").c_str(),"","goff");
@@ -144,11 +140,21 @@ void viewTrainVars(){
 			}
 		}
 	
-		histTT->SetTitle("DY+jets 2018");
-
+		histTT->SetTitle("TTbar 2018");
 		leg->AddEntry(histTT);
-		histTT->SetLineColor(kRed);
+
+
+
+
+		histDY->SetLineColor(kRed);
+		histDY->Draw("same");
+
+
+		histTT->SetLineColor(kBlue);
 		histTT->Draw("same");
+
+		histQCD->SetLineColor(kGreen);
+		histQCD->Draw("same");
 
 
 
