@@ -30,14 +30,14 @@ void viewTrainVars(){
 	fTT->cd();
 	TTree* ttTree = (TTree*)fTT->Get("Events");
 
+	TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/unmatchedMuons2018.root").c_str();
+	TFile* oFile = new TFile(filename,"RECREATE");
+
 	
 
-	for(int i = 0; i < trainVars.size(); i++){
+	for(int i = 0; i < 2; i++){
 		cout << "Plotting " << trainVars[i] << endl;
 
-		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/unmatched_"+trainVars[i]+"2018.root").c_str();
-		TFile* oFile = new TFile(filename,"RECREATE");
-		
 
 		TCanvas* cv = new TCanvas("cv","cv",800,600);
 		TLegend* leg = new TLegend(0.55,0.4,0.75,0.6);
@@ -76,14 +76,6 @@ void viewTrainVars(){
 	
 
 
-
-		// dyTree->Draw((trainVars[i]+">>histDY").c_str(),"","goff");
-		// TH1F* histDY = (TH1F*)gDirectory->Get("histDY");
-		// histDY->SetTitle("DY+jets 2018");
-		// leg->AddEntry(histDY);
-		// histDY->SetLineColor(kRed);
-		// histDY->Draw("same");
-
 		dyTree->Draw((trainVars[i]+">>treehistDY").c_str(),"","goff");
 		TH1F* treehistDY = (TH1F*)gDirectory->Get("treehistDY");
 
@@ -109,14 +101,6 @@ void viewTrainVars(){
 		histDY->SetTitle("DY+jets 2018");
 		leg->AddEntry(histDY);
 	
-
-
-		// ttTree->Draw((trainVars[i]+">>histTT").c_str(),"","goff");
-		// TH1F* histTT = (TH1F*)gDirectory->Get("histTT");
-		// histTT->SetTitle("ttbar 2018");
-		// leg->AddEntry(histTT);
-		// histTT->SetLineColor(kBlue);
-		// histTT->Draw("same");
 
 		ttTree->Draw((trainVars[i]+">>treehistTT").c_str(),"","goff");
 		TH1F* treehistTT = (TH1F*)gDirectory->Get("treehistTT");
@@ -240,10 +224,10 @@ void viewTrainVars(){
 
 		oFile->cd();
 		cv->Write();
-		oFile->Close();
 		cv->Close();
 
 	}
+	oFile->Close();
 
 	
 	
