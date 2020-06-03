@@ -1,4 +1,5 @@
 #include <iostream>
+#include "TLatex.h"
 
 void viewPlots(string inVar){
 	string dypath="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root";
@@ -66,7 +67,30 @@ void viewPlots(string inVar){
 	histTT->Draw("same");
 	delete ttTree;
 
+	leg->SetTextFont(132);
+	leg->SetTextSize(0.03);
+	leg->SetFillColor(kWhite);
+	leg->SetLineColor(kWhite);
+	leg->SetShadowColor(kWhite);
+
 	leg->Draw("same");
+
+	TLatex l;
+	l.SetTextFont(132);
+	l.SetNDC();
+	l.SetTextSize(0.035);
+	l.SetTextFont(42);
+	l.SetTextSize(0.03);
+	l.SetTextFont(61);
+	l.DrawLatex(0.16,0.92,"CMS");
+	l.SetTextFont(52);
+	l.DrawLatex(0.21,0.92,"Preliminary");
+	l.SetTextFont(132);
+	l.SetNDC();
+	l.SetTextSize(0.05);
+	l.SetTextFont(132);
+	l.DrawLatex(0.40,0.92,inVar.c_str());
+	cv->Update();
 
 	oFile->cd();
 	cv->Write();
