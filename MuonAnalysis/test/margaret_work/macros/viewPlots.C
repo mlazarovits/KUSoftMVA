@@ -60,7 +60,7 @@ void viewPlots(string inVar){
 	TH1F* histTT = (TH1F*)gDirectory->Get("histTT");
 	leg->AddEntry(histTT);
 	histTT->SetLineColor(kBlue);
-	histTT->Draw();
+	histTT->Draw("same");
 	delete ttTree;
 
 	leg->Draw("same");
