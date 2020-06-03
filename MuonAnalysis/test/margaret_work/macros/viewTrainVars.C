@@ -39,7 +39,7 @@ void viewTrainVars(){
 	for(int i = 0; i < trainVars.size(); i++){
 		cout << "Plotting " << trainVars[i] << endl;
 
-		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/"+trainVar[i]+"2018.root").c_str();
+		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/"+trainVars[i]+"2018.root").c_str();
 		TFile* oFile = new TFile(filename,"RECREATE");
 
 		TCanvas* cv = new TCanvas("cv","cv",800,600);
