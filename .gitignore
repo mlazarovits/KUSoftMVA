@@ -7,3 +7,4 @@
 *.so
 *.csv
 MuonAnalysis/test/margaret_work/plots/*.pdf
+.DS_store
