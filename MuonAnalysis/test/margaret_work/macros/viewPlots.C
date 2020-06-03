@@ -28,13 +28,13 @@ void viewPlots(string inVar){
 
 	fDY->cd();
 	TTree* dyTree = (TTree*)fDY->Get("Events");
-	// dyTree->SetBranchStatus("*",0);
-	// dyTree->SetBranchAddress(inVar.c_str(),1);
-	dyTree->Draw((inVar+">>histDY").c_str());
-	// for(int i = 0; i < dyTree->GetEntries(); i++){
-	// 	dyTree->GetEntry(i);
-	// 	histDY->Fill();
-	// }
+	dyTree->SetBranchStatus("*",0);
+	dyTree->SetBranchStatus(inVar.c_str(),1);
+	// dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
+	for(int i = 0; i < dyTree->GetEntries(); i++){
+		dyTree->GetEntry(i);
+		histDY->Fill();
+	}
 	histDY->SetLineColor(kRed);
 	histDY->Draw();
 	leg->AddEntry(histDY);
