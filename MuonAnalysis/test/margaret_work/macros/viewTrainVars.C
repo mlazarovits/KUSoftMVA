@@ -35,8 +35,7 @@ void viewTrainVars(){
 	for(int i = 0; i < 2; i++){
 		cout << "Plotting " << trainVars[i] << endl;
 
-		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src
-			/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trueMuons"+trainVars[i]+"2018.root").c_str();
+		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trueMuons"+trainVars[i]+"2018.root").c_str();
 		TFile* oFile = new TFile(filename,"RECREATE");
 		
 
