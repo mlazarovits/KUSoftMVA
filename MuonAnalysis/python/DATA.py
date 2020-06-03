@@ -104,7 +104,7 @@ class DATA:
 		self.fname = fname
 		# tmp = root_numpy.root2array(self.fname,self.treeName)
 		file = uproot.open(self.fname)
-		events = file['Events']
+		events = file[self.treeName]
 		# data = pd.DataFrame(tmp)
 		
 
@@ -139,6 +139,8 @@ class DATA:
 		# data = expandList(data, expCols)
 		data = events.pandas.df('Muon_*')
 		data['Muon_genPdgId'] = pdgIds
+
+
 	
 		self.data1 = data[abs(data.Muon_genPdgId) == 13]
 		self.data2 = data[data.Muon_genPdgId == -999]
@@ -146,9 +148,11 @@ class DATA:
 		self.data4 = data[abs(data.Muon_genPdgId) == 211]
 		self.data5 = data[abs(data.Muon_genPdgId) == 321]
 		self.data6 = data[abs(data.Muon_genPdgId) == 2212]
+		print('here')
 
 		self.datacoll = {'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6}
-			
+		if self.data1:
+			print('yes!')
 	
 	def __del__(self):
 		del self.data1
