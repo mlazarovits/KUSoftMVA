@@ -55,8 +55,8 @@ void viewTrainVars(){
 		TH1F* histQCD = new TH1F("histQCD","histQCD",100,0,500);
 		qcdTree->SetBranchStatus("*",0);
 		qcdTree->SetBranchStatus(trainVars[i].c_str(),1);
-		for(int i = 0; i < qcdTree->GetEntries(); i++){
-			qcdTree->GetEntry(i);
+		for(int evt = 0; evt < qcdTree->GetEntries(); i++){
+			qcdTree->GetEntry(evt);
 			for(int mu = 0; mu < qcdTree->GetLeaf(trainVars[i].c_str())->GetNdata(); mu++){
 				float var = qcdTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				histQCD->Fill(var);
