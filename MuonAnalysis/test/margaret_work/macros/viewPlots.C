@@ -21,7 +21,7 @@ void viewPlots(string inVar){
 	cv->SetGridx();
 	cv->SetGridy();
 
-	TH1F* histDY = new TH1F();
+	TH1F* histDY = new TH1F("histDY","histDY",100,0,90);
 	TH1F* histQCD = new TH1F();
 	TH1F* histTT = new TH1F();
 
@@ -29,12 +29,12 @@ void viewPlots(string inVar){
 	fDY->cd();
 	TTree* dyTree = (TTree*)fDY->Get("Events");
 	dyTree->SetBranchAddress("*",0);
-	dyTree->SetBranchAddress(inVar,0);
-	// dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
-	for(int i = 0; i < dyTree->GetEntries(); i++){
-		dyTree->GetEntry(i);
-		histDY->Fill();
-	}
+	dyTree->SetBranchAddress(inVar.c_str(),0);
+	dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
+	// for(int i = 0; i < dyTree->GetEntries(); i++){
+	// 	dyTree->GetEntry(i);
+	// 	histDY->Fill();
+	// }
 	histDY->SetLineColor(kRed);
 	histDY->Draw();
 	leg->AddEntry(histDY);
