@@ -46,13 +46,21 @@ void viewTrainVars(){
 		TCanvas* cv = new TCanvas("cv","cv",800,600);
 		TLegend* leg = new TLegend(0.55,0.4,0.75,0.6);
 
+		cout << "a1" << endl;
+
 		cv->SetGridx();
 		cv->SetGridy();
 		// cv->SetLogy();
 
+		cout << "a2" << endl;
+
 		qcdTree->SetBranchStatus("*",0);
+		cout << "a3" << endl;
 		dyTree->SetBranchStatus("*",0);
+		cout << "a4" << endl;
 		ttTree->SetBranchStatus("*",0);
+
+		cout << "a5" << endl;
 
 		cout << "b" << endl;
 
