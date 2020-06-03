@@ -20,7 +20,7 @@ from plotFunctions import plotEfficiency, plotROCcurves
 
 
 
-def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results ):
+def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 
 	# print(model_y)
 	#translate model prediction probabilities to onehot
@@ -198,7 +198,7 @@ class NN:
 		self.predictions = self.model.predict(x_test)	
 	#	self.predictions = self.model.predict(x_train)
 		
-		evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, self.nClasses, self.mdict, self.results )			
+		evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, self.nClasses, self.results )			
 
 
 

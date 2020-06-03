@@ -164,7 +164,7 @@ class DATA:
 	def report(self):
 		print("Report for data "+self.name)
 		print("mu", self.data1.shape)
-		print("unmathched", self.data2.shape)
+		print("unmatched", self.data2.shape)
 		print("elec", self.data3.shape)
 		print("pion", self.data4.shape)
 		print("kaon", self.data5.shape)
