@@ -28,8 +28,8 @@ void viewPlots(string inVar){
 
 	fDY->cd();
 	TTree* dyTree = (TTree*)fDY->Get("Events");
-	dyTree->SetBranchAddress("*",0);
-	dyTree->SetBranchAddress(inVar.c_str(),0);
+	// dyTree->SetBranchAddress("*",0);
+	// dyTree->SetBranchAddress(inVar.c_str(),0);
 	dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
 	// for(int i = 0; i < dyTree->GetEntries(); i++){
 	// 	dyTree->GetEntry(i);
