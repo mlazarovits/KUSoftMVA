@@ -96,8 +96,8 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 		if(fden_ctr[x] != 0):
 			tempfden = fden_ctr[x]
 		print("label "+str(x)+":")
-		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(perc))
-		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(fperc))
+		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(num_ctr[x]/tempden))
+		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(num_ctr[x]/tempfden))
 
 	print("Overall performance: ")
 	# print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))

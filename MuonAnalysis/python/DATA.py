@@ -169,6 +169,7 @@ class DATA:
 		print("pion", self.data4.shape)
 		print("kaon", self.data5.shape)
 		print("prot", self.data6.shape)
+		print("\n")
 
 
 
