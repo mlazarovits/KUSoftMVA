@@ -54,7 +54,7 @@ void viewTrainVars(){
 		TH1F* treehistQCD = (TH1F*)gDirectory->Get("histQCD");
 
 		TH1F* histQCD = new TH1F("histQCD","histQCD",treehistQCD->GetNbinsX(),treehistQCD->GetXaxis()->GetXmin(),treehistQCD->GetXaxis()->GetXmax());
-		delete treehistQCD;
+		// delete treehistQCD;
 		// qcdTree->SetBranchStatus("*",0);
 		// qcdTree->SetBranchStatus(trainVars[i].c_str(),1);
 		for(int evt = 0; evt < qcdTree->GetEntries(); evt++){
