@@ -30,7 +30,7 @@ void viewTrainVars(){
 	fTT->cd();
 	TTree* ttTree = (TTree*)fTT->Get("Events");
 
-	TString filename = "/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/trueMuons2018.root";
+	TString filename = "/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/unmatchedMuons2018.root";
 	TFile* oFile = new TFile(filename,"RECREATE");
 
 	
@@ -62,9 +62,9 @@ void viewTrainVars(){
 			for(int mu = 0; mu < nMus; mu++){
 				float var = qcdTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				int genIdx = qcdTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
-				int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+				// int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 
-				if(abs(genPdgId) != 13) continue;
+				if(genIdx != -1) continue;
 				histQCD->Fill(var);
 			}
 		}
@@ -88,9 +88,9 @@ void viewTrainVars(){
 			for(int mu = 0; mu < nMus; mu++){
 				float var = dyTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				int genIdx = dyTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
-				int genPdgId = dyTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+				// int genPdgId = dyTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 
-				if(abs(genPdgId) != 13) continue;
+				if(genIdx != -1) continue;
 
 				histDY->Fill(var);
 			}
@@ -114,9 +114,9 @@ void viewTrainVars(){
 			for(int mu = 0; mu < nMus; mu++){
 				float var = ttTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				int genIdx = ttTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
-				int genPdgId = ttTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+				// int genPdgId = ttTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 
-				if(abs(genPdgId) != 13) continue;
+				if(genIdx != -1) continue;
 
 				histTT->Fill(var);
 			}
@@ -148,10 +148,10 @@ void viewTrainVars(){
 
 
 		else if(histDY->GetMaximum() > histTT->GetMaximum() && histDY->GetMaximum() > histQCD->GetMaximum()){
-			histDY->SetLineColor(kBlue);
+			histDY->SetLineColor(kRed);
 			histDY->Draw("same");
 			if(histTT->GetMaximum() > histQCD->GetMaximum()){
-				histTT->SetLineColor(kRed);
+				histTT->SetLineColor(kBlue);
 				histTT->Draw("same");
 
 
@@ -162,24 +162,24 @@ void viewTrainVars(){
 				histQCD->SetLineColor(kGreen);
 				histQCD->Draw("same");
 
-				histTT->SetLineColor(kRed);
+				histTT->SetLineColor(kBlue);
 				histTT->Draw("same");
 			}
 		}
 
 		else if(histQCD->GetMaximum() > histDY->GetMaximum() && histQCD->GetMaximum() > histTT->GetMaximum()){
-			histQCD->SetLineColor(kBlue);
+			histQCD->SetLineColor(kGreen);
 			histQCD->Draw("same");
 			if(histDY->GetMaximum() > histTT->GetMaximum()){
 				histDY->SetLineColor(kRed);
 				histDY->Draw("same");
 
 
-				histTT->SetLineColor(kGreen);
+				histTT->SetLineColor(kBlue);
 				histTT->Draw("same");
 			}
 			else{
-				histTT->SetLineColor(kGreen);
+				histTT->SetLineColor(kBlue);
 				histTT->Draw("same");
 
 				histDY->SetLineColor(kRed);
