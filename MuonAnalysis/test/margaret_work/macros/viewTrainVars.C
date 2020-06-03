@@ -30,9 +30,9 @@ void viewTrainVars(){
 	fTT->cd();
 	TTree* ttTree = (TTree*)fTT->Get("Events");
 
-	fQCD->close();
-	fDY->close();
-	fTT->cd();
+	fQCD->Close();
+	fDY->Close();
+	fTT->Close();
 
 	
 
@@ -57,21 +57,21 @@ void viewTrainVars(){
 		dyTree->SetBranchStatus(trainVars[i].c_str(),1);
 		ttTree->SetBranchStatus(trainVars[i].c_str(),1);
 
-		qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
+		qcdTree->Draw((trainVars[i]+">>histQCD").c_str(),"","goff");
 		TH1F* histQCD = (TH1F*)gDirectory->Get("histQCD");
 		histQCD->SetTitle("QCD 2018");
 		leg->AddEntry(histQCD);
 		histQCD->SetLineColor(kGreen);
 		histQCD->Draw("same");
 
-		dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
+		dyTree->Draw((trainVars[i]+">>histDY").c_str(),"","goff");
 		TH1F* histDY = (TH1F*)gDirectory->Get("histDY");
 		histDY->SetTitle("DY+jets 2018");
 		leg->AddEntry(histDY);
 		histDY->SetLineColor(kRed);
 		histDY->Draw("same");
 
-		ttTree->Draw((inVar+">>histTT").c_str(),"","goff");
+		ttTree->Draw((trainVars[i]+">>histTT").c_str(),"","goff");
 		TH1F* histTT = (TH1F*)gDirectory->Get("histTT");
 		histTT->SetTitle("ttbar 2018");
 		leg->AddEntry(histTT);
@@ -105,15 +105,13 @@ void viewTrainVars(){
 
 		oFile->cd();
 		cv->Write();
-		oFile->close();
+		oFile->Close();
 		delete cv;
 		delete leg;
 
 		delete histQCD;
 		delete histDY;
 		delete histTT;
-		delete l;
-
 	}
 
 	
