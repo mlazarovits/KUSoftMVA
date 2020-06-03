@@ -57,16 +57,22 @@ void viewTrainVars(){
 		// qcdTree->SetBranchStatus(trainVars[i].c_str(),1);
 		for(int evt = 0; evt < qcdTree->GetEntries(); i++){
 			qcdTree->GetEntry(evt);
+			cout << "evt: " << evt << endl;
 			int nMus = qcdTree->GetLeaf(trainVars[i].c_str())->GetNdata();
+			cout << "a" << endl;
 			for(int mu = 0; mu < nMus; mu++){
 				float var = qcdTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
+				cout << "mu: " << mu << endl;
 				histQCD->Fill(var);
 			}
 		}
+		cout << "b" << endl;
 		histQCD->SetTitle("QCD 2018");
+		cout << "c" << endl;
 		leg->AddEntry(histQCD);
 		histQCD->SetLineColor(kGreen);
 		histQCD->Draw("same");
+		cout << "d" << endl;
 
 
 		// dyTree->Draw((trainVars[i]+">>histDY").c_str(),"","goff");
