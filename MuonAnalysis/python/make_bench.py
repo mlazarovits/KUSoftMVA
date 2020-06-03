@@ -26,7 +26,7 @@ def benchmark_sample(  x, y, pt, mdict, name ):
 	#we can always only do 2 class with bench
 	#evaluate for soft
 	passIdsoft = max(x[:,-2])
-	print(passIdsoft)
+	print("passIdsoft",passIdsoft)
 	#construct  x prediction
 	soft = [[]]
 	[soft.append(p) if val == passIdsoft else soft.append(f) for val in x[:,-2] ]
@@ -48,7 +48,7 @@ def benchmark_sample(  x, y, pt, mdict, name ):
 
 
 	passIdmva = max(x[:,-1])
-	print(passIdmva)
+	print("passIdmva",passIdmva)
 	softmva = [[]]
 	if(math.isnan(passIdmva)):
 		[	softmva.append(f) for val in x[:,-1] ]

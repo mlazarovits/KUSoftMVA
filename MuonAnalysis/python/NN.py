@@ -118,7 +118,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 #	c1 = TCanvas()
 #	goodEff[0].Draw()
 	
-
+	#make new outFile directory
 	outfile = TFile("./eval_results/"+fname+"_"+tag+".root","RECREATE")
 	[ outfile.WriteTObject(x) for x in h_num ]
 	[ outfile.WriteTObject(x) for x in h_fnum]
