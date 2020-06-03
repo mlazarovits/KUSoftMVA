@@ -34,7 +34,7 @@ void viewPlots(string inVar){
 	// dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
 	for(int i = 0; i < dyTree->GetEntries(); i++){
 		dyTree->GetEntry(i);
-		for(int mu = 0; mu < dyTree->GetLeaf(inVar.c_str())->GetNdata(); mu++)
+		for(int mu = 0; mu < dyTree->GetLeaf(inVar.c_str())->GetNdata(); mu++){
 			float var = dyTree->GetLeaf(inVar.c_str())->GetValue(mu);
 			histDY->Fill(var);
 		}
