@@ -30,9 +30,9 @@ void viewTrainVars(){
 	fTT->cd();
 	TTree* ttTree = (TTree*)fTT->Get("Events");
 
-	fQCD->Close();
-	fDY->Close();
-	fTT->Close();
+	// fQCD->Close();
+	// fDY->Close();
+	// fTT->Close();
 
 	
 
