@@ -35,7 +35,7 @@ void viewTrainVars(){
 
 	
 	// do plots over all samples, broken down by generator pdg id
-	TH1F* histQCD;
+	
 	for(int i = 0; i < trainVars.size(); i++){
 		cout << "Plotting " << trainVars[i] << endl;
 
@@ -51,7 +51,7 @@ void viewTrainVars(){
 		qcdTree->Draw((trainVars[i]+">>treehistQCD").c_str(),"","goff");
 		TH1F* treehistQCD = (TH1F*)gDirectory->Get("treehistQCD");
 
-		histQCD = new TH1F("histQCD","histQCD",treehistQCD->GetNbinsX(),treehistQCD->GetXaxis()->GetXmin(),treehistQCD->GetXaxis()->GetXmax());
+		TH1F* histQCD = new TH1F("histQCD","histQCD",treehistQCD->GetNbinsX(),treehistQCD->GetXaxis()->GetXmin(),treehistQCD->GetXaxis()->GetXmax());
 		delete treehistQCD;
 	
 		for(int evt = 0; evt < qcdTree->GetEntries(); evt++){
