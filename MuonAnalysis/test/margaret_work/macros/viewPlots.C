@@ -44,24 +44,38 @@ void viewPlots(string inVar){
 	leg->AddEntry(histDY);
 	delete dyTree;
 
-	// fQCD->cd();
-	// TTree* qcdTree = (TTree*)fQCD->Get("Events");
-	// qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
-	// histQCD->SetLineColor(kBlue);
-	// histQCD->Draw("same");
-	// leg->AddEntry(histQCD);
-	// delete qcdTree;
+	fQCD->cd();
+	TTree* qcdTree = (TTree*)fQCD->Get("Events");
+	qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
+	for(int i = 0; i < qcdTree->GetEntries(); i++){
+		qcdTree->GetEntry(i);
+		for(int mu = 0; mu < qcdTree->GetLeaf(inVar.c_str())->GetNdata(); mu++){
+			float var = qcdTree->GetLeaf(inVar.c_str())->GetValue(mu);
+			histQCD->Fill(var);
+		}
+	}
+	histQCD->SetLineColor(kBlue);
+	histQCD->Draw("same");
+	leg->AddEntry(histQCD);
+	delete qcdTree;
 
 
-	// fTT->cd();
-	// TTree* ttTree = (TTree*)fTT->Get("Events");
+	fTT->cd();
+	TTree* ttTree = (TTree*)fTT->Get("Events");
 	// ttTree->Draw((inVar+">>histTT").c_str(),"","goff");
-	// histTT->SetLineColor(kGreen);
-	// histTT->Draw("same");
-	// leg->AddEntry(histTT);
-	// delete ttTree;
+	for(int i = 0; i < ttTree->GetEntries(); i++){
+		ttTree->GetEntry(i);
+		for(int mu = 0; mu < ttTree->GetLeaf(inVar.c_str())->GetNdata(); mu++){
+			float var = ttTree->GetLeaf(inVar.c_str())->GetValue(mu);
+			histTT->Fill(var);
+		}
+	}
+	histTT->SetLineColor(kGreen);
+	histTT->Draw("same");
+	leg->AddEntry(histTT);
+	delete ttTree;
 
-	// leg->Draw("same");
+	leg->Draw("same");
 
 	oFile->cd();
 	cv->Write();
