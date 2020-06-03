@@ -54,19 +54,19 @@ void viewTrainVars(){
 
 		cout << "a2" << endl;
 
-		qcdTree->SetBranchStatus("*",0);
-		cout << "a3" << endl;
-		dyTree->SetBranchStatus("*",0);
-		cout << "a4" << endl;
-		ttTree->SetBranchStatus("*",0);
+		// qcdTree->SetBranchStatus("*",0);
+		// cout << "a3" << endl;
+		// dyTree->SetBranchStatus("*",0);
+		// cout << "a4" << endl;
+		// ttTree->SetBranchStatus("*",0);
 
-		cout << "a5" << endl;
+		// cout << "a5" << endl;
 
-		cout << "b" << endl;
+		// cout << "b" << endl;
 
-		qcdTree->SetBranchStatus(trainVars[i].c_str(),1);
-		dyTree->SetBranchStatus(trainVars[i].c_str(),1);
-		ttTree->SetBranchStatus(trainVars[i].c_str(),1);
+		// qcdTree->SetBranchStatus(trainVars[i].c_str(),1);
+		// dyTree->SetBranchStatus(trainVars[i].c_str(),1);
+		// ttTree->SetBranchStatus(trainVars[i].c_str(),1);
 
 		cout << "c" << endl;
 
