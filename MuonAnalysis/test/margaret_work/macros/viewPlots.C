@@ -46,7 +46,7 @@ void viewPlots(string inVar){
 
 	fQCD->cd();
 	TTree* qcdTree = (TTree*)fQCD->Get("Events");
-	qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
+	// qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
 	for(int i = 0; i < qcdTree->GetEntries(); i++){
 		qcdTree->GetEntry(i);
 		for(int mu = 0; mu < qcdTree->GetLeaf(inVar.c_str())->GetNdata(); mu++){
