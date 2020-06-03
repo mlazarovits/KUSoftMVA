@@ -3,9 +3,9 @@
 void viewPlots(string inVar){
 	string dypath="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root";
 	
-	string qcdpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root';
+	string qcdpath="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root";
 	
-	string ttpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root';
+	string ttpath="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root";
 
 	TFile* fDY = TFile::Open(dypath.c_str());
 	TFile* fQCD = TFile::Open(qcdpath.c_str());
@@ -20,6 +20,8 @@ void viewPlots(string inVar){
 
 	cv->SetGridx();
 	cv->SetGridy();
+
+	TH1F* histDY;
 
 
 	fDY->cd();
