@@ -46,6 +46,8 @@ void viewPlots(string inVar){
 
 	fQCD->cd();
 	TTree* qcdTree = (TTree*)fQCD->Get("Events");
+	qcdTree->SetBranchStatus("*",0);
+	qcdTree->SetBranchStatus(inVar.c_str(),1);
 	// qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
 	for(int i = 0; i < qcdTree->GetEntries(); i++){
 		qcdTree->GetEntry(i);
@@ -62,6 +64,8 @@ void viewPlots(string inVar){
 
 	fTT->cd();
 	TTree* ttTree = (TTree*)fTT->Get("Events");
+	ttTree->SetBranchStatus("*",0);
+	ttTree->SetBranchStatus(inVar.c_str(),1);
 	// ttTree->Draw((inVar+">>histTT").c_str(),"","goff");
 	for(int i = 0; i < ttTree->GetEntries(); i++){
 		ttTree->GetEntry(i);
