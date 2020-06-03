@@ -32,7 +32,8 @@ void viewPlots(string inVar){
 	dyTree->SetBranchStatus("*",0);
 	dyTree->SetBranchStatus(inVar.c_str(),1);
 
-	dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
+	dyTree->Draw((inVar+">>histDY").c_str());
+	TH1F* histDY = (TH1F*)gDirectory->Get("histDY");
 	// for(int i = 0; i < dyTree->GetEntries(); i++){
 	// 	dyTree->GetEntry(i);
 	// 	for(int mu = 0; mu < dyTree->GetLeaf(inVar.c_str())->GetNdata(); mu++){
