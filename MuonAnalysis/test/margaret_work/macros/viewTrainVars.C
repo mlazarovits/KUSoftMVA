@@ -32,7 +32,7 @@ void viewTrainVars(){
 
 	
 
-	for(int i = 0; i < 2; i++){
+	for(int i = 0; i < trainVars.size(); i++){
 		cout << "Plotting " << trainVars[i] << endl;
 
 		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trueMuons_"+trainVars[i]+"2018.root").c_str();
