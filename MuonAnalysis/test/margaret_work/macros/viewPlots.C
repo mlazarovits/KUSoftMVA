@@ -23,27 +23,33 @@ void viewPlots(string inVar){
 
 
 	fDY->cd();
-	Events->Draw((inVar+">>histDY").c_str(),"","goff");
+	TTree* dyTree = (TTree*)fDY->Get("Events");
+	dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
 	histDY->SetLineColor(kRed);
 	histDY->Draw();
 	leg->AddEntry(histDY);
+	delete dyTree;
 
 	fQCD->cd();
-	Events->Draw((inVar+">>histQCD").c_str(),"","goff");
+	TTree* qcdTree = (TTree*)fQCD->Get("Events");
+	qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
 	histQCD->SetLineColor(kBlue);
 	histQCD->Draw("same");
 	leg->AddEntry(histQCD);
+	delete qcdTree;
 
 
 	fTT->cd();
-	Events->Draw((inVar+">>histTT").c_str(),"","goff");
+	TTree* ttTree = (TTree*)fTT->Get("Events");
+	ttTree->Draw((inVar+">>histTT").c_str(),"","goff");
 	histTT->SetLineColor(kGreen);
 	histTT->Draw("same");
 	leg->AddEntry(histTT);
+	delete ttTree;
 
-	leg->Draw("same"):
+	leg->Draw("same");
 
-	file->cd();
+	oFile->cd();
 	cv->Write();
 
 
