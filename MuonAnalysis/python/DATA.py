@@ -109,7 +109,7 @@ class DATA:
 		
 
 		#### using uproot to chunk mu and gen data ####
-		startTot = time.process_time()
+		# startTot = time.process_time()
 		pdgIds = np.array([])
 		memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6)] #read 1 MB at a time
 		for i in memChunks:
