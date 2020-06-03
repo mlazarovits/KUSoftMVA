@@ -22,7 +22,17 @@ void viewPlots(string inVar){
 	cv->SetGridy();
 	cv->SetLogy();
 
+	fQCD->cd();
+	TTree* qcdTree = (TTree*)fQCD->Get("Events");
+	qcdTree->SetBranchStatus("*",0);
+	qcdTree->SetBranchStatus(inVar.c_str(),1);
 	
+	qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
+	TH1F* histQCD = (TH1F*)gDirectory->Get("histQCD");
+	leg->AddEntry(histQCD);
+	histQCD->SetLineColor(kGreen);
+	histQCD->Draw("same");
+	delete qcdTree;
 
 
 	fDY->cd();
@@ -37,17 +47,7 @@ void viewPlots(string inVar){
 	histDY->Draw("same");
 	delete dyTree;
 
-	fQCD->cd();
-	TTree* qcdTree = (TTree*)fQCD->Get("Events");
-	qcdTree->SetBranchStatus("*",0);
-	qcdTree->SetBranchStatus(inVar.c_str(),1);
 	
-	qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
-	TH1F* histQCD = (TH1F*)gDirectory->Get("histQCD");
-	leg->AddEntry(histQCD);
-	histQCD->SetLineColor(kGreen);
-	histQCD->Draw("same");
-	delete qcdTree;
 	
 
 
