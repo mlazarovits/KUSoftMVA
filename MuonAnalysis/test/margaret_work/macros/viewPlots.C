@@ -22,9 +22,7 @@ void viewPlots(string inVar){
 	cv->SetGridy();
 	cv->SetLogy();
 
-	// TH1F* histDY = new TH1F("histDY","histDY",100,0,90);
-	TH1F* histQCD = new TH1F("histQCD","histQCD",100,0,90);
-	TH1F* histTT = new TH1F("histTT","histTT",100,0,90);
+	
 
 
 	fDY->cd();
@@ -32,56 +30,38 @@ void viewPlots(string inVar){
 	dyTree->SetBranchStatus("*",0);
 	dyTree->SetBranchStatus(inVar.c_str(),1);
 
-	dyTree->Draw((inVar+">>histDY").c_str());
+	dyTree->Draw((inVar+">>histDY").c_str(),"","goff");
 	TH1F* histDY = (TH1F*)gDirectory->Get("histDY");
-	// for(int i = 0; i < dyTree->GetEntries(); i++){
-	// 	dyTree->GetEntry(i);
-	// 	for(int mu = 0; mu < dyTree->GetLeaf(inVar.c_str())->GetNdata(); mu++){
-	// 		float var = dyTree->GetLeaf(inVar.c_str())->GetValue(mu);
-	// 		histDY->Fill(var);
-	// 	}
-	// }
-	
-	// histDY->Draw();
 	leg->AddEntry(histDY);
 	histDY->SetLineColor(kRed);
 	histDY->Draw();
-	// delete dyTree;
+	delete dyTree;
 
-	// fQCD->cd();
-	// TTree* qcdTree = (TTree*)fQCD->Get("Events");
-	// qcdTree->SetBranchStatus("*",0);
-	// qcdTree->SetBranchStatus(inVar.c_str(),1);
-	// // qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
-	// for(int i = 0; i < qcdTree->GetEntries(); i++){
-	// 	qcdTree->GetEntry(i);
-	// 	for(int mu = 0; mu < qcdTree->GetLeaf(inVar.c_str())->GetNdata(); mu++){
-	// 		float var = qcdTree->GetLeaf(inVar.c_str())->GetValue(mu);
-	// 		histQCD->Fill(var);
-	// 	}
-	// }
-	// histQCD->SetLineColor(kBlue);
-	// histQCD->Draw("same");
-	// leg->AddEntry(histQCD);
-	// delete qcdTree;
+	fQCD->cd();
+	TTree* qcdTree = (TTree*)fQCD->Get("Events");
+	qcdTree->SetBranchStatus("*",0);
+	qcdTree->SetBranchStatus(inVar.c_str(),1);
+	
+	qcdTree->Draw((inVar+">>histQCD").c_str(),"","goff");
+	TH1F* histQCD = (TH1F*)gDirectory->Get("histQCD");
+	leg->AddEntry(histQCD);
+	histQCD->SetLineColor(kGreen);
+	histQCD->Draw();
+	delete qcdTree;
+	
 
 
-	// fTT->cd();
-	// TTree* ttTree = (TTree*)fTT->Get("Events");
-	// ttTree->SetBranchStatus("*",0);
-	// ttTree->SetBranchStatus(inVar.c_str(),1);
-	// // ttTree->Draw((inVar+">>histTT").c_str(),"","goff");
-	// for(int i = 0; i < ttTree->GetEntries(); i++){
-	// 	ttTree->GetEntry(i);
-	// 	for(int mu = 0; mu < ttTree->GetLeaf(inVar.c_str())->GetNdata(); mu++){
-	// 		float var = ttTree->GetLeaf(inVar.c_str())->GetValue(mu);
-	// 		histTT->Fill(var);
-	// 	}
-	// }
-	// histTT->SetLineColor(kGreen);
-	// histTT->Draw("same");
-	// leg->AddEntry(histTT);
-	// delete ttTree;
+	fTT->cd();
+	TTree* ttTree = (TTree*)fTT->Get("Events");
+	ttTree->SetBranchStatus("*",0);
+	ttTree->SetBranchStatus(inVar.c_str(),1);
+	
+	ttTree->Draw((inVar+">>histTT").c_str(),"","goff");
+	TH1F* histTT = (TH1F*)gDirectory->Get("histTT");
+	leg->AddEntry(histTT);
+	histTT->SetLineColor(kBlue);
+	histTT->Draw();
+	delete ttTree;
 
 	leg->Draw("same");
 
