@@ -22,7 +22,7 @@ void viewPlots(string inVar){
 	cv->SetGridy();
 	cv->SetLogy();
 
-	TH1F* histDY = new TH1F("histDY","histDY",100,0,90);
+	// TH1F* histDY = new TH1F("histDY","histDY",100,0,90);
 	TH1F* histQCD = new TH1F("histQCD","histQCD",100,0,90);
 	TH1F* histTT = new TH1F("histTT","histTT",100,0,90);
 
