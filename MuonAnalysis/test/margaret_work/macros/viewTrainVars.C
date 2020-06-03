@@ -41,18 +41,18 @@ void viewTrainVars(){
 
 		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/"+trainVars[i]+"2018.root").c_str();
 		TFile* oFile = new TFile(filename,"RECREATE");
-		cout << "a" << endl;
+		// cout << "a" << endl;
 
 		TCanvas* cv = new TCanvas("cv","cv",800,600);
 		TLegend* leg = new TLegend(0.55,0.4,0.75,0.6);
 
-		cout << "a1" << endl;
+		// cout << "a1" << endl;
 
 		cv->SetGridx();
 		cv->SetGridy();
 		// cv->SetLogy();
 
-		cout << "a2" << endl;
+		// cout << "a2" << endl;
 
 		// qcdTree->SetBranchStatus("*",0);
 		// cout << "a3" << endl;
@@ -68,19 +68,19 @@ void viewTrainVars(){
 		// dyTree->SetBranchStatus(trainVars[i].c_str(),1);
 		// ttTree->SetBranchStatus(trainVars[i].c_str(),1);
 
-		cout << "c" << endl;
+		// cout << "c" << endl;
 
 		qcdTree->Draw((trainVars[i]+">>histQCD").c_str(),"","goff");
-		cout << "c1" << endl;
+		// cout << "c1" << endl;
 		TH1F* histQCD = (TH1F*)gDirectory->Get("histQCD");
-		cout << "c2" << endl;
+		// cout << "c2" << endl;
 		histQCD->SetTitle("QCD 2018");
-		cout << "c3" << endl;
+		// cout << "c3" << endl;
 		leg->AddEntry(histQCD);
 		histQCD->SetLineColor(kGreen);
 		histQCD->Draw("same");
 
-		cout << "d" << endl;
+		// cout << "d" << endl;
 
 		dyTree->Draw((trainVars[i]+">>histDY").c_str(),"","goff");
 		TH1F* histDY = (TH1F*)gDirectory->Get("histDY");
@@ -89,7 +89,7 @@ void viewTrainVars(){
 		histDY->SetLineColor(kRed);
 		histDY->Draw("same");
 
-		cout << "e" << endl;
+		// cout << "e" << endl;
 
 		ttTree->Draw((trainVars[i]+">>histTT").c_str(),"","goff");
 		TH1F* histTT = (TH1F*)gDirectory->Get("histTT");
@@ -98,7 +98,7 @@ void viewTrainVars(){
 		histTT->SetLineColor(kBlue);
 		histTT->Draw("same");
 
-		cout << "e" << endl;
+		// cout << "e" << endl;
 
 		leg->SetTextFont(132);
 		leg->SetTextSize(0.03);
@@ -106,7 +106,7 @@ void viewTrainVars(){
 		leg->SetLineColor(kWhite);
 		leg->SetShadowColor(kWhite);
 
-		cout << "f" << endl;
+		// cout << "f" << endl;
 
 		leg->Draw("same");
 
@@ -127,7 +127,7 @@ void viewTrainVars(){
 		l.DrawLatex(0.40,0.92,trainVars[i].c_str());
 		cv->Update();
 
-		cout << "g" << endl;
+		// cout << "g" << endl;
 
 		oFile->cd();
 		cv->Write();
