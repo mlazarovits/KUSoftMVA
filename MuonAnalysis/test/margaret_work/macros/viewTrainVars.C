@@ -132,16 +132,17 @@ void viewTrainVars(){
 		oFile->cd();
 		cv->Write();
 		oFile->Close();
+		cv->Close();
 
-		cout << "h" << endl;
-		delete cv;
-		delete leg;
+		// cout << "h" << endl;
+		// delete cv;
+		// delete leg;
 
-		delete histQCD;
-		delete histDY;
-		delete histTT;
+		// delete histQCD;
+		// delete histDY;
+		// delete histTT;
 
-		cout << "i" << endl;
+		// cout << "i" << endl;
 	}
 
 	
