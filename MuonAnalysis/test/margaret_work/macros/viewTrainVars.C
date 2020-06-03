@@ -57,12 +57,12 @@ void viewTrainVars(){
 		// qcdTree->SetBranchStatus(trainVars[i].c_str(),1);
 		for(int evt = 0; evt < qcdTree->GetEntries(); evt++){
 			qcdTree->GetEntry(evt);
-			cout << "evt: " << evt << endl;
+			// cout << "evt: " << evt << endl;
 			int nMus = qcdTree->GetLeaf(trainVars[i].c_str())->GetNdata();
-			cout << "a" << endl;
+			// cout << "a" << endl;
 			for(int mu = 0; mu < nMus; mu++){
 				float var = qcdTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
-				cout << "mu: " << mu << endl;
+				// cout << "mu: " << mu << endl;
 				histQCD->Fill(var);
 			}
 		}
