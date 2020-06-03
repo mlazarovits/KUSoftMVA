@@ -21,7 +21,7 @@ void viewPlots(string inVar){
 	cv->SetGridx();
 	cv->SetGridy();
 	cv->SetLogy();
-	gStyle->SetOptStats(0);
+	gStyle->SetOptStat(0);
 
 	fQCD->cd();
 	TTree* qcdTree = (TTree*)fQCD->Get("Events");
