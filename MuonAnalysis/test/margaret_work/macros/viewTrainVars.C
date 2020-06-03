@@ -34,12 +34,12 @@ void viewTrainVars(){
 	TFile* oFile = new TFile(filename,"RECREATE");
 
 	
-
-	for(int i = 0; i < 2; i++){
+	// do plots over all samples, broken down by generator pdg id
+	TH1F* histQCD;
+	for(int i = 0; i < trainVars.size(); i++){
 		cout << "Plotting " << trainVars[i] << endl;
 
-
-		TCanvas* cv = new TCanvas("cv","cv",800,600);
+		TCanvas* cv = new TCanvas(trainVars[i].c_str(),trainVars[i].c_str(),800,600);
 		TLegend* leg = new TLegend(0.55,0.4,0.75,0.6);
 
 
@@ -48,12 +48,10 @@ void viewTrainVars(){
 		cv->SetLogy();
 
 
-
-
 		qcdTree->Draw((trainVars[i]+">>treehistQCD").c_str(),"","goff");
 		TH1F* treehistQCD = (TH1F*)gDirectory->Get("treehistQCD");
 
-		TH1F* histQCD = new TH1F("histQCD","histQCD",treehistQCD->GetNbinsX(),treehistQCD->GetXaxis()->GetXmin(),treehistQCD->GetXaxis()->GetXmax());
+		histQCD = new TH1F("histQCD","histQCD",treehistQCD->GetNbinsX(),treehistQCD->GetXaxis()->GetXmin(),treehistQCD->GetXaxis()->GetXmax());
 		delete treehistQCD;
 	
 		for(int evt = 0; evt < qcdTree->GetEntries(); evt++){
@@ -225,6 +223,10 @@ void viewTrainVars(){
 		oFile->cd();
 		cv->Write();
 		cv->Close();
+
+		delete histQCD;
+		delete histDY;
+		delete histTT;
 
 	}
 	oFile->Close();
