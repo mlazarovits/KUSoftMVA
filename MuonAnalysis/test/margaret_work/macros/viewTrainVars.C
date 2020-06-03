@@ -41,6 +41,7 @@ void viewTrainVars(){
 
 		TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/"+trainVars[i]+"2018.root").c_str();
 		TFile* oFile = new TFile(filename,"RECREATE");
+		cout << "a" << endl;
 
 		TCanvas* cv = new TCanvas("cv","cv",800,600);
 		TLegend* leg = new TLegend(0.55,0.4,0.75,0.6);
@@ -53,9 +54,13 @@ void viewTrainVars(){
 		dyTree->SetBranchStatus("*",0);
 		ttTree->SetBranchStatus("*",0);
 
+		cout << "b" << endl;
+
 		qcdTree->SetBranchStatus(trainVars[i].c_str(),1);
 		dyTree->SetBranchStatus(trainVars[i].c_str(),1);
 		ttTree->SetBranchStatus(trainVars[i].c_str(),1);
+
+		cout << "c" << endl;
 
 		qcdTree->Draw((trainVars[i]+">>histQCD").c_str(),"","goff");
 		TH1F* histQCD = (TH1F*)gDirectory->Get("histQCD");
@@ -64,12 +69,16 @@ void viewTrainVars(){
 		histQCD->SetLineColor(kGreen);
 		histQCD->Draw("same");
 
+		cout << "d" << endl;
+
 		dyTree->Draw((trainVars[i]+">>histDY").c_str(),"","goff");
 		TH1F* histDY = (TH1F*)gDirectory->Get("histDY");
 		histDY->SetTitle("DY+jets 2018");
 		leg->AddEntry(histDY);
 		histDY->SetLineColor(kRed);
 		histDY->Draw("same");
+
+		cout << "e" << endl;
 
 		ttTree->Draw((trainVars[i]+">>histTT").c_str(),"","goff");
 		TH1F* histTT = (TH1F*)gDirectory->Get("histTT");
@@ -78,11 +87,15 @@ void viewTrainVars(){
 		histTT->SetLineColor(kBlue);
 		histTT->Draw("same");
 
+		cout << "e" << endl;
+
 		leg->SetTextFont(132);
 		leg->SetTextSize(0.03);
 		leg->SetFillColor(kWhite);
 		leg->SetLineColor(kWhite);
 		leg->SetShadowColor(kWhite);
+
+		cout << "f" << endl;
 
 		leg->Draw("same");
 
@@ -103,15 +116,21 @@ void viewTrainVars(){
 		l.DrawLatex(0.40,0.92,trainVars[i].c_str());
 		cv->Update();
 
+		cout << "g" << endl;
+
 		oFile->cd();
 		cv->Write();
 		oFile->Close();
+
+		cout << "h" << endl;
 		delete cv;
 		delete leg;
 
 		delete histQCD;
 		delete histDY;
 		delete histTT;
+
+		cout << "i" << endl;
 	}
 
 	
