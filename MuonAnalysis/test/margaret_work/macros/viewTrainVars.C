@@ -147,7 +147,7 @@ void viewTrainVars(){
 		if(histTT->GetMaximum() > histDY->GetMaximum() && histTT->GetMaximum() > histQCD->GetMaximum()){
 			histTT->SetLineColor(kBlue);
 			histTT->Draw("same");
-			if(histDY->GetMaximum() > histQCD->GetMaximum){
+			if(histDY->GetMaximum() > histQCD->GetMaximum()){
 				histDY->SetLineColor(kRed);
 				histDY->Draw("same");
 
@@ -168,7 +168,7 @@ void viewTrainVars(){
 		else if(histDY->GetMaximum() > histTT->GetMaximum() && histDY->GetMaximum() > histQCD->GetMaximum()){
 			histDY->SetLineColor(kBlue);
 			histDY->Draw("same");
-			if(histTT->GetMaximum() > histQCD->GetMaximum){
+			if(histTT->GetMaximum() > histQCD->GetMaximum()){
 				histTT->SetLineColor(kRed);
 				histTT->Draw("same");
 
@@ -188,7 +188,7 @@ void viewTrainVars(){
 		else if(histQCD->GetMaximum() > histDY->GetMaximum() && histQCD->GetMaximum() > histTT->GetMaximum()){
 			histQCD->SetLineColor(kBlue);
 			histQCD->Draw("same");
-			if(histDY->GetMaximum() > histTT->GetMaximum){
+			if(histDY->GetMaximum() > histTT->GetMaximum()){
 				histDY->SetLineColor(kRed);
 				histDY->Draw("same");
 
