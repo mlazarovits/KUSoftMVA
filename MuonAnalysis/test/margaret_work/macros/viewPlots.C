@@ -15,15 +15,15 @@ void viewPlots(string inVar){
 
 	TFile* oFile = new TFile(filename,"RECREATE");
 
-	TCanvas* cv = new TCanvas("cv","cv",600,800);
+	TCanvas* cv = new TCanvas("cv","cv",800,600);
 	TLegend* leg = new TLegend(0.35,0.2,0.95,0.4);
 
 	cv->SetGridx();
 	cv->SetGridy();
 
 	TH1F* histDY = new TH1F();
-	TH1F* histQCD;
-	TH1F* histTT;
+	TH1F* histQCD = new TH1F();
+	TH1F* histTT = new TH1F();
 
 
 	fDY->cd();
