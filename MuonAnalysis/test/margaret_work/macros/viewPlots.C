@@ -34,7 +34,7 @@ void viewPlots(string inVar){
 	TH1F* histDY = (TH1F*)gDirectory->Get("histDY");
 	leg->AddEntry(histDY);
 	histDY->SetLineColor(kRed);
-	histDY->Draw();
+	histDY->Draw("same");
 	delete dyTree;
 
 	fQCD->cd();
@@ -46,7 +46,7 @@ void viewPlots(string inVar){
 	TH1F* histQCD = (TH1F*)gDirectory->Get("histQCD");
 	leg->AddEntry(histQCD);
 	histQCD->SetLineColor(kGreen);
-	histQCD->Draw();
+	histQCD->Draw("same");
 	delete qcdTree;
 	
 
