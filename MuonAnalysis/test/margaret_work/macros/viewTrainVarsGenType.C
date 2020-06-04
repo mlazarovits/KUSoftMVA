@@ -39,7 +39,7 @@ void viewTrainVarsGenType(string opt){
 		tree = chain->GetTree();
 	}
 
-	if(opt != "all") TTree* tree = 
+	
 
 	
 
