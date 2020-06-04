@@ -104,7 +104,7 @@ void viewTrainVarsSample(string opt="all"){
 		leg->AddEntry(histQCD);
 	
 
-		if(strstr(trainVars[i],"Kink")) dyTree->Draw((trainVars[i]+">>treehistDY").c_str(),(trainVars[i]+"<1e4").c_str(),"goff");
+		if(strstr(trainVars[i].c_str(),"Kink")) dyTree->Draw((trainVars[i]+">>treehistDY").c_str(),(trainVars[i]+"<1e4").c_str(),"goff");
 		else dyTree->Draw((trainVars[i]+">>treehistDY").c_str(),"","goff");
 		TH1F* treehistDY = (TH1F*)gDirectory->Get("treehistDY");
 
