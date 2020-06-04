@@ -131,6 +131,7 @@ void viewTrainVarsGenType(string opt){
 				if(opt != "all") tree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 				else chain->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 				if(abs(genPdgId) == 13){
+					cout << "true" << endl;
 					hTrue->Fill(var);
 					continue;
 				}
