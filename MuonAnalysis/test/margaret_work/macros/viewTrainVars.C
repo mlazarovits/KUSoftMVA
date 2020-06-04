@@ -63,7 +63,7 @@ void viewTrainVars(string opt="all"){
 				float var = qcdTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				int genIdx = qcdTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 				
-				else if(opt == "unmatched"){
+				if(opt == "unmatched"){
 					if(genIdx != -1) continue;
 					
 				}
@@ -71,6 +71,7 @@ void viewTrainVars(string opt="all"){
 					int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 					if(abs(genPdgId) != 13) continue;
 				}
+
 
 				histQCD->Fill(var);
 
@@ -101,7 +102,7 @@ void viewTrainVars(string opt="all"){
 				float var = dyTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				int genIdx = dyTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 				
-				else if(opt == "unmatched"){
+				if(opt == "unmatched"){
 					if(genIdx != -1) continue;
 					
 				}
@@ -133,7 +134,7 @@ void viewTrainVars(string opt="all"){
 				float var = ttTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				int genIdx = ttTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 				
-				else if(opt == "unmatched"){
+				if(opt == "unmatched"){
 					if(genIdx != -1) continue;
 					
 				}
