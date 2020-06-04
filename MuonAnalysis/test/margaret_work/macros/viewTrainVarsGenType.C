@@ -10,24 +10,33 @@ void viewTrainVarsGenType(string opt){
 	}
 
 	string path;
+	TFile* file;
+	TTree* tree;
+
 	if(opt == "dyjets"){
 		path ="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root";
+		file = TFile::Open(path.c_str());
+		tree = (TTree*)file->Get("Events");
 	}
 	else if(opt == "qcd"){
 		path ="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root";
-
+	file = TFile::Open(path.c_str());
+	tree = (TTree*)file->Get("Events");
 	}
 	else if(opt == "ttbar"){
 		path ="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root";
+		file = TFile::Open(path.c_str());
+		tree = (TTree*)file->Get("Events");
 	}
 	else if(opt == "all"){
 		TChain* chain = new TChain("Events");
 		chain->AddFile("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root");
 		chain->AddFile("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root");
 		chain->AddFile("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root");
+		tree = chain->GetTree();
 	}
 
-	TFile* file = TFile::Open(path.c_str());
+	
 
 	std::vector<string> trainVars = {"Muon_pt","Muon_eta","Muon_chi2LocalMomentum",
 		"Muon_chi2LocalPosition","Muon_trkRelChi2","Muon_trkKink","Muon_glbKink",
@@ -46,6 +55,8 @@ void viewTrainVarsGenType(string opt){
 	TFile* oFile = new TFile(outFilename,"RECREATE");
 
 	
+
+	
 	// do plots over all samples, broken down by generator pdg id
 	
 	for(int i = 0; i < trainVars.size(); i++){
@@ -53,9 +64,7 @@ void viewTrainVarsGenType(string opt){
 
 		TCanvas* cv = new TCanvas(trainVars[i].c_str(),trainVars[i].c_str(),800,600);
 		TLegend* leg = new TLegend(0.55,0.4,0.75,0.6);
-		TTree* tree;
-		if(opt == "all") tree = chain->GetTree();
-		else tree = (TTree*)file->Get("Events");
+		
 
 
 		cv->SetGridx();
