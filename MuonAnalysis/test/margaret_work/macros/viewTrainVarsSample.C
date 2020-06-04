@@ -1,7 +1,13 @@
 #include <iostream>
 #include "TLatex.h"
 
-void viewTrainVars(string opt="all"){
+void viewTrainVarsSample(string opt="all"){
+
+	if(opt != "all" || opt != "true" || opt != "unmached"){
+		cout << "Error: invalid option " << opt << " specified" << endl;
+		cout << "Valid options are: all, true, unmatched" << endl;
+		return;
+	}
 	string dypath="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root";
 	
 	string qcdpath="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root";
@@ -32,6 +38,8 @@ void viewTrainVars(string opt="all"){
 
 	TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/"+opt+"Muons2018.root").c_str();
 	TFile* oFile = new TFile(filename,"RECREATE");
+
+
 
 	
 	// do plots over all samples, broken down by generator pdg id
@@ -280,19 +288,9 @@ void viewTrainVars(string opt="all"){
 	}
 	oFile->Close();
 
-	
-	
-	
-	
-	
+	return;
 
 	
-
-
-
-
-
-
 
 
 
