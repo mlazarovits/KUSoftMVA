@@ -194,7 +194,7 @@ void viewTrainVarsGenType(string opt){
 		l.SetNDC();
 		l.SetTextSize(0.05);
 		l.SetTextFont(132);
-		l.DrawLatex(0.40,0.92,(trainVars[i]+opt).c_str());
+		l.DrawLatex(0.40,0.92,(trainVars[i]+" "+opt+" Sample").c_str());
 		cv->Update();
 
 

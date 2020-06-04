@@ -104,8 +104,8 @@ void viewTrainVarsSample(string opt="all"){
 		leg->AddEntry(histQCD);
 	
 
-
-		dyTree->Draw((trainVars[i]+">>treehistDY").c_str(),"","goff");
+		if(strstr(trainVars[i],"Kink") dyTree->Draw((trainVars[i]+">>treehistDY").c_str(),(trainVars[i]+"<1e4").c_str(),"goff");
+		else dyTree->Draw((trainVars[i]+">>treehistDY").c_str(),"","goff");
 		TH1F* treehistDY = (TH1F*)gDirectory->Get("treehistDY");
 
 		TH1F* histDY = new TH1F("histDY","histDY",treehistDY->GetNbinsX(),treehistDY->GetXaxis()->GetXmin(),treehistDY->GetXaxis()->GetXmax());
@@ -274,7 +274,7 @@ void viewTrainVarsSample(string opt="all"){
 		l.SetNDC();
 		l.SetTextSize(0.05);
 		l.SetTextFont(132);
-		l.DrawLatex(0.40,0.92,(trainVars[i]+opt).c_str());
+		l.DrawLatex(0.40,0.92,(trainVars[i]+" "+opt+" GenType").c_str());
 		cv->Update();
 
 
