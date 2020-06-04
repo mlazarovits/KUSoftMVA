@@ -2,11 +2,11 @@
 #include "TLatex.h"
 
 void viewTrainVarsSample(string opt="all"){
-	string opts[] = {"true","all","unmatched"};
+	string opts[] = {"true","all","unmatched","pion","kaon"};
 	string* it = std::find(std::begin(opts), std::end(opts),opt);
 	if(it == std::end(opts)){
 		cout << "Error: invalid option " << opt << " specified" << endl;
-		cout << "Valid options are: all, true, unmatched" << endl;
+		cout << "Valid options are: all, true, unmatched, pion, kaon" << endl;
 		return;
 	}
 
