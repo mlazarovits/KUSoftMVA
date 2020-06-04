@@ -38,7 +38,7 @@ void viewTrainVarsSample(string opt="all"){
 	fTT->cd();
 	TTree* ttTree = (TTree*)fTT->Get("Events");
 
-	TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/"+opt+"SampleMuons2018.root").c_str();
+	TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/"+opt+"bySampleMuons2018.root").c_str();
 	TFile* oFile = new TFile(filename,"RECREATE");
 
 
