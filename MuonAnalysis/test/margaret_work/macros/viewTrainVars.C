@@ -1,7 +1,7 @@
 #include <iostream>
 #include "TLatex.h"
 
-void viewTrainVars(){
+void viewTrainVars(string opt="all"){
 	string dypath="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root";
 	
 	string qcdpath="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root";
@@ -30,14 +30,14 @@ void viewTrainVars(){
 	fTT->cd();
 	TTree* ttTree = (TTree*)fTT->Get("Events");
 
-	TString filename = "/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/allMuons2018.root";
+	TString filename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/"+opt+"Muons2018.root").c_str();
 	TFile* oFile = new TFile(filename,"RECREATE");
 
 	
 	// do plots over all samples, broken down by generator pdg id
 	
 	for(int i = 0; i < trainVars.size(); i++){
-		cout << "Plotting " << trainVars[i] << endl;
+		cout << "Plotting " << trainVars[i] << " for " << opt << " muons" << endl;
 
 		TCanvas* cv = new TCanvas(trainVars[i].c_str(),trainVars[i].c_str(),800,600);
 		TLegend* leg = new TLegend(0.55,0.4,0.75,0.6);
@@ -62,10 +62,22 @@ void viewTrainVars(){
 			for(int mu = 0; mu < nMus; mu++){
 				float var = qcdTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				int genIdx = qcdTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
-				// int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+				
+				else if(opt == "unmatched"){
+					if(genIdx != -1) continue;
+					
+				}
+				else if(opt == "true"){
+					int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+					if(abs(genPdgId) != 13) continue;
+				}
 
-				// if(genIdx != -1) continue;
 				histQCD->Fill(var);
+
+				
+
+				
+				
 			}
 		}
 	
@@ -88,9 +100,15 @@ void viewTrainVars(){
 			for(int mu = 0; mu < nMus; mu++){
 				float var = dyTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				int genIdx = dyTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
-				// int genPdgId = dyTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
-
-				// if(genIdx != -1) continue;
+				
+				else if(opt == "unmatched"){
+					if(genIdx != -1) continue;
+					
+				}
+				else if(opt == "true"){
+					int genPdgId = dyTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+					if(abs(genPdgId) != 13) continue;
+				}
 
 				histDY->Fill(var);
 			}
@@ -114,9 +132,15 @@ void viewTrainVars(){
 			for(int mu = 0; mu < nMus; mu++){
 				float var = ttTree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
 				int genIdx = ttTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
-				// int genPdgId = ttTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
-
-				// if(genIdx != -1) continue;
+				
+				else if(opt == "unmatched"){
+					if(genIdx != -1) continue;
+					
+				}
+				else if(opt == "true"){
+					int genPdgId = ttTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+					if(abs(genPdgId) != 13) continue;
+				}
 
 				histTT->Fill(var);
 			}
