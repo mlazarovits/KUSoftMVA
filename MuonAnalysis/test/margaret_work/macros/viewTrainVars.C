@@ -30,7 +30,7 @@ void viewTrainVars(){
 	fTT->cd();
 	TTree* ttTree = (TTree*)fTT->Get("Events");
 
-	TString filename = "/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/unmatchedMuons2018.root";
+	TString filename = "/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/allMuons2018.root";
 	TFile* oFile = new TFile(filename,"RECREATE");
 
 	
@@ -64,7 +64,7 @@ void viewTrainVars(){
 				int genIdx = qcdTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 				// int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 
-				if(genIdx != -1) continue;
+				// if(genIdx != -1) continue;
 				histQCD->Fill(var);
 			}
 		}
@@ -90,7 +90,7 @@ void viewTrainVars(){
 				int genIdx = dyTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 				// int genPdgId = dyTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 
-				if(genIdx != -1) continue;
+				// if(genIdx != -1) continue;
 
 				histDY->Fill(var);
 			}
@@ -116,7 +116,7 @@ void viewTrainVars(){
 				int genIdx = ttTree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 				// int genPdgId = ttTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 
-				if(genIdx != -1) continue;
+				// if(genIdx != -1) continue;
 
 				histTT->Fill(var);
 			}
