@@ -56,7 +56,7 @@ void viewTrainVarsGenType(string opt){
 
 	
 
-	TString outFilename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/"+opt+"Muons2018.root").c_str();
+	TString outFilename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/"+opt+"genTypeMuons2018.root").c_str();
 	TFile* oFile = new TFile(outFilename,"RECREATE");
 
 	
