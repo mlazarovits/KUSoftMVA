@@ -71,6 +71,14 @@ void viewTrainVars(string opt="all"){
 					int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 					if(abs(genPdgId) != 13) continue;
 				}
+				else if(opt == "pion"){
+					int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+					if(abs(genPdgId) != 211) continue;
+				}
+				else if(opt == "kaon"){
+					int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+					if(abs(genPdgId) != 321) continue;
+				}
 
 
 				histQCD->Fill(var);
@@ -82,7 +90,7 @@ void viewTrainVars(string opt="all"){
 			}
 		}
 	
-		histQCD->SetTitle(("QCD 2018"+opt+" muons").c_str());
+		histQCD->SetTitle("QCD 2018");
 		leg->AddEntry(histQCD);
 	
 
@@ -110,12 +118,20 @@ void viewTrainVars(string opt="all"){
 					int genPdgId = dyTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 					if(abs(genPdgId) != 13) continue;
 				}
+				else if(opt == "pion"){
+					int genPdgId = dyTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+					if(abs(genPdgId) != 211) continue;
+				}
+				else if(opt == "kaon"){
+					int genPdgId = dyTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+					if(abs(genPdgId) != 321) continue;
+				}
 
 				histDY->Fill(var);
 			}
 		}
 	
-		histDY->SetTitle(("DY+jets 2018 "+opt+" muons").c_str());
+		histDY->SetTitle("DY+jets 2018");
 		leg->AddEntry(histDY);
 	
 
@@ -142,12 +158,20 @@ void viewTrainVars(string opt="all"){
 					int genPdgId = ttTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 					if(abs(genPdgId) != 13) continue;
 				}
+				else if(opt == "pion"){
+					int genPdgId = ttTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+					if(abs(genPdgId) != 211) continue;
+				}
+				else if(opt == "kaon"){
+					int genPdgId = ttTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+					if(abs(genPdgId) != 321) continue;
+				}
 
 				histTT->Fill(var);
 			}
 		}
 	
-		histTT->SetTitle(("TTbar 2018"+opt+" muons").c_str());
+		histTT->SetTitle("TTbar 2018");
 		leg->AddEntry(histTT);
 
 
@@ -240,7 +264,7 @@ void viewTrainVars(string opt="all"){
 		l.SetNDC();
 		l.SetTextSize(0.05);
 		l.SetTextFont(132);
-		l.DrawLatex(0.40,0.92,trainVars[i].c_str());
+		l.DrawLatex(0.40,0.92,(trainVars[i]+opt).c_str());
 		cv->Update();
 
 
