@@ -14,6 +14,7 @@ void viewTrainVarsGenType(string opt){
 	string path;
 	TFile* file;
 	TTree* tree;
+	TChain* chain;
 
 	if(opt == "dyjets"){
 		path ="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root";
@@ -31,12 +32,14 @@ void viewTrainVarsGenType(string opt){
 		tree = (TTree*)file->Get("Events");
 	}
 	else if(opt == "all"){
-		TChain* chain = new TChain("Events");
+		chain = new TChain("Events");
 		chain->AddFile("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root");
 		chain->AddFile("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root");
 		chain->AddFile("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root");
 		tree = chain->GetTree();
 	}
+
+	if(opt != "all") TTree* tree = 
 
 	
 
@@ -84,15 +87,27 @@ void viewTrainVarsGenType(string opt){
 		TH1F* hAll = new TH1F("hAll","hAll",treehist->GetNbinsX(),treehist->GetXaxis()->GetXmin(),treehist->GetXaxis()->GetXmax());
 
 		delete treehist;
-	
-		for(int evt = 0; evt < tree->GetEntries(); evt++){
-			tree->GetEntry(evt);
 
-			int nMus = tree->GetLeaf(trainVars[i].c_str())->GetNdata();
+		
+		int nEvts;
+		if(opt != "all") nEvts = tree->GetEntries();
+		else nEvts = chain->GetEntries();
+	
+		for(int evt = 0; evt < nEvts; evt++){
+			if(opt != "all") tree->GetEntry(evt);
+			else chain->GetEntry(evt);
+
+			int nMus;
+			if(opt != "all") nMus = tree->GetLeaf(trainVars[i].c_str())->GetNdata();
+			else nMus = chain->GetLeaf(trainVars[i].c_str())->GetNdata();
 
 			for(int mu = 0; mu < nMus; mu++){
-				float var = tree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
-				int genIdx = tree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+				float var;
+				if(opt != "all") var = tree->GetLeaf(trainVars[i].c_str())->GetValue(mu);
+				else var = chain->GetLeaf(trainVars[i].c_str())->GetValue(mu);
+				int genIdx;
+				if(opt != "all") genIdx = tree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
+				else genIdx = chain->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 
 				hAll->Fill(var);
 				
@@ -103,7 +118,9 @@ void viewTrainVarsGenType(string opt){
 				}
 				
 
-				int genPdgId = tree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+				int genPdgId;
+				if(opt != "all") tree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+				else chain->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 				if(abs(genPdgId) == 13){
 					hTrue->Fill(var);
 					continue;
