@@ -77,7 +77,8 @@ void viewTrainVarsGenType(string opt){
 		cv->SetLogy();
 
 
-		tree->Draw((trainVars[i]+">>treehist").c_str(),"","goff");
+		if(opt != "all") tree->Draw((trainVars[i]+">>treehist").c_str(),"","goff");
+		else chain->Draw((trainVars[i]+">>treehist").c_str(),"","goff");
 		TH1F* treehist = (TH1F*)gDirectory->Get("treehist");
 
 		TH1F* hUnm = new TH1F("hUnm","hUnm",treehist->GetNbinsX(),treehist->GetXaxis()->GetXmin(),treehist->GetXaxis()->GetXmax());
