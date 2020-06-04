@@ -21,7 +21,7 @@ void viewTrainVarsGenType(string opt){
 		path ="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root";
 	}
 	else if(opt == "all"){
-		TChain* tree = new TChain("Events");
+		TChain* chain = new TChain("Events");
 		chain->AddFile("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root");
 		chain->AddFile("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root");
 		chain->AddFile("/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root");
@@ -53,7 +53,9 @@ void viewTrainVarsGenType(string opt){
 
 		TCanvas* cv = new TCanvas(trainVars[i].c_str(),trainVars[i].c_str(),800,600);
 		TLegend* leg = new TLegend(0.55,0.4,0.75,0.6);
-		if(opt != "all") TTree* tree = (TTree*)file->Get("Events");
+		TTree* tree;
+		if(opt == "all") tree = chain->GetTree();
+		else tree = (TTree*)file->Get("Events");
 
 
 		cv->SetGridx();
@@ -127,7 +129,7 @@ void viewTrainVarsGenType(string opt){
 
 		hAll->SetLineColor(kBlue);
 		hUnm->SetLineColor(kRed);
-		hTrue->SetLineColor(kGree);
+		hTrue->SetLineColor(kGreen);
 		hPion->SetLineColor(kMagenta);
 		hKaon->SetLineColor(kCyan);
 
@@ -172,12 +174,9 @@ void viewTrainVarsGenType(string opt){
 		cv->Write();
 		cv->Close();
 
-		delete histQCD;
-		delete histDY;
-		delete histTT;
-
 	}
 	oFile->Close();
+	return;
 
 	
 	
