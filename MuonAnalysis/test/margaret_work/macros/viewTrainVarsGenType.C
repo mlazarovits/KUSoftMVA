@@ -56,7 +56,7 @@ void viewTrainVarsGenType(string opt){
 
 	
 
-	TString outFilename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/"+opt+"DEBUGbyGenTypeMuons2018.root").c_str();
+	TString outFilename = ("/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/margaret_work/plots/trainVars/"+opt+"byGenTypeMuons2018.root").c_str();
 	TFile* oFile = new TFile(outFilename,"RECREATE");
 
 	
@@ -64,7 +64,7 @@ void viewTrainVarsGenType(string opt){
 	
 	
 	
-	for(int i = 0; i < 2; i++){
+	for(int i = 0; i < trainVars.size(); i++){
 		cout << "Plotting " << trainVars[i] << " for " << opt << " muons" << endl;
 
 		TCanvas* cv = new TCanvas(trainVars[i].c_str(),trainVars[i].c_str(),800,600);
