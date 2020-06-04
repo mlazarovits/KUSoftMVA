@@ -2,12 +2,14 @@
 #include "TLatex.h"
 
 void viewTrainVarsGenType(string opt){
-
-	if(opt != "dyjets" || opt != "qcd" || opt != "ttbar" || opt != "all"){
+	string opts[] = {"dyjets","all","qcd","ttbar"};
+	string* it = std::find(std::begin(opts), std::end(opts),opt);
+	if(it == std::end(opts)){
 		cout << "Error: invalid option " << opt << " specified" << endl;
 		cout << "Valid options are: dyjets, qcd, ttbar, all" << endl;
 		return;
 	}
+	
 
 	string path;
 	TFile* file;

@@ -2,12 +2,14 @@
 #include "TLatex.h"
 
 void viewTrainVarsSample(string opt="all"){
-
-	if(opt != "all" || opt != "true" || opt != "unmatched"){
+	string opts[] = {"true","all","unmatched"};
+	string* it = std::find(std::begin(opts), std::end(opts),opt);
+	if(it == std::end(opts)){
 		cout << "Error: invalid option " << opt << " specified" << endl;
 		cout << "Valid options are: all, true, unmatched" << endl;
 		return;
 	}
+
 	string dypath="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root";
 	
 	string qcdpath="/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root";
