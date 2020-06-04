@@ -118,13 +118,13 @@ void viewTrainVarsGenType(string opt){
 				if(opt != "all") genIdx = tree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 				else genIdx = chain->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 
-				// hAll->Fill(var);
+				hAll->Fill(var);
 				
 				
-				// if(genIdx == -1){
-				// 	hUnm->Fill(var);
-				// 	continue;
-				// }
+				if(genIdx == -1){
+					hUnm->Fill(var);
+					continue;
+				}
 				
 
 				int genPdgId;
@@ -133,7 +133,6 @@ void viewTrainVarsGenType(string opt){
 
 
 				if(abs(genPdgId) == 13){
-					cout << "true" << endl;
 					hTrue->Fill(var);
 					continue;
 				}
