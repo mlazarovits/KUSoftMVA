@@ -184,7 +184,8 @@ void viewTrainVarsGenType(string opt){
 		oFile->cd();
 		cv->Write();
 		cv->Close();
-		delete hUmn;
+
+		delete hUnm;
 		delete hTrue;
 		delete hPion;
 		delete hKaon;
