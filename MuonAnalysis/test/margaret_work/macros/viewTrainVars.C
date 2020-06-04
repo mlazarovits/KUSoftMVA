@@ -82,7 +82,7 @@ void viewTrainVars(string opt="all"){
 			}
 		}
 	
-		histQCD->SetTitle("QCD 2018");
+		histQCD->SetTitle(("QCD 2018"+opt+" muons").c_str());
 		leg->AddEntry(histQCD);
 	
 
@@ -115,7 +115,7 @@ void viewTrainVars(string opt="all"){
 			}
 		}
 	
-		histDY->SetTitle("DY+jets 2018");
+		histDY->SetTitle(("DY+jets 2018 "+opt+" muons").c_str());
 		leg->AddEntry(histDY);
 	
 
@@ -147,7 +147,7 @@ void viewTrainVars(string opt="all"){
 			}
 		}
 	
-		histTT->SetTitle("TTbar 2018");
+		histTT->SetTitle(("TTbar 2018"+opt+" muons").c_str());
 		leg->AddEntry(histTT);
 
 
