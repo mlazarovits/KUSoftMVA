@@ -3,7 +3,7 @@
 
 void viewTrainVarsSample(string opt="all"){
 
-	if(opt != "all" || opt != "true" || opt != "unmached"){
+	if(opt != "all" || opt != "true" || opt != "unmatched"){
 		cout << "Error: invalid option " << opt << " specified" << endl;
 		cout << "Valid options are: all, true, unmatched" << endl;
 		return;
