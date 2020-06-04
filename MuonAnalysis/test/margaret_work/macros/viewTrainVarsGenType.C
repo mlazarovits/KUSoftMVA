@@ -78,11 +78,11 @@ void viewTrainVarsGenType(string opt){
 
 
 		if(opt != "all"){
-			if(strstr(trainVars[i].c_str(),"Kink")) tree->Draw((trainVars[i]+">>treehistDY").c_str(),(trainVars[i]+"<1e4").c_str(),"goff");
+			if(strstr(trainVars[i].c_str(),"Kink")) tree->Draw((trainVars[i]+">>treehist").c_str(),(trainVars[i]+"<1e4").c_str(),"goff");
 			else tree->Draw((trainVars[i]+">>treehist").c_str(),"","goff");
 		}
 		else{
-			if(strstr(trainVars[i].c_str(),"Kink")) chain->Draw((trainVars[i]+">>treehistDY").c_str(),(trainVars[i]+"<1e4").c_str(),"goff");
+			if(strstr(trainVars[i].c_str(),"Kink")) chain->Draw((trainVars[i]+">>treehist").c_str(),(trainVars[i]+"<1e4").c_str(),"goff");
 			else chain->Draw((trainVars[i]+">>treehist").c_str(),"","goff");
 		}
 		TH1F* treehist = (TH1F*)gDirectory->Get("treehist");
