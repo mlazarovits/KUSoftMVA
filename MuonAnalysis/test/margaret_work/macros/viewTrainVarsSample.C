@@ -199,6 +199,10 @@ void viewTrainVarsSample(string opt="all"){
 		histTT->SetTitle("TTbar 2018");
 		leg->AddEntry(histTT);
 
+		histDY->Scale(1/histDY->Integral());
+		histQCD->Scale(1/histQCD->Integral());
+		histTT->Scale(1/histTT->Integral());
+
 
 		if(histTT->GetMaximum() > histDY->GetMaximum() && histTT->GetMaximum() > histQCD->GetMaximum()){
 			histTT->SetLineColor(kBlue);
