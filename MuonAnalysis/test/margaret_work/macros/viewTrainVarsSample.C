@@ -2,7 +2,7 @@
 #include "TLatex.h"
 
 void viewTrainVarsSample(string opt="all"){
-	string opts[] = {"true","all","unmatched","pion","kaon"};
+	string opts[] = {"true","all","unmatched","pion","kaon","proton"};
 	string* it = std::find(std::begin(opts), std::end(opts),opt);
 	if(it == std::end(opts)){
 		cout << "Error: invalid option " << opt << " specified" << endl;
@@ -60,6 +60,8 @@ void viewTrainVarsSample(string opt="all"){
 
 		
 		if(strstr(trainVars[i].c_str(),"Kink")) qcdTree->Draw((trainVars[i]+">>treehistQCD").c_str(),(trainVars[i]+"<1e4").c_str(),"goff");
+		else if(strstr(trainVars[i].c_str(),"trkRelChi2")) qcdTree->Draw((trainVars[i]+">>treehistQCD").c_str(),(trainVars[i]+"<10").c_str(),"goff");
+
 		else qcdTree->Draw((trainVars[i]+">>treehistQCD").c_str(),"","goff");
 		TH1F* treehistQCD = (TH1F*)gDirectory->Get("treehistQCD");
 
@@ -91,6 +93,10 @@ void viewTrainVarsSample(string opt="all"){
 					int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
 					if(abs(genPdgId) != 321) continue;
 				}
+				else if(opt == "proton"){
+					int genPdgId = qcdTree->GetLeaf("GenPart_pdgId")->GetValue(genIdx);
+					if(abs(genPdgId) != 2212) continue;
+				}
 
 
 				histQCD->Fill(var);
@@ -107,6 +113,8 @@ void viewTrainVarsSample(string opt="all"){
 	
 
 		if(strstr(trainVars[i].c_str(),"Kink")) dyTree->Draw((trainVars[i]+">>treehistDY").c_str(),(trainVars[i]+"<1e4").c_str(),"goff");
+		else if(strstr(trainVars[i].c_str(),"trkRelChi2")) dyTree->Draw((trainVars[i]+">>treehistDY").c_str(),(trainVars[i]+"<10").c_str(),"goff");
+
 		else dyTree->Draw((trainVars[i]+">>treehistDY").c_str(),"","goff");
 		TH1F* treehistDY = (TH1F*)gDirectory->Get("treehistDY");
 
@@ -149,6 +157,8 @@ void viewTrainVarsSample(string opt="all"){
 
 
 		if(strstr(trainVars[i].c_str(),"Kink")) ttTree->Draw((trainVars[i]+">>treehistTT").c_str(),(trainVars[i]+"<1e4").c_str(),"goff");
+		else if(strstr(trainVars[i].c_str(),"trkRelChi2")) ttTree->Draw((trainVars[i]+">>treehistTT").c_str(),(trainVars[i]+"<10").c_str(),"goff");
+
 		else ttTree->Draw((trainVars[i]+">>treehistTT").c_str(),"","goff");
 		
 		TH1F* treehistTT = (TH1F*)gDirectory->Get("treehistTT");

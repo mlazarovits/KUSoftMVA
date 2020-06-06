@@ -83,6 +83,8 @@ void viewTrainVarsGenType(string opt){
 		}
 		else{
 			if(strstr(trainVars[i].c_str(),"Kink")) chain->Draw((trainVars[i]+">>treehist").c_str(),(trainVars[i]+"<1e4").c_str(),"goff");
+			else if(strstr(trainVars[i].c_str(),"trkRelChi2")) chain->Draw((trainVars[i]+">>treehist").c_str(),(trainVars[i]+"<10").c_str(),"goff");
+
 			else chain->Draw((trainVars[i]+">>treehist").c_str(),"","goff");
 		}
 		TH1F* treehist = (TH1F*)gDirectory->Get("treehist");
@@ -94,6 +96,7 @@ void viewTrainVarsGenType(string opt){
 		TH1F* hPion = new TH1F("hPion","hPion",treehist->GetNbinsX(),treehist->GetXaxis()->GetXmin(),treehist->GetXaxis()->GetXmax());
 		TH1F* hKaon = new TH1F("hKaon","hKaon",treehist->GetNbinsX(),treehist->GetXaxis()->GetXmin(),treehist->GetXaxis()->GetXmax());
 		TH1F* hAll = new TH1F("hAll","hAll",treehist->GetNbinsX(),treehist->GetXaxis()->GetXmin(),treehist->GetXaxis()->GetXmax());
+		TH1F* hProton = new TH1F("hProton","hProton",treehist->GetNbinsX(),treehist->GetXaxis()->GetXmin(),treehist->GetXaxis()->GetXmax());
 
 		delete treehist;
 
@@ -148,6 +151,11 @@ void viewTrainVarsGenType(string opt){
 					continue;
 				}
 
+				else if(abs(genPdgId) == 2212){
+					hProton->Fill(var);
+					continue;
+				}
+
 				
 			}
 		}
@@ -157,13 +165,10 @@ void viewTrainVarsGenType(string opt){
 		hTrue->SetTitle("true muons");
 		hPion->SetTitle("pions");
 		hKaon->SetTitle("kaons");
+		hProton->SetTitle("protons")
 
 
-		leg->AddEntry(hAll);
-		leg->AddEntry(hUnm);
-		leg->AddEntry(hTrue);
-		leg->AddEntry(hPion);
-		leg->AddEntry(hKaon);
+
 	
 
 		hAll->SetLineColor(kBlue);
@@ -171,12 +176,30 @@ void viewTrainVarsGenType(string opt){
 		hTrue->SetLineColor(kGreen);
 		hPion->SetLineColor(kMagenta);
 		hKaon->SetLineColor(kCyan);
+		hProton->SetLineColor(kOrange);
+
+		//normalize histograms
+		hAll->Scale(1/hAll->Integral());
+		hUnm->Scale(1/hUnm->Integral());
+		hTrue->Scale(1/hTrue->Integral());
+		hPion->Scale(1/hPion->Integral());
+		hKaon->Scale(1/hKaon->Integral());
+		hProton->Scale(1/hProton->Integral());
+
+
+		leg->AddEntry(hAll);
+		leg->AddEntry(hUnm);
+		leg->AddEntry(hTrue);
+		leg->AddEntry(hPion);
+		leg->AddEntry(hKaon);
+		leg->Addentry(hProton);
 
 		hAll->Draw();
 		hUnm->Draw("same");
 		hTrue->Draw("same");
 		hPion->Draw("same");
 		hKaon->Draw("same");
+		hProton->Draw("same");
 
 
 
@@ -218,6 +241,7 @@ void viewTrainVarsGenType(string opt){
 		delete hPion;
 		delete hKaon;
 		delete hAll;
+		delete hProton;
 
 	}
 	oFile->Close();
