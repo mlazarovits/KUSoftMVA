@@ -165,7 +165,7 @@ void viewTrainVarsGenType(string opt){
 		hTrue->SetTitle("true muons");
 		hPion->SetTitle("pions");
 		hKaon->SetTitle("kaons");
-		hProton->SetTitle("protons")
+		hProton->SetTitle("protons");
 
 
 
