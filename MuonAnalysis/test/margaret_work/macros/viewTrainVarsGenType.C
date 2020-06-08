@@ -194,12 +194,12 @@ void viewTrainVarsGenType(string opt){
 		leg->AddEntry(hKaon);
 		leg->AddEntry(hProton);
 
-		hAll->Draw();
-		hUnm->Draw("same");
-		hTrue->Draw("same");
-		hPion->Draw("same");
-		hKaon->Draw("same");
-		hProton->Draw("same");
+		hAll->Draw("hist");
+		hUnm->Draw("samehist");
+		hTrue->Draw("samehist");
+		hPion->Draw("samehist");
+		hKaon->Draw("samehist");
+		hProton->Draw("samehist");
 
 
 
