@@ -139,7 +139,7 @@ class DATA:
 		
 
 		#### using uproot to chunk mu and gen data ####
-		dfs = np.array([])
+		dfs = list()
 		memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6)] #read 1 MB at a time
 		print("# memChunks:",len(memChunks))
 		for i in memChunks:
@@ -148,10 +148,10 @@ class DATA:
 			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
 			dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
 			pdgIds = np.array([-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
-			subdata = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop)
+			subdata = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop).astype('float32')
 			print(len(pdgIds),subdata.shape)
 			subdata['Muon_genPdgId'] = pdgIds
-			dfs = np.append(dfs,subdata)
+			dfs.append(dfs,subdata)
 
 
 
@@ -168,7 +168,7 @@ class DATA:
 		# data = events.pandas.df('Muon_*')
 		# data['Muon_genPdgId'] = pdgIds
 		
-		data = pd.concat(dfs)
+		data = pd.concat(dfs,ignore_index=True)
 		self.data1 = data[abs(data.Muon_genPdgId) == 13]
 		self.data2 = data[data.Muon_genPdgId == -999]
 		self.data3 = data[abs(data.Muon_genPdgId) == 11]
