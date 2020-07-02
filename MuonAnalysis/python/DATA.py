@@ -148,10 +148,10 @@ class DATA:
 			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
 			dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
 			pdgIds = np.array([-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
-			data = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop)
-			print(len(pdgIds),data.shape)
-			data['Muon_genPdgId'] = pdgIds
-			dfs = np.append(dfs,data)
+			subdata = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop)
+			print(len(pdgIds),subdata.shape)
+			subdata['Muon_genPdgId'] = pdgIds
+			dfs = np.append(dfs,subdata)
 
 
 
@@ -168,17 +168,16 @@ class DATA:
 		# data = events.pandas.df('Muon_*')
 		# data['Muon_genPdgId'] = pdgIds
 		
-		# data = pd.concat(dfs)
-		# self.data1 = data[abs(data.Muon_genPdgId) == 13]
-		# self.data2 = data[data.Muon_genPdgId == -999]
-		# self.data3 = data[abs(data.Muon_genPdgId) == 11]
-		# self.data4 = data[abs(data.Muon_genPdgId) == 211]
-		# self.data5 = data[abs(data.Muon_genPdgId) == 321]
-		# self.data6 = data[abs(data.Muon_genPdgId) == 2212]
+		data = pd.concat(dfs)
+		self.data1 = data[abs(data.Muon_genPdgId) == 13]
+		self.data2 = data[data.Muon_genPdgId == -999]
+		self.data3 = data[abs(data.Muon_genPdgId) == 11]
+		self.data4 = data[abs(data.Muon_genPdgId) == 211]
+		self.data5 = data[abs(data.Muon_genPdgId) == 321]
+		self.data6 = data[abs(data.Muon_genPdgId) == 2212]
 			
 
-		# self.datacoll ={'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6}
-	#	return dfs
+		self.datacoll ={'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6}
 	
 	def __del__(self):
 		del self.data1

@@ -59,9 +59,9 @@ qmu, qU, qpi, qk, qp = 10000, 2000, 2000, 2000, 2000
 tmu, tU, tpi, tk, tp = 4000, 2000, 2000, 2000, 2000
 
 dataset_DY = DATA(dypath,"Drell-Yan",model_vars)
-print(dataset_DY.shape)
 dataset_DY.report()
 mdysample = dataset_DY.sample(['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+print(mdysample)
 del dataset_DY
 
 # dataset_TT = DATA(ttpath, "TTJets")
