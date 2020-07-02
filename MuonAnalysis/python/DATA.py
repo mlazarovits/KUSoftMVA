@@ -166,13 +166,15 @@ class DATA:
 			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
 			dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
 			# startChunk = time.process_time()
-			pdgIds = np.append(pdgIds,[-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
+			# pdgIds = np.append(pdgIds,[-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
+			pdgIds = np.array([-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
+			print(pdgIds.shape)	
 			# stopChunk = time.process_time()
 			# print("chunk time",stopChunk-startChunk,"secs")
 
-		pdgIds = pdgIds.flatten()
+		# pdgIds = pdgIds.flatten()
 
-		print(pdgIds.shape)	
+		
 		# stopTot = time.process_time()
 		# print("total time",stopTot-startTot,"secs")
 		# print(pdgIds.shape)
