@@ -94,13 +94,9 @@ def reportAndSample(df, name, keys, nsamples):
 		print("pion", data4.shape)
 		print("kaon", data5.shape)
 		print("prot", data6.shape)
-		
-		
-
-		datacoll ={'mu':data1, 'U':data2, 'e':data3, 'pi':data4, 'k':data5,'p':data6}
-		print(datacoll[k].shape for k in keys)
-
 		print("\n")
+	
+		datacoll ={'mu':data1, 'U':data2, 'e':data3, 'pi':data4, 'k':data5,'p':data6}
 		return [ datacoll[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] 
 		
 
@@ -134,7 +130,7 @@ class DATA:
 
 		#### using uproot to chunk mu and gen data ####
 		self.dfs = list()
-		memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6)] #read 1 MB at a time
+		memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6,entrystart=0,entrystop=1e6)] #read 1 MB at a time of 1mil events
 		print("# memChunks:",len(memChunks))
 		for i in memChunks:
 			memStart = i[0]
