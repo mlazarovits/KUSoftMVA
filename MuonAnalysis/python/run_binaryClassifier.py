@@ -1,10 +1,7 @@
 import pandas as pd
 import numpy as np
 
-from DATA import DATA
-from DATA import reportSample
-from DATA import prepareTrainingSet
-from DATA import dropBenchmarkVar
+from DATA import *
 from NN import evaluateSubset
 from NN import NN
 from DATA import prepareBenchSet

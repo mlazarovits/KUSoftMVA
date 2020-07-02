@@ -135,9 +135,7 @@ class DATA:
 			dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
 			pdgIds = np.array([999 if mu == -1 else abs(genData[i][mu]) for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
 			chunkData = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop).astype('float32')
-			# #normalize inputs
-			# chunkData = (chunkData - chunkData.mean())/chunkData.std()
-			# chunkData['Muon_genPdgId'] = pdgIds.map(mdict)
+			chunkData['Muon_genPdgId'] = pdgIds
 			self.dfs.append(chunkData)
 
 
