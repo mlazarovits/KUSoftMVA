@@ -98,6 +98,7 @@ def reportAndSample(df, name, keys, nsamples):
 		
 
 		datacoll ={'mu':data1, 'U':data2, 'e':data3, 'pi':data4, 'k':data5,'p':data6}
+		print(datacoll[k].shape for k in keys)
 		return np.array([ datacoll[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] )
 		
 
