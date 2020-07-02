@@ -47,6 +47,7 @@ def prepareBenchSet( data, label_dict):
 
 def prepareTrainingSet( data, label_dict):
 	# data = sample[ model_vars ]
+	print(data.columns)
 	data = shuffle(data)
 	target = data['Muon_genPdgId']
 	# target = abs(target)
