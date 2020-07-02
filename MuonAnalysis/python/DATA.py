@@ -159,6 +159,7 @@ class DATA:
 		# startTot = time.process_time()
 		pdgIds = np.array([])
 		memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6)] #read 1 MB at a time
+		print("# memChunks:",len(memChunks))
 		for i in memChunks:
 			memStart = i[0]
 			memStop = i[1]
@@ -171,7 +172,7 @@ class DATA:
 
 		pdgIds = pdgIds.flatten()
 
-		
+		print(pdgIds.shape)	
 		# stopTot = time.process_time()
 		# print("total time",stopTot-startTot,"secs")
 		# print(pdgIds.shape)
@@ -198,8 +199,8 @@ class DATA:
 		self.data6 = data[abs(data.Muon_genPdgId) == 2212]
 			
 
-		self.datacoll = np.append(self.datacoll,{'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6})
-		return dfs
+		self.datacoll ={'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6}
+	#	return dfs
 	
 	def __del__(self):
 		del self.data1
