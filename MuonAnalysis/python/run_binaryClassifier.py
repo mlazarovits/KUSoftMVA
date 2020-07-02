@@ -75,7 +75,8 @@ mdict = {13: [1,0], 999: [0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
 # bdict = {'mu': [1,0], 'U':[0,1]}
 
 #for each dataframe in the different physics processes
-for dy, tt in zip(dataset_DY.dfs, dataset_TT.dfs):
+for chunk, dy, tt in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs)):
+	print('chunk #', chunk)
 	dy = reportAndSample(dy,dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
 	dy = pd.DataFrame(dy)
 	print(dy.columns)
