@@ -145,10 +145,10 @@ class DATA:
 		for i in memChunks:
 			memStart = i[0]
 			memStop = i[1]
-			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStart)
+			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
 			dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
 			pdgIds = np.array([-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
-			pdgIds = pdgIds.flatten()
+			# pdgIds = pdgIds.flatten()
 			data = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop)
 			print(len(pdgIds),data.shape)
 			# data['Muon_genPdgId'] = pdgIds
