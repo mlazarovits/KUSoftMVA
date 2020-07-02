@@ -24,7 +24,7 @@ T_qcdpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/
 T_ttpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root'
 #T_ttpath='/home/t3-ku/janguian/storeUser/malazaro/TestSetTTJets.root'
 
-model_vars = ['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
+model_vars = ['Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
 'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
 'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
 'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
