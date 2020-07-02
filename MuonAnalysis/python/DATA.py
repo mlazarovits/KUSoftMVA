@@ -148,10 +148,10 @@ class DATA:
 			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
 			dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
 			pdgIds = np.array([-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
-			subdata = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop).astype('float32')
-			print(len(pdgIds),subdata.shape)
-			subdata['Muon_genPdgId'] = pdgIds
-			dfs.append(dfs,subdata)
+			chunkData = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop).astype('float32')
+			print(len(pdgIds),chunkData.shape)
+			chunkData['Muon_genPdgId'] = pdgIds
+			dfs.append(chunkData)
 
 
 
@@ -163,7 +163,7 @@ class DATA:
 		# muonMask = data.columns.str.contains('Muon_.*')
 		# expCols = data.loc[:,muonMask].columns
 		
-# 
+
 		# data = expandList(data, expCols)
 		# data = events.pandas.df('Muon_*')
 		# data['Muon_genPdgId'] = pdgIds
@@ -188,7 +188,6 @@ class DATA:
 		del self.data6
 			
 	def report(self):
-		data = pd.concat(dfs)
 		print("Report for data "+self.name)
 		print("mu", self.data1.shape)
 		print("unmatched", self.data2.shape)
