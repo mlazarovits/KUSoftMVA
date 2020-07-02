@@ -79,15 +79,14 @@ for chunk, (dy, tt) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs)):
 	print('chunk #', chunk)
 	dy = reportAndSample(dy,dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
 	dy = pd.DataFrame(dy)
-	
+
+	tt = reportAndSample(tt,dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
+	tt = pd.DataFrame(tt)
+
+	trainingChunk = pd.concat([dy,tt])
+	trainingChunk = prepareTrainingSet(trainingChunk,mdict)
 	if chunk > 1:
 		continue
-	# dy = pd.DataFrame(dy)
-	# tt = reportAndSample(tt,dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
-	# tt = pd.DataFrame(tt)
-
-	# trainingChunk = pd.concat([dy,tt])
-	# trainingChunk = prepareTrainingSet(trainingChunk,mdict)
 
 
 
