@@ -87,7 +87,7 @@ def reportAndSample(df, name, keys, nsamples):
 		data5 = df[df.Muon_genPdgId == 321]
 		data6 = df[df.Muon_genPdgId == 2212]
 
-		print("Report for data ",name)
+		print("Report for data",name)
 		print("mu",data1.shape)
 		print("unmatched", data2.shape)
 		print("elec", data3.shape)
@@ -97,7 +97,9 @@ def reportAndSample(df, name, keys, nsamples):
 		print("\n")
 
 		datacoll ={'mu':data1, 'U':data2, 'e':data3, 'pi':data4, 'k':data5,'p':data6}
-		return pd.DataFrame([ datacoll[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] )
+		df = pd.DataFrame([ datacoll[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] )
+		print(df.cols())
+		return df
 
 # def expandList( df, columnNames):
 #                 outDf = pd.DataFrame()
