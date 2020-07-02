@@ -139,20 +139,37 @@ class DATA:
 		
 
 		#### using uproot to chunk mu and gen data ####
-		dfs = np.array([])
+		# dfs = np.array([])
+		# memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6)] #read 1 MB at a time
+		# print("# memChunks:",len(memChunks))
+		# for i in memChunks:
+		# 	memStart = i[0]
+		# 	memStop = i[1]
+		# 	genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStart)
+		# 	dataMu = events.array('Muon_genPartIdx',entrystart=memStop,entrystop=memStop)
+		# 	pdgIds = np.array([-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
+		# 	pdgIds = pdgIds.flatten()
+		# 	data = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop)
+		# 	print(len(pdgIds),data.shape)
+		# 	# data['Muon_genPdgId'] = pdgIds
+		# 	# dfs = np.append(dfs,data)
+
+
+		#### using uproot to chunk mu and gen data ####
+		# startTot = time.process_time()
+		pdgIds = np.array([])
 		memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6)] #read 1 MB at a time
-		print("# memChunks:",len(memChunks))
 		for i in memChunks:
 			memStart = i[0]
 			memStop = i[1]
-			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStart)
-			dataMu = events.array('Muon_genPartIdx',entrystart=memStop,entrystop=memStop)
-			pdgIds = np.array([-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
-			pdgIds = pdgIds.flatten()
-			data = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop)
-			print(len(pdgIds),data.shape)
-			# data['Muon_genPdgId'] = pdgIds
-			# dfs = np.append(dfs,data)
+			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
+			dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
+			# startChunk = time.process_time()
+			pdgIds = np.append(pdgIds,[-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
+			# stopChunk = time.process_time()
+			# print("chunk time",stopChunk-startChunk,"secs")
+
+		pdgIds = pdgIds.flatten()
 
 		
 		# stopTot = time.process_time()
@@ -169,9 +186,10 @@ class DATA:
 		
 # 
 		# data = expandList(data, expCols)
-
+		data = events.pandas.df('Muon_*')
+		data['Muon_genPdgId'] = pdgIds
 		
-		data = pd.concat(dfs)
+		# data = pd.concat(dfs)
 		self.data1 = data[abs(data.Muon_genPdgId) == 13]
 		self.data2 = data[data.Muon_genPdgId == -999]
 		self.data3 = data[abs(data.Muon_genPdgId) == 11]
