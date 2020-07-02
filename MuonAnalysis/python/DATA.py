@@ -25,17 +25,18 @@ def dropBenchmarkVar( sample ):#, benchvars ):
 	newsamp = newsamp.drop(columns='Muon_softMvaId')
 	return newsamp
 
-def prepareBenchSet( data, target):
+def prepareBenchSet( data, label_dict):
 	# data=  sample[ model_vars ]
-	
-	# target = data['Muon_genPdgId']
+	data = shuffle(data)
+	target = data['Muon_genPdgId']
 	# target=abs(target)
 	
-	# data = data.drop(columns='Muon_genPdgId')
-	# pt = data['Muon_pt']
+	data = data.drop(columns='Muon_genPdgId')
+	pt = data['Muon_pt']
 	# target= target.map(label_dict)
 	# data = (data-data.mean())/data.std()
 
+	#only get test set to test benchmark models on (they are already "trained")
 	_,x_test, _, y_test = train_test_split(data,target, test_size=.99, random_state=1)
 	_,pt_test, _, _= train_test_split(pt,target, test_size=.99, random_state=1)
 	
@@ -44,20 +45,16 @@ def prepareBenchSet( data, target):
 	pt_test = pt_test.to_numpy()
 	return x_test,y_test,pt_test
 
-def prepareTrainingSet( data, target ):
-# 	data = sample[ model_vars ]
-# #	print(data)
-# 	data = shuffle(data)
-# 	target = data['Muon_genPdgId']
-# 	target = abs(target)
-# 	data = data.drop(columns='Muon_genPdgId')
+def prepareTrainingSet( data, label_dict):
+	# data = sample[ model_vars ]
+	data = shuffle(data)
+	target = data['Muon_genPdgId']
+	# target = abs(target)
 
-	
-# 	pt = data['Muon_pt']
-# #	data = data.drop(columns='Muon_pt')
-
-# 	target = target.map(label_dict)
-# 	data = (data-data.mean())/data.std()	
+	data = data.drop(columns='Muon_genPdgId')
+	pt = data['Muon_pt']
+	# target = target.map(label_dict)
+	# data = (data-data.mean())/data.std()	
 	
 	x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .35, random_state=1)
 	pt_train, pt_test, y_train2, y_test2 = train_test_split(pt,target, test_size= .35, random_state=1)
@@ -78,11 +75,29 @@ def prepareTrainingSet( data, target ):
 
 
 def reportSample( sample):
-                for i in range(len(sample)):
-                        print("Sample "+str(i)+" Report")
-                        print( sample[i].shape )
+    for i in range(len(sample)):
+        print("Sample "+str(i)+" Report")
+        print( sample[i].shape )
 
+def reportAndSample(df, name, keys, nsamples):
+		data1 = df[df.Muon_genPdgId == 13]
+		data2 = df[df.Muon_genPdgId == 999]
+		data3 = df[df.Muon_genPdgId == 11]
+		data4 = df[df.Muon_genPdgId == 211]
+		data5 = df[df.Muon_genPdgId == 321]
+		data6 = df[df.Muon_genPdgId == 2212]
 
+		print("Report for data ",name)
+		print("mu",data1.shape)
+		print("unmatched", data2.shape)
+		print("elec", data3.shape)
+		print("pion", data4.shape)
+		print("kaon", data5.shape)
+		print("prot", data6.shape)
+		print("\n")
+
+		datacoll ={'mu':data1, 'U':data2, 'e':data3, 'pi':data4, 'k':data5,'p':data6}
+		return pd.DataFrame([ datacoll[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] )
 
 # def expandList( df, columnNames):
 #                 outDf = pd.DataFrame()
@@ -94,42 +109,13 @@ def reportSample( sample):
 
 
 
-def preprocessing(sample , model_vars, label_dict):
-	events = uproot.open(self.fname)[self.treeName]
-	memChunks = [i for i in events.mempartitions(1e6)]
-	pdgIds = np.array([])
-	for i in memChunks:
-		memStart = i[0]
-		memStop = i[1]
-		data = events.arrays(model_vars,entrystart=memStart,entrystop=memStop)
-
-		#make labels
-		genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
-		dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
-		pdgIds = np.append(pdgIds,[-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
-			
 
 
-
-	data = sample[ model_vars ]
-#	print(data)
-	data = shuffle(data)
-	target = data['Muon_genPdgId']
-	target = abs(target)
-	data = data.drop(columns='Muon_genPdgId')
-
-	
-	pt = data['Muon_pt']
-#	data = data.drop(columns='Muon_pt')
-
-	target = target.map(label_dict)
-	data = (data-data.mean())/data.std()
-
-	return data, target
 
 class DATA:
 
-	def __init__(self,fname,name, model_vars):
+	#creates a list of dataframes (chunked data)
+	def __init__(self,fname,name, model_vars,mdict):
 		self.name = name
 		self.treeName = 'Events'
 		self.fname = fname
@@ -139,7 +125,7 @@ class DATA:
 		
 
 		#### using uproot to chunk mu and gen data ####
-		dfs = list()
+		self.dfs = list()
 		memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6)] #read 1 MB at a time
 		print("# memChunks:",len(memChunks))
 		for i in memChunks:
@@ -147,11 +133,12 @@ class DATA:
 			memStop = i[1]
 			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
 			dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
-			pdgIds = np.array([-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
+			pdgIds = np.array([999 if mu == -1 else abs(genData[i][mu]) for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
 			chunkData = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop).astype('float32')
-			print(len(pdgIds),chunkData.shape)
-			chunkData['Muon_genPdgId'] = pdgIds
-			dfs.append(chunkData)
+			# #normalize inputs
+			# chunkData = (chunkData - chunkData.mean())/chunkData.std()
+			# chunkData['Muon_genPdgId'] = pdgIds.map(mdict)
+			self.dfs.append(chunkData)
 
 
 
@@ -168,39 +155,57 @@ class DATA:
 		# data = events.pandas.df('Muon_*')
 		# data['Muon_genPdgId'] = pdgIds
 		
-		data = pd.concat(dfs,ignore_index=True)
-		self.data1 = data[abs(data.Muon_genPdgId) == 13]
-		self.data2 = data[data.Muon_genPdgId == -999]
-		self.data3 = data[abs(data.Muon_genPdgId) == 11]
-		self.data4 = data[abs(data.Muon_genPdgId) == 211]
-		self.data5 = data[abs(data.Muon_genPdgId) == 321]
-		self.data6 = data[abs(data.Muon_genPdgId) == 2212]
-			
+		
 
-		self.datacoll ={'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6}
-	
+	#for one dataframe
+	# def sample(self,df, keys, nsamples):
+	# 	self.data1 = df[df.Muon_genPdgId == 13]
+	# 	self.data2 = df[df.Muon_genPdgId == 999]
+	# 	self.data3 = df[df.Muon_genPdgId == 11]
+	# 	self.data4 = df[df.Muon_genPdgId == 211]
+	# 	self.data5 = df[df.Muon_genPdgId == 321]
+	# 	self.data6 = df[df.Muon_genPdgId == 2212]
+
+	# 	self.datacoll ={'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6}
+	# 	return [ self.datacoll[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] 
+
+		
+
 	def __del__(self):
-		del self.data1
-		del self.data2
-		del self.data3
-		del self.data4
-		del self.data5	
-		del self.data6
-			
-	def report(self):
-		print("Report for data "+self.name)
-		print("mu", self.data1.shape)
-		print("unmatched", self.data2.shape)
-		print("elec", self.data3.shape)
-		print("pion", self.data4.shape)
-		print("kaon", self.data5.shape)
-		print("prot", self.data6.shape)
-		print("\n")
+		del self.dfs
+		# del self.data1
+		# del self.data2
+		# del self.data3
+		# del self.data4
+		# del self.data5	
+		# del self.data6
 
 
+	#for one dataframe		
+	# def reportAndSample(self, df):
+	# 	self.data1 = df[df.Muon_genPdgId == 13]
+	# 	self.data2 = df[df.Muon_genPdgId == 999]
+	# 	self.data3 = df[df.Muon_genPdgId == 11]
+	# 	self.data4 = df[df.Muon_genPdgId == 211]
+	# 	self.data5 = df[df.Muon_genPdgId == 321]
+	# 	self.data6 = df[df.Muon_genPdgId == 2212]
 
-	def sample(self, keys, nsamples):
-		return [ self.datacoll[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] 
+	# 	print("Report for data ",self.name)
+	# 	print("mu", self.data1.shape)
+	# 	print("unmatched", self.data2.shape)
+	# 	print("elec", self.data3.shape)
+	# 	print("pion", self.data4.shape)
+	# 	print("kaon", self.data5.shape)
+	# 	print("prot", self.data6.shape)
+	# 	print("\n")
+
+	# 	self.datacoll ={'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6}
+	# 	return np.array([ self.datacoll[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] )
+
+
+	#for one dataframe
+	# def sample(self, df, keys, nsamples):
+	# 	return [ self.df[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] 
 		
 
 

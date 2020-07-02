@@ -59,12 +59,12 @@ qmu, qU, qpi, qk, qp = 10000, 2000, 2000, 2000, 2000
 tmu, tU, tpi, tk, tp = 4000, 2000, 2000, 2000, 2000
 
 dataset_DY = DATA(dypath,"Drell-Yan",model_vars)
-dataset_DY.report()
-mdysample = dataset_DY.sample(['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
-print(mdysample)
-del dataset_DY
+# dataset_DY.report()
+# mdysample = dataset_DY.sample(['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+# print(len(mdysample))
+# del dataset_DY
 
-# dataset_TT = DATA(ttpath, "TTJets")
+dataset_TT = DATA(ttpath, "TTJets",model_vars)
 # dataset_TT.report()
 # mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 # del dataset_TT
@@ -74,8 +74,20 @@ del dataset_DY
 # mqcdsample = dataset_QCD.sample(['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
 # del dataset_QCD
 
-# mdict = {13: [1,0], 999: [0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
+mdict = {13: [1,0], 999: [0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
 # bdict = {'mu': [1,0], 'U':[0,1]}
+
+#for each dataframe in the different physics processes
+for dy, tt in zip(dataset_DY, dataset_TT):
+	dy = reportAndSample(dy,dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+	# dy = pd.DataFrame(dy)
+	tt = reportAndSample(tt,dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
+	# tt = pd.DataFrame(tt)
+
+	trainingChunk = pd.concat([dy,tt])
+	trainingChunk = prepareTrainingSet(trainingChunk,mdict)
+
+
 
 # T_dataset_DY = DATA(dypath,"TEST_Drell-Yan")
 # T_dataset_DY.report()
