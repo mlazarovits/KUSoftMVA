@@ -115,7 +115,7 @@ def reportAndSample(df, name, keys, nsamples):
 class DATA:
 
 	#creates a list of dataframes (chunked data)
-	def __init__(self,fname,name, model_vars,mdict):
+	def __init__(self,fname,name, model_vars):
 		self.name = name
 		self.treeName = 'Events'
 		self.fname = fname
