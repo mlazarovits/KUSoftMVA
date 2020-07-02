@@ -148,36 +148,12 @@ class DATA:
 			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
 			dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
 			pdgIds = np.array([-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
-			# pdgIds = pdgIds.flatten()
 			data = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop)
 			print(len(pdgIds),data.shape)
-			# data['Muon_genPdgId'] = pdgIds
-			# dfs = np.append(dfs,data)
+			data['Muon_genPdgId'] = pdgIds
+			dfs = np.append(dfs,data)
 
 
-		#### using uproot to chunk mu and gen data ####
-		# startTot = time.process_time()
-		# pdgIds = np.array([])
-		# memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6)] #read 1 MB at a time
-		# print("# memChunks:",len(memChunks))
-		# for i in memChunks:
-		# 	memStart = i[0]
-		# 	memStop = i[1]
-		# 	genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
-		# 	dataMu = events.array('Muon_genPartIdx',entrystart=memStart,entrystop=memStop)
-		# 	# startChunk = time.process_time()
-		# 	# pdgIds = np.append(pdgIds,[-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
-		# 	pdgIds = np.array([-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
-		# 	print(pdgIds.shape)	
-		# 	# stopChunk = time.process_time()
-		# 	# print("chunk time",stopChunk-startChunk,"secs")
-
-		# pdgIds = pdgIds.flatten()
-
-		
-		# stopTot = time.process_time()
-		# print("total time",stopTot-startTot,"secs")
-		# print(pdgIds.shape)
 
 	
 		# pdgIds = [-999 if mu == -1 else genData['GenPart_pdgId'][i][mu] for i, idxs in enumerate(np.array(data['Muon_genPartIdx'])) for j, mu in enumerate(idxs)]
@@ -189,19 +165,19 @@ class DATA:
 		
 # 
 		# data = expandList(data, expCols)
-		data = events.pandas.df('Muon_*')
-		data['Muon_genPdgId'] = pdgIds
+		# data = events.pandas.df('Muon_*')
+		# data['Muon_genPdgId'] = pdgIds
 		
 		# data = pd.concat(dfs)
-		self.data1 = data[abs(data.Muon_genPdgId) == 13]
-		self.data2 = data[data.Muon_genPdgId == -999]
-		self.data3 = data[abs(data.Muon_genPdgId) == 11]
-		self.data4 = data[abs(data.Muon_genPdgId) == 211]
-		self.data5 = data[abs(data.Muon_genPdgId) == 321]
-		self.data6 = data[abs(data.Muon_genPdgId) == 2212]
+		# self.data1 = data[abs(data.Muon_genPdgId) == 13]
+		# self.data2 = data[data.Muon_genPdgId == -999]
+		# self.data3 = data[abs(data.Muon_genPdgId) == 11]
+		# self.data4 = data[abs(data.Muon_genPdgId) == 211]
+		# self.data5 = data[abs(data.Muon_genPdgId) == 321]
+		# self.data6 = data[abs(data.Muon_genPdgId) == 2212]
 			
 
-		self.datacoll ={'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6}
+		# self.datacoll ={'mu': self.data1, 'U':self.data2, 'e':self.data3, 'pi':self.data4, 'k':self.data5,'p':self.data6}
 	#	return dfs
 	
 	def __del__(self):
