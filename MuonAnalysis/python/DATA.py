@@ -149,7 +149,7 @@ class DATA:
 			dataMu = events.array('Muon_genPartIdx',entrystart=memStop,entrystop=memStop)
 			pdgIds = np.array([-999 if mu == -1 else genData[i][mu] for i, idxs in enumerate(dataMu) for j, mu in enumerate(idxs)])
 			pdgIds = pdgIds.flatten()
-			data = events.pandas.df(model_vars,entrystart=genMemStart,entrystop=genMemStop)
+			data = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop)
 			data['Muon_genPdgId'] = pdgIds
 			dfs = np.append(dfs,data)
 
