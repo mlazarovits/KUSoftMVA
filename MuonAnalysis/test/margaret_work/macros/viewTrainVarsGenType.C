@@ -121,6 +121,12 @@ void viewTrainVarsGenType(string opt){
 				if(opt != "all") genIdx = tree->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 				else genIdx = chain->GetLeaf("Muon_genPartIdx")->GetValue(mu);
 
+				float eta;
+				if(opt != "all") eta = tree->GetLeaf("eta")->GetValue(mu);
+				else var = chain->GetLeaf("eta")->GetValue(mu);
+
+				if 
+
 				hAll->Fill(var);
 				
 				
