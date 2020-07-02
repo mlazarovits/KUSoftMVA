@@ -120,6 +120,7 @@ class DATA:
 
 	#creates a list of dataframes (chunked data)
 	def __init__(self,fname,name, model_vars):
+		print("Chunking",name)
 		self.name = name
 		self.treeName = 'Events'
 		self.fname = fname

@@ -61,7 +61,7 @@ dataset_DY = DATA(dypath,"Drell-Yan",model_vars)
 # print(len(mdysample))
 # del dataset_DY
 
-dataset_TT = DATA(ttpath, "TTJets",model_vars)
+# dataset_TT = DATA(ttpath, "TTJets",model_vars)
 # dataset_TT.report()
 # mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 # del dataset_TT
@@ -77,9 +77,10 @@ mdict = {13: [1,0], 999: [0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
 #for each dataframe in the different physics processes
 for chunk, (dy, tt) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs)):
 	print('chunk #', chunk)
+	print(dy.shape,dy.columns)
 	dy = reportAndSample(dy,dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
 	dy = pd.DataFrame(dy)
-	print(dy.columns)
+	
 	if chunk > 1:
 		continue
 	# dy = pd.DataFrame(dy)
