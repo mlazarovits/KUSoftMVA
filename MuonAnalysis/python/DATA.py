@@ -94,11 +94,13 @@ def reportAndSample(df, name, keys, nsamples):
 		print("pion", data4.shape)
 		print("kaon", data5.shape)
 		print("prot", data6.shape)
-		print("\n")
+		
 
 		datacoll ={'mu':data1, 'U':data2, 'e':data3, 'pi':data4, 'k':data5,'p':data6}
 		df = pd.DataFrame([ datacoll[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] )
-		print(df.cols())
+		print(df.columns)
+
+		print("\n")
 		return df
 
 # def expandList( df, columnNames):
