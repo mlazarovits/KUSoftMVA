@@ -152,7 +152,7 @@ def evaluateSubset( NN, model,y_testsub,x_testsub , pt_testsub ,  tagsub  ):
 
 
 class NN:
-	def __init__( name, modeldesc, model_vars,mdict,tag):
+	def __init__(self, name, modeldesc, model_vars,mdict,tag):
 		self.name = name
 		self.modeldesc = modeldesc
 		self.tag = tag
