@@ -80,7 +80,8 @@ bdict = {'mu': [1,0], 'U':[0,1]}
 #each chunk is one batch to train the NN on
 #for each dataframe in the different physics processes do training for NN preprocessing
 for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
-	if chunk > 0:
+	#set aside one chunk for evaluation
+	if chunk == 0:
 		break
 	print('chunk #', chunk)
 #	print('dy',type(dy),dy.head())
@@ -98,11 +99,10 @@ for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, datase
 	trainingChunk = pd.concat([dy,tt,qcd])
 #	print('trainingChunk',trainingChunk.head())
 	x_train, x_test, y_train, y_test, pt_train, pt_test = prepareTrainingSet(trainingChunk,mdict)
-	#create subsets for evaluation of network
-	_, x_testDY, _, y_testDY, _, pt_testDY = prepareTrainingSet(dy,mdict)
+	
 
 	
-	if chunk == 0:
+	if chunk == 1:
 		m = NN(x_train, x_test, y_train, y_test, "model5", "Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification", mdict, pt_train, pt_test, '')
 		m.train()
 	else: #set weights of model from previous chunk
@@ -118,6 +118,11 @@ for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, datase
 m.evaluate()
 
 #evaluate on separate test sets
+#create subsets for evaluation of network
+
+dyTest = reportAndSample(dataset_DY.dfs[0],dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+dyTest = pd.concat(dyTest)
+_, x_testDY, _, y_testDY, _, pt_testDY = prepareTrainingSet(dyTest,mdict)
 print("evaluating full DY")
 evaluateSubset(m,m.model, y_testDY, x_testDY, pt_testDY, "DY")
 # print("evaluating full TT")
