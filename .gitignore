@@ -6,6 +6,7 @@
 *.d
 *.so
 *.csv
-MuonAnalysis/test/margaret_work/plots/trainVars/*.pdf
+MuonAnalysis/test/margaret_work/plots/*/*.pdf
 .DS_store
-MuonAnalysis/test/margaret_work/plots/Efficiencies/*.pdf
+MuonAnalysis/test/margaret_work/plots/*.pdf
+
