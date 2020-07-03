@@ -89,6 +89,8 @@ for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, datase
 	#set aside one chunk for evaluation
 	if chunk == 0:
 		continue
+	if chunk > 3:
+		break
 	print('chunk #', chunk)
 #	print('dy',type(dy),dy.head())
 	dy = reportAndSample(dy,dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
