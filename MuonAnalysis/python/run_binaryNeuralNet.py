@@ -80,7 +80,7 @@ bdict = {'mu': [1,0], 'U':[0,1]}
 
 modelDesc = "Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification"
 
-m = NN("model5", modelDesc, model_vars,mdict,'')
+m = NN("model5", modelDesc, train_vars,mdict,'')
 
 
 #each chunk is one batch to train the NN on
