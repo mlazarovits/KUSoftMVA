@@ -33,8 +33,8 @@ def prepareBenchSet( data, label_dict):
 	
 	data = data.drop(columns='Muon_genPdgId')
 	pt = data['Muon_pt']
-	# target= target.map(label_dict)
-	# data = (data-data.mean())/data.std()
+	target= target.map(label_dict)
+	data = (data-data.mean())/data.std()
 
 	#only get test set to test benchmark models on (they are already "trained")
 	_,x_test, _, y_test = train_test_split(data,target, test_size=.99, random_state=1)
@@ -54,8 +54,8 @@ def prepareTrainingSet( data, label_dict):
 
 	data = data.drop(columns='Muon_genPdgId')
 	pt = data['Muon_pt']
-	# target = target.map(label_dict)
-	# data = (data-data.mean())/data.std()	
+	target = target.map(label_dict)
+	data = (data-data.mean())/data.std()	
 	
 	x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .35, random_state=1)
 	pt_train, pt_test, y_train2, y_test2 = train_test_split(pt,target, test_size= .35, random_state=1)
