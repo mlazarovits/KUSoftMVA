@@ -66,7 +66,7 @@ dataset_TT = DATA(ttpath, "TTJets",model_vars)
 # mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 # del dataset_TT
 
-dataset_QCD = DATA(qcdpath, "QCD")
+dataset_QCD = DATA(qcdpath, "QCD",model_vars)
 # dataset_QCD.report()
 # mqcdsample = dataset_QCD.sample(['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
 # del dataset_QCD
@@ -88,7 +88,7 @@ for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, datase
 #	print("\n")
 	tt = reportAndSample(tt,dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 	tt = pd.concat(tt)
-	qcd = reportAndSample(qcd,dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
+	qcd = reportAndSample(qcd,dataset_QCD.name, ['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
 	qcd = pd.concat(qcd)
 #	print('tt',tt.head())
 #	print("\n")
