@@ -181,9 +181,6 @@ class NN:
 		self.y_test = y_test
 		self.pt_train = pt_train
 		self.pt_test = pt_test
-
-		print('nClasses:',self.nClasses)
-		print('target:',self.y_train.shape)
 		
 		if weights != None:
 			self.model.set_weights(weights)
