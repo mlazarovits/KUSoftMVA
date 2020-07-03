@@ -77,12 +77,18 @@ dataset_QCD = DATA(qcdpath, "QCD",train_vars)
 mdict = {13: [1,0], 999: [0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
 bdict = {'mu': [1,0], 'U':[0,1]}
 
+
+modelDesc = "Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification"
+
+m = NN("model5", modelDesc, model_vars,mdict,'')
+
+
 #each chunk is one batch to train the NN on
 #for each dataframe in the different physics processes do training for NN preprocessing
 for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
 	#set aside one chunk for evaluation
 	if chunk == 0:
-		break
+		continue
 	print('chunk #', chunk)
 #	print('dy',type(dy),dy.head())
 	dy = reportAndSample(dy,dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
@@ -101,21 +107,16 @@ for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, datase
 	x_train, x_test, y_train, y_test, pt_train, pt_test = prepareTrainingSet(trainingChunk,mdict)
 	
 
-	
+	#use randomly initialized weights for first chunk
 	if chunk == 1:
-		m = NN(x_train, x_test, y_train, y_test, "model5", "Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification", mdict, pt_train, pt_test, '')
-		m.train()
+		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test)
 	else: #set weights of model from previous chunk
 		weights = m.model.get_weights()
 		m.model.set_weights(weights)
-		m.x_train = x_train
-		m.x_test = x_test
-		m.y_train = y_train
-		m.y_test = y_test
-		m.train(weights)
+		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test,weights)
 
 #evaluate after all memChunks
-m.evaluate()
+m.evaluateNetwork()
 
 #evaluate on separate test sets
 #create subsets for evaluation of network

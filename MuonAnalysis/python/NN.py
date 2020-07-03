@@ -152,22 +152,16 @@ def evaluateSubset( NN, model,y_testsub,x_testsub , pt_testsub ,  tagsub  ):
 
 
 class NN:
-	def __init__(self,x_train,x_test,y_train,y_test, name, modeldesc, mdict, pt_train, pt_test, tag):
-		self.x_train = x_train
-		self.y_train = y_train
-		self.x_test = x_test
-		self.y_test = y_test
-		self.pt_train = pt_train
-		self.pt_test = pt_test
+	def __init__( name, modeldesc, model_vars,mdict,tag):
+		self.name = name
+		self.modeldesc = modeldesc
+		self.tag = tag
 		self.mdict = mdict
 		values = pd.Series(list(mdict.values())).to_numpy()
-		nClasses = len(np.unique(values))
-		self.nClasses = nClasses	
-		self.name = name
-		self.tag = tag
-		self.modeldesc = modeldesc
+		self.nClasses = len(np.unique(values))
 
-		self.n_features = self.x_train.shape[1]
+		self.n_features = len(model_vars)
+
 		self.model = Sequential()
 		self.model.add(Dense(128, activation='relu', kernel_initializer='he_normal', input_shape=(self.n_features,)))
 		self.model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
@@ -179,7 +173,20 @@ class NN:
 		# fit the model
 		print("Training model: "+self.name)
 		print("Desc.: "+ self.modeldesc)
+
+	def trainNetwork(self,x_train,x_test,y_train,y_test, pt_train, pt_test,weights=None):
+		self.x_train = x_train
+		self.y_train = y_train
+		self.x_test = x_test
+		self.y_test = y_test
+		self.pt_train = pt_train
+		self.pt_test = pt_test
+		
+		if weights != None:
+			self.model.set_weights(weights)
 		self.Hist = self.model.fit(self.x_train, self.y_train, epochs=100, batch_size=256,validation_split=0.1, verbose=0)
+		
+	def evaluateNetwork(self):
 		self.tr_acc = self.Hist.history['accuracy']
 		self.tr_loss = self.Hist.history['loss']		
 		self.tr_valacc = self.Hist.history['val_accuracy']
