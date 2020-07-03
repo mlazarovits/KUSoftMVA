@@ -133,6 +133,7 @@ class DATA:
 		self.dfs = list()
 		memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6,entrystart=0,entrystop=1e6)] #read 1 MB at a time of 1mil events
 		print("# memChunks:",len(memChunks))
+		print("\n")
 		for i in memChunks:
 			memStart = i[0]
 			memStop = i[1]

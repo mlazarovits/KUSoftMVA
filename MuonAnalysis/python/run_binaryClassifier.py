@@ -66,7 +66,7 @@ dataset_TT = DATA(ttpath, "TTJets",model_vars)
 # mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 # del dataset_TT
 
-# dataset_QCD = DATA(qcdpath, "QCD")
+dataset_QCD = DATA(qcdpath, "QCD")
 # dataset_QCD.report()
 # mqcdsample = dataset_QCD.sample(['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
 # del dataset_QCD
@@ -75,9 +75,9 @@ mdict = {13: [1,0], 999: [0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
 # bdict = {'mu': [1,0], 'U':[0,1]}
 
 #for each dataframe in the different physics processes
-for chunk, (dy, tt) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs)):
-	if chunk > 0:
-		break
+for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
+	#if chunk > 0:
+	#	break
 	print('chunk #', chunk)
 #	print('dy',type(dy),dy.head())
 	dy = reportAndSample(dy,dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
@@ -88,9 +88,11 @@ for chunk, (dy, tt) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs)):
 #	print("\n")
 	tt = reportAndSample(tt,dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 	tt = pd.concat(tt)
+	qcd = reportAndSample(qcd,dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
+	qcd = pd.concat(qcd)
 #	print('tt',tt.head())
 #	print("\n")
-	trainingChunk = pd.concat([dy,tt])
+	trainingChunk = pd.concat([dy,tt,qcd])
 #	print('trainingChunk',trainingChunk.head())
 	trainingChunk = prepareTrainingSet(trainingChunk,mdict)
 
