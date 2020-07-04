@@ -5,7 +5,7 @@ from itertools import cycle
 import copy
 from sklearn.metrics import roc_curve, auc
 from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph, TLatex, TGraphAsymmErrors, TMultiGraph, TLegend, SetOwnership
-
+import os
 
 def plotLoss(history,outName):
 	plt.figure()
@@ -121,6 +121,8 @@ def plotROCcurves(y_test,y_score,n_classes,outName):
 	plt.ylabel('True Positive Rate')
 	plt.title(outName+'ROC Curves')
 	plt.legend(loc="lower right")
+	if not os.path.exists('plots/')
+		os.mkdir('plots/')
 	plt.savefig('plots/'+outName+"_ROCcurves.pdf",dpi=500)
 	plt.close()
 
