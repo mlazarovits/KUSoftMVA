@@ -155,7 +155,7 @@ def evaluateSubset( NN, model,y_testsub,x_testsub , pt_testsub ,  tagsub, path  
 
 
 class NN:
-	def __init__(self, name, modeldesc, model_vars,mdict,tag,path):
+	def __init__(self, name, modeldesc, model_vars,mdict,tag):
 		self.name = name
 		self.modeldesc = modeldesc
 		self.tag = tag
@@ -189,7 +189,7 @@ class NN:
 			self.model.set_weights(weights)
 		self.Hist = self.model.fit(self.x_train, self.y_train, epochs=100, batch_size=256,validation_split=0.1, verbose=0)
 		
-	def evaluateNetwork(self):
+	def evaluateNetwork(self,path):
 		self.tr_acc = self.Hist.history['accuracy']
 		self.tr_loss = self.Hist.history['loss']		
 		self.tr_valacc = self.Hist.history['val_accuracy']
