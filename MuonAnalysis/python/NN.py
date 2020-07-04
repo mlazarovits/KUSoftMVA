@@ -14,13 +14,13 @@ from sklearn.utils import shuffle
 from array import array
 
 
+
 from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph
 
 from plotFunctions import plotEfficiency, plotROCcurves
 
 
-
-def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
+def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results, path ):
 
 	# print(model_y)
 	#translate model prediction probabilities to onehot
@@ -119,7 +119,10 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 #	goodEff[0].Draw()
 	
 	#make new outFile directory
-	outfile = TFile("./eval_results/"+fname+"_"+tag+".root","RECREATE")
+	if(!os.path.exists(path+"/eval_results/")):
+		os.mkdir(path+"/eval_results/")
+
+	outfile = TFile(path+"/eval_results/"+fname+"_"+tag+".root","RECREATE")
 	[ outfile.WriteTObject(x) for x in h_num ]
 	[ outfile.WriteTObject(x) for x in h_fnum]
 	[ outfile.WriteTObject(x) for x in h_den ]
@@ -139,7 +142,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 	return 1	
 
 
-def evaluateSubset( NN, model,y_testsub,x_testsub , pt_testsub ,  tagsub  ):
+def evaluateSubset( NN, model,y_testsub,x_testsub , pt_testsub ,  tagsub, path  ):
 	model_y = model.predict(x_testsub)
 	# print("true_y")
 #	print(true_y)
@@ -147,12 +150,12 @@ def evaluateSubset( NN, model,y_testsub,x_testsub , pt_testsub ,  tagsub  ):
 #	print(true_y)
 	model_pt = pt_testsub
 
-	evaluateModel(model_y, true_y, model_pt, NN.name, tagsub, NN.nClasses, NN.results )
+	evaluateModel(model_y, true_y, model_pt, NN.name, tagsub, NN.nClasses, NN.results, path )
 
 
 
 class NN:
-	def __init__(self, name, modeldesc, model_vars,mdict,tag):
+	def __init__(self, name, modeldesc, model_vars,mdict,tag,path):
 		self.name = name
 		self.modeldesc = modeldesc
 		self.tag = tag
@@ -206,7 +209,7 @@ class NN:
 		self.predictions = self.model.predict(self.x_test)	
 	#	self.predictions = self.model.predict(x_train)
 		
-		evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, self.nClasses, self.results )			
+		evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, self.nClasses, self.results, path )			
 
 
 

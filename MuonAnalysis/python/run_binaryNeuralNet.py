@@ -38,7 +38,7 @@ train_vars = ['Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
 'Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
 'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers','Muon_miniPFRelIso_chg','Muon_miniPFRelIso_all']
 
-
+outPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis'
 
 eval_tag = sys.argv[1] # input string for tagging output files 
 
@@ -118,7 +118,7 @@ for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, datase
 		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test,weights)
 
 #evaluate after all memChunks
-m.evaluateNetwork()
+m.evaluateNetwork(outPath)
 
 #evaluate on separate test sets
 #create subsets for evaluation of network
@@ -127,7 +127,7 @@ dyTest = reportAndSample(dataset_DY.dfs[0],format("Test "+dataset_DY.name), ['mu
 dyTest = pd.concat(dyTest)
 _, x_testDY, _, y_testDY, _, pt_testDY = prepareTrainingSet(dyTest,mdict)
 print("evaluating full DY")
-evaluateSubset(m,m.model, y_testDY, x_testDY, pt_testDY, "DY")
+evaluateSubset(m,m.model, y_testDY, x_testDY, pt_testDY, "DY",outPath)
 # print("evaluating full TT")
 # evaluateSubset(m,m.model, y_test2, x_test2, pt_test2, "TT")
 # print("evaluating full QCD")
