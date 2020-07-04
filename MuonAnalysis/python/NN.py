@@ -119,7 +119,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results, path
 #	goodEff[0].Draw()
 	
 	#make new outFile directory
-	if(!os.path.exists(path+"/eval_results/")):
+	if not os.path.exists(path+"/eval_results/"):
 		os.mkdir(path+"/eval_results/")
 
 	outfile = TFile(path+"/eval_results/"+fname+"_"+tag+".root","RECREATE")
