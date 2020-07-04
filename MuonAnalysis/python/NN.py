@@ -141,7 +141,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results ):
 
 def evaluateSubset( NN, model,y_testsub,x_testsub , pt_testsub ,  tagsub  ):
 	model_y = model.predict(x_testsub)
-	print("true_y")
+	# print("true_y")
 #	print(true_y)
 	true_y = y_testsub
 #	print(true_y)

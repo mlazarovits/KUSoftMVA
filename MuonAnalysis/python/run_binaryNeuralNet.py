@@ -123,7 +123,7 @@ m.evaluateNetwork()
 #evaluate on separate test sets
 #create subsets for evaluation of network
 
-dyTest = reportAndSample(dataset_DY.dfs[0],dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+dyTest = reportAndSample(dataset_DY.dfs[0],format("Test "+dataset_DY.name), ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
 dyTest = pd.concat(dyTest)
 _, x_testDY, _, y_testDY, _, pt_testDY = prepareTrainingSet(dyTest,mdict)
 print("evaluating full DY")
