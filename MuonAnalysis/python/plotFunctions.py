@@ -121,8 +121,8 @@ def plotROCcurves(y_test,y_score,n_classes,outName):
 	plt.ylabel('True Positive Rate')
 	plt.title(outName+'ROC Curves')
 	plt.legend(loc="lower right")
-	if not os.path.exists('plots/')
-		os.mkdir('plots/')
+	if not os.path.exists("plots/"):
+		os.mkdir("plots/")
 	plt.savefig('plots/'+outName+"_ROCcurves.pdf",dpi=500)
 	plt.close()
 
