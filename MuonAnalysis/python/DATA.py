@@ -15,6 +15,7 @@ from keras.activations import relu
 np.set_printoptions(threshold=sys.maxsize)
 from keras import layers
 from sklearn.utils import shuffle
+import time
 
 
 
@@ -130,11 +131,13 @@ class DATA:
 		
 
 		#### using uproot to chunk mu and gen data ####
+		startTot = time.process_time()
 		self.dfs = list()
 		memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6,entrystart=0,entrystop=1e6)] #read 1 MB at a time of 1mil events
 		print("# memChunks:",len(memChunks))
 		print("\n")
 		for i in memChunks:
+			startChunk = time.process_time()
 			memStart = i[0]
 			memStop = i[1]
 			genData = events.array('GenPart_pdgId',entrystart=memStart,entrystop=memStop)
@@ -143,6 +146,10 @@ class DATA:
 			chunkData = events.pandas.df(model_vars,entrystart=memStart,entrystop=memStop).astype('float32')
 			chunkData['Muon_genPdgId'] = pdgIds
 			self.dfs.append(chunkData)
+			stopChunk = time.process_time()
+			print("chunk time",stopChunk-startChunk,"secs")
+		stopTot = time.process_time()
+		print("total time",stopTot-startTot,"secs")
 
 
 
