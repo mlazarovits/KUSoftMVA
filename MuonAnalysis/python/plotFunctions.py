@@ -160,7 +160,7 @@ def plotROCcurves(y_test,y_score,n_classes,outName):
 
 def plotEfficiency(effs,outName,outFile):
 	cv = TCanvas("cv","cv",800,600)
-	leg = TLegend(0.35,0.2,0.95,0.4)
+	leg = TLegend(0.65,0.2,0.95,0.4)
 	gr_effs = []
 	mg = TMultiGraph()
 	cv.cd()
