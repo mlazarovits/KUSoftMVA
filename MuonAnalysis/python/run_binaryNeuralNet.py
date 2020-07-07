@@ -157,7 +157,7 @@ dyTest = pd.concat(dyTest)
 
 # fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
 
-# x_testDY,y_testDY,pt_testDY = prepareTestSet(dyTest,mdict)
+x_testDY,y_testDY,pt_testDY = prepareTestSet(dyTest,mdict)
 # x_testTT,y_testTT,pt_testTT = prepareTestSet(ttTest,mdict)
 # x_testQCD,y_testQCD,pt_testQCD = prepareTestSet(qcdTest,mdict)
 # x_testCOMB,y_testCOMB,pt_testCOMB = prepareTestSet(fullcombinedTest,mdict)
