@@ -99,7 +99,7 @@ def reportAndSample(df, name, keys, nsamples):
 		print("\n")
 	
 		datacoll ={'mu':data1, 'U':data2, 'e':data3, 'pi':data4, 'k':data5,'p':data6}
-		return [ datacoll[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] 
+		return pd.concat([ datacoll[k][:s] for i, (k,s) in enumerate(zip(keys,nsamples)) ] )
 		
 
 		
