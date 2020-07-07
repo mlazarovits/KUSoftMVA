@@ -133,6 +133,7 @@ class DATA:
 		#### using uproot to chunk mu and gen data ####
 		startTot = time.process_time()
 		self.dfs = list()
+		chunkTime = np.array([])
 		memChunks = [i for i in events['GenPart_pdgId'].mempartitions(1e6,entrystart=0,entrystop=1e6)] #read 1 MB at a time of 1mil events
 		print("# memChunks:",len(memChunks))
 		print("\n")
@@ -147,9 +148,10 @@ class DATA:
 			chunkData['Muon_genPdgId'] = pdgIds
 			self.dfs.append(chunkData)
 			stopChunk = time.process_time()
-			print("chunk time",stopChunk-startChunk,"secs")
+			chunkTime = np.append(chunkTime,stopChunk-startChunk)
 		stopTot = time.process_time()
 		print("total time",stopTot-startTot,"secs")
+		print("avg chunk time",np.mean(chunkTime),"secs")
 
 
 
