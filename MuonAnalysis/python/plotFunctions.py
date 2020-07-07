@@ -213,7 +213,7 @@ def plotEfficiency(effs,outName,outFile):
 	mg.Draw("AP")
 	leg.Draw("SAME")
 	cv.Update()
-	g_PlotTitle = outName
+	g_PlotTitle = outName+" Efficiency"
 	mg.GetXaxis().SetTitle('Muon pT (GeV)')
 	mg.GetYaxis().SetTitle("#epsilon")
 	l = TLatex()
