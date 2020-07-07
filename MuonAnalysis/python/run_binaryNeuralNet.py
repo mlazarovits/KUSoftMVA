@@ -129,8 +129,8 @@ m = NN("model5", modelDesc, train_vars,mdict,'')
 
 #evaluate on separate test sets
 #create subsets for evaluation of network
-T_dataset_DY = pd.concat(T_dataset_DY)
-dyTest = reportAndSample(T_dataset_DY,format("Full Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx])
+T_dataset_DY.dfs = pd.concat(T_dataset_DY.dfs)
+dyTest = reportAndSample(T_dataset_DY.dfs,format("Full Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx])
 dyTest = pd.concat(dyTest)
 
 # ttTest = reportAndSample(T_dataset_TT.dfs,format("Full Test "+T_dataset_TT.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
