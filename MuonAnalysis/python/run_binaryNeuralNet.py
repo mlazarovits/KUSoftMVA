@@ -63,7 +63,7 @@ dymu, dyU, dypi, dyk, dyp = 10000, 2000, 2000, 2000, 2000
 qmu, qU, qpi, qk, qp = 10000, 2000, 2000, 2000, 2000
 tmu, tU, tpi, tk, tp = 4000, 2000, 2000, 2000, 2000
 
-# dataset_DY = DATA(dypath,"Drell-Yan",train_vars)
+dataset_DY = DATA(dypath,"Drell-Yan",train_vars)
 T_dataset_DY = DATA(T_dypath,"TEST_Drell-Yan",train_vars)
 # T_fulldysample= pd.concat(T_dataset_DY.sample(['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx]) )
 #
@@ -72,13 +72,13 @@ T_dataset_DY = DATA(T_dypath,"TEST_Drell-Yan",train_vars)
 # print(len(mdysample))
 # del dataset_DY
 
-# dataset_TT = DATA(ttpath, "TTJets",train_vars)
+dataset_TT = DATA(ttpath, "TTJets",train_vars)
 T_dataset_TT = DATA(T_ttpath,"TEST_ttJets",train_vars)
 # dataset_TT.report()
 # mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 # del dataset_TT
 
-# dataset_QCD = DATA(qcdpath, "QCD",train_vars)
+dataset_QCD = DATA(qcdpath, "QCD",train_vars)
 T_dataset_QCD = DATA(qcdpath,"TEST_QCD",train_vars)
 # dataset_QCD.report()
 # mqcdsample = dataset_QCD.sample(['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
