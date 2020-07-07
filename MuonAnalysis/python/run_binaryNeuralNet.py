@@ -128,7 +128,7 @@ del dataset_DY
 del dataset_TT
 del dataset_QCD
 # #evaluate after all memChunks
-# m.evaluateNetwork(outPath)
+m.evaluateNetwork(outPath)
 
 #evaluate on separate test sets
 #create subsets for evaluation of network
