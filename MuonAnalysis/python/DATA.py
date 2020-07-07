@@ -8,10 +8,10 @@ import pandas as pd
 import sys
 # from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
-from keras.models import Sequential, Model
-from keras.layers import *
-from keras.optimizers import SGD, Adam
-from keras.activations import relu
+# from keras.models import Sequential, Model
+# from keras.layers import *
+# from keras.optimizers import SGD, Adam
+# from keras.activations import relu
 np.set_printoptions(threshold=sys.maxsize)
 from keras import layers
 from sklearn.utils import shuffle
