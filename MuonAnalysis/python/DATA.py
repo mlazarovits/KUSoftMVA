@@ -134,7 +134,7 @@ class DATA:
 		startTot = time.process_time()
 		self.dfs = list()
 		chunkTime = np.array([])
-		memChunks = [i for i in events.mempartitions(1e7,entrystart=0,entrystop=1e6)] #read 10 MB at a time, max 1mil events
+		memChunks = [i for i in events.mempartitions(1e8,entrystart=0,entrystop=1e6)] #read 100 MB at a time, max 1mil events
 		print("# memChunks:",len(memChunks))
 		print("\n")
 		for i in memChunks:

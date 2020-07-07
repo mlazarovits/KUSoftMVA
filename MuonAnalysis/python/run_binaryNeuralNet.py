@@ -96,7 +96,7 @@ m = NN("model5", modelDesc, train_vars,mdict,'')
 # each chunk is one batch to train the NN on
 # for each dataframe in the different physics processes do training for NN preprocessing
 for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
-	if chunk > 100: #reading data in 10 MB chunks, 10*100 = 1 GB/process
+	if chunk > 10: #reading data in 100 MB chunks, 10*100 = 1 GB/process
 		break
 	print('chunk #', chunk)
 #	print('dy',type(dy),dy.head())
@@ -127,6 +127,7 @@ for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, datase
 del dataset_DY
 del dataset_TT
 del dataset_QCD
+
 # #evaluate after all memChunks
 m.evaluateNetwork(outPath)
 
