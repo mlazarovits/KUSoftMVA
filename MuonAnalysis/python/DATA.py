@@ -136,7 +136,7 @@ class DATA:
 		chunkTime = np.array([])
 		memChunks = [i for i in events.mempartitions(1e8,entrystart=0,entrystop=1e6)] #read 100 MB at a time, max 1mil events
 		print("# memChunks:",len(memChunks))
-		print("\n")
+		
 		for i in memChunks:
 			startChunk = time.process_time()
 			memStart = i[0]
@@ -152,6 +152,7 @@ class DATA:
 		stopTot = time.process_time()
 		print("total time",stopTot-startTot,"secs")
 		print("avg chunk time",np.mean(chunkTime),"secs")
+		print("\n")
 
 
 

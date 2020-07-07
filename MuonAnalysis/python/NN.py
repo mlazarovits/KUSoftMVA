@@ -20,7 +20,9 @@ from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph
 from plotFunctions import plotEfficiency, plotROCcurves
 
 
-def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results, path ):
+
+
+def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results=None, path ):
 
 	# print(model_y)
 	#translate model prediction probabilities to onehot
@@ -111,11 +113,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results, path
 	[ badEff[i].SetName("pure"+str(i)) for i in range(nClasses) ]
 
 #[ self.tr_acc, self.tr_loss, self.tr_valacc, self.tr_valloss]
-	h_loss = TGraph(  len(results[1]),  array('d',list(np.arange(len(results[1])))), array('d',results[1])   )
-	h_vloss= TGraph(  len(results[3]),  array('d',list(np.arange(len(results[3])))), array('d',results[3])   )
-	h_acc = TGraph(   len(results[0]),  array('d',list(np.arange(len(results[0])))), array('d',results[0])   )
-	h_vacc = TGraph(  len(results[2]),  array('d',list(np.arange(len(results[2])))), array('d',results[2])   )
-#	c1 = TCanvas()
+	#	c1 = TCanvas()
 #	goodEff[0].Draw()
 	
 	#make new outFile directory
@@ -129,28 +127,37 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, results, path
 	plotEfficiency(goodEff,fname+tag,outfile)
 	[ outfile.WriteTObject(x) for x in goodEff ]
 	[ outfile.WriteTObject(x) for x in badEff ]
-	outfile.WriteObject(h_loss, "trainingLoss")
-	outfile.WriteObject(h_vloss, "validationLoss")
-	outfile.WriteObject(h_acc, "trainingAcc")
-	outfile.WriteObject(h_vacc, "validataionAcc")
+	# 
+	if results != None:
+		h_loss = TGraph(  len(results[1]),  array('d',list(np.arange(len(results[1])))), array('d',results[1])   )
+		h_vloss= TGraph(  len(results[3]),  array('d',list(np.arange(len(results[3])))), array('d',results[3])   )
+		h_acc = TGraph(   len(results[0]),  array('d',list(np.arange(len(results[0])))), array('d',results[0])   )
+		h_vacc = TGraph(  len(results[2]),  array('d',list(np.arange(len(results[2])))), array('d',results[2])   )
+
+		outfile.WriteObject(h_loss, "trainingLoss")
+		outfile.WriteObject(h_vloss, "validationLoss")
+		outfile.WriteObject(h_acc, "trainingAcc")
+		outfile.WriteObject(h_vacc, "validataionAcc")
+
 	outfile.Write()
 	outfile.Close()
 
 	#map true values to [0,1] for muon - 1 or not - 0 to match dim of scores output (prob for each class)
-	plotROCcurves(true_y,model_y,nClasses,fname)
+	# plotROCcurves(true_y,model_y,nClasses,fname)
 
 	return 1	
 
 
-def evaluateSubset( NN, model,y_testsub,x_testsub , pt_testsub ,  tagsub, path  ):
-	model_y = model.predict(x_testsub)
+def evaluateSubset( NN, y_testsub,x_testsub , pt_testsub ,  tagsub, path  ):
+	model_y = NN.model.predict(x_testsub)
 	# print("true_y")
 #	print(true_y)
 	true_y = y_testsub
 #	print(true_y)
 	model_pt = pt_testsub
 
-	evaluateModel(model_y, true_y, model_pt, NN.name, tagsub, NN.nClasses, NN.results, path )
+	evaluateModel(model_y, true_y, model_pt, NN.name, tagsub, NN.nClasses, path )
+
 
 
 
@@ -176,6 +183,7 @@ class NN:
 		# fit the model
 		print("Training model: "+self.name)
 		print("Desc.: "+ self.modeldesc)
+		print("\n")
 
 	def trainNetwork(self,x_train,x_test,y_train,y_test, pt_train, pt_test,weights=None):
 		self.x_train = x_train
