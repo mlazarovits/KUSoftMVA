@@ -168,11 +168,11 @@ del T_dataset_TT
 print("evaluating full DY")
 evaluateSubset(m, y_testDY, x_testDY, pt_testDY, "DY",outPath)
 print("evaluating full TT")
-evaluateSubset(m,m.model, y_testTT, x_testTT, pt_testTT, "TT", outPath)
+evaluateSubset(m, y_testTT, x_testTT, pt_testTT, "TT", outPath)
 print("evaluating full QCD")
-evaluateSubset(m,m.model, y_testQCD, x_testQCD, pt_testQCD, "QCD", outPath)
+evaluateSubset(m,y_testQCD, x_testQCD, pt_testQCD, "QCD", outPath)
 print("evaluating full combined")
-evaluateSubset(m,m.model, y_testCOMB, x_testCOMB, pt_testCOMB, "COMB", outPath)
+evaluateSubset(m, y_testCOMB, x_testCOMB, pt_testCOMB, "COMB", outPath)
 
 
 del dyTest
