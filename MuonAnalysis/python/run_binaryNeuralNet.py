@@ -63,7 +63,7 @@ dymu, dyU, dypi, dyk, dyp = 10000, 2000, 2000, 2000, 2000
 qmu, qU, qpi, qk, qp = 10000, 2000, 2000, 2000, 2000
 tmu, tU, tpi, tk, tp = 4000, 2000, 2000, 2000, 2000
 
-dataset_DY = DATA(dypath,"Drell-Yan",train_vars)
+# dataset_DY = DATA(dypath,"Drell-Yan",train_vars)
 T_dataset_DY = DATA(T_dypath,"TEST_Drell-Yan",train_vars)
 # T_fulldysample= pd.concat(T_dataset_DY.sample(['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx]) )
 #
@@ -72,13 +72,13 @@ T_dataset_DY = DATA(T_dypath,"TEST_Drell-Yan",train_vars)
 # print(len(mdysample))
 # del dataset_DY
 
-dataset_TT = DATA(ttpath, "TTJets",train_vars)
+# dataset_TT = DATA(ttpath, "TTJets",train_vars)
 T_dataset_TT = DATA(T_ttpath,"TEST_ttJets",train_vars)
 # dataset_TT.report()
 # mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 # del dataset_TT
 
-dataset_QCD = DATA(qcdpath, "QCD",train_vars)
+# dataset_QCD = DATA(qcdpath, "QCD",train_vars)
 T_dataset_QCD = DATA(qcdpath,"TEST_QCD",train_vars)
 # dataset_QCD.report()
 # mqcdsample = dataset_QCD.sample(['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
@@ -95,91 +95,91 @@ m = NN("model5", modelDesc, train_vars,mdict,'')
 
 # each chunk is one batch to train the NN on
 # for each dataframe in the different physics processes do training for NN preprocessing
-for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
-	if chunk > 10: #reading data in 100 MB chunks, 10*100 = 1 GB/process
-		break
-	print('chunk #', chunk)
-#	print('dy',type(dy),dy.head())
-	dy = reportAndSample(dy,dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
-#	print('dySampled',type(dySampled), dySampled[0].head(),len(dySampled))
-#	print("\n")
-	dy = pd.concat(dy)
-#	print('dySampled',type(dySampled), dySampled.head())
-#	print("\n")
-	tt = reportAndSample(tt,dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
-	tt = pd.concat(tt)
-	qcd = reportAndSample(qcd,dataset_QCD.name, ['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
-	qcd = pd.concat(qcd)
+# for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
+# 	if chunk > 10: #reading data in 100 MB chunks, 10*100 = 1 GB/process
+# 		break
+# 	print('chunk #', chunk)
+# #	print('dy',type(dy),dy.head())
+# 	dy = reportAndSample(dy,dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+# #	print('dySampled',type(dySampled), dySampled[0].head(),len(dySampled))
+# #	print("\n")
+# 	dy = pd.concat(dy)
+# #	print('dySampled',type(dySampled), dySampled.head())
+# #	print("\n")
+# 	tt = reportAndSample(tt,dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
+# 	tt = pd.concat(tt)
+# 	qcd = reportAndSample(qcd,dataset_QCD.name, ['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
+# 	qcd = pd.concat(qcd)
 
-	trainingChunk = pd.concat([dy,tt,qcd])
-#	print('trainingChunk',trainingChunk.head())
-	x_train, x_test, y_train, y_test, pt_train, pt_test = prepareTrainingSet(trainingChunk,mdict)
+# 	trainingChunk = pd.concat([dy,tt,qcd])
+# #	print('trainingChunk',trainingChunk.head())
+# 	x_train, x_test, y_train, y_test, pt_train, pt_test = prepareTrainingSet(trainingChunk,mdict)
 	
 
-	#use randomly initialized weights for first chunk
-	if chunk == 0:
-		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test)
-	else: #set weights of model from previous chunk
-		weights = m.model.get_weights()
-		m.model.set_weights(weights)
-		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test,weights)
+# 	#use randomly initialized weights for first chunk
+# 	if chunk == 0:
+# 		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test)
+# 	else: #set weights of model from previous chunk
+# 		weights = m.model.get_weights()
+# 		m.model.set_weights(weights)
+# 		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test,weights)
 
-del dataset_DY
-del dataset_TT
-del dataset_QCD
+# del dataset_DY
+# del dataset_TT
+# del dataset_QCD
 
-# #evaluate after all memChunks
-m.evaluateNetwork(outPath)
+# # #evaluate after all memChunks
+# m.evaluateNetwork(outPath)
 
 #evaluate on separate test sets
 #create subsets for evaluation of network
 T_dataset_DY.dfs = pd.concat(T_dataset_DY.dfs)
-T_dataset_TT.dfs = pd.concat(T_dataset_TT.dfs)
-T_dataset_QCD.dfs = pd.concat(T_dataset_QCD.dfs)
+# T_dataset_TT.dfs = pd.concat(T_dataset_TT.dfs)
+# T_dataset_QCD.dfs = pd.concat(T_dataset_QCD.dfs)
 
 dyTest = reportAndSample(T_dataset_DY.dfs,format("Full Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx])
 dyTest = pd.concat(dyTest)
 
-ttTest = reportAndSample(T_dataset_TT.dfs,format("Full Test "+T_dataset_TT.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
-ttTest = pd.concat(ttTest)
+# ttTest = reportAndSample(T_dataset_TT.dfs,format("Full Test "+T_dataset_TT.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
+# ttTest = pd.concat(ttTest)
 
-qcdTest = reportAndSample(T_dataset_QCD.dfs,format("Full Test "+T_dataset_QCD.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
-qcdTest = pd.concat(qcdTest)
+# qcdTest = reportAndSample(T_dataset_QCD.dfs,format("Full Test "+T_dataset_QCD.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
+# qcdTest = pd.concat(qcdTest)
 
-sub_dyTest = reportAndSample(T_dataset_DY.dfs,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
-sub_dyTest = pd.concat(sub_dyTest)
-sub_ttTest = reportAndSample(T_dataset_DY.dfs,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[tmu,tU,tpi,tk,tp])
-sub_ttTest = pd.concat(sub_ttTest)
-sub_qcdTest = reportAndSample(T_dataset_DY.dfs,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[qmu,qU,qpi,qk,qp])
-sub_qcdTest = pd.concat(sub_qcdTest)
+# sub_dyTest = reportAndSample(T_dataset_DY.dfs,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+# sub_dyTest = pd.concat(sub_dyTest)
+# sub_ttTest = reportAndSample(T_dataset_DY.dfs,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[tmu,tU,tpi,tk,tp])
+# sub_ttTest = pd.concat(sub_ttTest)
+# sub_qcdTest = reportAndSample(T_dataset_DY.dfs,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[qmu,qU,qpi,qk,qp])
+# sub_qcdTest = pd.concat(sub_qcdTest)
 
 
 
-fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
+# fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
 
 x_testDY,y_testDY,pt_testDY = prepareTestSet(dyTest,mdict)
-x_testTT,y_testTT,pt_testTT = prepareTestSet(ttTest,mdict)
-x_testQCD,y_testQCD,pt_testQCD = prepareTestSet(qcdTest,mdict)
-x_testCOMB,y_testCOMB,pt_testCOMB = prepareTestSet(fullcombinedTest,mdict)
+# x_testTT,y_testTT,pt_testTT = prepareTestSet(ttTest,mdict)
+# x_testQCD,y_testQCD,pt_testQCD = prepareTestSet(qcdTest,mdict)
+# x_testCOMB,y_testCOMB,pt_testCOMB = prepareTestSet(fullcombinedTest,mdict)
 
 del T_dataset_DY
-del T_dataset_QCD
-del T_dataset_TT
+# del T_dataset_QCD
+# del T_dataset_TT
 
 print("evaluating full DY")
 evaluateSubset(m,m.model, y_testDY, x_testDY, pt_testDY, "DY",outPath)
-print("evaluating full TT")
-evaluateSubset(m,m.model, y_testTT, x_testTT, pt_testTT, "TT", outPath)
-print("evaluating full QCD")
-evaluateSubset(m,m.model, y_testQCD, x_testQCD, pt_testQCD, "QCD", outPath)
-print("evaluating full combined")
-evaluateSubset(m,m.model, y_testCOMB, x_testCOMB, pt_testCOMB, "COMB", outPath)
+# print("evaluating full TT")
+# evaluateSubset(m,m.model, y_testTT, x_testTT, pt_testTT, "TT", outPath)
+# print("evaluating full QCD")
+# evaluateSubset(m,m.model, y_testQCD, x_testQCD, pt_testQCD, "QCD", outPath)
+# print("evaluating full combined")
+# evaluateSubset(m,m.model, y_testCOMB, x_testCOMB, pt_testCOMB, "COMB", outPath)
 
 
 
-del dyTest
-del ttTest
-del qcdTest
+# del dyTest
+# del ttTest
+# del qcdTest
 
 
 
