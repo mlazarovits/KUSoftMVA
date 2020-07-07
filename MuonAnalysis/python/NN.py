@@ -110,7 +110,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 	goodEff = [ TEfficiency(h_num[i],h_den[i]) for i in range(nClasses) ]
 	[ goodEff[i].SetTitle("correct "+str(i)) for i in range(nClasses) ]
 	badEff = [ TEfficiency(h_num[i],h_fden[i]) for i in range(nClasses) ]
-	[ badEff[i].SetName("pure "+str(i)) for i in range(nClasses) ]
+	[ badEff[i].SetTitle("pure "+str(i)) for i in range(nClasses) ]
 
 #[ self.tr_acc, self.tr_loss, self.tr_valacc, self.tr_valloss]
 	#	c1 = TCanvas()
@@ -124,8 +124,11 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 	[ outfile.WriteTObject(x) for x in h_num ]
 	[ outfile.WriteTObject(x) for x in h_fnum]
 	[ outfile.WriteTObject(x) for x in h_den ]
-	plotEfficiency(goodEff,fname+tag,outfile)
+	#efficiency
+	plotEfficiency(goodEff,fname+tag+"eff",outfile)
 	[ outfile.WriteTObject(x) for x in goodEff ]
+	#purity
+	plotEfficiency(badEff,fname+tag+"purity",outfile)
 	[ outfile.WriteTObject(x) for x in badEff ]
 	# 
 	if results != None:
@@ -197,6 +200,8 @@ class NN:
 			self.model.set_weights(weights)
 		self.Hist = self.model.fit(self.x_train, self.y_train, epochs=100, batch_size=256,validation_split=0.1, verbose=0)
 		
+
+	#evalautes network on last chunk of data
 	def evaluateNetwork(self,path):
 		self.tr_acc = self.Hist.history['accuracy']
 		self.tr_loss = self.Hist.history['loss']		
