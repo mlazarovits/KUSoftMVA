@@ -4,22 +4,32 @@ import numpy as np
 from DATA import *
 from NN import evaluateSubset
 from NN import NN
-from DATA import prepareBenchSet
 import sys
 from make_bench import benchmark_sample
 #initilization of datasets and model variables
 #dypath='/home/t3-ku/janguian/storeUser/malazaro/TrainSetDYJets.root'
-dypath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root'
-qcdpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root'
+# dypath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root'
+# qcdpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root'
 #ttpath='/home/t3-ku/janguian/storeUser/malazaro/TrainSetTTJets.root'
-ttpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root'
+# ttpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root'
 
+#high stats
+dypath='/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/data/Train_dyjets.root'
+qdcpath='/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/data/Train_qcdjets.root'
+ttpath='/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/data/Train_ttjets.root'
 
 #T_dypath='/home/t3-ku/janguian/storeUser/malazaro/TestSetDYJets.root'
-T_dpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root'
-T_qcdpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root'
-T_ttpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root'
+# T_dpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root'
+# T_qcdpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root'
+# T_ttpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root'
 #T_ttpath='/home/t3-ku/janguian/storeUser/malazaro/TestSetTTJets.root'
+
+#high stats
+T_dypath='/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/data/Test_dyjets.root'
+T_qdcpath='/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/data/Test_qcdjets.root'
+T_ttpath='/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/data/Test_ttjets.root'
+
+
 
 # model_vars = ['Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
 # 'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
@@ -45,8 +55,6 @@ eval_tag = sys.argv[1] # input string for tagging output files
 #quick and dirty sample all
 mx = 999999999999
 
-#TODO have an extra sample to load for unique sample testing (a separate hadded file)
-
 ######################################################
 ####################MODEL 5###########################
 print("\nBegin Model 5")
@@ -56,7 +64,7 @@ qmu, qU, qpi, qk, qp = 10000, 2000, 2000, 2000, 2000
 tmu, tU, tpi, tk, tp = 4000, 2000, 2000, 2000, 2000
 
 dataset_DY = DATA(dypath,"Drell-Yan",train_vars)
-T_dataset_DY = DATA(dypath,"TEST_Drell-Yan",train_vars)
+T_dataset_DY = DATA(T_dypath,"TEST_Drell-Yan",train_vars)
 # T_fulldysample= pd.concat(T_dataset_DY.sample(['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx]) )
 #
 # dataset_DY.report()
@@ -65,11 +73,13 @@ T_dataset_DY = DATA(dypath,"TEST_Drell-Yan",train_vars)
 # del dataset_DY
 
 dataset_TT = DATA(ttpath, "TTJets",train_vars)
+T_dataset_TT = DATA(T_ttpath,"TEST_ttJets",train_vars)
 # dataset_TT.report()
 # mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 # del dataset_TT
 
 dataset_QCD = DATA(qcdpath, "QCD",train_vars)
+T_dataset_QCD = DATA(qcdpath,"TEST_QCD",train_vars)
 # dataset_QCD.report()
 # mqcdsample = dataset_QCD.sample(['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
 # del dataset_QCD
@@ -86,9 +96,6 @@ m = NN("model5", modelDesc, train_vars,mdict,'')
 #each chunk is one batch to train the NN on
 #for each dataframe in the different physics processes do training for NN preprocessing
 for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
-	#set aside one chunk for evaluation
-	if chunk == 0:
-		continue
 	if chunk > 3:
 		break
 	print('chunk #', chunk)
@@ -123,17 +130,42 @@ m.evaluateNetwork(outPath)
 #evaluate on separate test sets
 #create subsets for evaluation of network
 
-dyTest = reportAndSample(dataset_DY.dfs[0],format("Test "+dataset_DY.name), ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+dyTest = reportAndSample(T_dataset_DY.dfs,format("Full Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx])
 dyTest = pd.concat(dyTest)
-_, x_testDY, _, y_testDY, _, pt_testDY = prepareTrainingSet(dyTest,mdict)
+
+ttTest = reportAndSample(T_dataset_TT.dfs,format("Full Test "+T_dataset_TT.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
+ttTest = pd.concat(ttTest)
+
+qcdTest = reportAndSample(T_dataset_QCD.dfs,format("Full Test "+T_dataset_QCD.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
+qcdTest = pd.concat(qcdTest)
+
+sub_dyTest = reportAndSample(T_dataset_DY.dfs,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+sub_dyTest = pd.concat(sub_dyTest)
+sub_ttTest = reportAndSample(T_dataset_DY.dfs,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[tmu,tU,tpi,tk,tp])
+sub_ttTest = pd.concat(sub_ttTest)
+sub_qcdTest = reportAndSample(T_dataset_DY.dfs,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[qmu,qU,qpi,qk,qp])
+sub_qcdTest = pd.concat(sub_qcdTest)
+
+fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
+
+x_testDY,y_testDY,pt_testDY = prepareTestSet(dyTest,mdict)
+x_testTT,y_testTT,pt_testTT = prepareTestSet(ttTest,mdict)
+x_testQCD,y_testQCD,pt_testQCD = prepareTestSet(qcdTest,mdict)
+x_testCOMB,y_testCOMB,pt_testCOMB = prepareTestSet(fullcombinedTest,mdict)
+
+
+
 print("evaluating full DY")
 evaluateSubset(m,m.model, y_testDY, x_testDY, pt_testDY, "DY",outPath)
-# print("evaluating full TT")
-# evaluateSubset(m,m.model, y_test2, x_test2, pt_test2, "TT")
-# print("evaluating full QCD")
-# evaluateSubset(m,m.model, y_test3, x_test3, pt_test3, "QCD")
-# print("evaluating full combined")
-# evaluateSubset(m,m.model, y_test4, x_test4, pt_test4, "COMB")
+print("evaluating full TT")
+evaluateSubset(m,m.model, y_testTT, x_testTT, pt_testTT, "TT", outPath)
+print("evaluating full QCD")
+evaluateSubset(m,m.model, y_testQCD, x_testQCD, pt_testQCD, "QCD", outPath)
+print("evaluating full combined")
+evaluateSubset(m,m.model, y_testCOMB, x_testCOMB, pt_testCOMB, "COMB", outPath)
+
+
+
 
 
 

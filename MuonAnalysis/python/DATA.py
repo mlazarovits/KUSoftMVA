@@ -25,7 +25,7 @@ def dropBenchmarkVar( sample ):#, benchvars ):
 	newsamp = newsamp.drop(columns='Muon_softMvaId')
 	return newsamp
 
-def prepareBenchSet( data, label_dict):
+def prepareTestSet( data, label_dict):
 	# data=  sample[ model_vars ]
 	data = shuffle(data)
 	target = data['Muon_genPdgId']
