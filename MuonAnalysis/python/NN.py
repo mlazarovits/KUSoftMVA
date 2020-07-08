@@ -22,7 +22,7 @@ from plotFunctions import plotEfficiency, plotROCcurves
 
 
 
-def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results=None ):
+def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 
 	# print(model_y)
 	#translate model prediction probabilities to onehot
@@ -31,11 +31,15 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 	pred[ pred >= 0.5 ] = 1.
 	pred[ pred <0.5 ] = 0.
 
+	
+	labels = np.unique(pred,axis=0)
+	nClasses = len(labels)
+
 	#this num is model predicts class and object matched to same class
-	h_num = [ TH1D("num_"+str(i), "label "+str(i), 41, -0.5, 40.5 ) for i in range(nClasses) ]
+	h_num = [ TH1D("num_"+str(i), "label "+str(x), 41, -0.5, 40.5 ) for i, x in enumerate(labels) ]
 
 	#den of objects of a specific class
-	h_den = [ TH1D("den_"+str(i), "label "+str(i), 41, -0.5, 40.5 ) for i in range(nClasses) ]
+	h_den = [ TH1D("den_"+str(i), "label "+str(x), 41, -0.5, 40.5 ) for i, x in enumerate(labels) ]
 
 	num_ctr = [ 0. for i in range(nClasses) ]
 	den_ctr = [ 0. for i in range(nClasses) ]
@@ -43,9 +47,9 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 	all_num_ctr =  0. 
 	all_den_ctr =  0. 
 
-	h_fnum = [ TH1D("fnum_"+str(i), "correct id label "+str(i), 41, -0.5, 40.5 ) for i in range(nClasses) ]		
+	h_fnum = [ TH1D("fnum_"+str(i), "correct id label "+str(x), 41, -0.5, 40.5 ) for i, x in enumerate(labels) ]		
 	#den of all objects that are labeled by model
-	h_fden = [ TH1D("fden_"+str(i), "model predicts label "+str(i), 41, -0.5, 40.5 ) for i in range(nClasses) ]
+	h_fden = [ TH1D("fden_"+str(i), "model predicts label "+str(x), 41, -0.5, 40.5 ) for i, x in enumerate(labels) ]
 
 	fnum_ctr = [ 0 for i in range(nClasses) ]
 	fden_ctr = [ 0 for i in range(nClasses) ]
@@ -60,32 +64,34 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 	for i , (my, ty, pt, proby) in enumerate(zip(pred, true_y, model_pt, model_y)):
 		if i < 10:
 			print(i,proby,my,ty,pt)
-		labelidx = -1
-		modelidx = -1
-		for idx in range(len(ty)):
-			if( ty[idx] == 1):
-				labelidx = idx
-		for idx in range(len(my)):
-			if( my[idx] ==1):
-				modelidx = idx
+		# labelidx = -1
+		# modelidx = -1
+		# for idx in range(len(ty)):
+		# 	if( ty[idx] == 1):
+		# 		labelidx = idx
+		# for idx in range(len(my)):
+		# 	if( my[idx] ==1):
+		# 		modelidx = idx
+		labelidx = np.where(ty == 1)
+		modelidx = np.where(my == 1)
 
 		if( (my == ty).all() ): #we have a correct classification
 
 			h_num[labelidx].Fill(pt)
 			h_fnum[labelidx].Fill(pt)
 
-			num_ctr[labelidx] = num_ctr[labelidx] + 1.
+			num_ctr[labelidx] +=  1.
 
-			all_num_ctr = all_num_ctr + 1.
+			all_num_ctr +=  1.
 			#       all_fnum_ctr = all_fnum_ctr + 1.
 
 		h_den[labelidx].Fill(pt)
 		h_fden[modelidx].Fill(pt)
 
-		den_ctr[labelidx] = den_ctr[labelidx] + 1.
-		fden_ctr[modelidx] = fden_ctr[modelidx] + 1.
+		den_ctr[labelidx] +=  1.
+		fden_ctr[modelidx] +=  1.
 
-		all_den_ctr = all_den_ctr + 1.
+		all_den_ctr +=  1.
 
 
 
@@ -96,14 +102,14 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 	print("efficiency = # of objects correctly classified for a specific label / # of true objects of that label")
 	print("purity = # of objects correctly classified for a specific label/ # of objects classified for that label")
 	#account for 0 entries
-	for j in range(nClasses):	
+	for j, x in enumerate(labels):	
 		tempden = -1
 		tempfden = -1
 		if(den_ctr[j] != 0):
 			tempden = den_ctr[j]
 		if(fden_ctr[j] != 0):
 			tempfden = fden_ctr[j]
-		print("label "+str(j)+":")
+		print("label "+str(x)+":")
 		print("Efficiency : "+ str(num_ctr[j]) +" of "+ str(den_ctr[j])+"   "+str(num_ctr[j]/tempden))
 		print("Purity     : "+ str(num_ctr[j])+" of "+ str(fden_ctr[j])+"   "+str(num_ctr[j]/tempfden))
 
@@ -114,9 +120,9 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 
 
 	goodEff = [ TEfficiency(h_num[i],h_den[i]) for i in range(nClasses) ]
-	[ goodEff[i].SetTitle("correct "+str(i)) for i in range(nClasses) ]
+	[ goodEff[i].SetTitle("correct "+str(i)) for i in labels ]
 	badEff = [ TEfficiency(h_num[i],h_fden[i]) for i in range(nClasses) ]
-	[ badEff[i].SetTitle("pure "+str(i)) for i in range(nClasses) ]
+	[ badEff[i].SetTitle("pure "+str(i)) for i in labels ]
 
 #[ self.tr_acc, self.tr_loss, self.tr_valacc, self.tr_valloss]
 	#	c1 = TCanvas()
@@ -165,7 +171,7 @@ def evaluateSubset( NN, y_testsub,x_testsub , pt_testsub ,  tagsub, path  ):
 #	print(true_y)
 	model_pt = pt_testsub
 
-	evaluateModel(model_y, true_y, model_pt, NN.name, tagsub, NN.nClasses, path )
+	evaluateModel(model_y, true_y, model_pt, NN.name, tagsub, path )
 
 
 
@@ -227,7 +233,7 @@ class NN:
 		print("Evaluating model....")
 		self.predictions = self.model.predict(self.x_test)	
 		print(type(self.predictions))	
-		evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, self.nClasses, path, self.results )			
+		evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, path, self.results )			
 
 
 
