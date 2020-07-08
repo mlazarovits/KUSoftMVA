@@ -226,8 +226,7 @@ class NN:
 		print('Test loss: %.4f' % self.te_loss)
 		print("Evaluating model....")
 		self.predictions = self.model.predict(self.x_test)	
-	#	self.predictions = self.model.predict(x_train)
-		
+		print(self.predictions)		
 		evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, self.nClasses, path, self.results )			
 
 
