@@ -61,9 +61,10 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 	nNotMu = 0
 
 	# begin the counting 
-	for i , (my, ty, pt, proby) in enumerate(zip(pred, true_y, model_pt, model_y)):
-		# if i < 10:
-		# 	print(i,proby,my,ty,pt)
+	for i , (my, ty, pt) in enumerate(zip(pred, true_y, model_pt)):
+		if i < 10:
+			print(i,proby,my,ty,pt)
+			print(my.shape)
 		# labelidx = -1
 		# modelidx = -1
 		# for idx in range(len(ty)):
