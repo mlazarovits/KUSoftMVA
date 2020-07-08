@@ -72,8 +72,8 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 		# for idx in range(len(my)):
 		# 	if( my[idx] ==1):
 		# 		modelidx = idx
-		labelidx = np.where(ty == 1)
-		modelidx = np.where(my == 1)
+		labelidx = int(np.flatnonzero(ty == 1))
+		modelidx = int(np.where(my == 1))
 
 		if( (my == ty).all() ): #we have a correct classification
 
