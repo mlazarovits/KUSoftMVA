@@ -120,9 +120,9 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 
 
 	goodEff = [ TEfficiency(h_num[i],h_den[i]) for i in range(nClasses) ]
-	[ goodEff[i].SetTitle("correct "+str(i)) for i in labels ]
+	[ goodEff[i].SetTitle("correct "+str(i)) for i in range(nClasses) ]
 	badEff = [ TEfficiency(h_num[i],h_fden[i]) for i in range(nClasses) ]
-	[ badEff[i].SetTitle("pure "+str(i)) for i in labels ]
+	[ badEff[i].SetTitle("pure "+str(i)) for i in range(nClasses) ]
 
 #[ self.tr_acc, self.tr_loss, self.tr_valacc, self.tr_valloss]
 	#	c1 = TCanvas()
