@@ -62,8 +62,8 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 
 	# begin the counting 
 	for i , (my, ty, pt, proby) in enumerate(zip(pred, true_y, model_pt, model_y)):
-		if i < 10:
-			print(i,proby,my,ty,pt)
+		# if i < 10:
+		# 	print(i,proby,my,ty,pt)
 		# labelidx = -1
 		# modelidx = -1
 		# for idx in range(len(ty)):
@@ -232,7 +232,6 @@ class NN:
 		print('Test loss: %.4f' % self.te_loss)
 		print("Evaluating model....")
 		self.predictions = self.model.predict(self.x_test)	
-		print(type(self.predictions))	
 		evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, path, self.results )			
 
 
