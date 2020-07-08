@@ -58,7 +58,8 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 
 	# begin the counting 
 	for i , (my, ty, pt) in enumerate(zip(pred, true_y, model_pt)):
-		print i,my,ty,pt
+		if i > 10:
+			print(i,my,ty,pt)
 		labelidx = -1
 		modelidx = -1
 		for idx in range(len(ty)):
@@ -86,7 +87,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 
 		all_den_ctr = all_den_ctr + 1.
 
-		 
+
 
 		#collect all classifications as well
 
@@ -102,7 +103,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 			tempden = den_ctr[j]
 		if(fden_ctr[j] != 0):
 			tempfden = fden_ctr[j]
-		print("label "+str(x)+":")
+		print("label "+str(j)+":")
 		print("Efficiency : "+ str(num_ctr[j]) +" of "+ str(den_ctr[j])+"   "+str(num_ctr[j]/tempden))
 		print("Purity     : "+ str(num_ctr[j])+" of "+ str(fden_ctr[j])+"   "+str(num_ctr[j]/tempfden))
 
