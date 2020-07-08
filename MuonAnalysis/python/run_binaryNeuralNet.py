@@ -63,9 +63,9 @@ dymu, dyU, dypi, dyk, dyp = 10000, 2000, 2000, 2000, 2000
 qmu, qU, qpi, qk, qp = 10000, 2000, 2000, 2000, 2000
 tmu, tU, tpi, tk, tp = 4000, 2000, 2000, 2000, 2000
 
-Tdymu, TdyU, Tdypi, Tdyk, Tdyp = 100000, 20000, 20000, 20000, 20000
-Tqmu, TqU, Tqpi, Tqk, Tqp = 100000, 20000, 20000, 20000, 20000
-Ttmu, TtU, Ttpi, Ttk, Ttp = 100000, 20000, 20000, 20000, 20000
+Tdymu, TdyU, Tdypi, Tdyk, Tdyp = 100000, 25000, 25000, 25000, 25000
+Tqmu, TqU, Tqpi, Tqk, Tqp = 100000, 25000, 25000, 25000, 25000
+Ttmu, TtU, Ttpi, Ttk, Ttp = 100000, 25000, 25000, 25000, 25000
 
 
 
@@ -103,7 +103,7 @@ m = NN("model5", modelDesc, train_vars,mdict,eval_tag)
 # each chunk is one batch to train the NN on
 # for each dataframe in the different physics processes do training for NN preprocessing
 for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
-	if chunk > 10: #reading data in 100 MB chunks, 10*100 = 1 GB/process
+	if chunk > 3: #reading data in 100 MB chunks, 10*100 = 1 GB/process
 		break
 	print('chunk #', chunk)
 #	print('dy',type(dy),dy.head())
@@ -135,59 +135,59 @@ del dataset_DY
 del dataset_TT
 del dataset_QCD
 
-# #evaluate after all memChunks
+# #evaluate on last memChunk test sets
 m.evaluateNetwork(outPath)
 
 #evaluate on separate test sets
 #create subsets for evaluation of network
-T_dataset_DY.dfs = pd.concat(T_dataset_DY.dfs)
-T_dataset_TT.dfs = pd.concat(T_dataset_TT.dfs)
-T_dataset_QCD.dfs = pd.concat(T_dataset_QCD.dfs)
+# T_dataset_DY.dfs = pd.concat(T_dataset_DY.dfs)
+# T_dataset_TT.dfs = pd.concat(T_dataset_TT.dfs)
+# T_dataset_QCD.dfs = pd.concat(T_dataset_QCD.dfs)
 
-dyTest = reportAndSample(T_dataset_DY.dfs,format("Full Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx])
-# dyTest = pd.concat(dyTest)
+# dyTest = reportAndSample(T_dataset_DY.dfs,format("Full Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx])
+# # dyTest = pd.concat(dyTest)
 
-ttTest = reportAndSample(T_dataset_TT.dfs,format("Full Test "+T_dataset_TT.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
-# ttTest = pd.concat(ttTest)
+# ttTest = reportAndSample(T_dataset_TT.dfs,format("Full Test "+T_dataset_TT.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
+# # ttTest = pd.concat(ttTest)
 
-qcdTest = reportAndSample(T_dataset_QCD.dfs,format("Full Test "+T_dataset_QCD.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
-# qcdTest = pd.concat(qcdTest)
+# qcdTest = reportAndSample(T_dataset_QCD.dfs,format("Full Test "+T_dataset_QCD.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
+# # qcdTest = pd.concat(qcdTest)
 
-sub_dyTest = reportAndSample(T_dataset_DY.dfs,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[Tdymu,TdyU,Tdypi,Tdyk,Tdyp])
-# sub_dyTest = pd.concat(sub_dyTest)
-sub_ttTest = reportAndSample(T_dataset_TT.dfs,format("Sub Test "+T_dataset_TT.name), ['mu','U','pi','k','p' ],[Ttmu,TtU,Ttpi,Ttk,Ttp])
-# sub_ttTest = pd.concat(sub_ttTest)
-sub_qcdTest = reportAndSample(T_dataset_QCD.dfs,format("Sub Test "+T_dataset_QCD.name), ['mu','U','pi','k','p' ],[Tqmu,TqU,Tqpi,Tqk,Tqp])
-# sub_qcdTest = pd.concat(sub_qcdTest)
-
-
-fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
-
-x_testDY,y_testDY,pt_testDY = prepareTestSet(dyTest,mdict)
-x_testTT,y_testTT,pt_testTT = prepareTestSet(ttTest,mdict)
-x_testQCD,y_testQCD,pt_testQCD = prepareTestSet(qcdTest,mdict)
-x_testCOMB,y_testCOMB,pt_testCOMB = prepareTestSet(fullcombinedTest,mdict)
-
-del T_dataset_DY
-del T_dataset_QCD
-del T_dataset_TT
-
-print("evaluating full DY")
-evaluateSubset(m, y_testDY, x_testDY, pt_testDY, "DY",outPath)
-print("\n")
-print("evaluating full TT")
-evaluateSubset(m, y_testTT, x_testTT, pt_testTT, "TT", outPath)
-print("\n")
-print("evaluating full QCD")
-evaluateSubset(m,y_testQCD, x_testQCD, pt_testQCD, "QCD", outPath)
-print("\n")
-print("evaluating full combined")
-evaluateSubset(m, y_testCOMB, x_testCOMB, pt_testCOMB, "COMB", outPath)
+# sub_dyTest = reportAndSample(T_dataset_DY.dfs,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[Tdymu,TdyU,Tdypi,Tdyk,Tdyp])
+# # sub_dyTest = pd.concat(sub_dyTest)
+# sub_ttTest = reportAndSample(T_dataset_TT.dfs,format("Sub Test "+T_dataset_TT.name), ['mu','U','pi','k','p' ],[Ttmu,TtU,Ttpi,Ttk,Ttp])
+# # sub_ttTest = pd.concat(sub_ttTest)
+# sub_qcdTest = reportAndSample(T_dataset_QCD.dfs,format("Sub Test "+T_dataset_QCD.name), ['mu','U','pi','k','p' ],[Tqmu,TqU,Tqpi,Tqk,Tqp])
+# # sub_qcdTest = pd.concat(sub_qcdTest)
 
 
-del dyTest
-del ttTest
-del qcdTest
+# fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
+
+# x_testDY,y_testDY,pt_testDY = prepareTestSet(dyTest,mdict)
+# x_testTT,y_testTT,pt_testTT = prepareTestSet(ttTest,mdict)
+# x_testQCD,y_testQCD,pt_testQCD = prepareTestSet(qcdTest,mdict)
+# x_testCOMB,y_testCOMB,pt_testCOMB = prepareTestSet(fullcombinedTest,mdict)
+
+# del T_dataset_DY
+# del T_dataset_QCD
+# del T_dataset_TT
+
+# print("evaluating full DY")
+# evaluateSubset(m, y_testDY, x_testDY, pt_testDY, "DY",outPath)
+# print("\n")
+# print("evaluating full TT")
+# evaluateSubset(m, y_testTT, x_testTT, pt_testTT, "TT", outPath)
+# print("\n")
+# print("evaluating full QCD")
+# evaluateSubset(m,y_testQCD, x_testQCD, pt_testQCD, "QCD", outPath)
+# print("\n")
+# print("evaluating full combined")
+# evaluateSubset(m, y_testCOMB, x_testCOMB, pt_testCOMB, "COMB", outPath)
+
+
+# del dyTest
+# del ttTest
+# del qcdTest
 
 
 

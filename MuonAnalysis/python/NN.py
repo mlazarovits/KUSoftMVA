@@ -53,9 +53,12 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 	all_fnum_ctr = 0
 	all_fden_ctr = 0
 
+	nTrueMu = 0
+	nNotMu = 0
+
 	# begin the counting 
 	for i , (my, ty, pt) in enumerate(zip(pred, true_y, model_pt)):
-		#print i,my,ty,pt
+		print i,my,ty,pt
 		labelidx = -1
 		modelidx = -1
 		for idx in range(len(ty)):
@@ -83,6 +86,8 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 
 		all_den_ctr = all_den_ctr + 1.
 
+		 
+
 		#collect all classifications as well
 
 	print("Reporting results from test data")
@@ -90,7 +95,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 	print("efficiency = # of objects correctly classified for a specific label / # of true objects of that label")
 	print("purity = # of objects correctly classified for a specific label/ # of objects classified for that label")
 	#account for 0 entries
-	for j, x in enumerate(nClasses):	
+	for j in range(nClasses):	
 		tempden = -1
 		tempfden = -1
 		if(den_ctr[j] != 0):
@@ -102,7 +107,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 		print("Purity     : "+ str(num_ctr[j])+" of "+ str(fden_ctr[j])+"   "+str(num_ctr[j]/tempfden))
 
 	print("Overall performance: ")
-	# print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
+	# print("Efficiency: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
 	#print("Mis.    ID: "+ str(all_fnum_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_fnum_ctr/all_den_ctr))
 	print("Purity: "+ str(all_num_ctr)+" of "+str(all_den_ctr)+"    "+str(all_num_ctr/all_den_ctr))
 
