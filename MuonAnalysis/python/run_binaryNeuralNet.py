@@ -63,9 +63,9 @@ dymu, dyU, dypi, dyk, dyp = 10000, 2000, 2000, 2000, 2000
 qmu, qU, qpi, qk, qp = 10000, 2000, 2000, 2000, 2000
 tmu, tU, tpi, tk, tp = 4000, 2000, 2000, 2000, 2000
 
-Tdymu, TdyU, Tdypi, Tdyk, Tdyp = 20000, 4000, 4000, 4000, 4000
-Tqmu, TqU, Tqpi, Tqk, Tqp = 20000, 4000, 4000, 4000, 4000
-Ttmu, TtU, Ttpi, Ttk, Ttp = 8000, 4000, 4000, 4000, 4000
+Tdymu, TdyU, Tdypi, Tdyk, Tdyp = 100000, 20000, 20000, 20000, 20000
+Tqmu, TqU, Tqpi, Tqk, Tqp = 100000, 20000, 20000, 20000, 20000
+Ttmu, TtU, Ttpi, Ttk, Ttp = 100000, 20000, 20000, 20000, 20000
 
 
 
