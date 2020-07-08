@@ -90,16 +90,16 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses, path, results
 	print("efficiency = # of objects correctly classified for a specific label / # of true objects of that label")
 	print("purity = # of objects correctly classified for a specific label/ # of objects classified for that label")
 	#account for 0 entries
-	for x in range(nClasses):	
+	for j, x in enumerate(nClasses):	
 		tempden = -1
 		tempfden = -1
-		if(den_ctr[x] != 0):
-			tempden = den_ctr[x]
-		if(fden_ctr[x] != 0):
-			tempfden = fden_ctr[x]
+		if(den_ctr[j] != 0):
+			tempden = den_ctr[j]
+		if(fden_ctr[j] != 0):
+			tempfden = fden_ctr[j]
 		print("label "+str(x)+":")
-		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(num_ctr[x]/tempden))
-		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(num_ctr[x]/tempfden))
+		print("Efficiency : "+ str(num_ctr[j]) +" of "+ str(den_ctr[j])+"   "+str(num_ctr[j]/tempden))
+		print("Purity     : "+ str(num_ctr[j])+" of "+ str(fden_ctr[j])+"   "+str(num_ctr[j]/tempfden))
 
 	print("Overall performance: ")
 	# print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
