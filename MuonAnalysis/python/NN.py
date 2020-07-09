@@ -64,6 +64,8 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 	for i , (my, ty, pt) in enumerate(zip(pred, true_y, model_pt)):
 		if i < 10:
 			print(i,my,ty,pt)
+			print(ty.shape)
+			print(np.flatnonzero(ty == 1))
 		# labelidx = -1
 		# modelidx = -1
 		# for idx in range(len(ty)):
