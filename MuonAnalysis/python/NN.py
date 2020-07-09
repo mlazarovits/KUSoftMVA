@@ -199,11 +199,11 @@ class NN:
 		print("Desc.: "+ self.modeldesc)
 		print("\n")
 
-	def trainNetwork(self,x_train,x_test,y_train,y_test, pt_train, pt_test,weights=None):
+	def trainNetwork(self,x_train,y_train, pt_train, pt_test,weights=None):
 		self.x_train = x_train
 		self.y_train = y_train
-		self.x_test = x_test
-		self.y_test = y_test
+		# self.x_test = x_test
+		# self.y_test = y_test
 		self.pt_train = pt_train
 		self.pt_test = pt_test
 		
