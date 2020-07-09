@@ -99,11 +99,12 @@ modelDesc = "Model trained only on true muons vs unmatched with non muons EXCLUD
 
 m = NN("model5", modelDesc, train_vars,mdict,eval_tag)
 
+lastChunk = 10
 
 ## each chunk is one batch to train the NN on
 ## for each dataframe in the different physics processes do training for NN preprocessing
 for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
-	if chunk > 10: #reading data in 100 MB chunks, 10*100 = 1 GB/process
+	if chunk > 1lastChunk0: #reading data in 100 MB chunks, 10*100 = 1 GB/process
 		break
 	print('chunk #', chunk)
 #	print('dy',type(dy),dy.head())
@@ -113,23 +114,29 @@ for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, datase
 
 	trainingChunk = pd.concat([dy,tt,qcd])
 #	print('trainingChunk',trainingChunk.head())
-	x_train, x_test, y_train, y_test, pt_train, pt_test = prepareSet(trainingChunk,mdict)
+	x_train, y_train, pt_train = prepareSet(trainingChunk,mdict)
 	
 
 	#use randomly initialized weights for first chunk
 	if chunk == 0:
-		m.trainNetwork(x_train,y_train, pt_train, pt_test)
+		m.trainNetwork(x_train,y_train, pt_train)
 	else: #set weights of model from previous chunk
 		weights = m.model.get_weights()
 		m.model.set_weights(weights)
-		m.trainNetwork(x_train,y_train, pt_train, pt_test,weights)
+		m.trainNetwork(x_train,y_train, pt_train,weights)
+
+dy = reportAndSample(dataset_DY.dfs[lastChunk+1],dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+tt = reportAndSample(dataset_TT.dfs[lastChunk+1],dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
+qcd = reportAndSample(dataset_QCD.dfs[lastChunk+1],dataset_QCD.name, ['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
+trainingChunk = pd.concat([dy,tt,qcd])
+
+x_test,y_test,pt_test = prepareSet(trainingChunk,mdict)
+# # #evaluate on last memChunk test sets
+m.evaluateNetwork(outPath,x_test,y_test,pt_test)
 
 del dataset_DY
 del dataset_TT
 del dataset_QCD
-
-# # #evaluate on last memChunk test sets
-m.evaluateNetwork(outPath)
 
 #evaluate on separate test sets
 #create subsets for evaluation of network

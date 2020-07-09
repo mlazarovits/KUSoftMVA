@@ -39,8 +39,8 @@ def prepareSet( data, label_dict):
 	data = (data-data.mean())/data.std()
 
 	#only get test set to test benchmark models on (they are already "trained")
-	# _,x_test, _, y_test = train_test_split(data,target, test_size=.99, random_state=1)
-	# _,pt_test, _, _= train_test_split(pt,target, test_size=.99, random_state=1)
+	x_train,x_test, y_train, y_test = train_test_split(data,target, test_size=.99, random_state=1)
+	pt_train,pt_test, _, _= train_test_split(pt,target, test_size=.99, random_state=1)
 	
 	x_test = data.to_numpy()
 	y_test = target.to_numpy()
