@@ -113,12 +113,12 @@ for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, datase
 
 	trainingChunk = pd.concat([dy,tt,qcd])
 #	print('trainingChunk',trainingChunk.head())
-	x_train, y_train, pt_train = prepareSet(trainingChunk,mdict)
+	x_train, x_test, y_train, y_test, pt_train, pt_test = prepareSet(trainingChunk,mdict)
 	
 
 	#use randomly initialized weights for first chunk
 	if chunk == 0:
-		m.trainNetwork(x_train,y_train, pt_train)
+		m.trainNetwork(x_train,y_train, pt_train, pt_test)
 	else: #set weights of model from previous chunk
 		weights = m.model.get_weights()
 		m.model.set_weights(weights)
