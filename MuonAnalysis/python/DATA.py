@@ -44,7 +44,9 @@ def prepareSet( data, label_dict):
 	
 	x_test = data.to_numpy()
 	y_test = target.to_numpy()
-	pt_test = pt.to_numpy()
+
+	y_test = np.array([np.array(i) for i in y_test])
+	pt_test = pt_test.to_numpy()
 	return x_test,y_test,pt_test
 
 def prepareTestSet( data, label_dict):
@@ -88,7 +90,7 @@ def prepareTrainingSet( data, label_dict):
 
 	y_train = np.array([np.array(i) for i in y_train])
 	y_test = np.array([np.array(i) for i in y_test])
-	pt_train = pt_test.to_numpy()
+	pt_train = pt_train.to_numpy()
 	pt_test = pt_test.to_numpy()
 
 	return x_train, x_test, y_train, y_test, pt_train, pt_test
