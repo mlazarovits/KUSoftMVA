@@ -62,8 +62,10 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 
 	# begin the counting 
 	for i , (my, ty, pt) in enumerate(zip(pred, true_y, model_pt)):
+		ty = np.array([ty])
 		if i < 10:
 			print(i,my,ty,pt)
+
 			print(ty.shape)
 			print(np.flatnonzero(ty == 1))
 		# labelidx = -1
