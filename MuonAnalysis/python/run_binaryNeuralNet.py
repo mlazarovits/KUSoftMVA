@@ -113,16 +113,16 @@ for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, datase
 
 	trainingChunk = pd.concat([dy,tt,qcd])
 #	print('trainingChunk',trainingChunk.head())
-	x_train, x_test, y_train, y_test, pt_train, pt_test = prepareTrainingSet(trainingChunk,mdict)
+	x_train, x_test, y_train, y_test, pt_train, pt_test = prepareSet(trainingChunk,mdict)
 	
 
 	#use randomly initialized weights for first chunk
 	if chunk == 0:
-		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test)
+		m.trainNetwork(x_train,y_train, pt_train, pt_test)
 	else: #set weights of model from previous chunk
 		weights = m.model.get_weights()
 		m.model.set_weights(weights)
-		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test,weights)
+		m.trainNetwork(x_train,y_train, pt_train, pt_test,weights)
 
 del dataset_DY
 del dataset_TT
@@ -152,10 +152,10 @@ sub_qcdTest = reportAndSample(T_dataset_QCD.dfs,format("Sub Test "+T_dataset_QCD
 
 fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
 
-x_testDY,y_testDY,pt_testDY = prepareTestSet(dyTest,mdict)
-x_testTT,y_testTT,pt_testTT = prepareTestSet(ttTest,mdict)
-x_testQCD,y_testQCD,pt_testQCD = prepareTestSet(qcdTest,mdict)
-x_testCOMB,y_testCOMB,pt_testCOMB = prepareTestSet(fullcombinedTest,mdict)
+x_testDY,y_testDY,pt_testDY = prepareSet(dyTest,mdict)
+x_testTT,y_testTT,pt_testTT = prepareSet(ttTest,mdict)
+x_testQCD,y_testQCD,pt_testQCD = prepareSet(qcdTest,mdict)
+x_testCOMB,y_testCOMB,pt_testCOMB = prepareSet(fullcombinedTest,mdict)
 
 del T_dataset_DY
 del T_dataset_QCD

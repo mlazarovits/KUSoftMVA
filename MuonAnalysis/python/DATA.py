@@ -26,6 +26,27 @@ def dropBenchmarkVar( sample ):#, benchvars ):
 	newsamp = newsamp.drop(columns='Muon_softMvaId')
 	return newsamp
 
+
+def prepareSet( data, label_dict):
+	# data=  sample[ model_vars ]
+	data = shuffle(data)
+	target = data['Muon_genPdgId']
+	# target=abs(target)
+	
+	data = data.drop(columns='Muon_genPdgId')
+	pt = data['Muon_pt']
+	target= target.map(label_dict)
+	data = (data-data.mean())/data.std()
+
+	#only get test set to test benchmark models on (they are already "trained")
+	# _,x_test, _, y_test = train_test_split(data,target, test_size=.99, random_state=1)
+	# _,pt_test, _, _= train_test_split(pt,target, test_size=.99, random_state=1)
+	
+	x_test = data.to_numpy()
+	y_test = target.to_numpy()
+	pt_test = pt.to_numpy()
+	return x_test,y_test,pt_test
+
 def prepareTestSet( data, label_dict):
 	# data=  sample[ model_vars ]
 	data = shuffle(data)
@@ -59,7 +80,7 @@ def prepareTrainingSet( data, label_dict):
 	data = (data-data.mean())/data.std()	
 	
 	x_train, x_test, y_train, y_test = train_test_split(data, target, test_size = .35, random_state=1)
-	pt_train, pt_test, y_train2, y_test2 = train_test_split(pt,target, test_size= .35, random_state=1)
+	pt_train, pt_test, _, _ = train_test_split(pt,target, test_size= .35, random_state=1)
 	x_train = x_train.to_numpy()
 	x_test = x_test.to_numpy()
 	y_train = y_train.to_numpy()
