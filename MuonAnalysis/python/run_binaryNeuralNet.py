@@ -70,7 +70,7 @@ Ttmu, TtU, Ttpi, Ttk, Ttp = 100000, 25000, 25000, 25000, 25000
 
 
 
-# dataset_DY = DATA(dypath,"Drell-Yan",train_vars)
+dataset_DY = DATA(dypath,"Drell-Yan",train_vars)
 T_dataset_DY = DATA(T_dypath,"TEST_Drell-Yan",train_vars)
 # T_fulldysample= pd.concat(T_dataset_DY.sample(['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx]) )
 #
@@ -79,13 +79,13 @@ T_dataset_DY = DATA(T_dypath,"TEST_Drell-Yan",train_vars)
 # print(len(mdysample))
 # del dataset_DY
 
-# dataset_TT = DATA(ttpath, "TTJets",train_vars)
+dataset_TT = DATA(ttpath, "TTJets",train_vars)
 T_dataset_TT = DATA(T_ttpath,"TEST_ttJets",train_vars)
 # dataset_TT.report()
 # mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 # del dataset_TT
 
-# dataset_QCD = DATA(qcdpath, "QCD",train_vars)
+dataset_QCD = DATA(qcdpath, "QCD",train_vars)
 T_dataset_QCD = DATA(qcdpath,"TEST_QCD",train_vars)
 # dataset_QCD.report()
 # mqcdsample = dataset_QCD.sample(['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
@@ -100,36 +100,36 @@ modelDesc = "Model trained only on true muons vs unmatched with non muons EXCLUD
 m = NN("model5", modelDesc, train_vars,mdict,eval_tag)
 
 
-# each chunk is one batch to train the NN on
-# for each dataframe in the different physics processes do training for NN preprocessing
-# for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
-# 	if chunk > 10: #reading data in 100 MB chunks, 10*100 = 1 GB/process
-# 		break
-# 	print('chunk #', chunk)
-# #	print('dy',type(dy),dy.head())
-# 	dy = reportAndSample(dy,dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
-# 	tt = reportAndSample(tt,dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
-# 	qcd = reportAndSample(qcd,dataset_QCD.name, ['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
+## each chunk is one batch to train the NN on
+## for each dataframe in the different physics processes do training for NN preprocessing
+for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
+	if chunk > 10: #reading data in 100 MB chunks, 10*100 = 1 GB/process
+		break
+	print('chunk #', chunk)
+#	print('dy',type(dy),dy.head())
+	dy = reportAndSample(dy,dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+	tt = reportAndSample(tt,dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
+	qcd = reportAndSample(qcd,dataset_QCD.name, ['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
 
-# 	trainingChunk = pd.concat([dy,tt,qcd])
-# #	print('trainingChunk',trainingChunk.head())
-# 	x_train, x_test, y_train, y_test, pt_train, pt_test = prepareTrainingSet(trainingChunk,mdict)
+	trainingChunk = pd.concat([dy,tt,qcd])
+#	print('trainingChunk',trainingChunk.head())
+	x_train, x_test, y_train, y_test, pt_train, pt_test = prepareTrainingSet(trainingChunk,mdict)
 	
 
-# 	#use randomly initialized weights for first chunk
-# 	if chunk == 0:
-# 		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test)
-# 	else: #set weights of model from previous chunk
-# 		weights = m.model.get_weights()
-# 		m.model.set_weights(weights)
-# 		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test,weights)
+	#use randomly initialized weights for first chunk
+	if chunk == 0:
+		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test)
+	else: #set weights of model from previous chunk
+		weights = m.model.get_weights()
+		m.model.set_weights(weights)
+		m.trainNetwork(x_train,x_test,y_train,y_test, pt_train, pt_test,weights)
 
-# del dataset_DY
-# del dataset_TT
-# del dataset_QCD
+del dataset_DY
+del dataset_TT
+del dataset_QCD
 
 # # #evaluate on last memChunk test sets
-# m.evaluateNetwork(outPath)
+m.evaluateNetwork(outPath)
 
 #evaluate on separate test sets
 #create subsets for evaluation of network
