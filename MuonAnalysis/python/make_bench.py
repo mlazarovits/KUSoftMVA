@@ -21,8 +21,7 @@ class benchmarkSample:
 		#soft id -2
 		#loose id -3
 
-		#make dummy results
-		self.results=np.zeros((4,1))
+		
 
 		self.nclasses = len(y[0])
 		print("nclasses", self.nclasses)
@@ -37,7 +36,7 @@ class benchmarkSample:
 		[soft.append(self.p) if val == passIdsoft else soft.append(self.f) for val in self.x[:,-2] ]
 		soft = soft[1:]
 		#	print soft	
-		evaluateModel(np.array(soft),self.y,self.pt,self.name,"SoftId",self.path,self.results)
+		evaluateModel(np.array(soft),self.y,self.pt,self.name,"SoftId",self.path)
 	def makeLooseId():
 		passIdloose = max(self.x[:,-3])
 		print("passIdSoftLoose",passIdloose)
@@ -48,7 +47,7 @@ class benchmarkSample:
 		[softloose.append(self.p) if i1 == passIdloose and i2 == passIdsoft else softloose.append(self.f) for i1,i2 in zip(id1,id2)  ]
 		softloose = softloose[1:]
 		#	print softloose
-		evaluateModel(np.array(softloose),self.y,self.pt,self.name,"SoftLoose",self.path,self.results)
+		evaluateModel(np.array(softloose),self.y,self.pt,self.name,"SoftLoose",self.path)
 
 	def makeMvaId():
 		passIdmva = max(self.x[:,-1])
@@ -61,7 +60,7 @@ class benchmarkSample:
 		#evaluate soft mva soft mva doesnt work on DY?
 		softmva = softmva[1:]
 		#	print  softmva	
-		evaluateModel(np.array(softmva),self.y,self.pt,self.name,"SoftMva",self.path,self.results)
+		evaluateModel(np.array(softmva),self.y,self.pt,self.name,"SoftMva",self.path)
 
 	def evaluateAllBenchmarks():
 		makeSoftId()
