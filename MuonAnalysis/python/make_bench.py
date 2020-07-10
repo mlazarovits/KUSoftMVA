@@ -28,47 +28,44 @@ class benchmarkSample:
 		self.p = mdict['mu']
 		self.f = mdict['U']
 
-	
+	def makeSoftId(self):
+		passIdsoft = max(self.x[:,-2])
+		print("passIdsoft",passIdsoft)
+		#construct  x prediction
+		soft = [[]]
+		[soft.append(self.p) if val == passIdsoft else soft.append(self.f) for val in self.x[:,-2] ]
+		soft = soft[1:]
+		#	print soft	
+		evaluateModel(np.array(soft),self.y,self.pt,self.name,"SoftId",self.path)
+	def makeLooseId(self):
+		passIdloose = max(self.x[:,-3])
+		print("passIdSoftLoose",passIdloose)
+		softloose = [[]]
+		id1 = self.x[:,-3]
+		id2 = self.x[:,-2]
+
+		[softloose.append(self.p) if i1 == passIdloose and i2 == passIdsoft else softloose.append(self.f) for i1,i2 in zip(id1,id2)  ]
+		softloose = softloose[1:]
+		#	print softloose
+		evaluateModel(np.array(softloose),self.y,self.pt,self.name,"SoftLoose",self.path)
+
+	def makeMvaId(self):
+		passIdmva = max(self.x[:,-1])
+		print("passIdmva",passIdmva)
+		softmva = [[]]
+		if(math.isnan(passIdmva)):
+			[	softmva.append(self.f) for val in x[:,-1] ]
+		else:
+			[softmva.append(self.p) if val == passIdmva else soft.append(self.f) for val in self.x[:,-1]	]
+		#evaluate soft mva soft mva doesnt work on DY?
+		softmva = softmva[1:]
+		#	print  softmva	
+		evaluateModel(np.array(softmva),self.y,self.pt,self.name,"SoftMva",self.path)
 
 	def evaluateAllBenchmarks(self):
-		makeSoftId()
-		makeLooseId()
-		makeMvaId()
-
-
-def makeSoftId():
-	passIdsoft = max(self.x[:,-2])
-	print("passIdsoft",passIdsoft)
-	#construct  x prediction
-	soft = [[]]
-	[soft.append(self.p) if val == passIdsoft else soft.append(self.f) for val in self.x[:,-2] ]
-	soft = soft[1:]
-	#	print soft	
-	evaluateModel(np.array(soft),self.y,self.pt,self.name,"SoftId",self.path)
-def makeLooseId():
-	passIdloose = max(self.x[:,-3])
-	print("passIdSoftLoose",passIdloose)
-	softloose = [[]]
-	id1 = self.x[:,-3]
-	id2 = self.x[:,-2]
-
-	[softloose.append(self.p) if i1 == passIdloose and i2 == passIdsoft else softloose.append(self.f) for i1,i2 in zip(id1,id2)  ]
-	softloose = softloose[1:]
-	#	print softloose
-	evaluateModel(np.array(softloose),self.y,self.pt,self.name,"SoftLoose",self.path)
-
-def makeMvaId():
-	passIdmva = max(self.x[:,-1])
-	print("passIdmva",passIdmva)
-	softmva = [[]]
-	if(math.isnan(passIdmva)):
-		[	softmva.append(self.f) for val in x[:,-1] ]
-	else:
-		[softmva.append(self.p) if val == passIdmva else soft.append(self.f) for val in self.x[:,-1]	]
-	#evaluate soft mva soft mva doesnt work on DY?
-	softmva = softmva[1:]
-	#	print  softmva	
-	evaluateModel(np.array(softmva),self.y,self.pt,self.name,"SoftMva",self.path)
+		self.makeSoftId()
+		self.makeLooseId()
+		self.makeMvaId()
 
 
 # def benchmark_sample(  x, y, pt, mdict, name ):
