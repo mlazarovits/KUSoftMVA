@@ -28,3 +28,18 @@ To create Ntuples for NanoAOD
 	cd test/
 	./startNano.sh
 	
+
+if no conda environment has been set up
+`
+cp /home/t3-ku/mlazarov/softwareBuilds/py3_pandsNroot.yml .
+conda env create -f py3_pandsNroot.yml
+`
+
+activate conda env
+`conda activate py3_pandas_root`
+
+run script
+`
+cd KUSoftMVA/MuonAnalysis
+./scripts/machinelearn.sh
+`
