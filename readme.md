@@ -39,12 +39,17 @@ this `.yml` file has almost all the dependencies needed (except uproot, see belo
 activate conda env
 
 	conda activate py3_pandas_root
-make sure uproot is installed
+make sure all dependencied are installed
 	
 	conda list uproot
+	conda list sklearn
+	conda list keras
 if uproot is not installed
 
 	conda install -c conda-forge uproot
+else
+
+	conda install [dependency]
 
 run script
 
