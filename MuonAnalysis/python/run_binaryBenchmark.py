@@ -131,19 +131,19 @@ allTrain = pd.concat([dyTrain,ttTrain,qcdTrain])
 
 dy_y = dyTrain['Muon_genPdgId']
 dy_pt = dyTrain['Muon_pt']
-dyTrain = dyTrain.drop(['Muon_genPdgId'])
+dyTrain = dyTrain.drop(columns='Muon_genPdgId')
 
 tt_y = ttTrain['Muon_genPdgId']
 tt_pt = ttTrain['Muon_pt']
-ttTrain = ttTrain.drop(['Muon_genPdgId'])
+ttTrain = ttTrain.drop(columns='Muon_genPdgId')
 
 qcd_y = qcdTrain['Muon_genPdgId']
 qcd_pt = qcdTrain['Muon_pt']
-qcdTrain = qcdTrain.drop(['Muon_genPdgId'])
+qcdTrain = qcdTrain.drop(columns='Muon_genPdgId')
 
 comb_y = combTrain['Muon_genPdgId']
 comb_pt = combTrain['Muon_pt']
-combTrain = combTrain.drop(['Muon_genPdgId'])
+combTrain = combTrain.drop(columns='Muon_genPdgId')
 
 allSamples = benchmarkSample(combTrain,comb_y,comb_pt,mdict,"combined")
 
