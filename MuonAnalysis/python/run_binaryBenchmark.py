@@ -145,13 +145,13 @@ comb_y = combTrain['Muon_genPdgId']
 comb_pt = combTrain['Muon_pt']
 combTrain = combTrain.drop(columns='Muon_genPdgId')
 
-allSamples = benchmarkSample(combTrain,comb_y,comb_pt,mdict,"combined")
+allSamples = benchmarkSample(combTrain,comb_y,comb_pt,bdict,"combined")
 
-dySamples = benchmarkSample(dyTrain,dy_y,dy_pt,mdict,"dy")
+dySamples = benchmarkSample(dyTrain,dy_y,dy_pt,bdict,"dy")
 
-ttSamples = benchmarkSample(ttTrain,tt_y,tt_pt,mdict,"tt")
+ttSamples = benchmarkSample(ttTrain,tt_y,tt_pt,mbict,"tt")
 
-qcdSamples = benchmarkSample(qcdTrain,qcd_y,qcd_pt,mdict,"qcd")
+qcdSamples = benchmarkSample(qcdTrain,qcd_y,qcd_pt,bdict,"qcd")
 
 
 
