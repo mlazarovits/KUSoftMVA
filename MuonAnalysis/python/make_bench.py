@@ -60,7 +60,7 @@ class benchmarkSample:
 		#evaluate soft mva soft mva doesnt work on DY?
 		softmva = softmva[1:]
 		#	print  softmva	
-		evaluateModel(np.array(softmva),self.y,self.pt,self.name,"SoftMva",self.,nclasses,self.results)
+		evaluateModel(np.array(softmva),self.y,self.pt,self.name,"SoftMva",self.nclasses,self.results)
 
 	def evaluateAllBenchmarks():
 		makeSoftId()
