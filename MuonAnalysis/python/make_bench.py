@@ -24,7 +24,7 @@ class benchmarkSample:
 		self.results=np.zeros((4,1))
 
 		self.nclasses = len(y[0])
-		print("nclass", nclasses)
+		print("nclasses", self.nclasses)
 		self.p = mdict['mu']
 		self.f = mdict['U']
 
