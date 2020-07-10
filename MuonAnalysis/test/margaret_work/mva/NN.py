@@ -95,9 +95,9 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 		if(fden_ctr[x] != 0):
 			tempfden = fden_ctr[x]
 		print("label "+str(x)+":")
-		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(perc))
-		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(fperc))
-
+		print("Efficiency : "+ str(num_ctr[x]) +" of "+ str(den_ctr[x])+"   "+str(num_ctr[x]/tempden))
+		print("Purity     : "+ str(num_ctr[x])+" of "+ str(fden_ctr[x])+"   "+str(num_ctr[x]/tempfden))
+	
 	print("Overall performance: ")
 	# print("Correct ID: "+ str(all_num_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_num_ctr/all_den_ctr))
 	#print("Mis.    ID: "+ str(all_fnum_ctr)+" of "+ str( all_den_ctr)+"   "+str(all_fnum_ctr/all_den_ctr))
@@ -110,6 +110,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 	[ badEff[i].SetName("pure"+str(i)) for i in range(nClasses) ]
 
 #[ self.tr_acc, self.tr_loss, self.tr_valacc, self.tr_valloss]
+	
 	h_loss = TGraph(  len(results[1]),  array('d',list(np.arange(len(results[1])))), array('d',results[1])   )
 	h_vloss= TGraph(  len(results[3]),  array('d',list(np.arange(len(results[3])))), array('d',results[3])   )
 	h_acc = TGraph(   len(results[0]),  array('d',list(np.arange(len(results[0])))), array('d',results[0])   )
@@ -122,7 +123,9 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 	[ outfile.WriteTObject(x) for x in h_num ]
 	[ outfile.WriteTObject(x) for x in h_fnum]
 	[ outfile.WriteTObject(x) for x in h_den ]
+	
 	plotEfficiency(goodEff,fname+tag,outfile)
+	
 	[ outfile.WriteTObject(x) for x in goodEff ]
 	[ outfile.WriteTObject(x) for x in badEff ]
 	outfile.WriteObject(h_loss, "trainingLoss")
@@ -138,6 +141,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, nClasses,mdict, results
 
 
 def evaluateSubset( NN, model,y_testsub,x_testsub , pt_testsub ,  tagsub  ):
+	
 	model_y = model.predict(x_testsub)
 	print("true_y")
 #	print(true_y)

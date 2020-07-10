@@ -56,17 +56,20 @@ qmu, qU, qpi, qk, qp = 10000, 2000, 2000, 2000, 2000
 tmu, tU, tpi, tk, tp = 4000, 2000, 2000, 2000, 2000
 
 dataset_DY = DATA(dypath,"Drell-Yan",model_vars)
+T_dataset_DY = DATA(dypath,"TEST_Drell-Yan",train_vars)
 # dataset_DY.report()
 # mdysample = dataset_DY.sample(['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
 # print(len(mdysample))
 # del dataset_DY
 
 dataset_TT = DATA(ttpath, "TTJets",model_vars)
+T_dataset_TT = DATA(ttpath,"TEST_TTJets",train_vars)
 # dataset_TT.report()
 # mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 # del dataset_TT
 
 dataset_QCD = DATA(qcdpath, "QCD",model_vars)
+T_dataset_QCD = DATA(qcdpath,"TEST_QCD",train_vars)
 # dataset_QCD.report()
 # mqcdsample = dataset_QCD.sample(['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
 # del dataset_QCD
@@ -74,7 +77,7 @@ dataset_QCD = DATA(qcdpath, "QCD",model_vars)
 mdict = {13: [1,0], 999: [0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
 # bdict = {'mu': [1,0], 'U':[0,1]}
 
-#for each dataframe in the different physics processes
+#for each dataframe in the different physics processes do training for NN preprocessing
 for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, dataset_QCD.dfs)):
 	#if chunk > 0:
 	#	break
@@ -94,7 +97,34 @@ for chunk, (dy, tt, qcd) in enumerate(zip(dataset_DY.dfs, dataset_TT.dfs, datase
 #	print("\n")
 	trainingChunk = pd.concat([dy,tt,qcd])
 #	print('trainingChunk',trainingChunk.head())
-	trainingChunk = prepareTrainingSet(trainingChunk,mdict)
+	x_train, x_test, y_train, y_test, pt_train, pt_test = prepareTrainingSet(trainingChunk,mdict)
+	m = NN(x_train, x_test, y_train, y_test, "model5", "Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification", mdict, pt_train, pt_test, '')
+
+
+
+#for each dataframe in the different physics processes do benchmark testing preprocessing
+for chunk, (dy, tt, qcd) in enumerate(zip(T_dataset_DY.dfs, T_dataset_TT.dfs, T_dataset_QCD.dfs)):
+	#if chunk > 0:
+	#	break
+	print('chunk #', chunk)
+#	print('dy',type(dy),dy.head())
+	dy = reportAndSample(dy,T_dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+#	print('dySampled',type(dySampled), dySampled[0].head(),len(dySampled))
+#	print("\n")
+	dy = pd.concat(dy)
+#	print('dySampled',type(dySampled), dySampled.head())
+#	print("\n")
+	tt = reportAndSample(tt,T_dataset_TT.name, ['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
+	tt = pd.concat(tt)
+	qcd = reportAndSample(qcd,T_dataset_QCD.name, ['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
+	qcd = pd.concat(qcd)
+#	print('tt',tt.head())
+#	print("\n")
+	benchChunk = pd.concat([dy,tt,qcd])
+	x_test,y_test,pt_test = prepareBenchSet(benchChunk,mdict)
+	benchmark_sample(x_test,y_test,pt_test,bdict,"allSamplesBinary")
+
+
 
 
 
