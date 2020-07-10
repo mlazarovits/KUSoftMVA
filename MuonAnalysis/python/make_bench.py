@@ -23,8 +23,8 @@ class benchmarkSample:
 
 		
 
-		self.nclasses = len(y[0])
-		print("nclasses", self.nclasses)
+		# self.nclasses = len(y[0])
+		# print("nclasses", self.nclasses)
 		self.p = mdict['mu']
 		self.f = mdict['U']
 
