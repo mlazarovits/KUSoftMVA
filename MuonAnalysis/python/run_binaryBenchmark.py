@@ -2,9 +2,9 @@ import pandas as pd
 import numpy as np
 
 from DATA import *
-from NN import evaluateSubset
-from NN import NN
-from DATA import prepareBenchSet
+# from NN import evaluateSubset
+# from NN import NN
+# from DATA import prepareBenchSet
 import sys
 from make_bench import *
 #initilization of datasets and model variables
