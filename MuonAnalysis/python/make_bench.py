@@ -28,7 +28,7 @@ class benchmarkSample:
 		self.p = mdict['mu']
 		self.f = mdict['U']
 
-	def makeSoftId():
+	def makeSoftId(self):
 		passIdsoft = max(self.x[:,-2])
 		print("passIdsoft",passIdsoft)
 		#construct  x prediction
@@ -37,7 +37,7 @@ class benchmarkSample:
 		soft = soft[1:]
 		#	print soft	
 		evaluateModel(np.array(soft),self.y,self.pt,self.name,"SoftId",self.path)
-	def makeLooseId():
+	def makeLooseId(self):
 		passIdloose = max(self.x[:,-3])
 		print("passIdSoftLoose",passIdloose)
 		softloose = [[]]
@@ -49,7 +49,7 @@ class benchmarkSample:
 		#	print softloose
 		evaluateModel(np.array(softloose),self.y,self.pt,self.name,"SoftLoose",self.path)
 
-	def makeMvaId():
+	def makeMvaId(self):
 		passIdmva = max(self.x[:,-1])
 		print("passIdmva",passIdmva)
 		softmva = [[]]
@@ -62,7 +62,7 @@ class benchmarkSample:
 		#	print  softmva	
 		evaluateModel(np.array(softmva),self.y,self.pt,self.name,"SoftMva",self.path)
 
-	def evaluateAllBenchmarks():
+	def evaluateAllBenchmarks(self):
 		makeSoftId()
 		makeLooseId()
 		makeMvaId()
