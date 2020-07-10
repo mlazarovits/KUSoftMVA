@@ -36,9 +36,11 @@ if no conda environment has been set up
 
 
 activate conda env
+
 	conda activate py3_pandas_root
 
 run script
+
 	cd KUSoftMVA/MuonAnalysis
 	./scripts/machinelearn.sh
 
