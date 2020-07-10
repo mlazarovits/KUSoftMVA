@@ -15,7 +15,7 @@ def benchmark_sample(  x, y, pt, mdict, name ):
 	#loose id -3
 
 	#make dummy results
-	results=[[0],[0],[0],[0]]
+	results=np.zeros(4,1)
 
 	nclasses = len(y[0])
 	print("nclass", nclasses)
@@ -36,7 +36,7 @@ def benchmark_sample(  x, y, pt, mdict, name ):
 
 	#evaluate soft + loose
 	passIdloose = max(x[:,-3])
-	#	print passIdloose
+	print("passIdloose",passIdloose)
 	softloose = [[]]
 	id1 = x[:,-3]
 	id2 = x[:,-2]

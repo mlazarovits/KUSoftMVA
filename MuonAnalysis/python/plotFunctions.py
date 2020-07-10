@@ -5,7 +5,7 @@ from itertools import cycle
 import copy
 from sklearn.metrics import roc_curve, auc
 from ROOT import TH1D, TFile, TEfficiency, TCanvas, TGraph, TLatex, TGraphAsymmErrors, TMultiGraph, TLegend, SetOwnership
-
+import os
 
 def plotLoss(history,outName):
 	plt.figure()
@@ -69,10 +69,9 @@ def plotROCcurves(y_test,y_score,n_classes,outName):
 	tpr = dict()
 	roc_auc = dict()
 	# print(y_test.shape,y_score.shape,n_classes)
-	print('score',y_score.shape)
-	print('test',y_test.shape)
+	print('score shape',y_score.shape)
+	print('test shape',y_test.shape)
 	for i in range(n_classes):
-		print(i)
 		fpr[i], tpr[i], _ = roc_curve(y_test[:, i], y_score[:, i])
 		roc_auc[i] = auc(fpr[i], tpr[i])
 
@@ -122,6 +121,8 @@ def plotROCcurves(y_test,y_score,n_classes,outName):
 	plt.ylabel('True Positive Rate')
 	plt.title(outName+'ROC Curves')
 	plt.legend(loc="lower right")
+	if not os.path.exists("plots/"):
+		os.mkdir("plots/")
 	plt.savefig('plots/'+outName+"_ROCcurves.pdf",dpi=500)
 	plt.close()
 
@@ -158,8 +159,8 @@ def plotROCcurves(y_test,y_score,n_classes,outName):
 
 
 def plotEfficiency(effs,outName,outFile):
-	cv = TCanvas("cv","cv",800,600)
-	leg = TLegend(0.35,0.2,0.95,0.4)
+	cv = TCanvas(outName,outName,800,600)
+	leg = TLegend(0.65,0.2,0.95,0.4)
 	gr_effs = []
 	mg = TMultiGraph()
 	cv.cd()
