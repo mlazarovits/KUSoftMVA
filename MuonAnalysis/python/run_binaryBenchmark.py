@@ -49,7 +49,6 @@ train_vars = ['Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
 'Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
 'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers','Muon_miniPFRelIso_chg','Muon_miniPFRelIso_all']
 
-outPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis'
 
 
 eval_tag = sys.argv[1] # input string for tagging output files 
