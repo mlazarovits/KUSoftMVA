@@ -125,7 +125,7 @@ nChunks = 10
 dyTrain = pd.concat(T_dataset_DY.dfs[:10])
 ttTrain = pd.concat(T_dataset_TT.dfs[:10])
 qcdTrain = pd.concat(T_dataset_QCD.dfs[:10])
-allTrain = pd.concat([dyTrain,ttTrain,qcdTrain])
+combTrain = pd.concat([dyTrain,ttTrain,qcdTrain])
 
 # print(dyTrain.columns)
 
