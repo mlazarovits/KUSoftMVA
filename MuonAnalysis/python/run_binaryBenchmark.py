@@ -149,7 +149,7 @@ allSamples = benchmarkSample(combTrain,comb_y,comb_pt,bdict,"combined")
 
 dySamples = benchmarkSample(dyTrain,dy_y,dy_pt,bdict,"dy")
 
-ttSamples = benchmarkSample(ttTrain,tt_y,tt_pt,mbict,"tt")
+ttSamples = benchmarkSample(ttTrain,tt_y,tt_pt,bdict,"tt")
 
 qcdSamples = benchmarkSample(qcdTrain,qcd_y,qcd_pt,bdict,"qcd")
 
