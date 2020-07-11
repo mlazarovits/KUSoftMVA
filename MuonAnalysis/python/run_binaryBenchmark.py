@@ -129,7 +129,7 @@ dyTrain = pd.concat(T_dataset_DY.dfs[:10])
 # print(np.argwhere(pd.isnull(dyTrain['Muon_genPdgId']).to_numpy()))
 
 dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
-
+print(dy_y.shape)
 # tt_x, tt_y, tt_pt = prepareSet(ttTrain,mdict)
 # qcd_x, qcd_y, qcd_pt = prepareSet(qcdTrain,mdict)
 # comb_x, comb_y, comb_pt = prepareSet(combTrain,mdict)
@@ -142,7 +142,7 @@ dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
 		# idxs.append(i)
 # print(idxs[0],dy_y[idxs[0]],dyTrain['Muon_genPdgId'].iloc[idxs[0]])
 
-print(type(dy_y[0]),dy_y.dtype)
+# print(type(dy_y[0]),dy_y.dtype)
 
 
 
