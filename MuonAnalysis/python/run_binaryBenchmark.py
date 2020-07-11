@@ -132,8 +132,8 @@ dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
 # comb_x, comb_y, comb_pt = prepareSet(combTrain,mdict)
 
 
-print(dy_y.dtype)
-pd.isnull(dy_y)
+
+print(np.argwhere(pd.isnull(dy_y)))
 # print(np.argwhere(np.isnan(tt_y)))
 # print(np.argwhere(np.isnan(qcd_y)))
 # print(np.argwhere(np.isnan(comb_y)))
