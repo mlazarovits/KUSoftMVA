@@ -133,7 +133,7 @@ dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
 
 
 print(dy_y.dtype)
-pd.isnull(dy_y, dtype=object)
+pd.isnull(dy_y)
 # print(np.argwhere(np.isnan(tt_y)))
 # print(np.argwhere(np.isnan(qcd_y)))
 # print(np.argwhere(np.isnan(comb_y)))
