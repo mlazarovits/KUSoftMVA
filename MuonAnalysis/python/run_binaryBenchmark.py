@@ -126,6 +126,12 @@ ttTrain = pd.concat(T_dataset_TT.dfs[:10])
 qcdTrain = pd.concat(T_dataset_QCD.dfs[:10])
 combTrain = pd.concat([dyTrain,ttTrain,qcdTrain])
 
+dyTrain = prepareSet(dyTrain,mdict)
+ttTrain = prepareSet(ttTrain,mdict)
+qcdTrain = prepareSet(qcdTrain,mdict)
+combTrain = prepareSet(combTrain,mdict)
+
+
 # print(dyTrain.columns)
 
 dy_y = dyTrain['Muon_genPdgId']
