@@ -74,7 +74,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 		# 		modelidx = idx
 		# print(ty)
 		if i < 2:
-			print(type(ty))
+			print(ty.shape)
 		if len(ty) != 2:
 			print(ty)
 		labelidx = int(np.flatnonzero(ty == 1))
