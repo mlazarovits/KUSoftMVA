@@ -135,7 +135,7 @@ dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
 
 
 
-print(np.where(dy_y != [1,0] or dy_y != [0,1]))
+
 # print(np.argwhere(np.isnan(tt_y)))
 # print(np.argwhere(np.isnan(qcd_y)))
 # print(np.argwhere(np.isnan(comb_y)))
