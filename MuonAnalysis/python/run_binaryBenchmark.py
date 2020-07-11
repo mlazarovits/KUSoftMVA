@@ -132,7 +132,7 @@ qcd_x, qcd_y, qcd_pt = prepareSet(qcdTrain,mdict)
 comb_x, comb_y, comb_pt = prepareSet(combTrain,mdict)
 
 
-print(type(dy_y),type(dy_y[0]),type(dy_y[0][0]))
+print(dy_y.dtype)
 print(np.argwhere(np.isnan(dy_y)))
 print(np.argwhere(np.isnan(tt_y)))
 print(np.argwhere(np.isnan(qcd_y)))
