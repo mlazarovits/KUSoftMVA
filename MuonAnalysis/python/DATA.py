@@ -46,6 +46,7 @@ def prepareSet( data, label_dict):
 	
 	x_test = data.to_numpy()
 	y_test = target.to_numpy()
+	y_test = y_test.astype(int)
 	
 
 	y_test = np.array([np.array(i).astype(int) for i in y_test])
