@@ -135,7 +135,9 @@ dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
 
 
 
-
+for i, ty in dy_y:
+	if ty.shape != (2,):
+		print(i,ty)
 # print(np.argwhere(np.isnan(tt_y)))
 # print(np.argwhere(np.isnan(qcd_y)))
 # print(np.argwhere(np.isnan(comb_y)))
