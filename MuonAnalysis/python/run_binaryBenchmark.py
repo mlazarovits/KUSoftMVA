@@ -126,7 +126,7 @@ dyTrain = pd.concat(T_dataset_DY.dfs[:10])
 # qcdTrain = pd.concat(T_dataset_QCD.dfs[:10])
 # combTrain = pd.concat([dyTrain,ttTrain,qcdTrain])
 
-print(np.argwhere(pd.isna(dyTrain['Muon_genPdgId']).to_numpy()))
+print(np.where(pd.isna(dyTrain['Muon_genPdgId']).to_numpy()))
 
 dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
 print(dy_y.shape)
