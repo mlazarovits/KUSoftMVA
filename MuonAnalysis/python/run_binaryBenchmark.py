@@ -134,12 +134,13 @@ dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
 # comb_x, comb_y, comb_pt = prepareSet(combTrain,mdict)
 
 
+idxs = []
+for i, ty in enumerate(dy_y):
+	if ty.shape != (2,):
+		print(i,ty,dyTrain['Muon_genPdgId'].iloc[i])
+		idx.append(i)
 
-# for i, ty in enumerate(dy_y):
-# 	if ty.shape != (2,):
-# 		print(i,ty,dyTrain['Muon_genPdgId'].iloc[i])
-
-# print(dyTrain['Muon_genPdgId'].iloc[4820])
+print(dyTrain['Muon_genPdgId'].iloc[idxs[0]])
 # print(np.argwhere(np.isnan(tt_y)))
 # print(np.argwhere(np.isnan(qcd_y)))
 # print(np.argwhere(np.isnan(comb_y)))
