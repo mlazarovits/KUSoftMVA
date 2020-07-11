@@ -132,18 +132,19 @@ qcd_x, qcd_y, qcd_pt = prepareSet(qcdTrain,mdict)
 comb_x, comb_y, comb_pt = prepareSet(combTrain,mdict)
 
 
-# print(dyTrain.columns)
-
-
-combSamples = benchmarkSample(comb_x,comb_y,comb_pt,bdict,"combined")
-dySamples = benchmarkSample(dy_x,dy_y,dy_pt,bdict,"dy")
-ttSamples = benchmarkSample(tt_x,tt_y,tt_pt,bdict,"tt")
-qcdSamples = benchmarkSample(qcd_x,qcd_y,qcd_pt,bdict,"qcd")
-
+print(type(dy_y))
 print(np.argwhere(np.isnan(dy_y)))
 print(np.argwhere(np.isnan(tt_y)))
 print(np.argwhere(np.isnan(qcd_y)))
 print(np.argwhere(np.isnan(comb_y)))
+
+
+dySamples = benchmarkSample(dy_x,dy_y,dy_pt,bdict,"dy")
+ttSamples = benchmarkSample(tt_x,tt_y,tt_pt,bdict,"tt")
+qcdSamples = benchmarkSample(qcd_x,qcd_y,qcd_pt,bdict,"qcd")
+combSamples = benchmarkSample(comb_x,comb_y,comb_pt,bdict,"combined")
+
+
 
 dySamples.evaluateAllBenchmarks()
 ttSamples.evaluateAllBenchmarks()
