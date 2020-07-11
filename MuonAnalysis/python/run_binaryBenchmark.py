@@ -126,34 +126,19 @@ ttTrain = pd.concat(T_dataset_TT.dfs[:10])
 qcdTrain = pd.concat(T_dataset_QCD.dfs[:10])
 combTrain = pd.concat([dyTrain,ttTrain,qcdTrain])
 
-dyTrain = prepareSet(dyTrain,mdict)
-ttTrain = prepareSet(ttTrain,mdict)
-qcdTrain = prepareSet(qcdTrain,mdict)
-combTrain = prepareSet(combTrain,mdict)
+dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
+tt_x, tt_y, tt_pt = prepareSet(ttTrain,mdict)
+qcd_x, qcd_y, qcd_pt = prepareSet(qcdTrain,mdict)
+comb_x, comb_y, comb_pt = prepareSet(combTrain,mdict)
 
 
 # print(dyTrain.columns)
 
-dy_y = dyTrain['Muon_genPdgId']
-dy_pt = dyTrain['Muon_pt']
-dyTrain = dyTrain.drop(columns='Muon_genPdgId')
 
-tt_y = ttTrain['Muon_genPdgId']
-tt_pt = ttTrain['Muon_pt']
-ttTrain = ttTrain.drop(columns='Muon_genPdgId')
-
-qcd_y = qcdTrain['Muon_genPdgId']
-qcd_pt = qcdTrain['Muon_pt']
-qcdTrain = qcdTrain.drop(columns='Muon_genPdgId')
-
-comb_y = combTrain['Muon_genPdgId']
-comb_pt = combTrain['Muon_pt']
-combTrain = combTrain.drop(columns='Muon_genPdgId')
-
-combSamples = benchmarkSample(combTrain,comb_y,comb_pt,bdict,"combined")
-dySamples = benchmarkSample(dyTrain,dy_y,dy_pt,bdict,"dy")
-ttSamples = benchmarkSample(ttTrain,tt_y,tt_pt,bdict,"tt")
-qcdSamples = benchmarkSample(qcdTrain,qcd_y,qcd_pt,bdict,"qcd")
+combSamples = benchmarkSample(comb_x,comb_y,comb_pt,bdict,"combined")
+dySamples = benchmarkSample(dy_x,dy_y,dy_pt,bdict,"dy")
+ttSamples = benchmarkSample(tt_x,tt_y,tt_pt,bdict,"tt")
+qcdSamples = benchmarkSample(qcd_x,qcd_y,qcd_pt,bdict,"qcd")
 
 dySamples.evaluateAllBenchmarks()
 ttSamples.evaluateAllBenchmarks()
