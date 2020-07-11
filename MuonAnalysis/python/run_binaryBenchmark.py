@@ -141,7 +141,7 @@ dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
 		# idxs.append(i)
 # print(idxs[0],dy_y[idxs[0]],dyTrain['Muon_genPdgId'].iloc[idxs[0]])
 
-print(np.argwhere(pd.isnull(dy_y).to_numpy()))
+print(np.argwhere(pd.isnull(dy_y)))
 
 
 
