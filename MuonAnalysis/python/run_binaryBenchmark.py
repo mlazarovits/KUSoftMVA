@@ -138,7 +138,7 @@ idxs = []
 for i, ty in enumerate(dy_y):
 	if ty.shape != (2,):
 		print(i,ty,dyTrain['Muon_genPdgId'].iloc[i])
-		idx.append(i)
+		idxs.append(i)
 
 print(dyTrain['Muon_genPdgId'].iloc[idxs[0]])
 # print(np.argwhere(np.isnan(tt_y)))
