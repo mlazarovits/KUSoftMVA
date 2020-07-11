@@ -62,6 +62,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 
 	# begin the counting 
 	for i , (my, ty, pt) in enumerate(zip(pred, true_y, model_pt)):
+		print(ty)
 		ty = np.array(ty)
 		# labelidx = -1
 		# modelidx = -1
@@ -71,6 +72,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 		# for idx in range(len(my)):
 		# 	if( my[idx] ==1):
 		# 		modelidx = idx
+		print(ty)
 		labelidx = int(np.flatnonzero(ty == 1))
 		modelidx = int(np.flatnonzero(my == 1))
 
