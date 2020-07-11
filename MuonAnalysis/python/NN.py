@@ -72,7 +72,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 		# for idx in range(len(my)):
 		# 	if( my[idx] ==1):
 		# 		modelidx = idx
-		print(ty)
+		# print(ty)
 		labelidx = int(np.flatnonzero(ty == 1))
 		modelidx = int(np.flatnonzero(my == 1))
 
