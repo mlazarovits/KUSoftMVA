@@ -133,10 +133,10 @@ dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
 
 
 print(dy_y.dtype)
-print(np.argwhere(np.isnan(dy_y)))
-print(np.argwhere(np.isnan(tt_y)))
-print(np.argwhere(np.isnan(qcd_y)))
-print(np.argwhere(np.isnan(comb_y)))
+pd.isnull(dy_y, dtype=object)
+# print(np.argwhere(np.isnan(tt_y)))
+# print(np.argwhere(np.isnan(qcd_y)))
+# print(np.argwhere(np.isnan(comb_y)))
 
 
 # dySamples = benchmarkSample(dy_x,dy_y,dy_pt,bdict,"dy")
