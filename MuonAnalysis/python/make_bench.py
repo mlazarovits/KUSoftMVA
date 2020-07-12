@@ -33,7 +33,7 @@ class benchmarkSample:
 		self.passIdmva = max(self.x[:,-1])
 	def makeSoftId(self):
 		# self.passIdsoft = max(self.x[:,-2])
-		print("assIdsoft",self.self.passIdsoft)
+		print("assIdsoft",self.passIdsoft)
 		#construct  x prediction
 		soft = [[]]
 		[soft.append(self.p) if val == self.passIdsoft else soft.append(self.f) for val in self.x[:,-2] ]
