@@ -128,7 +128,7 @@ dyTrain = pd.concat(T_dataset_DY.dfs[:10])
 
 #do reportAndSample before prepareSet
 
-ddyTrainy = reportAndSample(dyTrain,T_dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+dyTrain = reportAndSample(dyTrain,T_dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
 
 idxs = []
 for i, x in enumerate(dyTrain['Muon_genPdgId']):
