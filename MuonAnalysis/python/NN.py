@@ -76,8 +76,10 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 		
 		# if ty.shape != (2,):
 			# print(i,ty)
+
 		labelidx = int(np.flatnonzero(ty == 1))
 		modelidx = int(np.flatnonzero(my == 1))
+		print(labelidx,ty.shape,modelidx,my.shape)
 
 		if( (my == ty).all() ): #we have a correct classification
 
