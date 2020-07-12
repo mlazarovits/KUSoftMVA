@@ -33,7 +33,7 @@ class benchmarkSample:
 		self.passIdmva = max(self.x[:,-1])
 	def makeSoftId(self):
 		# self.passIdsoft = max(self.x[:,-2])
-		print("assIdsoft",self.passIdsoft)
+		print("passIdsoft",self.passIdsoft)
 		#construct  x prediction
 		soft = [[]]
 		[soft.append(self.p) if val == self.passIdsoft else soft.append(self.f) for val in self.x[:,-2] ]
@@ -66,7 +66,7 @@ class benchmarkSample:
 		evaluateModel(np.array(softmva),self.y,self.pt,self.name,"SoftMva",self.path)
 
 	def evaluateAllBenchmarks(self):
-		self.makeSoftId()
+		# self.makeSoftId()
 		self.makeLooseId()
 		self.makeMvaId()
 
