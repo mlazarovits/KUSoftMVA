@@ -133,7 +133,7 @@ ddyTrainy = reportAndSample(dyTrain,T_dataset_DY.name, ['mu','U','pi','k','p' ],
 idxs = []
 for i, x in enumerate(dyTrain['Muon_genPdgId']):
 	if x not in mdict.keys():
-		# print(i,x)
+		print(i,x)
 		idxs.append(i)
 
 dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
@@ -146,8 +146,8 @@ dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
 # idxs = []
 # for i, ty in enumerate(dy_y):
 # 	if ty.shape != (2,):
-		# print(i,ty,dyTrain['Muon_genPdgId'].iloc[i])
-		# idxs.append(i)
+# 		print(i,ty,dyTrain['Muon_genPdgId'].iloc[i])
+# 		idxs.append(i)
 # print(idxs[0],dy_y[idxs[0]],dyTrain['Muon_genPdgId'].iloc[idxs[0]])
 
 # print(type(dy_y[0]),dy_y.dtype)
