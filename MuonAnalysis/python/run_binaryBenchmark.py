@@ -126,6 +126,10 @@ dyTrain = pd.concat(T_dataset_DY.dfs[:10])
 # qcdTrain = pd.concat(T_dataset_QCD.dfs[:10])
 # combTrain = pd.concat([dyTrain,ttTrain,qcdTrain])
 
+#do reportAndSample before prepareSet
+
+ddyTrainy = reportAndSample(dyTrain,T_dataset_DY.name, ['mu','U','pi','k','p' ],[dymu,dyU,dypi,dyk,dyp])
+
 idxs = []
 for i, x in enumerate(dyTrain['Muon_genPdgId']):
 	if x not in mdict.keys():
@@ -133,7 +137,7 @@ for i, x in enumerate(dyTrain['Muon_genPdgId']):
 		idxs.append(i)
 
 dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
-print(idxs[0],dy_y[idxs[0]],dyTrain['Muon_genPdgId'].iloc[idxs[0]])
+# print(idxs[0],dy_y[idxs[0]],dyTrain['Muon_genPdgId'].iloc[idxs[0]])
 # tt_x, tt_y, tt_pt = prepareSet(ttTrain,mdict)
 # qcd_x, qcd_y, qcd_pt = prepareSet(qcdTrain,mdict)
 # comb_x, comb_y, comb_pt = prepareSet(combTrain,mdict)

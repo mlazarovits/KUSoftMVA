@@ -44,12 +44,7 @@ def prepareSet( data, label_dict):
 	
 	x_test = x_test.to_numpy()
 	y_test = y_test.to_numpy()
-
-	# y_test = target.to_numpy()
-	y_test = np.array([np.array(i,dtype=int) for i in y_test])
-
-	# y_test = np.array(y_test.values.tolist())
-
+	y_test = np.array([np.array(i) for i in y_test])
 	pt_test = pt_test.to_numpy()
 	return x_test,y_test,pt_test
 
