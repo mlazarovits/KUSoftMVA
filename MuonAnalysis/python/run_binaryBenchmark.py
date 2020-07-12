@@ -133,7 +133,7 @@ for i, x in enumerate(dyTrain['Muon_genPdgId']):
 		idxs.append(i)
 
 dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)
-print(idxs[0],dy_y[idxs[0]])
+print(idxs[0],dy_y[idxs[0]],dyTrain['Muon_genPdgId'].iloc[idxs[0]])
 # tt_x, tt_y, tt_pt = prepareSet(ttTrain,mdict)
 # qcd_x, qcd_y, qcd_pt = prepareSet(qcdTrain,mdict)
 # comb_x, comb_y, comb_pt = prepareSet(combTrain,mdict)
