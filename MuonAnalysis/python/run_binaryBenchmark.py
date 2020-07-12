@@ -138,10 +138,10 @@ sub_qcdTest = reportAndSample(qcdTest,format("Sub Test "+T_dataset_QCD.name), ['
 
 fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
 
-x_testDY,y_testDY,pt_testDY = prepareSet(dyTest,mdict)
-x_testTT,y_testTT,pt_testTT = prepareSet(ttTest,mdict)
-x_testQCD,y_testQCD,pt_testQCD = prepareSet(qcdTest,mdict)
-x_testCOMB,y_testCOMB,pt_testCOMB = prepareSet(fullcombinedTest,mdict)
+dy_x,dy_y,dy_pt = prepareSet(dyTest,mdict)
+tt_x,tt_y,tt_pt = prepareSet(ttTest,mdict)
+qcd_x,qcd_y,qcd_pt = prepareSet(qcdTest,mdict)
+comb_x,comb_y,comb_pt = prepareSet(fullcombinedTest,mdict)
 
 del T_dataset_DY
 del T_dataset_TT
