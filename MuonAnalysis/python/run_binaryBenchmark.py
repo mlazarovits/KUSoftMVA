@@ -127,7 +127,7 @@ dyTrain = pd.concat(T_dataset_DY.dfs[:10])
 # combTrain = pd.concat([dyTrain,ttTrain,qcdTrain])
 
 for i, x in enumerate(dyTrain['Muon_genPdgId']):
-	if x is np.nan:
+	if x is not in mdict.keys():
 		print(i,x)
 
 dy_x, dy_y, dy_pt = prepareSet(dyTrain,mdict)

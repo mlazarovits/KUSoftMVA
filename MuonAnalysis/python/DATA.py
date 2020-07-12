@@ -35,9 +35,7 @@ def prepareSet( data, label_dict):
 	
 	data = data.drop(columns='Muon_genPdgId')
 	pt = data['Muon_pt']
-	# print(target[1105])
 	target= target.map(label_dict)
-	# print(target[1105])
 	data = (data-data.mean())/data.std()
 
 	#only get test set to test benchmark models on (they are already "trained")
