@@ -49,7 +49,7 @@ class benchmarkSample:
 		# self.passIdmva = max(self.x[:,-1])
 		[softloose.append(self.p) if i1 == self.passIdloose and i2 == self.passIdsoft else softloose.append(self.f) for i1,i2 in zip(id1,id2)  ]
 		softloose = softloose[1:]
-		print softloose
+		print(softloose)
 		evaluateModel(np.array(softloose),self.y,self.pt,self.name,"SoftLoose",self.path)
 
 	def makeMvaId(self):
