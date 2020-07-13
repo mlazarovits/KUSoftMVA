@@ -41,14 +41,15 @@ T_ttpath='/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAn
 # 'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers','Muon_miniPFRelIso_chg','Muon_miniPFRelIso_all', 'Muon_looseId', 'Muon_softId', 'Muon_softMvaId' ]
 
 
-train_vars = ['Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
-'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
-'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
-'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
-'Muon_outerTrackCharge','Muon_innerTrackCharge',
-'Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
-'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers','Muon_miniPFRelIso_chg','Muon_miniPFRelIso_all']
-
+# train_vars = ['Muon_pt','Muon_eta','Muon_chi2LocalMomentum',
+# 'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
+# 'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
+# 'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
+# 'Muon_outerTrackCharge','Muon_innerTrackCharge',
+# 'Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
+# 'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers','Muon_miniPFRelIso_chg','Muon_miniPFRelIso_all', 
+# 'Muon_looseId', 'Muon_softId', 'Muon_softMvaId' ]
+train_vars= ['Muon_pt','Muon_looseId', 'Muon_softId', 'Muon_softMvaId' ]
 
 
 eval_tag = sys.argv[1] # input string for tagging output files 
