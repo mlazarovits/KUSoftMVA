@@ -125,7 +125,7 @@ nChunks = 10
 dyTest = pd.concat(T_dataset_DY.dfs[:10])
 # ttTest = pd.concat(T_dataset_TT.dfs[:10])
 # qcdTest = pd.concat(T_dataset_QCD.dfs[:10])
-
+print("mvaId:",pd.unique(dyTest['Muon_softMvaId']))
 
 dyTest = reportAndSample(dyTest,format("Full Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx])
 # ttTest = reportAndSample(ttTest,format("Full Test "+T_dataset_TT.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
