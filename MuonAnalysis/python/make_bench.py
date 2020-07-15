@@ -28,12 +28,14 @@ class benchmarkSample:
 		self.p = mdict['mu']
 		self.f = mdict['U']
 
+		print(np.unique(self.x[;,-2]))
+
 		self.passIdsoft = max(self.x[:,-2])
 		self.passIdloose = max(self.x[:,-3])
 		self.passIdmva = max(self.x[:,-1])
 	def makeSoftId(self):
 		# self.passIdsoft = max(self.x[:,-2])
-		print("passIdsoft",self.passIdsoft) #gave a nan????
+		print("passIdsoft",self.passIdsoft) 
 		#construct  x prediction
 		soft = [[]]
 		[soft.append(self.p) if val == self.passIdsoft else soft.append(self.f) for val in self.x[:,-2] ]
