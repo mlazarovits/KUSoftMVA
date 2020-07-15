@@ -1,7 +1,6 @@
 import math
 import numpy as np
 from NN import evaluateModel
-from DATA impor prepareBenchSet
 
 
 
@@ -36,7 +35,7 @@ class benchmarkSample:
 		self.passIdmva = max(self.x[:,-1])
 	def makeSoftId(self):
 		# self.passIdsoft = max(self.x[:,-2])
-		
+
 		print("passIdsoft",self.passIdsoft) 
 		#construct  x prediction
 		soft = [[]]
