@@ -78,13 +78,13 @@ T_dataset_DY = DATA(T_dypath,"TEST_Drell-Yan",train_vars)
 # del dataset_DY
 
 # dataset_TT = DATA(ttpath, "TTJets",train_vars)
-# T_dataset_TT = DATA(T_ttpath,"TEST_ttJets",train_vars)
+T_dataset_TT = DATA(T_ttpath,"TEST_ttJets",train_vars)
 # dataset_TT.report()
 # mttsample = dataset_TT.sample(['mu','U','pi','k','p'],[tmu,tU,tpi,tk,tp])
 # del dataset_TT
 
 # dataset_QCD = DATA(qcdpath, "QCD",train_vars)
-# T_dataset_QCD = DATA(qcdpath,"TEST_QCD",train_vars)
+T_dataset_QCD = DATA(qcdpath,"TEST_QCD",train_vars)
 # dataset_QCD.report()
 # mqcdsample = dataset_QCD.sample(['mu','U','pi','k','p'],[qmu,qU,qpi,qk,qp])
 # del dataset_QCD
@@ -123,48 +123,48 @@ bdict = {'mu': [1,0], 'U':[0,1]}
 nChunks = 10
 
 dyTest = pd.concat(T_dataset_DY.dfs[:10])
-# ttTest = pd.concat(T_dataset_TT.dfs[:10])
-# qcdTest = pd.concat(T_dataset_QCD.dfs[:10])
+ttTest = pd.concat(T_dataset_TT.dfs[:10])
+qcdTest = pd.concat(T_dataset_QCD.dfs[:10])
 
 
 dyTest = reportAndSample(dyTest,format("Full Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx])
-# ttTest = reportAndSample(ttTest,format("Full Test "+T_dataset_TT.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
-# qcdTest = reportAndSample(qcdTest,format("Full Test "+T_dataset_QCD.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
+ttTest = reportAndSample(ttTest,format("Full Test "+T_dataset_TT.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
+qcdTest = reportAndSample(qcdTest,format("Full Test "+T_dataset_QCD.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
 
 
-# sub_dyTest = reportAndSample(dyTest,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[Tdymu,TdyU,Tdypi,Tdyk,Tdyp])
-# sub_ttTest = reportAndSample(ttTest,format("Sub Test "+T_dataset_TT.name), ['mu','U','pi','k','p' ],[Ttmu,TtU,Ttpi,Ttk,Ttp])
-# sub_qcdTest = reportAndSample(qcdTest,format("Sub Test "+T_dataset_QCD.name), ['mu','U','pi','k','p' ],[Tqmu,TqU,Tqpi,Tqk,Tqp])
+sub_dyTest = reportAndSample(dyTest,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[Tdymu,TdyU,Tdypi,Tdyk,Tdyp])
+sub_ttTest = reportAndSample(ttTest,format("Sub Test "+T_dataset_TT.name), ['mu','U','pi','k','p' ],[Ttmu,TtU,Ttpi,Ttk,Ttp])
+sub_qcdTest = reportAndSample(qcdTest,format("Sub Test "+T_dataset_QCD.name), ['mu','U','pi','k','p' ],[Tqmu,TqU,Tqpi,Tqk,Tqp])
 
 
-# fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
+fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
 
 
 
 dy_x,dy_y,dy_pt = prepareSet(dyTest,mdict,bench=True)
-# tt_x,tt_y,tt_pt = prepareSet(ttTest,mdict,bench=True)
-# qcd_x,qcd_y,qcd_pt = prepareSet(qcdTest,mdict,bench=True)
-# comb_x,comb_y,comb_pt = prepareSet(fullcombinedTest,mdict,bench=True)
+tt_x,tt_y,tt_pt = prepareSet(ttTest,mdict,bench=True)
+qcd_x,qcd_y,qcd_pt = prepareSet(qcdTest,mdict,bench=True)
+comb_x,comb_y,comb_pt = prepareSet(fullcombinedTest,mdict,bench=True)
 
 del T_dataset_DY
-# del T_dataset_TT
-# del T_dataset_QCD
+del T_dataset_TT
+del T_dataset_QCD
 
 
 dySamples = benchmarkSample(dy_x,dy_y,dy_pt,bdict,"dy")
-# ttSamples = benchmarkSample(tt_x,tt_y,tt_pt,bdict,"tt")
-# qcdSamples = benchmarkSample(qcd_x,qcd_y,qcd_pt,bdict,"qcd")
-# combSamples = benchmarkSample(comb_x,comb_y,comb_pt,bdict,"combined")
+ttSamples = benchmarkSample(tt_x,tt_y,tt_pt,bdict,"tt")
+qcdSamples = benchmarkSample(qcd_x,qcd_y,qcd_pt,bdict,"qcd")
+combSamples = benchmarkSample(comb_x,comb_y,comb_pt,bdict,"combined")
 
 
 print("evaluate on dy")
 dySamples.evaluateAllBenchmarks()
-# print("evaluate on tt")
-# ttSamples.evaluateAllBenchmarks()
-# print("evaluate on qcd")
-# qcdSamples.evaluateAllBenchmarks()
-# print("evaluate on combined")
-# combSamples.evaluateAllBenchmarks()
+print("evaluate on tt")
+ttSamples.evaluateAllBenchmarks()
+print("evaluate on qcd")
+qcdSamples.evaluateAllBenchmarks()
+print("evaluate on combined")
+combSamples.evaluateAllBenchmarks()
 
 
 
