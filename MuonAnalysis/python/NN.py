@@ -32,7 +32,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 	pred[ pred <0.5 ] = 0.
 
 	
-	labels = np.unique(pred,axis=0)
+	labels = np.unique(true_y,axis=0)
 	nClasses = len(labels)
 
 #	print(nClasses,labels)
