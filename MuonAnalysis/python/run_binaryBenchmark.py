@@ -132,12 +132,14 @@ dyTest = reportAndSample(dyTest,format("Full Test "+T_dataset_DY.name), ['mu','U
 # qcdTest = reportAndSample(qcdTest,format("Full Test "+T_dataset_QCD.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
 
 
-sub_dyTest = reportAndSample(dyTest,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[Tdymu,TdyU,Tdypi,Tdyk,Tdyp])
+# sub_dyTest = reportAndSample(dyTest,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[Tdymu,TdyU,Tdypi,Tdyk,Tdyp])
 # sub_ttTest = reportAndSample(ttTest,format("Sub Test "+T_dataset_TT.name), ['mu','U','pi','k','p' ],[Ttmu,TtU,Ttpi,Ttk,Ttp])
 # sub_qcdTest = reportAndSample(qcdTest,format("Sub Test "+T_dataset_QCD.name), ['mu','U','pi','k','p' ],[Tqmu,TqU,Tqpi,Tqk,Tqp])
 
 
 # fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
+
+print("mvaId:",pd.unique(dyTest['Muon_softMvaId']))
 
 dy_x,dy_y,dy_pt = prepareSet(dyTest,mdict,bench=True)
 # tt_x,tt_y,tt_pt = prepareSet(ttTest,mdict,bench=True)
@@ -147,7 +149,7 @@ dy_x,dy_y,dy_pt = prepareSet(dyTest,mdict,bench=True)
 del T_dataset_DY
 # del T_dataset_TT
 # del T_dataset_QCD
-
+print('preparedSet')
 print("mvaId:",np.unique(dy_x[:,-1]))
 
 dySamples = benchmarkSample(dy_x,dy_y,dy_pt,bdict,"dy")
