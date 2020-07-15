@@ -66,7 +66,7 @@ class benchmarkSample:
 		evaluateModel(np.array(softmva),self.y,self.pt,self.name,"SoftMva",self.path)
 
 	def evaluateAllBenchmarks(self):
-		# self.makeSoftId()
+		self.makeSoftId()
 		self.makeLooseId()
 		self.makeMvaId()
 
