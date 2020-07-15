@@ -131,6 +131,7 @@ dyTest = reportAndSample(dyTest,format("Full Test "+T_dataset_DY.name), ['mu','U
 # ttTest = reportAndSample(ttTest,format("Full Test "+T_dataset_TT.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
 # qcdTest = reportAndSample(qcdTest,format("Full Test "+T_dataset_QCD.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
 
+print("dyTest",pd.unique(dyTest['Muon_softId']))
 
 sub_dyTest = reportAndSample(dyTest,format("Sub Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[Tdymu,TdyU,Tdypi,Tdyk,Tdyp])
 # sub_ttTest = reportAndSample(ttTest,format("Sub Test "+T_dataset_TT.name), ['mu','U','pi','k','p' ],[Ttmu,TtU,Ttpi,Ttk,Ttp])
@@ -148,7 +149,7 @@ del T_dataset_DY
 # del T_dataset_TT
 # del T_dataset_QCD
 
-print("softid",np.unique(dy_x[2]))
+print("softid",np.unique(dy_x[:,2]))
 
 
 dySamples = benchmarkSample(dy_x,dy_y,dy_pt,bdict,"dy")
