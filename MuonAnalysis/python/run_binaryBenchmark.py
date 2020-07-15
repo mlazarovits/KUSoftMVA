@@ -140,7 +140,7 @@ sub_dyTest = reportAndSample(dyTest,format("Sub Test "+T_dataset_DY.name), ['mu'
 
 # fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
 
-dy_x,dy_y,dy_pt = prepareSet(dyTest,mdict)
+dy_x,dy_y,dy_pt = prepareSet(dyTest,mdict,bench=True)
 # tt_x,tt_y,tt_pt = prepareSet(ttTest,mdict)
 # qcd_x,qcd_y,qcd_pt = prepareSet(qcdTest,mdict)
 # comb_x,comb_y,comb_pt = prepareSet(fullcombinedTest,mdict)

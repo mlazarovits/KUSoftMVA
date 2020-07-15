@@ -27,7 +27,7 @@ def dropBenchmarkVar( sample ):#, benchvars ):
 	return newsamp
 
 
-def prepareSet( data, label_dict):
+def prepareSet( data, label_dict, bench=False):
 	# data=  sample[ model_vars ]
 	data = shuffle(data)
 	target = data['Muon_genPdgId']
@@ -36,7 +36,8 @@ def prepareSet( data, label_dict):
 	data = data.drop(columns='Muon_genPdgId')
 	pt = data['Muon_pt']
 	target= target.map(label_dict)
-	data = (data-data.mean())/data.std()
+	if not bench:
+		data = (data-data.mean())/data.std()
 
 	#only get test set to test benchmark models on (they are already "trained")
 	_,x_test, _, y_test = train_test_split(data,target, test_size=.99, random_state=1)
@@ -47,6 +48,8 @@ def prepareSet( data, label_dict):
 	y_test = np.array([np.array(i) for i in y_test])
 	pt_test = pt_test.to_numpy()
 	return x_test,y_test,pt_test
+
+
 
 def prepareTestSet( data, label_dict):
 	# data=  sample[ model_vars ]
