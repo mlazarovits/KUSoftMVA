@@ -33,7 +33,7 @@ class benchmarkSample:
 		self.passIdmva = max(self.x[:,-1])
 	def makeSoftId(self):
 		# self.passIdsoft = max(self.x[:,-2])
-		print("passIdsoft",self.passIdsoft)
+		print("passIdsoft",self.passIdsoft) #gave a nan????
 		#construct  x prediction
 		soft = [[]]
 		[soft.append(self.p) if val == self.passIdsoft else soft.append(self.f) for val in self.x[:,-2] ]
@@ -57,7 +57,7 @@ class benchmarkSample:
 		print("passIdmva",self.passIdmva)
 		softmva = [[]]
 		if(math.isnan(self.passIdmva)):
-			[	softmva.append(self.f) for val in x[:,-1] ]
+			[	softmva.append(self.f) for val in self.x[:,-1] ]
 		else:
 			[softmva.append(self.p) if val == self.passIdmva else soft.append(self.f) for val in self.x[:,-1]	]
 		#evaluate soft mva soft mva doesnt work on DY?
