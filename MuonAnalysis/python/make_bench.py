@@ -62,7 +62,7 @@ class benchmarkSample:
 		if(math.isnan(self.passIdmva)):
 			[	softmva.append(self.f) for val in self.x[:,-1] ]
 		else:
-			[softmva.append(self.p) if val == self.passIdmva else soft.append(self.f) for val in self.x[:,-1]	]
+			[softmva.append(self.p) if val == self.passIdmva else softmva.append(self.f) for val in self.x[:,-1]	]
 		#evaluate soft mva soft mva doesnt work on DY?
 		softmva = softmva[1:]
 		#	print  softmva	
