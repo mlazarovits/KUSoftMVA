@@ -150,7 +150,7 @@ del T_dataset_DY
 # del T_dataset_TT
 # del T_dataset_QCD
 print('preparedSet')
-print("mvaId:",np.unique(dy_x[:,-1]))
+print("truth value:",np.unique(dy_y))
 
 dySamples = benchmarkSample(dy_x,dy_y,dy_pt,bdict,"dy")
 # ttSamples = benchmarkSample(tt_x,tt_y,tt_pt,bdict,"tt")
