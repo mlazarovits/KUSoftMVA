@@ -30,9 +30,9 @@ class benchmarkSample:
 
 		# print(np.unique(self.x[:,-2]))
 
-		self.passIdsoft = max(self.x[:,-2])
-		self.passIdloose = max(self.x[:,-3])
-		self.passIdmva = max(self.x[:,-1])
+		self.passIdsoft = 1. #max(self.x[:,-2])
+		self.passIdloose = 1. #max(self.x[:,-3])
+		self.passIdmva = 1. #max(self.x[:,-1])
 	def makeSoftId(self):
 		# self.passIdsoft = max(self.x[:,-2])
 
