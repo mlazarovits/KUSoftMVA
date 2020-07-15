@@ -125,7 +125,7 @@ nChunks = 10
 dyTest = pd.concat(T_dataset_DY.dfs[:10])
 # ttTest = pd.concat(T_dataset_TT.dfs[:10])
 # qcdTest = pd.concat(T_dataset_QCD.dfs[:10])
-print("mvaId:",pd.unique(dyTest['Muon_softMvaId']))
+
 
 dyTest = reportAndSample(dyTest,format("Full Test "+T_dataset_DY.name), ['mu','U','pi','k','p' ],[mx,mx,mx,mx,mx])
 # ttTest = reportAndSample(ttTest,format("Full Test "+T_dataset_TT.name), ['mu','U','pi','k','p'],[mx,mx,mx,mx,mx])
@@ -139,7 +139,7 @@ dyTest = reportAndSample(dyTest,format("Full Test "+T_dataset_DY.name), ['mu','U
 
 # fullcombinedTest = pd.concat([sub_dyTest, sub_ttTest, sub_qcdTest])
 
-print("mvaId:",pd.unique(dyTest['Muon_softMvaId']))
+
 
 dy_x,dy_y,dy_pt = prepareSet(dyTest,mdict,bench=True)
 # tt_x,tt_y,tt_pt = prepareSet(ttTest,mdict,bench=True)
@@ -149,8 +149,7 @@ dy_x,dy_y,dy_pt = prepareSet(dyTest,mdict,bench=True)
 del T_dataset_DY
 # del T_dataset_TT
 # del T_dataset_QCD
-print('preparedSet')
-print("truth value:",np.unique(dy_y))
+
 
 dySamples = benchmarkSample(dy_x,dy_y,dy_pt,bdict,"dy")
 # ttSamples = benchmarkSample(tt_x,tt_y,tt_pt,bdict,"tt")
