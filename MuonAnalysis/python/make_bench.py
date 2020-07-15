@@ -70,8 +70,11 @@ class benchmarkSample:
 
 	def evaluateAllBenchmarks(self):
 		self.makeSoftId()
+		print("\n")
 		self.makeLooseId()
+		print("\n")
 		self.makeMvaId()
+		print("\n")
 
 
 # def benchmark_sample(  x, y, pt, mdict, name ):
