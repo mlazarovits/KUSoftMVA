@@ -157,6 +157,7 @@ qcdSamples = benchmarkSample(qcd_x,qcd_y,qcd_pt,bdict,"qcd")
 combSamples = benchmarkSample(comb_x,comb_y,comb_pt,bdict,"combined")
 
 
+#TODO: add tag to output file name
 print("evaluate on dy")
 dySamples.evaluateAllBenchmarks()
 print("evaluate on tt")
