@@ -32,8 +32,10 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 	pred[ pred <0.5 ] = 0.
 
 	
-	labels = np.unique(pred,axis=0)
+	labels = np.unique(true_y,axis=0)
 	nClasses = len(labels)
+
+#	print(nClasses,labels)
 
 	#this num is model predicts class and object matched to same class
 	h_num = [ TH1D("num_"+str(i), "label "+str(x), 41, -0.5, 40.5 ) for i, x in enumerate(labels) ]
@@ -62,6 +64,7 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 
 	# begin the counting 
 	for i , (my, ty, pt) in enumerate(zip(pred, true_y, model_pt)):
+		# print(ty)
 		ty = np.array(ty)
 		# labelidx = -1
 		# modelidx = -1
@@ -71,8 +74,14 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 		# for idx in range(len(my)):
 		# 	if( my[idx] ==1):
 		# 		modelidx = idx
+		# print(ty)
+		
+		# if ty.shape != (2,):
+			# print(i,ty)
+
 		labelidx = int(np.flatnonzero(ty == 1))
 		modelidx = int(np.flatnonzero(my == 1))
+#		print(labelidx,ty.shape,modelidx,my.shape,len(h_num))
 
 		if( (my == ty).all() ): #we have a correct classification
 
