@@ -1,0 +1,2752 @@
+
+Begin Model 5
+Chunking Drell-Yan
+# memChunks: 39
+total time 28.685862385999997 secs
+avg chunk time 0.6706021263333334 secs
+
+
+Chunking TEST_Drell-Yan
+# memChunks: 39
+total time 28.199447835999997 secs
+avg chunk time 0.6586990221282054 secs
+
+
+Chunking TTJets
+# memChunks: 59
+total time 39.721775978 secs
+avg chunk time 0.620330388661017 secs
+
+
+Chunking TEST_ttJets
+# memChunks: 39
+total time 25.29635679799999 secs
+avg chunk time 0.6068950599487178 secs
+
+
+Training model: model5
+Desc.: Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification
+
+
+chunk # 0
+Report for data Drell-Yan
+mu (2657, 19)
+unmatched (8944, 19)
+elec (11, 19)
+pion (122, 19)
+kaon (34, 19)
+prot (89, 19)
+
+
+Report for concat  (5657, 19)
+Report for data TTJets
+mu (6204, 19)
+unmatched (9730, 19)
+elec (75, 19)
+pion (752, 19)
+kaon (421, 19)
+prot (158, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 1
+Report for data Drell-Yan
+mu (3289, 19)
+unmatched (11403, 19)
+elec (18, 19)
+pion (155, 19)
+kaon (58, 19)
+prot (86, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6161, 19)
+unmatched (9692, 19)
+elec (73, 19)
+pion (768, 19)
+kaon (428, 19)
+prot (144, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 2
+Report for data Drell-Yan
+mu (3332, 19)
+unmatched (11111, 19)
+elec (25, 19)
+pion (157, 19)
+kaon (63, 19)
+prot (96, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6303, 19)
+unmatched (9800, 19)
+elec (75, 19)
+pion (763, 19)
+kaon (416, 19)
+prot (173, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 3
+Report for data Drell-Yan
+mu (3157, 19)
+unmatched (11396, 19)
+elec (31, 19)
+pion (160, 19)
+kaon (55, 19)
+prot (96, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6066, 19)
+unmatched (9847, 19)
+elec (76, 19)
+pion (748, 19)
+kaon (426, 19)
+prot (164, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 4
+Report for data Drell-Yan
+mu (3352, 19)
+unmatched (11453, 19)
+elec (26, 19)
+pion (168, 19)
+kaon (50, 19)
+prot (105, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6239, 19)
+unmatched (9847, 19)
+elec (69, 19)
+pion (766, 19)
+kaon (432, 19)
+prot (186, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 5
+Report for data Drell-Yan
+mu (3166, 19)
+unmatched (11306, 19)
+elec (20, 19)
+pion (147, 19)
+kaon (52, 19)
+prot (84, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6165, 19)
+unmatched (9642, 19)
+elec (87, 19)
+pion (754, 19)
+kaon (460, 19)
+prot (145, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 6
+Report for data Drell-Yan
+mu (3242, 19)
+unmatched (11203, 19)
+elec (16, 19)
+pion (183, 19)
+kaon (57, 19)
+prot (78, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6296, 19)
+unmatched (9715, 19)
+elec (64, 19)
+pion (752, 19)
+kaon (417, 19)
+prot (184, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 7
+Report for data Drell-Yan
+mu (3222, 19)
+unmatched (11235, 19)
+elec (13, 19)
+pion (171, 19)
+kaon (67, 19)
+prot (92, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6264, 19)
+unmatched (9731, 19)
+elec (63, 19)
+pion (734, 19)
+kaon (428, 19)
+prot (167, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 8
+Report for data Drell-Yan
+mu (3172, 19)
+unmatched (11256, 19)
+elec (18, 19)
+pion (167, 19)
+kaon (51, 19)
+prot (101, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6248, 19)
+unmatched (9598, 19)
+elec (65, 19)
+pion (755, 19)
+kaon (401, 19)
+prot (155, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 9
+Report for data Drell-Yan
+mu (3300, 19)
+unmatched (11424, 19)
+elec (16, 19)
+pion (162, 19)
+kaon (80, 19)
+prot (104, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6162, 19)
+unmatched (9930, 19)
+elec (61, 19)
+pion (719, 19)
+kaon (441, 19)
+prot (154, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 10
+Report for data Drell-Yan
+mu (3342, 19)
+unmatched (11411, 19)
+elec (22, 19)
+pion (164, 19)
+kaon (72, 19)
+prot (109, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6161, 19)
+unmatched (9927, 19)
+elec (90, 19)
+pion (699, 19)
+kaon (412, 19)
+prot (146, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 11
+Report for data Drell-Yan
+mu (3356, 19)
+unmatched (11258, 19)
+elec (16, 19)
+pion (165, 19)
+kaon (50, 19)
+prot (92, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6242, 19)
+unmatched (9712, 19)
+elec (73, 19)
+pion (776, 19)
+kaon (386, 19)
+prot (157, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 12
+Report for data Drell-Yan
+mu (3310, 19)
+unmatched (11356, 19)
+elec (21, 19)
+pion (173, 19)
+kaon (71, 19)
+prot (103, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6119, 19)
+unmatched (9834, 19)
+elec (87, 19)
+pion (765, 19)
+kaon (417, 19)
+prot (140, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 13
+Report for data Drell-Yan
+mu (3230, 19)
+unmatched (11385, 19)
+elec (31, 19)
+pion (146, 19)
+kaon (46, 19)
+prot (84, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (544, 19)
+unmatched (868, 19)
+elec (11, 19)
+pion (81, 19)
+kaon (37, 19)
+prot (11, 19)
+
+
+Report for concat  (1412, 19)
+training on epoch  1
+chunk # 14
+Report for data Drell-Yan
+mu (3233, 19)
+unmatched (11243, 19)
+elec (23, 19)
+pion (152, 19)
+kaon (69, 19)
+prot (105, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6189, 19)
+unmatched (9590, 19)
+elec (67, 19)
+pion (727, 19)
+kaon (414, 19)
+prot (168, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 15
+Report for data Drell-Yan
+mu (3262, 19)
+unmatched (11385, 19)
+elec (25, 19)
+pion (192, 19)
+kaon (64, 19)
+prot (96, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6139, 19)
+unmatched (9733, 19)
+elec (90, 19)
+pion (754, 19)
+kaon (430, 19)
+prot (162, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 16
+Report for data Drell-Yan
+mu (3307, 19)
+unmatched (11206, 19)
+elec (21, 19)
+pion (158, 19)
+kaon (60, 19)
+prot (88, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6064, 19)
+unmatched (9756, 19)
+elec (74, 19)
+pion (688, 19)
+kaon (395, 19)
+prot (170, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 17
+Report for data Drell-Yan
+mu (3210, 19)
+unmatched (11485, 19)
+elec (25, 19)
+pion (160, 19)
+kaon (62, 19)
+prot (103, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6126, 19)
+unmatched (9654, 19)
+elec (72, 19)
+pion (741, 19)
+kaon (444, 19)
+prot (198, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 18
+Report for data Drell-Yan
+mu (3288, 19)
+unmatched (11337, 19)
+elec (23, 19)
+pion (160, 19)
+kaon (66, 19)
+prot (85, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6262, 19)
+unmatched (9842, 19)
+elec (73, 19)
+pion (752, 19)
+kaon (409, 19)
+prot (167, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 19
+Report for data Drell-Yan
+mu (3285, 19)
+unmatched (11209, 19)
+elec (24, 19)
+pion (174, 19)
+kaon (71, 19)
+prot (106, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6250, 19)
+unmatched (9715, 19)
+elec (68, 19)
+pion (724, 19)
+kaon (415, 19)
+prot (139, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 20
+Report for data Drell-Yan
+mu (3238, 19)
+unmatched (11265, 19)
+elec (16, 19)
+pion (165, 19)
+kaon (54, 19)
+prot (108, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6070, 19)
+unmatched (9730, 19)
+elec (79, 19)
+pion (780, 19)
+kaon (404, 19)
+prot (167, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 21
+Report for data Drell-Yan
+mu (3363, 19)
+unmatched (11203, 19)
+elec (20, 19)
+pion (150, 19)
+kaon (63, 19)
+prot (95, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6183, 19)
+unmatched (9710, 19)
+elec (61, 19)
+pion (708, 19)
+kaon (430, 19)
+prot (171, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 22
+Report for data Drell-Yan
+mu (3376, 19)
+unmatched (11199, 19)
+elec (24, 19)
+pion (144, 19)
+kaon (68, 19)
+prot (92, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6260, 19)
+unmatched (9923, 19)
+elec (77, 19)
+pion (769, 19)
+kaon (399, 19)
+prot (155, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 23
+Report for data Drell-Yan
+mu (3242, 19)
+unmatched (11418, 19)
+elec (17, 19)
+pion (169, 19)
+kaon (68, 19)
+prot (97, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6190, 19)
+unmatched (9933, 19)
+elec (69, 19)
+pion (775, 19)
+kaon (425, 19)
+prot (158, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 24
+Report for data Drell-Yan
+mu (3307, 19)
+unmatched (11333, 19)
+elec (25, 19)
+pion (148, 19)
+kaon (71, 19)
+prot (104, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6319, 19)
+unmatched (9686, 19)
+elec (68, 19)
+pion (699, 19)
+kaon (458, 19)
+prot (145, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 25
+Report for data Drell-Yan
+mu (3307, 19)
+unmatched (11110, 19)
+elec (14, 19)
+pion (175, 19)
+kaon (78, 19)
+prot (119, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6284, 19)
+unmatched (9738, 19)
+elec (61, 19)
+pion (724, 19)
+kaon (433, 19)
+prot (145, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 26
+Report for data Drell-Yan
+mu (3403, 19)
+unmatched (11277, 19)
+elec (14, 19)
+pion (173, 19)
+kaon (60, 19)
+prot (75, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6172, 19)
+unmatched (9721, 19)
+elec (61, 19)
+pion (721, 19)
+kaon (426, 19)
+prot (186, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 27
+Report for data Drell-Yan
+mu (3291, 19)
+unmatched (11365, 19)
+elec (22, 19)
+pion (158, 19)
+kaon (70, 19)
+prot (107, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6203, 19)
+unmatched (9644, 19)
+elec (77, 19)
+pion (747, 19)
+kaon (423, 19)
+prot (166, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 28
+Report for data Drell-Yan
+mu (3229, 19)
+unmatched (11250, 19)
+elec (19, 19)
+pion (145, 19)
+kaon (54, 19)
+prot (103, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6219, 19)
+unmatched (9774, 19)
+elec (70, 19)
+pion (740, 19)
+kaon (417, 19)
+prot (177, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 29
+Report for data Drell-Yan
+mu (3191, 19)
+unmatched (11382, 19)
+elec (19, 19)
+pion (184, 19)
+kaon (46, 19)
+prot (99, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6302, 19)
+unmatched (9762, 19)
+elec (62, 19)
+pion (720, 19)
+kaon (412, 19)
+prot (156, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 30
+Report for data Drell-Yan
+mu (3314, 19)
+unmatched (11362, 19)
+elec (21, 19)
+pion (165, 19)
+kaon (53, 19)
+prot (98, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6122, 19)
+unmatched (9731, 19)
+elec (61, 19)
+pion (713, 19)
+kaon (424, 19)
+prot (187, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 31
+Report for data Drell-Yan
+mu (3367, 19)
+unmatched (11285, 19)
+elec (25, 19)
+pion (155, 19)
+kaon (51, 19)
+prot (84, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6195, 19)
+unmatched (9516, 19)
+elec (68, 19)
+pion (713, 19)
+kaon (404, 19)
+prot (168, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 32
+Report for data Drell-Yan
+mu (3377, 19)
+unmatched (11388, 19)
+elec (14, 19)
+pion (157, 19)
+kaon (65, 19)
+prot (104, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6207, 19)
+unmatched (9702, 19)
+elec (69, 19)
+pion (742, 19)
+kaon (425, 19)
+prot (142, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 33
+Report for data Drell-Yan
+mu (3232, 19)
+unmatched (11292, 19)
+elec (18, 19)
+pion (177, 19)
+kaon (59, 19)
+prot (102, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6201, 19)
+unmatched (9767, 19)
+elec (95, 19)
+pion (717, 19)
+kaon (445, 19)
+prot (167, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 34
+Report for data Drell-Yan
+mu (3245, 19)
+unmatched (11178, 19)
+elec (22, 19)
+pion (137, 19)
+kaon (55, 19)
+prot (97, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6205, 19)
+unmatched (9551, 19)
+elec (72, 19)
+pion (735, 19)
+kaon (436, 19)
+prot (153, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 35
+Report for data Drell-Yan
+mu (3248, 19)
+unmatched (11424, 19)
+elec (26, 19)
+pion (172, 19)
+kaon (70, 19)
+prot (80, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6059, 19)
+unmatched (9980, 19)
+elec (77, 19)
+pion (738, 19)
+kaon (452, 19)
+prot (144, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  1
+chunk # 0
+Report for data Drell-Yan
+mu (3352, 19)
+unmatched (11453, 19)
+elec (26, 19)
+pion (168, 19)
+kaon (50, 19)
+prot (105, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6219, 19)
+unmatched (9774, 19)
+elec (70, 19)
+pion (740, 19)
+kaon (417, 19)
+prot (177, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 1
+Report for data Drell-Yan
+mu (3342, 19)
+unmatched (11411, 19)
+elec (22, 19)
+pion (164, 19)
+kaon (72, 19)
+prot (109, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6262, 19)
+unmatched (9842, 19)
+elec (73, 19)
+pion (752, 19)
+kaon (409, 19)
+prot (167, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 2
+Report for data Drell-Yan
+mu (3285, 19)
+unmatched (11209, 19)
+elec (24, 19)
+pion (174, 19)
+kaon (71, 19)
+prot (106, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6255, 19)
+unmatched (9615, 19)
+elec (80, 19)
+pion (716, 19)
+kaon (449, 19)
+prot (165, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 3
+Report for data Drell-Yan
+mu (3272, 19)
+unmatched (11503, 19)
+elec (22, 19)
+pion (154, 19)
+kaon (63, 19)
+prot (87, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6167, 19)
+unmatched (9997, 19)
+elec (70, 19)
+pion (709, 19)
+kaon (451, 19)
+prot (163, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 4
+Report for data Drell-Yan
+mu (3291, 19)
+unmatched (11365, 19)
+elec (22, 19)
+pion (158, 19)
+kaon (70, 19)
+prot (107, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6319, 19)
+unmatched (9686, 19)
+elec (68, 19)
+pion (699, 19)
+kaon (458, 19)
+prot (145, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 5
+Report for data Drell-Yan
+mu (3166, 19)
+unmatched (11306, 19)
+elec (20, 19)
+pion (147, 19)
+kaon (52, 19)
+prot (84, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6207, 19)
+unmatched (9702, 19)
+elec (69, 19)
+pion (742, 19)
+kaon (425, 19)
+prot (142, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 6
+Report for data Drell-Yan
+mu (3367, 19)
+unmatched (11285, 19)
+elec (25, 19)
+pion (155, 19)
+kaon (51, 19)
+prot (84, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6139, 19)
+unmatched (9733, 19)
+elec (90, 19)
+pion (754, 19)
+kaon (430, 19)
+prot (162, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 7
+Report for data Drell-Yan
+mu (3403, 19)
+unmatched (11277, 19)
+elec (14, 19)
+pion (173, 19)
+kaon (60, 19)
+prot (75, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6303, 19)
+unmatched (9800, 19)
+elec (75, 19)
+pion (763, 19)
+kaon (416, 19)
+prot (173, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 8
+Report for data Drell-Yan
+mu (3222, 19)
+unmatched (11235, 19)
+elec (13, 19)
+pion (171, 19)
+kaon (67, 19)
+prot (92, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6195, 19)
+unmatched (9516, 19)
+elec (68, 19)
+pion (713, 19)
+kaon (404, 19)
+prot (168, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 9
+Report for data Drell-Yan
+mu (3157, 19)
+unmatched (11396, 19)
+elec (31, 19)
+pion (160, 19)
+kaon (55, 19)
+prot (96, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6165, 19)
+unmatched (9642, 19)
+elec (87, 19)
+pion (754, 19)
+kaon (460, 19)
+prot (145, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 10
+Report for data Drell-Yan
+mu (3191, 19)
+unmatched (11382, 19)
+elec (19, 19)
+pion (184, 19)
+kaon (46, 19)
+prot (99, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6119, 19)
+unmatched (9973, 19)
+elec (71, 19)
+pion (726, 19)
+kaon (442, 19)
+prot (153, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 11
+Report for data Drell-Yan
+mu (3307, 19)
+unmatched (11333, 19)
+elec (25, 19)
+pion (148, 19)
+kaon (71, 19)
+prot (104, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6172, 19)
+unmatched (9721, 19)
+elec (61, 19)
+pion (721, 19)
+kaon (426, 19)
+prot (186, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 12
+Report for data Drell-Yan
+mu (3307, 19)
+unmatched (11206, 19)
+elec (21, 19)
+pion (158, 19)
+kaon (60, 19)
+prot (88, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6243, 19)
+unmatched (9758, 19)
+elec (73, 19)
+pion (745, 19)
+kaon (408, 19)
+prot (182, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 13
+Report for data Drell-Yan
+mu (3220, 19)
+unmatched (11336, 19)
+elec (36, 19)
+pion (153, 19)
+kaon (45, 19)
+prot (90, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6264, 19)
+unmatched (9731, 19)
+elec (63, 19)
+pion (734, 19)
+kaon (428, 19)
+prot (167, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 14
+Report for data Drell-Yan
+mu (3230, 19)
+unmatched (11385, 19)
+elec (31, 19)
+pion (146, 19)
+kaon (46, 19)
+prot (84, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6190, 19)
+unmatched (9933, 19)
+elec (69, 19)
+pion (775, 19)
+kaon (425, 19)
+prot (158, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 15
+Report for data Drell-Yan
+mu (3245, 19)
+unmatched (11178, 19)
+elec (22, 19)
+pion (137, 19)
+kaon (55, 19)
+prot (97, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6250, 19)
+unmatched (9715, 19)
+elec (68, 19)
+pion (724, 19)
+kaon (415, 19)
+prot (139, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 16
+Report for data Drell-Yan
+mu (3172, 19)
+unmatched (11256, 19)
+elec (18, 19)
+pion (167, 19)
+kaon (51, 19)
+prot (101, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6183, 19)
+unmatched (9710, 19)
+elec (61, 19)
+pion (708, 19)
+kaon (430, 19)
+prot (171, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 17
+Report for data Drell-Yan
+mu (2657, 19)
+unmatched (8944, 19)
+elec (11, 19)
+pion (122, 19)
+kaon (34, 19)
+prot (89, 19)
+
+
+Report for concat  (5657, 19)
+Report for data TTJets
+mu (6104, 19)
+unmatched (9684, 19)
+elec (78, 19)
+pion (694, 19)
+kaon (456, 19)
+prot (147, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 18
+Report for data Drell-Yan
+mu (3288, 19)
+unmatched (11337, 19)
+elec (23, 19)
+pion (160, 19)
+kaon (66, 19)
+prot (85, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6103, 19)
+unmatched (9779, 19)
+elec (85, 19)
+pion (741, 19)
+kaon (443, 19)
+prot (151, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 19
+Report for data Drell-Yan
+mu (3356, 19)
+unmatched (11258, 19)
+elec (16, 19)
+pion (165, 19)
+kaon (50, 19)
+prot (92, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6206, 19)
+unmatched (9724, 19)
+elec (85, 19)
+pion (722, 19)
+kaon (409, 19)
+prot (178, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 20
+Report for data Drell-Yan
+mu (3376, 19)
+unmatched (11199, 19)
+elec (24, 19)
+pion (144, 19)
+kaon (68, 19)
+prot (92, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6242, 19)
+unmatched (9712, 19)
+elec (73, 19)
+pion (776, 19)
+kaon (386, 19)
+prot (157, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 21
+Report for data Drell-Yan
+mu (3363, 19)
+unmatched (11203, 19)
+elec (20, 19)
+pion (150, 19)
+kaon (63, 19)
+prot (95, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6171, 19)
+unmatched (9737, 19)
+elec (71, 19)
+pion (752, 19)
+kaon (429, 19)
+prot (157, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 22
+Report for data Drell-Yan
+mu (3377, 19)
+unmatched (11388, 19)
+elec (14, 19)
+pion (157, 19)
+kaon (65, 19)
+prot (104, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6191, 19)
+unmatched (9713, 19)
+elec (84, 19)
+pion (718, 19)
+kaon (445, 19)
+prot (156, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 23
+Report for data Drell-Yan
+mu (3210, 19)
+unmatched (11485, 19)
+elec (25, 19)
+pion (160, 19)
+kaon (62, 19)
+prot (103, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6161, 19)
+unmatched (9927, 19)
+elec (90, 19)
+pion (699, 19)
+kaon (412, 19)
+prot (146, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 24
+Report for data Drell-Yan
+mu (3242, 19)
+unmatched (11203, 19)
+elec (16, 19)
+pion (183, 19)
+kaon (57, 19)
+prot (78, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6162, 19)
+unmatched (9930, 19)
+elec (61, 19)
+pion (719, 19)
+kaon (441, 19)
+prot (154, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 25
+Report for data Drell-Yan
+mu (3242, 19)
+unmatched (11418, 19)
+elec (17, 19)
+pion (169, 19)
+kaon (68, 19)
+prot (97, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6204, 19)
+unmatched (9730, 19)
+elec (75, 19)
+pion (752, 19)
+kaon (421, 19)
+prot (158, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 26
+Report for data Drell-Yan
+mu (3229, 19)
+unmatched (11250, 19)
+elec (19, 19)
+pion (145, 19)
+kaon (54, 19)
+prot (103, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6246, 19)
+unmatched (9711, 19)
+elec (65, 19)
+pion (759, 19)
+kaon (439, 19)
+prot (155, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 27
+Report for data Drell-Yan
+mu (3310, 19)
+unmatched (11356, 19)
+elec (21, 19)
+pion (173, 19)
+kaon (71, 19)
+prot (103, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6244, 19)
+unmatched (9743, 19)
+elec (61, 19)
+pion (722, 19)
+kaon (467, 19)
+prot (154, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 28
+Report for data Drell-Yan
+mu (3233, 19)
+unmatched (11243, 19)
+elec (23, 19)
+pion (152, 19)
+kaon (69, 19)
+prot (105, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6246, 19)
+unmatched (9969, 19)
+elec (68, 19)
+pion (754, 19)
+kaon (413, 19)
+prot (159, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 29
+Report for data Drell-Yan
+mu (3232, 19)
+unmatched (11292, 19)
+elec (18, 19)
+pion (177, 19)
+kaon (59, 19)
+prot (102, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6236, 19)
+unmatched (9736, 19)
+elec (91, 19)
+pion (724, 19)
+kaon (402, 19)
+prot (165, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 30
+Report for data Drell-Yan
+mu (3248, 19)
+unmatched (11424, 19)
+elec (26, 19)
+pion (172, 19)
+kaon (70, 19)
+prot (80, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6161, 19)
+unmatched (9692, 19)
+elec (73, 19)
+pion (768, 19)
+kaon (428, 19)
+prot (144, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 31
+Report for data Drell-Yan
+mu (3300, 19)
+unmatched (11424, 19)
+elec (16, 19)
+pion (162, 19)
+kaon (80, 19)
+prot (104, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6158, 19)
+unmatched (9935, 19)
+elec (87, 19)
+pion (754, 19)
+kaon (460, 19)
+prot (175, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 32
+Report for data Drell-Yan
+mu (3332, 19)
+unmatched (11111, 19)
+elec (25, 19)
+pion (157, 19)
+kaon (63, 19)
+prot (96, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6210, 19)
+unmatched (9865, 19)
+elec (60, 19)
+pion (763, 19)
+kaon (467, 19)
+prot (146, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 33
+Report for data Drell-Yan
+mu (3307, 19)
+unmatched (11110, 19)
+elec (14, 19)
+pion (175, 19)
+kaon (78, 19)
+prot (119, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6070, 19)
+unmatched (9730, 19)
+elec (79, 19)
+pion (780, 19)
+kaon (404, 19)
+prot (167, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 34
+Report for data Drell-Yan
+mu (3238, 19)
+unmatched (11265, 19)
+elec (16, 19)
+pion (165, 19)
+kaon (54, 19)
+prot (108, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6119, 19)
+unmatched (9834, 19)
+elec (87, 19)
+pion (765, 19)
+kaon (417, 19)
+prot (140, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 35
+Report for data Drell-Yan
+mu (3314, 19)
+unmatched (11362, 19)
+elec (21, 19)
+pion (165, 19)
+kaon (53, 19)
+prot (98, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6239, 19)
+unmatched (9847, 19)
+elec (69, 19)
+pion (766, 19)
+kaon (432, 19)
+prot (186, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  2
+chunk # 0
+Report for data Drell-Yan
+mu (3300, 19)
+unmatched (11424, 19)
+elec (16, 19)
+pion (162, 19)
+kaon (80, 19)
+prot (104, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6210, 19)
+unmatched (9865, 19)
+elec (60, 19)
+pion (763, 19)
+kaon (467, 19)
+prot (146, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 1
+Report for data Drell-Yan
+mu (3332, 19)
+unmatched (11111, 19)
+elec (25, 19)
+pion (157, 19)
+kaon (63, 19)
+prot (96, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6171, 19)
+unmatched (9737, 19)
+elec (71, 19)
+pion (752, 19)
+kaon (429, 19)
+prot (157, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 2
+Report for data Drell-Yan
+mu (3307, 19)
+unmatched (11333, 19)
+elec (25, 19)
+pion (148, 19)
+kaon (71, 19)
+prot (104, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6162, 19)
+unmatched (9930, 19)
+elec (61, 19)
+pion (719, 19)
+kaon (441, 19)
+prot (154, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 3
+Report for data Drell-Yan
+mu (3272, 19)
+unmatched (11503, 19)
+elec (22, 19)
+pion (154, 19)
+kaon (63, 19)
+prot (87, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6344, 19)
+unmatched (9982, 19)
+elec (94, 19)
+pion (727, 19)
+kaon (424, 19)
+prot (149, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 4
+Report for data Drell-Yan
+mu (3310, 19)
+unmatched (11356, 19)
+elec (21, 19)
+pion (173, 19)
+kaon (71, 19)
+prot (103, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6195, 19)
+unmatched (9516, 19)
+elec (68, 19)
+pion (713, 19)
+kaon (404, 19)
+prot (168, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 5
+Report for data Drell-Yan
+mu (3403, 19)
+unmatched (11277, 19)
+elec (14, 19)
+pion (173, 19)
+kaon (60, 19)
+prot (75, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6104, 19)
+unmatched (9684, 19)
+elec (78, 19)
+pion (694, 19)
+kaon (456, 19)
+prot (147, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 6
+Report for data Drell-Yan
+mu (3245, 19)
+unmatched (11178, 19)
+elec (22, 19)
+pion (137, 19)
+kaon (55, 19)
+prot (97, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6260, 19)
+unmatched (9923, 19)
+elec (77, 19)
+pion (769, 19)
+kaon (399, 19)
+prot (155, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 7
+Report for data Drell-Yan
+mu (3367, 19)
+unmatched (11285, 19)
+elec (25, 19)
+pion (155, 19)
+kaon (51, 19)
+prot (84, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6158, 19)
+unmatched (9935, 19)
+elec (87, 19)
+pion (754, 19)
+kaon (460, 19)
+prot (175, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 8
+Report for data Drell-Yan
+mu (3377, 19)
+unmatched (11388, 19)
+elec (14, 19)
+pion (157, 19)
+kaon (65, 19)
+prot (104, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6204, 19)
+unmatched (9730, 19)
+elec (75, 19)
+pion (752, 19)
+kaon (421, 19)
+prot (158, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 9
+Report for data Drell-Yan
+mu (3363, 19)
+unmatched (11203, 19)
+elec (20, 19)
+pion (150, 19)
+kaon (63, 19)
+prot (95, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6178, 19)
+unmatched (9701, 19)
+elec (80, 19)
+pion (716, 19)
+kaon (409, 19)
+prot (172, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 10
+Report for data Drell-Yan
+mu (3222, 19)
+unmatched (11235, 19)
+elec (13, 19)
+pion (171, 19)
+kaon (67, 19)
+prot (92, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6126, 19)
+unmatched (9654, 19)
+elec (72, 19)
+pion (741, 19)
+kaon (444, 19)
+prot (198, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 11
+Report for data Drell-Yan
+mu (3289, 19)
+unmatched (11403, 19)
+elec (18, 19)
+pion (155, 19)
+kaon (58, 19)
+prot (86, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6205, 19)
+unmatched (9551, 19)
+elec (72, 19)
+pion (735, 19)
+kaon (436, 19)
+prot (153, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 12
+Report for data Drell-Yan
+mu (3307, 19)
+unmatched (11110, 19)
+elec (14, 19)
+pion (175, 19)
+kaon (78, 19)
+prot (119, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6201, 19)
+unmatched (9767, 19)
+elec (95, 19)
+pion (717, 19)
+kaon (445, 19)
+prot (167, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 13
+Report for data Drell-Yan
+mu (3242, 19)
+unmatched (11418, 19)
+elec (17, 19)
+pion (169, 19)
+kaon (68, 19)
+prot (97, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6167, 19)
+unmatched (9997, 19)
+elec (70, 19)
+pion (709, 19)
+kaon (451, 19)
+prot (163, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 14
+Report for data Drell-Yan
+mu (3291, 19)
+unmatched (11365, 19)
+elec (22, 19)
+pion (158, 19)
+kaon (70, 19)
+prot (107, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6103, 19)
+unmatched (9779, 19)
+elec (85, 19)
+pion (741, 19)
+kaon (443, 19)
+prot (151, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 15
+Report for data Drell-Yan
+mu (3210, 19)
+unmatched (11485, 19)
+elec (25, 19)
+pion (160, 19)
+kaon (62, 19)
+prot (103, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6246, 19)
+unmatched (9969, 19)
+elec (68, 19)
+pion (754, 19)
+kaon (413, 19)
+prot (159, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 16
+Report for data Drell-Yan
+mu (3376, 19)
+unmatched (11199, 19)
+elec (24, 19)
+pion (144, 19)
+kaon (68, 19)
+prot (92, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6239, 19)
+unmatched (9847, 19)
+elec (69, 19)
+pion (766, 19)
+kaon (432, 19)
+prot (186, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 17
+Report for data Drell-Yan
+mu (3342, 19)
+unmatched (11411, 19)
+elec (22, 19)
+pion (164, 19)
+kaon (72, 19)
+prot (109, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6264, 19)
+unmatched (9731, 19)
+elec (63, 19)
+pion (734, 19)
+kaon (428, 19)
+prot (167, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 18
+Report for data Drell-Yan
+mu (3352, 19)
+unmatched (11453, 19)
+elec (26, 19)
+pion (168, 19)
+kaon (50, 19)
+prot (105, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6248, 19)
+unmatched (9598, 19)
+elec (65, 19)
+pion (755, 19)
+kaon (401, 19)
+prot (155, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 19
+Report for data Drell-Yan
+mu (3157, 19)
+unmatched (11396, 19)
+elec (31, 19)
+pion (160, 19)
+kaon (55, 19)
+prot (96, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6161, 19)
+unmatched (9692, 19)
+elec (73, 19)
+pion (768, 19)
+kaon (428, 19)
+prot (144, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 20
+Report for data Drell-Yan
+mu (3220, 19)
+unmatched (11336, 19)
+elec (36, 19)
+pion (153, 19)
+kaon (45, 19)
+prot (90, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6207, 19)
+unmatched (9702, 19)
+elec (69, 19)
+pion (742, 19)
+kaon (425, 19)
+prot (142, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 21
+Report for data Drell-Yan
+mu (3307, 19)
+unmatched (11206, 19)
+elec (21, 19)
+pion (158, 19)
+kaon (60, 19)
+prot (88, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6066, 19)
+unmatched (9847, 19)
+elec (76, 19)
+pion (748, 19)
+kaon (426, 19)
+prot (164, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 22
+Report for data Drell-Yan
+mu (3262, 19)
+unmatched (11385, 19)
+elec (25, 19)
+pion (192, 19)
+kaon (64, 19)
+prot (96, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6250, 19)
+unmatched (9715, 19)
+elec (68, 19)
+pion (724, 19)
+kaon (415, 19)
+prot (139, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 23
+Report for data Drell-Yan
+mu (3229, 19)
+unmatched (11250, 19)
+elec (19, 19)
+pion (145, 19)
+kaon (54, 19)
+prot (103, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6302, 19)
+unmatched (9762, 19)
+elec (62, 19)
+pion (720, 19)
+kaon (412, 19)
+prot (156, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 24
+Report for data Drell-Yan
+mu (3356, 19)
+unmatched (11258, 19)
+elec (16, 19)
+pion (165, 19)
+kaon (50, 19)
+prot (92, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6059, 19)
+unmatched (9980, 19)
+elec (77, 19)
+pion (738, 19)
+kaon (452, 19)
+prot (144, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 25
+Report for data Drell-Yan
+mu (2657, 19)
+unmatched (8944, 19)
+elec (11, 19)
+pion (122, 19)
+kaon (34, 19)
+prot (89, 19)
+
+
+Report for concat  (5657, 19)
+Report for data TTJets
+mu (544, 19)
+unmatched (868, 19)
+elec (11, 19)
+pion (81, 19)
+kaon (37, 19)
+prot (11, 19)
+
+
+Report for concat  (1412, 19)
+training on epoch  3
+chunk # 26
+Report for data Drell-Yan
+mu (3288, 19)
+unmatched (11337, 19)
+elec (23, 19)
+pion (160, 19)
+kaon (66, 19)
+prot (85, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6219, 19)
+unmatched (9774, 19)
+elec (70, 19)
+pion (740, 19)
+kaon (417, 19)
+prot (177, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 27
+Report for data Drell-Yan
+mu (3242, 19)
+unmatched (11203, 19)
+elec (16, 19)
+pion (183, 19)
+kaon (57, 19)
+prot (78, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6119, 19)
+unmatched (9973, 19)
+elec (71, 19)
+pion (726, 19)
+kaon (442, 19)
+prot (153, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 28
+Report for data Drell-Yan
+mu (3166, 19)
+unmatched (11306, 19)
+elec (20, 19)
+pion (147, 19)
+kaon (52, 19)
+prot (84, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6319, 19)
+unmatched (9686, 19)
+elec (68, 19)
+pion (699, 19)
+kaon (458, 19)
+prot (145, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 29
+Report for data Drell-Yan
+mu (3386, 19)
+unmatched (11428, 19)
+elec (19, 19)
+pion (157, 19)
+kaon (44, 19)
+prot (98, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6161, 19)
+unmatched (9927, 19)
+elec (90, 19)
+pion (699, 19)
+kaon (412, 19)
+prot (146, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 30
+Report for data Drell-Yan
+mu (3232, 19)
+unmatched (11292, 19)
+elec (18, 19)
+pion (177, 19)
+kaon (59, 19)
+prot (102, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6064, 19)
+unmatched (9756, 19)
+elec (74, 19)
+pion (688, 19)
+kaon (395, 19)
+prot (170, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 31
+Report for data Drell-Yan
+mu (3191, 19)
+unmatched (11382, 19)
+elec (19, 19)
+pion (184, 19)
+kaon (46, 19)
+prot (99, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6190, 19)
+unmatched (9933, 19)
+elec (69, 19)
+pion (775, 19)
+kaon (425, 19)
+prot (158, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 32
+Report for data Drell-Yan
+mu (3172, 19)
+unmatched (11256, 19)
+elec (18, 19)
+pion (167, 19)
+kaon (51, 19)
+prot (101, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6117, 19)
+unmatched (9844, 19)
+elec (65, 19)
+pion (736, 19)
+kaon (439, 19)
+prot (160, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 33
+Report for data Drell-Yan
+mu (3233, 19)
+unmatched (11243, 19)
+elec (23, 19)
+pion (152, 19)
+kaon (69, 19)
+prot (105, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6189, 19)
+unmatched (9590, 19)
+elec (67, 19)
+pion (727, 19)
+kaon (414, 19)
+prot (168, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 34
+Report for data Drell-Yan
+mu (3248, 19)
+unmatched (11424, 19)
+elec (26, 19)
+pion (172, 19)
+kaon (70, 19)
+prot (80, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6199, 19)
+unmatched (9752, 19)
+elec (69, 19)
+pion (785, 19)
+kaon (439, 19)
+prot (162, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+chunk # 35
+Report for data Drell-Yan
+mu (3238, 19)
+unmatched (11265, 19)
+elec (16, 19)
+pion (165, 19)
+kaon (54, 19)
+prot (108, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6262, 19)
+unmatched (9842, 19)
+elec (73, 19)
+pion (752, 19)
+kaon (409, 19)
+prot (167, 19)
+
+
+Report for concat  (6000, 19)
+training on epoch  3
+Report for data Drell-Yan
+mu (3314, 19)
+unmatched (11362, 19)
+elec (21, 19)
+pion (165, 19)
+kaon (53, 19)
+prot (98, 19)
+
+
+Report for concat  (6000, 19)
+Report for data TTJets
+mu (6119, 19)
+unmatched (9834, 19)
+elec (87, 19)
+pion (765, 19)
+kaon (417, 19)
+prot (140, 19)
+
+
+Report for concat  (6000, 19)
+Model Report:
+Training accuracy: 0.9296 
+Validation accuracy: 0.9333
+Training loss: 0.1959
+Validation loss: 0.1919
+Test Accuracy: 0.9301
+Test loss: 0.1950
+Evaluating model....
+ptthreshold 0.5
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 5695.0 of 6000.0   0.9491666666666667
+Purity     : 5695.0 of 6229.0   0.9142719537646492
+label [1 0]:
+Efficiency : 5466.0 of 6000.0   0.911
+Purity     : 5466.0 of 5771.0   0.9471495408074857
+Overall performance: 
+Purity: 11161.0 of 12000.0    0.9300833333333334
+Report for data Full Test TEST_Drell-Yan
+mu (127830, 19)
+unmatched (440782, 19)
+elec (784, 19)
+pion (6257, 19)
+kaon (2350, 19)
+prot (3634, 19)
+
+
+Report for concat  (580853, 19)
+Report for data Full Test TEST_ttJets
+mu (236974, 19)
+unmatched (372192, 19)
+elec (2731, 19)
+pion (28079, 19)
+kaon (16210, 19)
+prot (6110, 19)
+
+
+Report for concat  (659565, 19)
+Report for data Sub Test TEST_Drell-Yan
+mu (127830, 19)
+unmatched (440782, 19)
+elec (784, 19)
+pion (6257, 19)
+kaon (2350, 19)
+prot (3634, 19)
+
+
+Report for concat  (327830, 19)
+Report for data Sub Test TEST_ttJets
+mu (236974, 19)
+unmatched (372192, 19)
+elec (2731, 19)
+pion (28079, 19)
+kaon (16210, 19)
+prot (6110, 19)
+
+
+Report for concat  (400000, 19)
+evaluating full DY
+ptthreshold 0.5
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 125709.0 of 127830.0   0.9834076507862004
+Purity     : 125709.0 of 192607.0   0.6526709828822421
+label [1 0]:
+Efficiency : 386125.0 of 453023.0   0.8523297934100477
+Purity     : 386125.0 of 388246.0   0.9945369688290414
+Overall performance: 
+Purity: 511834.0 of 580853.0    0.8811764766644917
+
+
+evaluating full TT
+ptthreshold 0.5
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 229336.0 of 236974.0   0.9677686159663086
+Purity     : 229336.0 of 283232.0   0.8097107671449554
+label [1 0]:
+Efficiency : 368695.0 of 422591.0   0.8724629724722013
+Purity     : 368695.0 of 376333.0   0.9797041449992427
+Overall performance: 
+Purity: 598031.0 of 659565.0    0.9067051768968941
+
+
+evaluating full combined
+ptthreshold 0.5
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 316358.0 of 327830.0   0.9650062532410091
+Purity     : 316358.0 of 358915.0   0.8814287505398214
+label [1 0]:
+Efficiency : 357443.0 of 400000.0   0.8936075
+Purity     : 357443.0 of 368915.0   0.9689034059336161
+Overall performance: 
+Purity: 673801.0 of 727830.0    0.9257670060316283
+evaluating p60
+ptthreshold 0.6
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 124893.0 of 127830.0   0.9770241727294062
+Purity     : 124893.0 of 181390.0   0.6885329952037047
+label [1 0]:
+Efficiency : 396526.0 of 453023.0   0.8752888926169311
+Purity     : 396526.0 of 399463.0   0.9926476294425266
+Overall performance: 
+Purity: 521419.0 of 580853.0    0.8976780700108289
+ptthreshold 0.6
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 226795.0 of 236974.0   0.9570459206495228
+Purity     : 226795.0 of 271902.0   0.8341056704253739
+label [1 0]:
+Efficiency : 377484.0 of 422591.0   0.8932608597911456
+Purity     : 377484.0 of 387663.0   0.9737426579271171
+Overall performance: 
+Purity: 604279.0 of 659565.0    0.9161780870725402
+ptthreshold 0.6
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 312584.0 of 327830.0   0.9534941890614038
+Purity     : 312584.0 of 348968.0   0.8957382911900231
+label [1 0]:
+Efficiency : 363616.0 of 400000.0   0.90904
+Purity     : 363616.0 of 378862.0   0.959758434469543
+Overall performance: 
+Purity: 676200.0 of 727830.0    0.9290631053954908
+evaluating p70
+ptthreshold 0.7
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 123675.0 of 127830.0   0.9674958929828679
+Purity     : 123675.0 of 171012.0   0.7231948635183496
+label [1 0]:
+Efficiency : 405686.0 of 453023.0   0.8955086165603071
+Purity     : 405686.0 of 409841.0   0.9898619220624584
+Overall performance: 
+Purity: 529361.0 of 580853.0    0.9113510647272202
+ptthreshold 0.7
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 223663.0 of 236974.0   0.9438292808493759
+Purity     : 223663.0 of 261605.0   0.8549645457846754
+label [1 0]:
+Efficiency : 384649.0 of 422591.0   0.9102157878421453
+Purity     : 384649.0 of 397960.0   0.966551914765303
+Overall performance: 
+Purity: 608312.0 of 659565.0    0.9222927232342529
+ptthreshold 0.7
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 307194.0 of 327830.0   0.9370527407497788
+Purity     : 307194.0 of 338002.0   0.9088526103395838
+label [1 0]:
+Efficiency : 369192.0 of 400000.0   0.92298
+Purity     : 369192.0 of 389828.0   0.9470638332803185
+Overall performance: 
+Purity: 676386.0 of 727830.0    0.929318659577099
+evaluating p80
+ptthreshold 0.8
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 121791.0 of 127830.0   0.9527575686458578
+Purity     : 121791.0 of 160989.0   0.7565175260421519
+label [1 0]:
+Efficiency : 413825.0 of 453023.0   0.9134745917977675
+Purity     : 413825.0 of 419864.0   0.9856167711449422
+Overall performance: 
+Purity: 535616.0 of 580853.0    0.9221197101504167
+ptthreshold 0.8
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 219471.0 of 236974.0   0.9261395764936238
+Purity     : 219471.0 of 251273.0   0.8734364615378493
+label [1 0]:
+Efficiency : 390789.0 of 422591.0   0.9247452028083892
+Purity     : 390789.0 of 408292.0   0.9571311708287206
+Overall performance: 
+Purity: 610260.0 of 659565.0    0.9252461849855587
+ptthreshold 0.8
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 297536.0 of 327830.0   0.9075923496934387
+Purity     : 297536.0 of 322855.0   0.9215777980827307
+label [1 0]:
+Efficiency : 374681.0 of 400000.0   0.9367025
+Purity     : 374681.0 of 404975.0   0.9251953824310143
+Overall performance: 
+Purity: 672217.0 of 727830.0    0.9235906736463185
+evaluating p90
+ptthreshold 0.9
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 117060.0 of 127830.0   0.9157474771180474
+Purity     : 117060.0 of 147062.0   0.7959908065985775
+label [1 0]:
+Efficiency : 423021.0 of 453023.0   0.933773781905113
+Purity     : 423021.0 of 433791.0   0.9751723756371156
+Overall performance: 
+Purity: 540081.0 of 580853.0    0.9298066808641774
+ptthreshold 0.9
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 204631.0 of 236974.0   0.8635166727151502
+Purity     : 204631.0 of 228062.0   0.8972603941033579
+label [1 0]:
+Efficiency : 399160.0 of 422591.0   0.944553954059599
+Purity     : 399160.0 of 431503.0   0.9250457123125447
+Overall performance: 
+Purity: 603791.0 of 659565.0    0.9154382054839174
+ptthreshold 0.9
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 253964.0 of 327830.0   0.7746819998169783
+Purity     : 253964.0 of 270461.0   0.9390041447750322
+label [1 0]:
+Efficiency : 383503.0 of 400000.0   0.9587575
+Purity     : 383503.0 of 457369.0   0.8384980180117149
+Overall performance: 
+Purity: 637467.0 of 727830.0    0.8758460079963728
+evaluating p95
+ptthreshold 0.95
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 99133.0 of 127830.0   0.7755065321129625
+Purity     : 99133.0 of 118981.0   0.8331834494583169
+label [1 0]:
+Efficiency : 433175.0 of 453023.0   0.9561876549314273
+Purity     : 433175.0 of 461872.0   0.9378680673433332
+Overall performance: 
+Purity: 532308.0 of 580853.0    0.9164246375589005
+ptthreshold 0.95
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 147809.0 of 236974.0   0.6237350933013749
+Purity     : 147809.0 of 159582.0   0.9262260154654034
+label [1 0]:
+Efficiency : 410818.0 of 422591.0   0.9721409116616303
+Purity     : 410818.0 of 499983.0   0.8216639365738435
+Overall performance: 
+Purity: 558627.0 of 659565.0    0.8469627709171954
+ptthreshold 0.95
+nclasses 2
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0 1]:
+Efficiency : 163536.0 of 327830.0   0.49884391300369096
+Purity     : 163536.0 of 170405.0   0.959690149936915
+label [1 0]:
+Efficiency : 393131.0 of 400000.0   0.9828275
+Purity     : 393131.0 of 557425.0   0.7052625913800062
+Overall performance: 
+Purity: 556667.0 of 727830.0    0.7648310731901681

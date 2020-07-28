@@ -1,0 +1,165 @@
+
+Begin Model 5
+Chunking Drell-Yan
+# memChunks: 39
+total time 29.051163352000003 secs
+avg chunk time 0.6824052455128207 secs
+
+
+Chunking TEST_Drell-Yan
+# memChunks: 39
+total time 29.155229397 secs
+avg chunk time 0.68235256248718 secs
+
+
+Chunking TTJets
+# memChunks: 59
+total time 40.354669955000006 secs
+avg chunk time 0.6298557474406786 secs
+
+
+Chunking TEST_ttJets
+# memChunks: 39
+total time 26.507607637000007 secs
+avg chunk time 0.6401823201538439 secs
+
+
+Training model: model5
+Desc.: Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification
+
+
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (4000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (4000, 22)
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (4000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (4000, 22)
+Report for data Drell-Yan
+mu (8592, 22)
+unmatched (55618, 22)
+elec (40, 22)
+pion (270, 22)
+kaon (136, 22)
+prot (317, 22)
+
+
+Report for concat  (1000, 22)
+Report for data TTJets
+mu (11219, 22)
+unmatched (40063, 22)
+elec (98, 22)
+pion (1015, 22)
+kaon (540, 22)
+prot (335, 22)
+
+
+Report for concat  (1000, 22)
+Model Report:
+Training accuracy: 0.9351 
+Validation accuracy: 0.9425
+Training loss: 0.1914
+Validation loss: 0.1586
+Test Accuracy: 0.9410
+Test loss: 0.1654
+Evaluating model....
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0. 1.]:
+Efficiency : 3688.0 of 3966.0   0.929904185577408
+Purity     : 3688.0 of 3876.0   0.9514963880288958
+label [1. 0.]:
+Efficiency : 3766.0 of 3954.0   0.9524532119372787
+Purity     : 3766.0 of 4044.0   0.9312561819980217
+Overall performance: 
+Purity: 7454.0 of 7920.0    0.9411616161616162
+Report for data Full Test TEST_Drell-Yan
+mu (334908, 22)
+unmatched (2156985, 22)
+elec (1615, 22)
+pion (10265, 22)
+kaon (4835, 22)
+prot (11772, 22)
+
+
+Report for concat  (2518765, 22)
+Report for data Full Test TEST_ttJets
+mu (425628, 22)
+unmatched (1525040, 22)
+elec (3874, 22)
+pion (37715, 22)
+kaon (21054, 22)
+prot (12559, 22)
+
+
+Report for concat  (2021996, 22)
+Report for data Sub Test TEST_Drell-Yan
+mu (334908, 22)
+unmatched (2156985, 22)
+elec (1615, 22)
+pion (10265, 22)
+kaon (4835, 22)
+prot (11772, 22)
+
+
+Report for concat  (151872, 22)
+Report for data Sub Test TEST_ttJets
+mu (425628, 22)
+unmatched (1525040, 22)
+elec (3874, 22)
+pion (37715, 22)
+kaon (21054, 22)
+prot (12559, 22)
+
+
+Report for concat  (183613, 22)
+evaluating full combined
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label [0. 1.]:
+Efficiency : 172409.0 of 197978.0   0.8708492862843347
+Purity     : 172409.0 of 182975.0   0.9422544063396638
+label [1. 0.]:
+Efficiency : 123587.0 of 134153.0   0.9212391821278689
+Purity     : 123587.0 of 149156.0   0.8285754512054493
+Overall performance: 
+Purity: 295996.0 of 332131.0    0.8912025676615553
