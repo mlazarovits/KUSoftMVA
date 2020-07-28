@@ -22,20 +22,20 @@ from plotFunctions import plotEfficiency, plotROCcurves
 
 
 
-def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
-
+def evaluateModel(model_y, true_y, model_pt, pthreshold, fname, tag, path, results=None ):
+	print("ptthreshold", pthreshold)
 	# print(model_y)
 	#translate model prediction probabilities to onehot
 	# let plabel require >= 0.5
 	pred = model_y
-	pred[ pred >= 0.5 ] = 1.
-	pred[ pred <0.5 ] = 0.
+	pred = [ [0,1] if x[0] <pthreshold else [1,0]  for x in pred]
 
+	pred = np.array(pred)
 	
 	labels = np.unique(true_y,axis=0)
 	nClasses = len(labels)
+	#print("nclasses", nClasses)
 
-#	print(nClasses,labels)
 
 	#this num is model predicts class and object matched to same class
 	h_num = [ TH1D("num_"+str(i), "label "+str(x), 41, -0.5, 40.5 ) for i, x in enumerate(labels) ]
@@ -64,24 +64,9 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 
 	# begin the counting 
 	for i , (my, ty, pt) in enumerate(zip(pred, true_y, model_pt)):
-		# print(ty)
 		ty = np.array(ty)
-		# labelidx = -1
-		# modelidx = -1
-		# for idx in range(len(ty)):
-		# 	if( ty[idx] == 1):
-		# 		labelidx = idx
-		# for idx in range(len(my)):
-		# 	if( my[idx] ==1):
-		# 		modelidx = idx
-		# print(ty)
-		
-		# if ty.shape != (2,):
-			# print(i,ty)
-
 		labelidx = int(np.flatnonzero(ty == 1))
 		modelidx = int(np.flatnonzero(my == 1))
-#		print(labelidx,ty.shape,modelidx,my.shape,len(h_num))
 
 		if( (my == ty).all() ): #we have a correct classification
 
@@ -171,15 +156,16 @@ def evaluateModel(model_y, true_y, model_pt, fname, tag, path, results=None ):
 	return 1	
 
 
-def evaluateSubset( NN, y_testsub,x_testsub , pt_testsub ,  tagsub, path  ):
+def evaluateSubset( NN, y_testsub,x_testsub , pt_testsub ,pthreshold,  tagsub, path  ):
 	model_y = NN.model.predict(x_testsub)
 	# print("true_y")
 #	print(true_y)
 	true_y = y_testsub
 #	print(true_y)
 	model_pt = pt_testsub
+	#def evaluateModel(model_y, true_y, model_pt,pthreshold, fname, tag, path, results=None ):
 
-	evaluateModel(model_y, true_y, model_pt, NN.name, tagsub, path )
+	evaluateModel(model_y, true_y, model_pt, pthreshold, NN.name, tagsub, path )
 
 
 
@@ -193,7 +179,8 @@ class NN:
 		values = pd.Series(list(mdict.values())).to_numpy()
 		self.nClasses = len(np.unique(values))
 
-		self.n_features = len(model_vars)
+		self.n_features = len(model_vars)-1
+		#model vars is the size minus 1 because we will have, then drop pt
 
 		self.model = Sequential()
 		self.model.add(Dense(128, activation='relu', kernel_initializer='he_normal', input_shape=(self.n_features,)))
@@ -202,7 +189,14 @@ class NN:
 		self.model.add(Dense(128, activation='relu', kernel_initializer='he_normal'))
 
 		self.model.add(Dense(self.nClasses, activation='softmax'))
-		self.model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+		optimizer = Adam(lr=0.00001)
+
+
+		#self.model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
+		self.model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
+
+
+
 		# fit the model
 		print("Training model: "+self.name)
 		print("Desc.: "+ self.modeldesc)
@@ -216,11 +210,11 @@ class NN:
 		
 		if weights != None:
 			self.model.set_weights(weights)
-		self.Hist = self.model.fit(self.x_train, self.y_train, epochs=100, batch_size=256,validation_split=0.1, verbose=0)
-		
+		self.Hist = self.model.fit(self.x_train, self.y_train, epochs=2, batch_size=200,validation_split=0.1, verbose=0, shuffle=True)
+	#batch size was 256	
 
 	#evalautes network on last chunk of data
-	def evaluateNetwork(self,path,x_test,y_test,pt_test):
+	def evaluateNetwork(self,path,x_test,y_test,pt_test,ptthreshold):
 		self.x_test = x_test
 		self.y_test = y_test
 		self.pt_test = pt_test
@@ -242,7 +236,7 @@ class NN:
 		print('Test loss: %.4f' % self.te_loss)
 		print("Evaluating model....")
 		self.predictions = self.model.predict(self.x_test)	
-		evaluateModel(self.predictions, self.y_test, self.pt_test, self.name, self.tag, path, self.results )			
+		evaluateModel(self.predictions, self.y_test, self.pt_test,ptthreshold, self.name, self.tag, path, self.results )			
 
 
 
