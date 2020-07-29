@@ -5,7 +5,7 @@ import uproot
 
 if len(sys.argv) < 2:
 	print("Error: no file specified")
-	break
+	sys.exit()
 file = sys.argv[1]
 
 events = uproot.open(file)['Events']
