@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 
-from DATA import *
+from DATA2 import *
 from NN import evaluateSubset
 from NN import NN
 import sys
@@ -19,19 +19,40 @@ T_ttpath='/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAn
 
 
 
-#muon pt will be dropped late, it must be added now
-train_vars = ['Muon_pt','Muon_chi2LocalMomentum',
-'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
-'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
-'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
-'Muon_outerTrackCharge','Muon_innerTrackCharge',
-'Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
-'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers']
+#muon pt will be dropped later, it must be added now
+#MINI variables
+# train_vars = ['Muon_pt','Muon_chi2LocalMomentum',
+# 'Muon_chi2LocalPosition','Muon_trkRelChi2','Muon_trkKink','Muon_glbKink',
+# 'Muon_segmentCompatibility','Muon_timeAtIpInOutErr','Muon_innerTrackNormalizedChi2',
+# 'Muon_innerTrackValidFraction','Muon_nTrackerLayersWithMeasurement',
+# 'Muon_outerTrackCharge','Muon_innerTrackCharge',
+# 'Muon_pfRelIso03_chg','Muon_pfRelIso03_all',
+# 'Muon_isGood','Muon_isHighPurity','Muon_nPixelLayers']
 
+
+#NANO variables
+train_vars = ['Muon_dxy','Muon_dxyErr','Muon_dz','Muon_dzErr','Muon_inTimeMuon','Muon_isGlobal',
+'Muon_isPFcand','Muon_isTracker','Muon_jetPtRelv2','Muon_looseId','Muon_mediumId',
+'Muon_tightId','Muon_nStations','Muon_nTrackerLayers','Muon_segmentComp','Muon_softId']
+
+# 'Jet_btagCMVA'
+# 'Jet_btagCSVV2'
+# 'Jet_btagDeepB'
+# 'Jet_btagDeepC'
+# 'Jet_btagDeepFlavB'
+# 'Jet_btagDeepFlavC'
+# 'Jet_chEmEF'
+# 'Jet_chHEF'
+# 'Jet_muEF'
+# 'Jet_neHEF'
+# 'Jet_nMuons'
 
 
 #outPath = '/home/t3-ku/mlazarov/softMVA/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis'
 outPath = './'
+if len(sys.argv) < 2:
+	print("Error: no tag specified")
+	sys.exit()
 eval_tag = sys.argv[1] # input string for tagging output files 
 
 #quick and dirty sample all
@@ -58,8 +79,13 @@ dataset_DY = DATA(dypath,"Drell-Yan",train_vars)
 T_dataset_DY = DATA(T_dypath,"TEST_Drell-Yan",train_vars)
 dataset_TT = DATA(ttpath, "TTJets",train_vars)
 T_dataset_TT = DATA(T_ttpath,"TEST_ttJets",train_vars)
-mdict = {13: [1,0], 999: [0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
-bdict = {'mu': [1,0], 'U':[0,1]}
+#dictionaries for source classification
+mdict = {1: [1,0,0,0], 5:[0,1,0,0], 15: [0,0,1,0], 4:[0,0,0,1], 3:[0,0,0,1], 0:[0,0,0,1]}
+bdict = {'prompt': [1,0,0,0], 'b':[0,1,0,0], 'tau': [0,0,1,0], 'other':[0,0,0,1]}
+
+#dictionaries for gen classification
+# mdict = {13: [1,0], 999: [0,1], 211:[0,1], 321:[0,1], 2212:[0,1]}
+# bdict = {'mu': [1,0], 'U':[0,1]}
 
 
 modelDesc = "Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification"
