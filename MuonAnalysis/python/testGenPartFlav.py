@@ -31,6 +31,7 @@ for mem in memChunks:
 		if len(idxs) < 1: continue
 		for j, mu in enumerate(idxs):
 			if abs(genData[i][mu] != 13): continue
+			print(abs(genData[i][mu]))
 			if muonGenPartFlav[i][j] == 1:
 				promptGenPdgIds.append(genData[i][genDataMom[i][mu]])
 			elif muonGenPartFlav[i][j] == 5:
