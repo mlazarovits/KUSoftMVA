@@ -11,17 +11,22 @@ from DATA import prepareBenchSet
 import sys
 from make_bench import benchmark_sample
 #initilization of datasets and model variables
-#dypath='/home/t3-ku/janguian/storeUser/malazaro/TrainSetDYJets.root'
-dypath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root'
-qcdpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root'
+dypath='/home/t3-ku/janguian/storeUser/malazaro/softMVA/Train_dyjets.root'
+ttpath='/home/t3-ku/janguian/storeUser/malazaro/softMVA/Train_ttjets.root'
+qcdpath='/home/t3-ku/janguian/storeUser/malazaro/softMVA/Train_qcd.root'
+#dypath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root'
+#qcdpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root'
 #ttpath='/home/t3-ku/janguian/storeUser/malazaro/TrainSetTTJets.root'
-ttpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root'
+#ttpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root'
 
 
+T_dypath='/home/t3-ku/janguian/storeUser/malazaro/softMVA/Test_dyjets.root'
+T_qcdpath='/home/t3-ku/janguian/storeUser/malazaro/softMVA/Test_qcd.root'
+T_ttpath='/home/t3-ku/janguian/storeUser/malazaro/softMVA/Test_ttjets.root'
 #T_dypath='/home/t3-ku/janguian/storeUser/malazaro/TestSetDYJets.root'
-T_dpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root'
-T_qcdpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root'
-T_ttpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root'
+#T_dypath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/DYJetsToLL2018_MINI_numEvent100000.root'
+#T_qcdpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/QCD_pt_600to800_2018_MINI_numEvent100000.root'
+#T_ttpath='/home/t3-ku/janguian/CMSSW_10_6_11_patch1/src/KUSoftMVA/MuonAnalysis/test/OutputFiles/TTJets2018_MINI_numEvent100000.root'
 #T_ttpath='/home/t3-ku/janguian/storeUser/malazaro/TestSetTTJets.root'
 
 model_vars = ['Muon_genPdgId','Muon_pt','Muon_eta','Muon_chi2LocalMomentum',

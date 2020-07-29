@@ -161,7 +161,7 @@ NtRp59
 (dp60
 S'inputDataset'
 p61
-S'/DYJetsToLL_M-50_HT-70to100_TuneCP5_13TeV-madgraphMLM-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_94X_mc2017_realistic_v14-v1/MINIAODSIM'
+S'/DYJetsToLL_M-50_TuneCP5_13TeV-amcatnloFXFX-pythia8/RunIIFall17MiniAODv2-PU2017_12Apr2018_new_pmx_94X_mc2017_realistic_v14-v1/MINIAODSIM'
 p62
 sS'outputDatasetTag'
 p63
@@ -174,7 +174,7 @@ S'FileBased'
 p65
 sS'unitsPerJob'
 p66
-I1
+I3
 sg13
 S''
 sg14
@@ -260,7 +260,7 @@ S'prod'
 p92
 sS'RequestName'
 p93
-V200512_144407:jsingera_crab_MVA_DY2018
+V200529_182450:jsingera_crab_MVA_DY2018
 p94
 sS'voRole'
 p95

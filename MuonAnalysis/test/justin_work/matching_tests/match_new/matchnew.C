@@ -168,7 +168,8 @@ void matchnew::Terminate()
    // a query. It always runs on the client, it can be used to present
    // the results graphically or save the results to file.
 	//TFile* f = new TFile("dy.root", "RECREATE");
-	TFile* f = new TFile("tt.root", "RECREATE");
+	//TFile* f = new TFile("tt.root", "RECREATE");
+	TFile* f = new TFile("qcd.root","RECREATE");
 	//do some formatting and normalization
 	labelcomp.Scale(1./labelcomp.Integral());
 

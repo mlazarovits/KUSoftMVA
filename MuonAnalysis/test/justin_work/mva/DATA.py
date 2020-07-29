@@ -97,7 +97,7 @@ class DATA:
 		self.name = name
 		self.treeName = 'Events'
 		self.fname = fname
-		tmp = root_numpy.root2array(self.fname,self.treeName)
+		tmp = root_numpy.root2array(self.fname,self.treeName,start=0,stop=100000)
 		data = pd.DataFrame(tmp)
 
 		pdgIds = [-999 if mu == -1 else data['GenPart_pdgId'][i][mu] for i, idxs in enumerate(data['Muon_genPartIdx']) for j, mu in enumerate(idxs)]

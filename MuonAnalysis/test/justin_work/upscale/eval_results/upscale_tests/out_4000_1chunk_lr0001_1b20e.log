@@ -1,0 +1,756 @@
+
+Begin Model 5
+Chunking Drell-Yan
+# memChunks: 39
+total time 28.818073411 secs
+avg chunk time 0.6758951249230771 secs
+
+
+Chunking TEST_Drell-Yan
+# memChunks: 39
+total time 28.907739205 secs
+avg chunk time 0.676141270051283 secs
+
+
+Chunking TTJets
+# memChunks: 59
+total time 39.71500558599999 secs
+avg chunk time 0.6198471176610169 secs
+
+
+Chunking TEST_ttJets
+# memChunks: 39
+total time 25.55423457899998 secs
+avg chunk time 0.6139542790256405 secs
+
+
+Training model: model5
+Desc.: Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification
+
+
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  1
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  1
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  2
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  2
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  3
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  3
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  4
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  4
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  5
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  5
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  6
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  6
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  7
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  7
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  8
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  8
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  9
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  9
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  10
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  10
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  11
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  11
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  12
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  12
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  13
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  13
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  14
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  14
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  15
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  15
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  16
+chunk # 1
+Report for data Drell-Yan
+mu (8600, 22)
+unmatched (55579, 22)
+elec (52, 22)
+pion (277, 22)
+kaon (144, 22)
+prot (303, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11232, 22)
+unmatched (39869, 22)
+elec (100, 22)
+pion (990, 22)
+kaon (524, 22)
+prot (335, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  16
+chunk # 0
+Report for data Drell-Yan
+mu (8609, 22)
+unmatched (55623, 22)
+elec (40, 22)
+pion (255, 22)
+kaon (144, 22)
+prot (321, 22)
+
+
+Report for concat  (8000, 22)
+Report for data TTJets
+mu (11126, 22)
+unmatched (40179, 22)
+elec (92, 22)
+pion (927, 22)
+kaon (548, 22)
+prot (322, 22)
+
+
+Report for concat  (8000, 22)
+training on epoch  17

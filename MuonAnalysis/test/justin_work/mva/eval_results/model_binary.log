@@ -1,0 +1,282 @@
+
+Begin Model 5
+Report for data Drell-Yan
+('mu', (33448, 75))
+('unmathched', (215813, 75))
+('elec', (164, 75))
+('pion', (1031, 75))
+('kaon', (531, 75))
+('prot', (1191, 75))
+Report for data TTJets
+('mu', (64762, 75))
+('unmathched', (232492, 75))
+('elec', (595, 75))
+('pion', (5649, 75))
+('kaon', (3142, 75))
+('prot', (1955, 75))
+Report for data QCD
+('mu', (5220, 75))
+('unmathched', (240041, 75))
+('elec', (221, 75))
+('pion', (1037, 75))
+('kaon', (1035, 75))
+('prot', (2613, 75))
+Report for data TEST_Drell-Yan
+('mu', (33448, 75))
+('unmathched', (215813, 75))
+('elec', (164, 75))
+('pion', (1031, 75))
+('kaon', (531, 75))
+('prot', (1191, 75))
+from bench xypt
+('nclass', 2)
+0.764449832024271
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 32603.0 of 33097.0   0.985074175907
+Purity     : 32603.0 of 157441.0   0.207080747709
+label 1:
+Efficiency : 91559.0 of 216397.0   0.42310660499
+Purity     : 91559.0 of 92053.0   0.994633526338
+Overall performance: 
+Purity: 124162.0 of 249494.0    0.497655254235
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 32432.0 of 33097.0   0.97990754449
+Purity     : 32432.0 of 152274.0   0.212984488488
+label 1:
+Efficiency : 96555.0 of 216397.0   0.446193801208
+Purity     : 96555.0 of 97220.0   0.993159843654
+Overall performance: 
+Purity: 128987.0 of 249494.0    0.516994396659
+nan
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 0.0 of 33097.0   0.0
+Purity     : 0.0 of 0   -0.0
+label 1:
+Efficiency : 216397.0 of 216397.0   1.0
+Purity     : 216397.0 of 249494.0   0.867343503251
+Overall performance: 
+Purity: 216397.0 of 249494.0    0.867343503251
+Report for data TEST_QCD
+('mu', (5220, 75))
+('unmathched', (240041, 75))
+('elec', (221, 75))
+('pion', (1037, 75))
+('kaon', (1035, 75))
+('prot', (2613, 75))
+from bench xypt
+('nclass', 2)
+0.8649367750702606
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 4994.0 of 5163.0   0.967267092776
+Purity     : 4994.0 of 141554.0   0.0352798225412
+label 1:
+Efficiency : 105724.0 of 242284.0   0.436363936537
+Purity     : 105724.0 of 105893.0   0.998404049371
+Overall performance: 
+Purity: 110718.0 of 247447.0    0.447441270252
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 4775.0 of 5163.0   0.924849893473
+Purity     : 4775.0 of 129849.0   0.0367734830457
+label 1:
+Efficiency : 117210.0 of 242284.0   0.483771111588
+Purity     : 117210.0 of 117598.0   0.99670062416
+Overall performance: 
+Purity: 121985.0 of 247447.0    0.492974253072
+4.8125826038089015
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 216.0 of 216.0   1.0
+Purity     : 216.0 of 10245.0   0.0210834553441
+label 1:
+Efficiency : 0.0 of 10029.0   0.0
+Purity     : 0.0 of 0   -0.0
+Overall performance: 
+Purity: 216.0 of 10245.0    0.0210834553441
+Report for data TEST_TTJets
+('mu', (64762, 75))
+('unmathched', (232492, 75))
+('elec', (595, 75))
+('pion', (5649, 75))
+('kaon', (3142, 75))
+('prot', (1955, 75))
+from bench xypt
+('nclass', 2)
+0.7446855975999559
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 62627.0 of 64081.0   0.977309967073
+Purity     : 62627.0 of 196150.0   0.319281162376
+label 1:
+Efficiency : 107316.0 of 240839.0   0.445592283642
+Purity     : 107316.0 of 108770.0   0.986632343477
+Overall performance: 
+Purity: 169943.0 of 304920.0    0.557336350518
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 61568.0 of 64081.0   0.96078400774
+Purity     : 61568.0 of 185424.0   0.332039002502
+label 1:
+Efficiency : 116983.0 of 240839.0   0.485731131586
+Purity     : 116983.0 of 119496.0   0.978970007364
+Overall performance: 
+Purity: 178551.0 of 304920.0    0.585566706021
+2.0491034791921927
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 12400.0 of 12400.0   1.0
+Purity     : 12400.0 of 58632.0   0.211488606904
+label 1:
+Efficiency : 0.0 of 46232.0   0.0
+Purity     : 0.0 of 0   -0.0
+Overall performance: 
+Purity: 12400.0 of 58632.0    0.211488606904
+from bench xypt
+('nclass', 2)
+0.5907955486120575
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 18625.0 of 19020.0   0.979232386961
+Purity     : 18625.0 of 27898.0   0.667610581404
+label 1:
+Efficiency : 9327.0 of 18600.0   0.501451612903
+Purity     : 9327.0 of 9722.0   0.959370499897
+Overall performance: 
+Purity: 27952.0 of 37620.0    0.743009037746
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 18294.0 of 19020.0   0.961829652997
+Purity     : 18294.0 of 25388.0   0.720576650386
+label 1:
+Efficiency : 11506.0 of 18600.0   0.618602150538
+Purity     : 11506.0 of 12232.0   0.940647482014
+Overall performance: 
+Purity: 29800.0 of 37620.0    0.792131844763
+2.054707037853441
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 3637.0 of 3637.0   1.0
+Purity     : 3637.0 of 7203.0   0.504928502013
+label 1:
+Efficiency : 0.0 of 3566.0   0.0
+Purity     : 0.0 of 0   -0.0
+Overall performance: 
+Purity: 3637.0 of 7203.0    0.504928502013
+Training model: model5
+Desc.: Model trained only on true muons vs unmatched with non muons EXCLUDING electrons in both test and in training, binary classification
+Model Report:
+Training accuracy: 0.9904 
+Validation accuracy: 0.9061
+Training loss: 0.0289
+Validation loss: 0.6622
+Test Accuracy: 0.9122
+Test loss: 0.5868
+Evaluating model....
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 6065.0 of 6704.0   0.904683770883
+Purity     : 6065.0 of 6594.0   0.919775553534
+label 1:
+Efficiency : 6067.0 of 6596.0   0.919799878714
+Purity     : 6067.0 of 6706.0   0.904712198032
+Overall performance: 
+Purity: 12132.0 of 13300.0    0.912180451128
+evaluating full DY
+true_y
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 31445.0 of 33097.0   0.950086110524
+Purity     : 31445.0 of 118113.0   0.266228103596
+label 1:
+Efficiency : 129729.0 of 216397.0   0.599495371932
+Purity     : 129729.0 of 131381.0   0.987425883499
+Overall performance: 
+Purity: 161174.0 of 249494.0    0.646003511106
+evaluating full TT
+true_y
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 58769.0 of 64081.0   0.917104914093
+Purity     : 58769.0 of 128075.0   0.458863946906
+label 1:
+Efficiency : 171533.0 of 240839.0   0.712230992489
+Purity     : 171533.0 of 176845.0   0.969962396449
+Overall performance: 
+Purity: 230302.0 of 304920.0    0.755286632559
+evaluating full QCD
+true_y
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 4748.0 of 5163.0   0.919620375751
+Purity     : 4748.0 of 127521.0   0.0372330831785
+label 1:
+Efficiency : 119511.0 of 242284.0   0.493268230671
+Purity     : 119511.0 of 119926.0   0.996539532712
+Overall performance: 
+Purity: 124259.0 of 247447.0    0.502164099787
+evaluating full combined
+true_y
+Reporting results from test data
+We define efficiency and purity s.t.
+efficiency = # of objects correctly classified for a specific label / # of true objects of that label
+purity = # of objects correctly classified for a specific label/ # of objects classified for that label
+label 0:
+Efficiency : 18118.0 of 19020.0   0.952576235542
+Purity     : 18118.0 of 18806.0   0.963415931086
+label 1:
+Efficiency : 17912.0 of 18600.0   0.963010752688
+Purity     : 17912.0 of 18814.0   0.952056978846
+Overall performance: 
+Purity: 36030.0 of 37620.0    0.957735247209
