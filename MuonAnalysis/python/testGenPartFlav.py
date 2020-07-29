@@ -2,7 +2,11 @@ import numpy as np
 import sys
 import uproot
 
-file = sys.arvg[1]
+
+if len(sys.argv) < 2:
+	print("Error: no file specified")
+	break
+file = sys.argv[1]
 
 events = uproot.open(file)['Events']
 
