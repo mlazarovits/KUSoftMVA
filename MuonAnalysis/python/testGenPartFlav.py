@@ -20,6 +20,7 @@ uGenPdgIds = []
 memChunks = [i for i in events.mempartitions(1e8,entrystart=0,entrystop=1e6)] #read 100 MB at a time, max 1mil events
 print("start chunking")
 for mem in memChunks:
+	print("chunk #",mem)
 	memStart = mem[0]
 	memStop = mem[1]
 	muonGenPartFlav = events.array('Muon_genPartFlav',entrystart=memStart,entrystop=memStop)
@@ -29,6 +30,7 @@ for mem in memChunks:
 	for i, idxs in enumerate(dataMu):
 		if len(idxs) < 1: continue
 		for j, mu in enumerate(idxs):
+			if abs(genData[i][mu] != 13): continue
 			if muonGenPartFlav[i][j] == 1:
 				promptGenPdgIds.append(genData[i][genDataMom[i][mu]])
 			elif muonGenPartFlav[i][j] == 5:
