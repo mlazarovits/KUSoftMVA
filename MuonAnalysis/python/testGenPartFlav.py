@@ -19,8 +19,8 @@ uGenPdgIds = []
 
 memChunks = [i for i in events.mempartitions(1e8,entrystart=0,entrystop=1e6)] #read 100 MB at a time, max 1mil events
 print("start chunking")
-for mem in memChunks:
-	print("chunk #",mem)
+for memIdx, mem in enumerate(memChunks):
+	print("chunk #",memIdx)
 	memStart = mem[0]
 	memStop = mem[1]
 	muonGenPartFlav = events.array('Muon_genPartFlav',entrystart=memStart,entrystop=memStop)
